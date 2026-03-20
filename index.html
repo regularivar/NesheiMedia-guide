@@ -312,7 +312,19 @@
     border-top: 1px solid var(--border);
   }
 
-  .acc-content.open { display: block; }
+  .acc-content.open { display: block; background: var(--bg3); }
+
+  /* Alternating accordion items */
+  .acc-item:nth-child(even) { background: var(--bg3); }
+  .acc-item:nth-child(even) .acc-trigger:hover { background: var(--bg4); }
+  .acc-item:nth-child(even) .acc-trigger.open { background: var(--bg4); }
+  .acc-item:nth-child(even) .acc-content.open { background: var(--bg4); }
+
+  /* Styled A) B) C) ordered lists */
+  .acc-content ol { list-style: none; counter-reset: abc-counter; display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; }
+  .acc-content ol li { counter-increment: abc-counter; font-size: 13px; color: var(--text2); line-height: 1.6; padding: 10px 14px 10px 42px; position: relative; background: var(--bg2); border: 1px solid var(--border); border-radius: 6px; }
+  .acc-content ol li::before { content: counter(abc-counter, upper-alpha) ")"; position: absolute; left: 14px; font-family: var(--mono); font-size: 12px; font-weight: 700; color: var(--accent); }
+  .acc-content ol li strong { color: var(--text); font-weight: 600; }
 
   .placeholder {
     display: flex;
@@ -933,9 +945,9 @@
         <div class="acc-content">
           <div class="callout green"><span class="callout-icon">🎬</span><div class="callout-text">Phantom LUTs er designet for å brukes <strong>direkte på log-footage</strong> (S-Log3, D-Log M). De forventer original log-data som input – ikke noe som har vært gjennom DWG og tilbake. Bruk <strong>ARRI Neutral</strong> for et rent og nøytralt utgangspunkt.</div></div>
           <div class="steps">
-            <div class="step"><div class="step-num">N1</div><div class="step-content"><strong>Eksponering & Hvitbalanse (i Log)</strong><br><span style="color:var(--text3)">Lift/Gamma/Gain for balanse. Temp/Tint for hvitbalanse. Se på Waveform og Vectorscope. Senk høylys, løft skygger litt.</span></div></div>
-            <div class="step"><div class="step-num">N2</div><div class="step-content"><strong>Phantom LUT (Log → Rec.709)</strong><br><span style="color:var(--text3)">Legg til Phantom LUT her. Konverterer balansert log-footage til Rec.709. Bruk ARRI Neutral som standard utgangspunkt.</span></div></div>
-            <div class="step"><div class="step-num">N3+</div><div class="step-content"><strong>Kreative justeringer (i Rec.709)</strong><br><span style="color:var(--text3)">Primære farger, metning, sekundære justeringer, qualifiers, power windows, vignettering, kreativ LUT eller filmkorn.</span></div></div>
+            <div class="step"><div class="step-num">Node 1</div><div class="step-content"><strong>Eksponering & Hvitbalanse (i Log)</strong><br><span style="color:var(--text3)">Lift/Gamma/Gain for balanse. Temp/Tint for hvitbalanse. Se på Waveform og Vectorscope. Senk høylys, løft skygger litt.</span></div></div>
+            <div class="step"><div class="step-num">Node 2</div><div class="step-content"><strong>Phantom LUT (Log → Rec.709)</strong><br><span style="color:var(--text3)">Legg til Phantom LUT her. Konverterer balansert log-footage til Rec.709. Bruk ARRI Neutral som standard utgangspunkt.</span></div></div>
+            <div class="step"><div class="step-num">Node 3+</div><div class="step-content"><strong>Kreative justeringer (i Rec.709)</strong><br><span style="color:var(--text3)">Primære farger, metning, sekundære justeringer, qualifiers, power windows, vignettering, kreativ LUT eller filmkorn.</span></div></div>
           </div>
           <div class="callout orange"><span class="callout-icon">⚠️</span><div class="callout-text"><strong>Ikke bruk CST når du bruker Phantom LUTs.</strong> Phantom LUT gjør allerede konverteringsjobben. Bruk enten CST <em>eller</em> LUT – aldri begge for samme konvertering.</div></div>
         </div>
@@ -950,9 +962,9 @@
         <div class="acc-content">
           <div class="callout blue"><span class="callout-icon">💡</span><div class="callout-text">DWG er et ekstremt stort og nøytralt fargerom som bevarer maksimal informasjon fra log-filene. Ideelt for dypere grading og for PowerGrades som er designet for dette arbeidsrommet.</div></div>
           <div class="steps">
-            <div class="step"><div class="step-num">N1</div><div class="step-content"><strong>CST inn (Log → DaVinci Wide Gamut)</strong><br><span style="color:var(--text3)">Konverter kameraets log-profil til DWG. Input: S-Log3/D-Log M. Output: DaVinci Wide Gamut / Intermediate.</span></div></div>
-            <div class="step"><div class="step-num">N2+</div><div class="step-content"><strong>Primære & sekundære justeringer (i DWG)</strong><br><span style="color:var(--text3)">Eksponering, kontrast, hvitbalanse, qualifiers, power windows. Enorm fleksibilitet – minimalt tap av data.</span></div></div>
-            <div class="step"><div class="step-num">Nx</div><div class="step-content"><strong>Filmemulering / PowerGrade</strong><br><span style="color:var(--text3)">Lim inn filmemulerings-PowerGrade her. Tar DWG-signalet og transformerer til ønsket filmlook med fargevitenskap, kontrast, korn og halation.</span></div></div>
+            <div class="step"><div class="step-num">Node 1</div><div class="step-content"><strong>CST inn (Log → DaVinci Wide Gamut)</strong><br><span style="color:var(--text3)">Konverter kameraets log-profil til DWG. Input: S-Log3/D-Log M. Output: DaVinci Wide Gamut / Intermediate.</span></div></div>
+            <div class="step"><div class="step-num">Node 2+</div><div class="step-content"><strong>Primære & sekundære justeringer (i DWG)</strong><br><span style="color:var(--text3)">Eksponering, kontrast, hvitbalanse, qualifiers, power windows. Enorm fleksibilitet – minimalt tap av data.</span></div></div>
+            <div class="step"><div class="step-num">Node X</div><div class="step-content"><strong>Filmemulering / PowerGrade</strong><br><span style="color:var(--text3)">Lim inn filmemulerings-PowerGrade her. Tar DWG-signalet og transformerer til ønsket filmlook med fargevitenskap, kontrast, korn og halation.</span></div></div>
             <div class="step"><div class="step-num">Sist</div><div class="step-content"><strong>CST ut (DWG → Rec.709)</strong><br><span style="color:var(--text3)">Siste node. Konverterer ferdig bilde til Rec.709 Gamma 2.4 for levering og visning.</span></div></div>
           </div>
           <div class="callout green"><span class="callout-icon">🎬</span><div class="callout-text"><strong>PRIMARY NODES alltid FØR conversion.</strong> Legg på primary-justeringer før CST eller conversion LUT – dette gjelder alle kameraene.</div></div>
@@ -973,10 +985,10 @@
           <div class="table-wrap"><table>
             <thead><tr><th>Node</th><th>Hva</th><th>Detaljer</th></tr></thead>
             <tbody>
-              <tr><td><strong>N1</strong></td><td>Balansering (pre-conversion)</td><td>Mindre justeringer av eksponering og hvitbalanse. Senk høylys, løft skygger litt for filmatisk roll-off.</td></tr>
-              <tr><td><strong>N2</strong></td><td>Konvertering – CST eller Phantom LUT</td><td><strong>CST:</strong> Input: Sony S-Gamut3.Cine / S-Log3 → Output: Rec.709 / Gamma 2.4. <strong>Eller:</strong> Phantom LUT for S-Log3.</td></tr>
-              <tr><td><strong>N3</strong></td><td>Primære fargejusteringer</td><td>Metning, fargetone, fargehjul. Nå i Rec.709 – forutsigbare justeringer.</td></tr>
-              <tr><td><strong>N4</strong></td><td>Sekundære justeringer</td><td>Hudtoner, qualifiers, power windows, vignettering.</td></tr>
+              <tr><td><strong>Node 1</strong></td><td>Balansering (pre-conversion)</td><td>Mindre justeringer av eksponering og hvitbalanse. Senk høylys, løft skygger litt for filmatisk roll-off.</td></tr>
+              <tr><td><strong>Node 2</strong></td><td>Konvertering – CST eller Phantom LUT</td><td><strong>CST:</strong> Input: Sony S-Gamut3.Cine / S-Log3 → Output: Rec.709 / Gamma 2.4. <strong>Eller:</strong> Phantom LUT for S-Log3.</td></tr>
+              <tr><td><strong>Node 3</strong></td><td>Primære fargejusteringer</td><td>Metning, fargetone, fargehjul. Nå i Rec.709 – forutsigbare justeringer.</td></tr>
+              <tr><td><strong>Node 4</strong></td><td>Sekundære justeringer</td><td>Hudtoner, qualifiers, power windows, vignettering.</td></tr>
               <tr><td><strong>Sist</strong></td><td>Kreativ look</td><td>Film stock LUT, filmkorn, halation.</td></tr>
             </tbody>
           </table></div>
@@ -1008,10 +1020,10 @@
           <div class="table-wrap"><table>
             <thead><tr><th>Node</th><th>Hva</th><th>Detaljer</th></tr></thead>
             <tbody>
-              <tr><td><strong>N1</strong></td><td>Phantom LUT (D-Log M → Rec.709)</td><td>Plasser Phantom LUT som første node. Konverterer direkte fra D-Log M. Bruk ARRI Neutral.</td></tr>
-              <tr><td><strong>N2</strong></td><td>Eksponering & kontrast</td><td>Juster lift/gamma/gain. Tips: Reduser høylys litt for mykere, filmatisk preg.</td></tr>
-              <tr><td><strong>N3</strong></td><td>Hvitbalanse & primære farger</td><td>Hvitbalanse, metning, tint. Nå i Rec.709 – forutsigbare justeringer.</td></tr>
-              <tr><td><strong>N4</strong></td><td>Sekundære & kreative</td><td>Hudtoner, qualifiers, vignettering, kreative effekter.</td></tr>
+              <tr><td><strong>Node 1</strong></td><td>Phantom LUT (D-Log M → Rec.709)</td><td>Plasser Phantom LUT som første node. Konverterer direkte fra D-Log M. Bruk ARRI Neutral.</td></tr>
+              <tr><td><strong>Node 2</strong></td><td>Eksponering & kontrast</td><td>Juster lift/gamma/gain. Tips: Reduser høylys litt for mykere, filmatisk preg.</td></tr>
+              <tr><td><strong>Node 3</strong></td><td>Hvitbalanse & primære farger</td><td>Hvitbalanse, metning, tint. Nå i Rec.709 – forutsigbare justeringer.</td></tr>
+              <tr><td><strong>Node 4</strong></td><td>Sekundære & kreative</td><td>Hudtoner, qualifiers, vignettering, kreative effekter.</td></tr>
             </tbody>
           </table></div>
           <div class="callout orange"><span class="callout-icon">⚠️</span><div class="callout-text"><strong>Ikke bruk CST når du bruker Phantom LUTs.</strong> Phantom LUT gjør konverteringsjobben. Velg én av dem.</div></div>
@@ -1025,11 +1037,11 @@
           <div class="table-wrap"><table>
             <thead><tr><th>Node</th><th>Canon C100 (C-Log)</th><th>DJI Pocket 2 (D-Cinelike)</th></tr></thead>
             <tbody>
-              <tr><td><strong>N1</strong></td><td>CST: Cinema Gamut / C-Log → Rec.709 / 2.4</td><td>Conversion LUT: D-Cinelike → Rec.709 (først)</td></tr>
-              <tr><td><strong>N2</strong></td><td>Eksponering & hvitbalanse</td><td>Eksponering & hvitbalanse</td></tr>
-              <tr><td><strong>N3</strong></td><td>Primære fargejusteringer</td><td>Metning – vær forsiktig med 8-bit</td></tr>
-              <tr><td><strong>N4</strong></td><td>Sekundære justeringer</td><td>Lokale justeringer – vær varsom</td></tr>
-              <tr><td><strong>N5</strong></td><td>Støyreduksjon (om nødvendig)</td><td>–</td></tr>
+              <tr><td><strong>Node 1</strong></td><td>CST: Cinema Gamut / C-Log → Rec.709 / 2.4</td><td>Conversion LUT: D-Cinelike → Rec.709 (først)</td></tr>
+              <tr><td><strong>Node 2</strong></td><td>Eksponering & hvitbalanse</td><td>Eksponering & hvitbalanse</td></tr>
+              <tr><td><strong>Node 3</strong></td><td>Primære fargejusteringer</td><td>Metning – vær forsiktig med 8-bit</td></tr>
+              <tr><td><strong>Node 4</strong></td><td>Sekundære justeringer</td><td>Lokale justeringer – vær varsom</td></tr>
+              <tr><td><strong>Node 5</strong></td><td>Støyreduksjon (om nødvendig)</td><td>–</td></tr>
               <tr><td><strong>Sist</strong></td><td>Film stock LUT (etter Rec.709)</td><td>Conversion LUT sist (alternativ metode)</td></tr>
             </tbody>
           </table></div>
