@@ -282,7 +282,7 @@
   }
 
   .acc-trigger:hover { background: var(--bg3); }
-  .acc-trigger.open { background: var(--bg3); }
+  .acc-trigger.open { background: var(--bg3); border-left: 3px solid var(--accent); padding-left: 19px; }
 
   .acc-left { display: flex; align-items: center; gap: 14px; }
 
@@ -312,19 +312,43 @@
     border-top: 1px solid var(--border);
   }
 
-  .acc-content.open { display: block; background: var(--bg3); }
+  .acc-content.open {
+    display: block;
+    background: rgba(79,142,247,0.04);
+    border-top: 1px solid rgba(79,142,247,0.15);
+  }
 
-  /* Alternating accordion items */
-  .acc-item:nth-child(even) { background: var(--bg3); }
-  .acc-item:nth-child(even) .acc-trigger:hover { background: var(--bg4); }
-  .acc-item:nth-child(even) .acc-trigger.open { background: var(--bg4); }
-  .acc-item:nth-child(even) .acc-content.open { background: var(--bg4); }
+  /* Alternating accordion items – even items get a lighter shade */
+  .acc-item:nth-child(even) {
+    background: #141820;
+  }
+  .acc-item:nth-child(even) .acc-trigger:hover { background: var(--bg3); }
+  .acc-item:nth-child(even) .acc-trigger.open { background: var(--bg3); }
+  .acc-item:nth-child(even) .acc-content.open {
+    background: rgba(79,142,247,0.06);
+  }
 
   /* Styled A) B) C) ordered lists */
   .acc-content ol { list-style: none; counter-reset: abc-counter; display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; }
   .acc-content ol li { counter-increment: abc-counter; font-size: 13px; color: var(--text2); line-height: 1.6; padding: 10px 14px 10px 42px; position: relative; background: var(--bg2); border: 1px solid var(--border); border-radius: 6px; }
   .acc-content ol li::before { content: counter(abc-counter, upper-alpha) ")"; position: absolute; left: 14px; font-family: var(--mono); font-size: 12px; font-weight: 700; color: var(--accent); }
   .acc-content ol li strong { color: var(--text); font-weight: 600; }
+
+  /* A) B) C) styled numbered rules */
+  .rules.abc { counter-reset: abc-rule; }
+  .rules.abc .rule { counter-increment: abc-rule; }
+  .rules.abc .rule .icon {
+    font-family: var(--mono) !important;
+    font-size: 11px !important;
+    font-weight: 700;
+    letter-spacing: 0;
+    background: rgba(79,142,247,0.12) !important;
+    color: var(--accent) !important;
+    border: 1px solid rgba(79,142,247,0.25);
+    width: 28px !important;
+    height: 22px !important;
+    border-radius: 4px !important;
+  }
 
   .placeholder {
     display: flex;
@@ -868,10 +892,10 @@
         <div class="acc-content">
           <div class="callout blue"><span class="callout-icon">💡</span><div class="callout-text">Når du filmer med log-profiler som <strong>S-Log3</strong> (FX30) eller <strong>D-Log M</strong> (Pocket 3), fanger kameraet et flatt bilde med lav kontrast og metning. Din jobb som color grader er å ta dette flate bildet og gjøre det til et vakkert, ferdig resultat.</div></div>
           <div class="section-sub-header">Teknisk korrigering</div>
-          <div class="rules">
-            <div class="rule info"><div class="icon">1</div><div><strong>Konvertere Log til Rec.709</strong> – de flate log-filene må konverteres til standard videoformat som skjermer forstår. Dette er det første og viktigste steget.</div></div>
-            <div class="rule info"><div class="icon">2</div><div><strong>Rette opp eksponering og kontrast</strong> – sørge for at bildet verken er for mørkt eller lyst, med riktig mengde punch.</div></div>
-            <div class="rule info"><div class="icon">3</div><div><strong>Korrigere hvitbalanse</strong> – få fargene til å se naturlige ut slik at hvitt faktisk er hvitt.</div></div>
+          <div class="rules abc">
+            <div class="rule info"><div class="icon">A)</div><div><strong>Konvertere Log til Rec.709</strong> – de flate log-filene må konverteres til standard videoformat som skjermer forstår. Dette er det første og viktigste steget.</div></div>
+            <div class="rule info"><div class="icon">B)</div><div><strong>Rette opp eksponering og kontrast</strong> – sørge for at bildet verken er for mørkt eller lyst, med riktig mengde punch.</div></div>
+            <div class="rule info"><div class="icon">C)</div><div><strong>Korrigere hvitbalanse</strong> – få fargene til å se naturlige ut slik at hvitt faktisk er hvitt.</div></div>
           </div>
           <div class="section-sub-header">Kreativ look</div>
           <p style="font-size:13px;color:var(--text2);line-height:1.7">Etter at bildet er teknisk korrekt kan du begynne å gi det en spesifikk "look" eller stil. Varm, kald, filmatisk eller dokumentarisk – dette er den morsomme delen der du setter ditt eget preg.</p>
