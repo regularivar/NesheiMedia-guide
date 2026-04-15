@@ -533,6 +533,8 @@
           <div class="card-sub">3.2 Lyd-kokebok</div>
           <div class="card-sub">3.3 Stream Deck-oppsett</div>
           <div class="card-sub">3.4 DaVinci snarveier</div>
+          <div class="card-sub">3.6 Rask REELS-workflow</div>
+          <div class="card-sub">3.7 Cache &amp; Render tips</div>
         </div>
         
       </div>
@@ -548,6 +550,7 @@
           <div class="card-sub">4.4 LUT packs</div>
           <div class="card-sub">4.5 DCTLs</div>
           <div class="card-sub">4.6 Powergrades</div>
+          <div class="card-sub">4.7 Undertekster (SnapCaption)</div>
         </div>
         
       </div>
@@ -612,7 +615,7 @@
         <button class="acc-trigger" onclick="toggleAcc(this)">
           <div class="acc-left">
             <span class="acc-num">1.1</span>
-            <span>Disk &amp; backup-oversikt</span>
+            <span>Disk Oversikt</span>
           </div>
           <span class="acc-chevron">▼</span>
         </button>
@@ -706,9 +709,85 @@
             </table>
           </div>
 
+          <div class="callout orange">
+            <span class="callout-icon">📊</span>
+            <div class="callout-text"><strong>Snapshot-data:</strong> Pie-chartene viser lagrede verdier og oppdateres ikke automatisk. Oppdater tallene manuelt i HTML-koden etter behov.</div>
+          </div>
+
+          <div class="section-sub-header">🗄️ Fysisk disk-kart – Ugreen DXP4800 NAS</div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin-bottom:20px">
+
+            <div style="background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:18px">
+              <div style="font-family:var(--mono);font-size:9px;color:var(--text3);letter-spacing:0.12em;margin-bottom:6px">FYSISK DISK – HDD #1 – 14 TB</div>
+              <div style="font-size:14px;font-weight:700;color:var(--yellow);margin-bottom:12px">KAMERA_RAW</div>
+              <div style="display:flex;flex-direction:column;gap:8px">
+                <div style="display:flex;gap:8px;align-items:center"><span class="drive-badge">V:\</span><span style="font-size:12px;color:var(--text2)">10_video_raw – Aktivt råmateriale</span></div>
+                <div style="display:flex;gap:8px;align-items:center"><span class="drive-badge">Y:\</span><span style="font-size:12px;color:var(--text2)">99_transfer_inbox – Temp innboks</span></div>
+              </div>
+            </div>
+
+            <div style="background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:18px">
+              <div style="font-family:var(--mono);font-size:9px;color:var(--text3);letter-spacing:0.12em;margin-bottom:6px">FYSISK DISK – HDD #2 – 6 TB</div>
+              <div style="font-size:14px;font-weight:700;color:var(--purple);margin-bottom:12px">MEDIA_ASSETS</div>
+              <div style="display:flex;flex-direction:column;gap:8px">
+                <div style="display:flex;gap:8px;align-items:center"><span class="drive-badge">A:\</span><span style="font-size:12px;color:var(--text2)">30_media_assets – Edit Assets</span></div>
+                <div style="display:flex;gap:8px;align-items:center"><span class="drive-badge">B:\</span><span style="font-size:12px;color:var(--text2)">Backup / diverse</span></div>
+              </div>
+            </div>
+
+            <div style="background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:18px">
+              <div style="font-family:var(--mono);font-size:9px;color:var(--text3);letter-spacing:0.12em;margin-bottom:6px">FYSISK DISK – HDD #3 – 8 TB</div>
+              <div style="font-size:14px;font-weight:700;color:var(--yellow);margin-bottom:12px">STOCKS</div>
+              <div style="display:flex;flex-direction:column;gap:8px">
+                <div style="display:flex;gap:8px;align-items:center"><span class="drive-badge">K:\</span><span style="font-size:12px;color:var(--text2)">20_stocks – Stock footage</span></div>
+              </div>
+            </div>
+
+            <div style="background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:18px">
+              <div style="font-family:var(--mono);font-size:9px;color:var(--text3);letter-spacing:0.12em;margin-bottom:6px">FYSISK DISK – HDD #4 – 8 TB</div>
+              <div style="font-size:14px;font-weight:700;color:var(--orange);margin-bottom:12px">ARKIV + EKSPORT</div>
+              <div style="display:flex;flex-direction:column;gap:8px">
+                <div style="display:flex;gap:8px;align-items:center"><span class="drive-badge">W:\</span><span style="font-size:12px;color:var(--text2)">40_arkiv_raw – Arkivert råmateriale</span></div>
+                <div style="display:flex;gap:8px;align-items:center"><span class="drive-badge">O:\</span><span style="font-size:12px;color:var(--text2)">12_eksport – Ferdige eksporter</span></div>
+              </div>
+            </div>
+
+            <div style="background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:18px">
+              <div style="font-family:var(--mono);font-size:9px;color:var(--text3);letter-spacing:0.12em;margin-bottom:6px">INTERN – NVMe SSD – 2 TB</div>
+              <div style="font-size:14px;font-weight:700;color:var(--cyan);margin-bottom:12px">DAVINCI PROSJEKTER</div>
+              <div style="display:flex;flex-direction:column;gap:8px">
+                <div style="display:flex;gap:8px;align-items:center"><span class="drive-badge">P:\</span><span style="font-size:12px;color:var(--text2)">80_davinci_prosjekter – Aktive prosjekter</span></div>
+              </div>
+            </div>
+
+            <div style="background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:18px">
+              <div style="font-family:var(--mono);font-size:9px;color:var(--text3);letter-spacing:0.12em;margin-bottom:6px">INTERN – NVMe CACHE – 1 TB</div>
+              <div style="font-size:14px;font-weight:700;color:var(--pink);margin-bottom:12px">DAVINCI CACHE</div>
+              <div style="display:flex;flex-direction:column;gap:8px">
+                <div style="display:flex;gap:8px;align-items:center"><span class="drive-badge">F:\</span><span style="font-size:12px;color:var(--text2)">DaVinci Resolve cache & optimized media</span></div>
+              </div>
+            </div>
+
+            <div style="background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:18px">
+              <div style="font-family:var(--mono);font-size:9px;color:var(--text3);letter-spacing:0.12em;margin-bottom:6px">EKSTERN USB – 5 TB</div>
+              <div style="font-size:14px;font-weight:700;color:var(--pink);margin-bottom:12px">PLEX</div>
+              <div style="display:flex;flex-direction:column;gap:8px">
+                <div style="display:flex;gap:8px;align-items:center"><span class="drive-badge">X:\</span><span style="font-size:12px;color:var(--text2)">dave-plex – Plex mediabibliotek</span></div>
+              </div>
+            </div>
+
+            <div style="background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:18px">
+              <div style="font-family:var(--mono);font-size:9px;color:var(--text3);letter-spacing:0.12em;margin-bottom:6px">EKSTERN USB – 2 TB</div>
+              <div style="font-size:14px;font-weight:700;color:var(--pink);margin-bottom:12px">INFUSE</div>
+              <div style="display:flex;flex-direction:column;gap:8px">
+                <div style="display:flex;gap:8px;align-items:center"><span class="drive-badge">M:\</span><span style="font-size:12px;color:var(--text2)">infuse – Apple TV via Infuse</span></div>
+              </div>
+            </div>
+
+          </div>
           <div class="callout blue">
             <span class="callout-icon">💡</span>
-            <div class="callout-text"><strong>Fysisk disk-kart:</strong> HDD #1 (14 TB): V: + Y: &nbsp;·&nbsp; HDD #2 (6 TB): A: + B: &nbsp;·&nbsp; HDD #3 (8 TB): K: &nbsp;·&nbsp; HDD #4 (8 TB): W: + O: &nbsp;·&nbsp; NVMe (2 TB): P: &nbsp;·&nbsp; NVMe (1 TB): F: cache</div>
+            <div class="callout-text"><strong>Terminologi:</strong> <strong>Fysisk disk</strong> = selve harddisken i NASen (HDD #1–4, NVMe, USB). <strong>Disknavn</strong> = hva disken inneholder (KAMERA_RAW, MEDIA_ASSETS osv.). <strong>Nettverksdrev</strong> = Windows drive-bokstav tilordnet til NAS-share (V:\, A:\ osv.).</div>
           </div>
 
         </div>
@@ -723,11 +802,11 @@
         <div class="acc-content">
           <div class="table-wrap">
             <table>
-              <thead><tr><th>Backup-disk</th><th>Hva backes opp</th><th>Kilde</th><th>Metode</th><th>Frekvens</th></tr></thead>
+              <thead><tr><th>Backup-disk</th><th>Hva backes opp</th><th>Kilde</th><th>Metode</th><th>Frekvens</th><th>Siste backup</th></tr></thead>
               <tbody>
-                <tr><td>📀 <strong>12 TB USB HDD</strong></td><td>30_MEDIA_ASSETS, 40_ARKIV_RAW, 50_TOOLS, DR_PROSJEKTER</td><td><span class="path">A:\ W:\ B:\ P:\</span></td><td>UGREEN Sync &amp; Backup</td><td>🗓️ Månedlig</td></tr>
-                <tr><td>📀 <strong>5 TB USB1</strong></td><td>🎥 Råmateriale FX30 + Pocket 3</td><td><span class="path">V:\11_KAMERA_RAW</span></td><td>UGREEN Sync &amp; Backup</td><td>📸 Etter innspilling</td></tr>
-                <tr><td>📀 <strong>5 TB USB2</strong></td><td>EDIT ASSETS, 50_TOOLS, DaVinci, 12_EKSPORT</td><td><span class="path">A:\ B:\ O:\ P:\</span></td><td>UGREEN Incremental</td><td>📅 Ukentlig</td></tr>
+                <tr><td>📀 <strong>12 TB USB HDD</strong></td><td>30_MEDIA_ASSETS, 40_ARKIV_RAW, 50_TOOLS, DR_PROSJEKTER</td><td><span class="path">A:\ W:\ B:\ P:\</span></td><td>UGREEN Sync &amp; Backup</td><td>🗓️ Månedlig</td><td><span style="font-family:var(--mono);font-size:11px;color:var(--orange)">16.01.2026</span></td></tr>
+                <tr><td>📀 <strong>5 TB USB1</strong></td><td>🎥 Råmateriale FX30 + Pocket 3</td><td><span class="path">V:\11_KAMERA_RAW</span></td><td>UGREEN Sync &amp; Backup</td><td>📸 Etter innspilling</td><td><span style="font-family:var(--mono);font-size:11px;color:var(--green)">15.04.2026</span></td></tr>
+                <tr><td>📀 <strong>5 TB USB2</strong></td><td>EDIT ASSETS, 50_TOOLS, DaVinci, 12_EKSPORT</td><td><span class="path">A:\ B:\ O:\ P:\</span></td><td>UGREEN Incremental</td><td>📅 Ukentlig</td><td><span style="font-family:var(--mono);font-size:11px;color:var(--yellow)">16.03.2026</span></td></tr>
               </tbody>
             </table>
           </div>
@@ -745,17 +824,27 @@
           <span class="acc-chevron">▼</span>
         </button>
         <div class="acc-content">
-          <div class="table-wrap">
-            <table>
-              <thead><tr><th>Når</th><th>Hva gjøres</th><th>Disk</th></tr></thead>
-              <tbody>
-                <tr><td>📸 <strong>Etter innspilling</strong></td><td>Kopier råmateriale til <code>V:\11_KAMERA_RAW\[KAMERA]\[ÅR]\</code>. Start backup til USB1.</td><td><span class="path">V:\ · USB1</span></td></tr>
-                <tr><td>✂️ <strong>Under klipping</strong></td><td>MXF til <code>O:\12_EKSPORT\_MXF_TEMP\</code> → Handbrake → H265 → slett MXF.</td><td><span class="path">P:\ · F:\ · O:\</span></td></tr>
-                <tr><td>📅 <strong>Ukentlig</strong></td><td>Kjør incremental backup til USB2.</td><td><span class="path">O:\ · A:\ · B:\ · USB2</span></td></tr>
-                <tr><td>🗓️ <strong>Månedlig</strong></td><td>Backup til 12 TB USB HDD. Tøm Y:\. Sjekk ledig plass alle disker.</td><td><span class="path">Alle · 12 TB USB</span></td></tr>
-                <tr><td>📦 <strong>Ved arkivering</strong></td><td>Flytt fra <code>O:\12_EKSPORT</code> til riktig kategori i <code>A:\30.03_VIDEOER\</code>.</td><td><span class="path">O:\ · A:\</span></td></tr>
-              </tbody>
-            </table>
+          <div class="rules">
+            <div class="rule ok">
+              <div class="icon">📸</div>
+              <div><strong>Etter innspilling</strong><br><span style="color:var(--text3)">Kopier råmateriale til <code>V:\11_KAMERA_RAW\[KAMERA]\[ÅR]\</code>. Start backup til 5 TB USB1.</span></div>
+            </div>
+            <div class="rule info">
+              <div class="icon">✂️</div>
+              <div><strong>Under klipping</strong><br><span style="color:var(--text3)">MXF til <code>O:\12_EKSPORT\_MXF_TEMP\</code> → Handbrake → H265 → slett MXF. Jobb fra <code>P:\</code> (SSD).</span></div>
+            </div>
+            <div class="rule info">
+              <div class="icon">📅</div>
+              <div><strong>Ukentlig</strong><br><span style="color:var(--text3)">Kjør incremental backup til 5 TB USB2. Kilde: <code>A:\ · B:\ · O:\ · P:\</code></span></div>
+            </div>
+            <div class="rule ok">
+              <div class="icon">🗓️</div>
+              <div><strong>Månedlig</strong><br><span style="color:var(--text3)">Backup til 12 TB USB HDD. Tøm <code>Y:\</code>. Sjekk ledig plass på alle disker. Oppdater backup-datoer i 1.2.</span></div>
+            </div>
+            <div class="rule ok">
+              <div class="icon">📦</div>
+              <div><strong>Ved arkivering</strong><br><span style="color:var(--text3)">Flytt fra <code>O:\12_EKSPORT</code> til riktig kategori: <code>A:\30.03_VIDEOER\PRODUKSJON\</code>, <code>SOME_CONTENT\</code> eller <code>CLIP_FARMING\</code></span></div>
+            </div>
           </div>
         </div>
       </div>
@@ -783,7 +872,22 @@
       </div>
     </div>
     <div class="accordion">
-      <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">2.1</span><span>Prosjektoppstart (Post Haste)</span></div><span class="acc-chevron">▼</span></button><div class="acc-content"><div class="placeholder"><div class="placeholder-icon">🗂️</div><div class="placeholder-text">// INNHOLD KOMMER</div></div></div></div>
+      <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">2.1</span><span>Prosjektoppstart (Post Haste)</span></div><span class="acc-chevron">▼</span></button><div class="acc-content">
+        <div class="callout blue"><span class="callout-icon">🗂️</span><div class="callout-text">Mal: <strong>IVAR EDIT</strong> – Husk å starte nytt prosjekt i <strong>både</strong> Post Haste og DaVinci Resolve.</div></div>
+        <div class="cards">
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#4f8ef7"></span>00_MEDIA_RAW</div><ul><li><strong>SOUND/</strong> – Lyd fra opptak</li><li><strong>VIDEO/CAMERA/</strong> – Kameraklipp</li><li><strong>VIDEO/PROXY/</strong> – Proxy-filer</li><li><strong>VIDEO/STOCK/</strong> – Stock-klipp brukt i prosjektet</li></ul></div>
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#34d399"></span>01–03</div><ul><li><strong>01_EDITS/</strong> – DaVinci Resolve-filer (.drp)</li><li><strong>02_AUDIO/MUSIC/</strong> – Musikk</li><li><strong>02_AUDIO/SFX/</strong> – Lydeffekter</li><li><strong>02_AUDIO/VOICEOVER/</strong> – VO</li><li><strong>03_ASSETS/GRAPHIC/</strong> – Grafikk</li><li><strong>03_ASSETS/IMAGES/</strong> – Stillbilder</li><li><strong>03_ASSETS/VFX/</strong> – VFX-elementer</li><li><strong>03_ASSETS/REFERENCE/</strong> – Ref-materiale</li></ul></div>
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#fb923c"></span>04–06</div><ul><li><strong>04_PROJECT_FILE/</strong> – Post Haste-prosjektfil</li><li><strong>05_EXPORT/</strong> – Eksporterte filer</li><li><strong>06_BLACKMAGIC CLOUD/</strong> – Cloud-synk</li></ul></div>
+        </div>
+        <div class="section-sub-header">Steg-for-steg</div>
+        <div class="steps">
+          <div class="step"><div class="step-num">01</div><div class="step-content">📂 <strong>Post Haste:</strong> Åpne Post Haste → velg malen <strong>IVAR EDIT</strong> → gi prosjektet navn → velg destinasjon på <code>P:\80_DAVINCI_PROSJEKTER\</code> → klikk Create.</div></div>
+          <div class="step"><div class="step-num">02</div><div class="step-content">🎬 <strong>DaVinci:</strong> Åpne DaVinci Resolve → åpne <strong>Default Project</strong> → gi prosjektet riktig navn → sett opp prosjektinnstillinger (fps, oppløsning, fargerom).</div></div>
+          <div class="step"><div class="step-num">03</div><div class="step-content">📥 <strong>Import:</strong> Dra mapper fra Post Haste-mappen inn i DaVinci Media Pool som <strong>"Folders as Bins"</strong>. Import fra riktig kamera-mappe på <code>V:\11_KAMERA_RAW\</code>.</div></div>
+          <div class="step"><div class="step-num">04</div><div class="step-content">☁️ <strong>Blackmagic Cloud:</strong> Koble prosjektet til Blackmagic Cloud for synk mellom maskiner. Gjøres i Project Manager.</div></div>
+        </div>
+        <div class="callout orange"><span class="callout-icon">⚠️</span><div class="callout-text"><strong>Husk:</strong> Nytt prosjekt MÅ opprettes i BEGGE – Post Haste (mappestruktur) og DaVinci Resolve (prosjektfil). Ikke hopp over ett av stegene.</div></div>
+      </div></div>
       <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">2.2</span><span>Workflow – Hjemme (stasjonær)</span></div><span class="acc-chevron">▼</span></button><div class="acc-content">
         <div class="steps">
           <div class="step"><div class="step-num">01</div><div class="step-content">☁️ <strong>Database:</strong> Bruk alltid <strong>Blackmagic Cloud</strong> for aktive prosjekter.</div></div>
@@ -795,13 +899,21 @@
       <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">2.3</span><span>Workflow – Reise (laptop)</span></div><span class="acc-chevron">▼</span></button><div class="acc-content">
         <div class="callout red"><span class="callout-icon">🚨</span><div class="callout-text"><strong>Før du drar:</strong> Kopier <code>P:\80_DAVINCI_PROSJEKTER</code> og aktuelt råmateriale til ekstern SSD.</div></div>
         <div class="steps">
-          <div class="step"><div class="step-num">01</div><div class="step-content">💾 Koble til SSD og kjør <code>REISE_MODUS.bat</code> – monterer SSD som <strong>P:\</strong> og <strong>V:\</strong>.</div></div>
-          <div class="step"><div class="step-num">02</div><div class="step-content">✅ <strong>Ingen relinking</strong> – identiske stier som hjemme.</div></div>
+          <div class="step"><div class="step-num">01</div><div class="step-content">💾 Koble til SSD og <strong>vurder</strong> om du trenger å kjøre <code>REISE_MODUS.bat</code>. Du trenger det IKKE hvis DaVinci finner mediene automatisk.</div></div>
+          <div class="step"><div class="step-num">02</div><div class="step-content">✅ <strong>Ingen relinking</strong> – identiske stier som hjemme (om REISE_MODUS er kjørt).</div></div>
           <div class="step"><div class="step-num">03</div><div class="step-content">🚨 <strong>Nødplan:</strong> Bruk <code>.drp</code>-eksport lagret på SSD hvis du ikke har nett.</div></div>
           <div class="step"><div class="step-num">04</div><div class="step-content">🌐 <strong>Tailscale:</strong> Glemt noe? Koble til NAS via Tailscale → hent filen → legg lokalt på SSD.</div></div>
         </div>
+        <div class="callout blue"><span class="callout-icon">💡</span><div class="callout-text"><strong>Hva gjør REISE_MODUS.bat?</strong><br><br>Scriptet tilordner (monterer) ekstern SSD som de samme drive-bokstavene som du bruker hjemme (<code>P:\</code> og <code>V:\</code>). Dette gjøres med Windows <code>subst</code>-kommandoen. Resultatet er at DaVinci Resolve ser nøyaktig samme filstier på reise som hjemme – ingen relinking av medier nødvendig.<br><br>Eksempel på hva scriptet gjør: <code>subst P: D:\80_DAVINCI_PROSJEKTER</code> (om SSD er D:\). Siden det er lenge mellom hver gang scriptet brukes: start CMD som administrator og kjør scriptet på nytt etter hver omstart av PC.</div></div>
       </div></div>
-      <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">2.4</span><span>Workflow – iPad</span></div><span class="acc-chevron">▼</span></button><div class="acc-content"><div class="placeholder"><div class="placeholder-icon">📱</div><div class="placeholder-text">// INNHOLD KOMMER</div></div></div></div>
+      <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">2.4</span><span>Workflow – iPad</span></div><span class="acc-chevron">▼</span></button><div class="acc-content">
+        <div class="callout blue"><span class="callout-icon">📱</span><div class="callout-text">Bruker <strong>iPad Air 6</strong> med <strong>DaVinci Resolve for iPad</strong>. Koblet til via Tailscale eller ekstern SSD.</div></div>
+        <div class="cards">
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#4f8ef7"></span>📺 Viewing & Review</div><ul><li>Bruk iPaden som <strong>ekstern monitor</strong> for DaVinci på stasjonær</li><li>Se gjennom råmateriale og rate klipp</li><li>Review og godkjenning av eksporterte filer</li></ul></div>
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#34d399"></span>✂️ Enkel klipping</div><ul><li>Klipp enkle prosjekter direkte i DaVinci for iPad</li><li>Best for kortformats innhold og raske edits</li><li>Koble til tastatur og Apple Pencil for bedre workflow</li></ul></div>
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#fb923c"></span>🌐 Tilkobling</div><ul><li><strong>Tailscale:</strong> Koble til NAS og hent filer hjemmefra</li><li><strong>Ekstern SSD:</strong> Koble til via USB-C for full fart</li><li><strong>Blackmagic Cloud:</strong> Synk prosjekter direkte til iPad</li></ul></div>
+        </div>
+      </div></div>
       <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">2.5</span><span>Eksport-workflow</span></div><span class="acc-chevron">▼</span></button><div class="acc-content">
         <div class="callout green"><span class="callout-icon">📁</span><div class="callout-text"><strong>O:\12_EKSPORT struktur:</strong><br><br><code>_MXF_TEMP\</code> ← midlertidig, slettes etter Handbrake<br><code>STILLS\</code> ← DaVinci stills<br><code>2026_Prosjektnavn\H265\</code> ← leveringsfil</div></div>
         <div class="rules">
@@ -819,13 +931,39 @@
       </div></div>
       <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">2.6</span><span>Proxy-guide</span></div><span class="acc-chevron">▼</span></button><div class="acc-content">
         <div class="cards">
-          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#4f8ef7"></span>📷 Sony FX30</div><ul><li>Bruk <strong>interne proxies</strong> fra kameraet</li><li>Allerede generert ved innspilling</li></ul></div>
-          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#34d399"></span>🎥 DJI Pocket 3</div><ul><li>Rename <code>.LRF</code> → <code>.MP4</code></li><li>Gratis proxies – fungerer umiddelbart</li></ul></div>
-          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#fb923c"></span>⚙️ Generer nye</div><ul><li>Bruk <strong>DNxHR SQ</strong> eller <strong>DNxHR LB</strong></li><li>Lagres i <code>DAVINCI RESOLVE PROXY DEST</code> på V:\</li></ul></div>
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#4f8ef7"></span>📷 Sony FX30</div><ul><li>Bruk <strong>interne proxies</strong> fra kameraet</li><li>Generert automatisk ved innspilling</li><li>Proxies for <strong>både 25 fps og 50 fps</strong>-klipp inkludert</li></ul></div>
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#34d399"></span>🎥 DJI Pocket 3</div><ul><li>Rename <code>.LRF</code> → <code>.MP4</code></li><li>Gratis proxies – fungerer umiddelbart</li><li><strong>OBS:</strong> Script genererer kun proxy for <strong>25 fps</strong>-klipp. 50/60 fps-klipp må manuelt renames eller generes i DaVinci.</li></ul></div>
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#fb923c"></span>⚙️ Generer nye i DaVinci</div><ul><li>Bruk <strong>DNxHR SQ</strong> (høy kvalitet) eller <strong>DNxHR LB</strong> (lettere)</li><li>Lagres i <code>DAVINCI RESOLVE PROXY DEST</code> på <code>V:\</code></li><li>Bruk for klipp uten eksisterende proxy</li></ul></div>
         </div>
       </div></div>
-      <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">2.7</span><span>Blaze file management</span></div><span class="acc-chevron">▼</span></button><div class="acc-content"><div class="placeholder"><div class="placeholder-icon">🔥</div><div class="placeholder-text">// INNHOLD KOMMER</div></div></div></div>
-      <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">2.8</span><span>Tailscale</span></div><span class="acc-chevron">▼</span></button><div class="acc-content"><div class="placeholder"><div class="placeholder-icon">🌐</div><div class="placeholder-text">// INNHOLD KOMMER</div></div></div></div>
+      <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">2.7</span><span>Blaze file management</span></div><span class="acc-chevron">▼</span></button><div class="acc-content">
+        <div class="callout blue"><span class="callout-icon">🔥</span><div class="callout-text"><strong>Blaze</strong> er et MAM/DAM-verktøy (Media Asset Management) som kjøres ved siden av DaVinci. Pr. april 2026 i BETA – full versjon kommer med fremtidige oppdateringer. Tenk på det som <strong>Iconik</strong> eller <strong>SHADE</strong>, men lettere og mer skreddersydd for innholdsskapere.</div></div>
+        <div class="cards">
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#fb923c"></span>🔍 Søk</div><ul><li><strong>AI-søk:</strong> Naturlig språk – søk på innhold og handling i klippene</li><li><strong>Ansiktssøk:</strong> Finn klipp med en spesifikk person</li><li><strong>Tag-søk:</strong> Egne tags + kamera-metadata automatisk</li></ul></div>
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#4f8ef7"></span>📁 Organisering</div><ul><li><strong>Collections:</strong> Lag egne samlinger på tvers av mapper</li><li><strong>ALT samlet:</strong> All media fra alle disker i ett grensesnitt</li><li>Støtter BRAW, R3D, BRAW + over 500 filtyper</li></ul></div>
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#34d399"></span>🔌 Integrasjon</div><ul><li>Plugin til DaVinci Resolve (under utvikling)</li><li>Kjøres parallelt med DaVinci i dag</li><li>Forhåndsvisning av alle mediatyper</li></ul></div>
+        </div>
+        <div class="callout orange"><span class="callout-icon">⚠️</span><div class="callout-text"><strong>BETA-status:</strong> Tips og triks legges inn etter hvert som du bruker verktøyet mer. Oppdater denne seksjonen jevnlig.</div></div>
+      </div></div>
+      <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">2.8</span><span>Tailscale</span></div><span class="acc-chevron">▼</span></button><div class="acc-content">
+        <div class="callout blue"><span class="callout-icon">🌐</span><div class="callout-text"><strong>Tailscale</strong> oppretter et kryptert privat nettverk (VPN mesh) mellom alle enhetene dine. Du kan nå NAS og stasjonær PC fra hvor som helst i verden – som om du er på samme hjemmenett. Expire dates er skrudd av, så Tailscale kjører 24/7.</div></div>
+        <div class="section-sub-header">Enheter i Tailscale-nettverket</div>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Enhet</th><th>Tailscale-navn</th><th>Type</th><th>Primær bruk</th></tr></thead>
+          <tbody>
+            <tr><td>🗄️ <strong>Ugreen DXP4800</strong></td><td><span class="path">ivar-nas</span></td><td><span class="role-badge role-active">NAS</span></td><td>All lagring – tilgjengelig fra alle enheter</td></tr>
+            <tr><td>🖥️ <strong>Stasjonær PC</strong></td><td><span class="path">IVAR-DESKTOP-KO</span></td><td><span class="role-badge role-cache">Desktop</span></td><td>Fjernaksess, kjøre oppgaver hjemmefra</td></tr>
+            <tr><td>💻 <strong>Laptop</strong></td><td><span class="path">IVAR-LAPTOP</span></td><td><span class="role-badge role-archive">Laptop</span></td><td>Klipping på reise via Tailscale til NAS</td></tr>
+            <tr><td>📱 <strong>iPad Air 6</strong></td><td><span class="path">ipad-air</span></td><td><span class="role-badge role-media">iPad</span></td><td>Se og hente filer fra NAS, review</td></tr>
+            <tr><td>📱 <strong>iPhone 14 Pro</strong></td><td><span class="path">iphone-14-pro</span></td><td><span class="role-badge role-media">iPhone</span></td><td>Musikk over alt, laste opp bilder til NAS</td></tr>
+          </tbody>
+        </table></div>
+        <div class="cards">
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#4f8ef7"></span>🎒 På reise</div><ul><li>Hent glemte filer fra NAS uten å være hjemme</li><li>Laptop kobler til NAS via Tailscale – samme stier som hjemme</li><li>Last ned til SSD og jobb offline</li></ul></div>
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#34d399"></span>🎵 iPhone</div><ul><li>Spill musikk fra NAS via Tailscale uansett hvor du er</li><li>Last opp bilder direkte til NAS fra kamerarulle</li></ul></div>
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#fb923c"></span>⚙️ Oppsett</div><ul><li>Expire dates er deaktivert – ingen manuell re-autentisering</li><li>Sett opp via Claude – se egen PDF for detaljer</li></ul></div>
+        </div>
+      </div></div>
     </div>
   </div>
 </div>
@@ -862,6 +1000,32 @@
       </div></div>
       <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">3.3</span><span>Stream Deck-oppsett</span></div><span class="acc-chevron">▼</span></button><div class="acc-content"><div class="placeholder"><div class="placeholder-icon">🎛️</div><div class="placeholder-text">// INNHOLD KOMMER – Prosjekt 3</div></div></div></div>
       <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">3.4</span><span>DaVinci snarveier</span></div><span class="acc-chevron">▼</span></button><div class="acc-content"><div class="placeholder"><div class="placeholder-icon">⌨️</div><div class="placeholder-text">// INNHOLD KOMMER – Prosjekt 3</div></div></div></div>
+
+      <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">3.6</span><span>Rask workflow – REELS (TikTok / IG)</span></div><span class="acc-chevron">▼</span></button><div class="acc-content">
+        <div class="callout green"><span class="callout-icon">🎬</span><div class="callout-text">Rask workflow for å klippe raske REELS. Bruk <strong>5:4 format</strong> for TikTok og Instagram. Se kapittel 4.7 for undertekster.</div></div>
+        <div class="steps">
+          <div class="step"><div class="step-num">01</div><div class="step-content">🎬 <strong>Åpne DaVinci</strong> og åpne prosjektet <strong>"Default_Rec709_Updated"</strong> → klikk <em>"Open in read mode"</em> → endre prosjektnavn til dagens reel-navn.</div></div>
+          <div class="step"><div class="step-num">02</div><div class="step-content">📥 <strong>Importer footage</strong> – dra inn kameraklipp fra riktig mappe på <code>V:\11_KAMERA_RAW\</code>.</div></div>
+          <div class="step"><div class="step-num">03</div><div class="step-content">🎵 <strong>Importer musikk</strong> fra <code>A:\30_MEDIA_ASSETS\AUDIO\</code> eller bruk royalty-free musikk.</div></div>
+          <div class="step"><div class="step-num">04</div><div class="step-content">📐 <strong>Format:</strong> Sett tidslinja til <strong>5:4 (1080×1350)</strong> for TikTok/IG. Gjøres i Timeline Settings.</div></div>
+          <div class="step"><div class="step-num">05</div><div class="step-content">📝 <strong>Undertekster:</strong> Følg instruksjoner i <strong>kapittel 4.7</strong> (SnapCaption). Velg gode fonter. 8–10 tegn per linje.</div></div>
+          <div class="step"><div class="step-num">06</div><div class="step-content">✂️ <strong>Klipp!</strong> Bruk fargekoding fra 3.1. Bruk MotionVFX transitions for overganger.</div></div>
+          <div class="step"><div class="step-num">07</div><div class="step-content">📤 <strong>Eksporter</strong> – følg instruksjonene i kapittel 2.5 for riktige eksportinnstillinger.</div></div>
+        </div>
+      </div></div>
+
+      <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">3.7</span><span>Cache &amp; Render tips</span></div><span class="acc-chevron">▼</span></button><div class="acc-content">
+        <div class="callout blue"><span class="callout-icon">⚡</span><div class="callout-text">Cache og render-innstillinger er dokumentert i egen PDF. Se filen for full gjennomgang. Nedenfor er de viktigste huskeliste-punktene.</div></div>
+        <div class="rules">
+          <div class="rule ok"><div class="icon">✓</div><div><strong>Cache-disk:</strong> Sett alltid DaVinci cache til <code>F:\</code> (NVMe 1 TB) for raskest mulig ytelse.</div></div>
+          <div class="rule ok"><div class="icon">✓</div><div><strong>Optimized Media:</strong> Generer optimized media for tunge klipp – lagres på <code>V:\</code> i PROXY DEST-mappen.</div></div>
+          <div class="rule ok"><div class="icon">✓</div><div><strong>Render cache:</strong> Sett til "Smart" – DaVinci cacher automatisk det som er tungt å spille av.</div></div>
+          <div class="rule warn"><div class="icon">!</div><div><strong>Tøm cache jevnlig:</strong> Playback → Delete Render Cache → All. Gjøres månedlig eller når F:\ er full.</div></div>
+          <div class="rule warn"><div class="icon">!</div><div><strong>PDF:</strong> Fullt cache/render-dokument legges til her når det er klart.</div></div>
+        </div>
+        <div class="placeholder"><div class="placeholder-icon">📄</div><div class="placeholder-text">// PDF-innhold legges til her</div></div>
+      </div></div>
+
     </div>
   </div>
 </div>
@@ -875,12 +1039,129 @@
     <div class="chapter-nav"><span class="back-btn" onclick="goHome()">← Hjem</span><span class="nav-divider">/</span><span class="nav-chapter">Kapittel 04 – Edit Assets</span></div>
     <div class="chapter-header"><div class="chapter-icon">🎞️</div><div class="chapter-header-text"><div class="chapter-header-num">KAPITTEL 04</div><div class="chapter-header-title">EDIT ASSETS</div></div></div>
     <div class="accordion">
-      <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">4.1</span><span>Oversikt EDIT ASSETS (A:\)</span></div><span class="acc-chevron">▼</span></button><div class="acc-content"><div class="placeholder"><div class="placeholder-icon">📁</div><div class="placeholder-text">// INNHOLD KOMMER</div></div></div></div>
-      <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">4.2</span><span>MotionVFX plugins</span></div><span class="acc-chevron">▼</span></button><div class="acc-content"><div class="placeholder"><div class="placeholder-icon">🎬</div><div class="placeholder-text">// INNHOLD KOMMER</div></div></div></div>
-      <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">4.3</span><span>Andre DaVinci plugins</span></div><span class="acc-chevron">▼</span></button><div class="acc-content"><div class="placeholder"><div class="placeholder-icon">🔌</div><div class="placeholder-text">// INNHOLD KOMMER</div></div></div></div>
-      <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">4.4</span><span>LUT packs</span></div><span class="acc-chevron">▼</span></button><div class="acc-content"><div class="placeholder"><div class="placeholder-icon">🎨</div><div class="placeholder-text">// INNHOLD KOMMER</div></div></div></div>
-      <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">4.5</span><span>DCTLs</span></div><span class="acc-chevron">▼</span></button><div class="acc-content"><div class="placeholder"><div class="placeholder-icon">⚙️</div><div class="placeholder-text">// INNHOLD KOMMER</div></div></div></div>
-      <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">4.6</span><span>Powergrades</span></div><span class="acc-chevron">▼</span></button><div class="acc-content"><div class="placeholder"><div class="placeholder-icon">⚡</div><div class="placeholder-text">// INNHOLD KOMMER</div></div></div></div>
+      <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">4.1</span><span>Oversikt EDIT ASSETS (A:\)</span></div><span class="acc-chevron">▼</span></button><div class="acc-content">
+        <div class="callout blue"><span class="callout-icon">📁</span><div class="callout-text">Alt av media assets ligger under <code>A:\30_media_assets\</code>. <strong>Ingenting slettes</strong> her uten at du vet at det ikke trengs eller finnes et annet sted.</div></div>
+        <div class="cards">
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#fb923c"></span>00_KAMERA_SD_KORT</div><ul><li>Innhold fra SD-kort og kamera-media</li></ul></div>
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#4f8ef7"></span>AUDIO</div><ul><li>Musikk, SFX og lydpakker</li></ul></div>
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#c084fc"></span>COURSES</div><ul><li>Kurs og opplæringsmateriale</li></ul></div>
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#34d399"></span>DOWNLOAD MEDIA</div><ul><li>Nedlastet media, referanser og assets</li></ul></div>
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#f472b6"></span>EFFECTS &amp; TRANSITIONS</div><ul><li>Overganger, effekter og VFX-elementer</li></ul></div>
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#fbbf24"></span>FONTS &amp; BRUSHES</div><ul><li>Skrifttyper og pensler</li></ul></div>
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#22d3ee"></span>LUTS</div><ul><li>Alle LUT-packs – se 5.8 for full oversikt</li></ul></div>
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#fb923c"></span>MAM</div><ul><li>Media Asset Management – Blaze og lignende</li></ul></div>
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#4f8ef7"></span>PLUGINS &amp; EFFEKTER</div><ul><li>MotionVFX, Dehancer, FilmConvert og alle DaVinci plugins</li></ul></div>
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#c084fc"></span>POWER BINS</div><ul><li>DaVinci Power Bins – delte bins på tvers av prosjekter</li></ul></div>
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#34d399"></span>STOCKS</div><ul><li>Stock footage for bruk i prosjekter</li></ul></div>
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#f87171"></span>TITLES</div><ul><li>Tittelanimasjoner og tekst-templates</li></ul></div>
+        </div>
+      </div></div>
+
+      <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">4.2</span><span>MotionVFX plugins</span></div><span class="acc-chevron">▼</span></button><div class="acc-content">
+        <div class="callout blue"><span class="callout-icon">🎬</span><div class="callout-text">Alle MotionVFX-plugins er installert på <strong>begge maskiner</strong> (2 of 2 devices). Administreres via MotionVFX-appen.</div></div>
+        <div class="callout green"><span class="callout-icon">⭐</span><div class="callout-text"><strong>Mest brukte:</strong> mJourney · mStorytelling · mDiary · mStyle 8mm · m16mm · mTransition Film Roll · mDocumentary</div></div>
+        <div class="section-sub-header">Installerte pakker</div>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Plugin</th><th>Versjon</th><th>Kategori</th></tr></thead>
+          <tbody>
+            <tr><td>⭐ <strong>mJourney DVR</strong></td><td>1.1</td><td>Reise / Cinematic</td></tr>
+            <tr><td>⭐ <strong>mStorytelling DVR</strong></td><td>1.0</td><td>Storytelling / Dokumentar</td></tr>
+            <tr><td>⭐ <strong>mDiary DVR</strong></td><td>1.0</td><td>Dagbok / Personlig</td></tr>
+            <tr><td>⭐ <strong>mStyle 8mm DVR</strong></td><td>1.0</td><td>Film emulering</td></tr>
+            <tr><td>⭐ <strong>m16mm DVR</strong></td><td>2.0</td><td>Film emulering</td></tr>
+            <tr><td>⭐ <strong>mTransition Film Roll DVR</strong></td><td>1.0</td><td>Overganger</td></tr>
+            <tr><td>⭐ <strong>mDocumentary DVR</strong></td><td>1.1</td><td>Dokumentar</td></tr>
+            <tr><td>mHelloDV</td><td>2.2</td><td>Intro / Hello</td></tr>
+            <tr><td>mStyle VCR DVR</td><td>1.0</td><td>Retro / VCR</td></tr>
+            <tr><td>mcamRig</td><td>1.6</td><td>Kamera-effekter</td></tr>
+            <tr><td>mmatrix LEGACY</td><td>1.1</td><td>Matrix-stil</td></tr>
+            <tr><td>mEssentials Handwritten DVR</td><td>1.0</td><td>Tekst / Titler</td></tr>
+            <tr><td>mStyle Newspaper DVR</td><td>1.0</td><td>Avis-stil</td></tr>
+            <tr><td>mTitle Cinematic 2</td><td>1.2.1</td><td>Titler</td></tr>
+            <tr><td>mVertical</td><td>1.0.2</td><td>Vertikalt format</td></tr>
+            <tr><td>mMusic Video 2 DVR</td><td>1.0.1</td><td>Musikkvideo</td></tr>
+            <tr><td>mReels DVR</td><td>1.0</td><td>Reels</td></tr>
+            <tr><td>mStyle Cinematic</td><td>1.0</td><td>Cinematic</td></tr>
+          </tbody>
+        </table></div>
+      </div></div>
+
+      <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">4.3</span><span>Andre DaVinci plugins</span></div><span class="acc-chevron">▼</span></button><div class="acc-content">
+        <div class="cards">
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#c084fc"></span>🎨 Dehancer</div><ul><li>Film emulering – veldig realistisk</li><li>Støtter S-Log3, D-Log M og C-Log</li><li>Brukes på Node-nivå i Color-siden</li><li>Høy CPU/GPU-last – render med vilje</li></ul></div>
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#fb923c"></span>🎞️ FilmConvert</div><ul><li>Film stock emulering med grain og farger</li><li>Støtter kamera-profiler for FX30 og Pocket 3</li><li>Kan brukes som OFX plugin i DaVinci</li></ul></div>
+        </div>
+        <div class="callout orange"><span class="callout-icon">⚠️</span><div class="callout-text">Mer detaljer og brukstips legges til etter hvert. Oppdater seksjonen når du har testet mer.</div></div>
+      </div></div>
+
+      <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">4.4</span><span>LUT packs</span></div><span class="acc-chevron">▼</span></button><div class="acc-content">
+        <div class="callout blue"><span class="callout-icon">🎨</span><div class="callout-text">LUT-pakker er lagret i <code>A:\30_media_assets\LUTS\</code>. Full oversikt over conversion LUTs og creative LUTs – se <strong>Kapittel 5 → 5.8</strong> for komplett gjennomgang og brukstips.</div></div>
+        <div class="rules">
+          <div class="rule info"><div class="icon">→</div><div>Importer LUTs i DaVinci via <strong>Color → LUTs → Open LUT Folder</strong> → pek til <code>A:\LUTS\</code></div></div>
+          <div class="rule info"><div class="icon">→</div><div>Bruk <strong>Custom LUT</strong>-node i color-siden – dra og slipp LUT fra panelet</div></div>
+        </div>
+        <div style="margin-top:16px"><span onclick="openChapter('grade')" style="cursor:pointer;font-family:var(--mono);font-size:12px;color:var(--accent2);text-decoration:none;background:rgba(79,142,247,0.08);border:1px solid rgba(79,142,247,0.2);padding:8px 16px;border-radius:6px;display:inline-block">→ Gå til Kapittel 5.8 – LUTs oversikt og bruk</span></div>
+      </div></div>
+
+      <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">4.5</span><span>DCTLs</span></div><span class="acc-chevron">▼</span></button><div class="acc-content">
+        <div class="callout blue"><span class="callout-icon">⚙️</span><div class="callout-text">DCTLs er lagret i DaVinci sin DCTL-mappe. Full forklaring av DCTLs og plassering i node tree – se <strong>Kapittel 5 → 5.9</strong>. Nedenfor er en oversikt over de du har installert.</div></div>
+        <div class="table-wrap"><table>
+          <thead><tr><th>DCTL</th><th>Bruksområde</th></tr></thead>
+          <tbody>
+            <tr><td><strong>2499_DRT</strong></td><td>Display Rendering Transform – konvertering til Rec.709</td></tr>
+            <tr><td><strong>NOIR_DCTL</strong></td><td>Noir / svart-hvitt film look</td></tr>
+            <tr><td><strong>Qazi – Saturation Control</strong></td><td>Presis metningskontroll per kanal</td></tr>
+            <tr><td><strong>Qazi – Film Density</strong></td><td>Filmlook tetthet og kontrast</td></tr>
+            <tr><td><strong>Qazi – Halation</strong></td><td>Film halation-effekt (lysblødning)</td></tr>
+            <tr><td><strong>Qazi – Skin Compressor v1.1</strong></td><td>Hudtone-kompresjon, naturlig utseende</td></tr>
+            <tr><td><strong>Qazi – Charts</strong></td><td>Color chart-verktøy</td></tr>
+            <tr><td><strong>Qazi – Color Compressor</strong></td><td>Fargerom-kompresjon</td></tr>
+            <tr><td><strong>Qazi – Looks DNA</strong></td><td>Look-matching og stil-overføring</td></tr>
+            <tr><td><strong>Qazi – Skin Juice Mixer</strong></td><td>Hudtone-blanding og finjustering</td></tr>
+            <tr><td><strong>OpenDRT</strong></td><td>Open source DRT – nøytral og presis rendering</td></tr>
+            <tr><td><strong>Tetra</strong></td><td>Fargetransformasjon, kreativ grading</td></tr>
+            <tr><td><strong>Filmverse Pro</strong></td><td>Film emulering – komplett filmlook</td></tr>
+          </tbody>
+        </table></div>
+        <div style="margin-top:16px"><span onclick="openChapter('grade')" style="cursor:pointer;font-family:var(--mono);font-size:12px;color:var(--accent2);text-decoration:none;background:rgba(79,142,247,0.08);border:1px solid rgba(79,142,247,0.2);padding:8px 16px;border-radius:6px;display:inline-block">→ Gå til Kapittel 5.9 – DCTLs i node tree</span></div>
+      </div></div>
+
+      <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">4.6</span><span>Powergrades</span></div><span class="acc-chevron">▼</span></button><div class="acc-content">
+        <div class="callout blue"><span class="callout-icon">⚡</span><div class="callout-text">Full oversikt over PowerGrades, film stocks og print LUTs – se <strong>Kapittel 5 → 5.10</strong> for komplett gjennomgang.</div></div>
+        <div style="margin-top:16px"><span onclick="openChapter('grade')" style="cursor:pointer;font-family:var(--mono);font-size:12px;color:var(--accent2);text-decoration:none;background:rgba(79,142,247,0.08);border:1px solid rgba(79,142,247,0.2);padding:8px 16px;border-radius:6px;display:inline-block">→ Gå til Kapittel 5.10 – PowerGrades &amp; Film Emulation</span></div>
+      </div></div>
+
+      <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">4.7</span><span>Undertekster – SnapCaption &amp; DaVinci Subtitles</span></div><span class="acc-chevron">▼</span></button><div class="acc-content">
+        <div class="callout blue"><span class="callout-icon">📝</span><div class="callout-text">To metoder: <strong>DaVinci innebygd</strong> (auto-generere undertekster fra audio) + <strong>SnapCaption</strong> for egendefinerte presets. Bruk <strong>8–10 tegn per linje</strong> for best lesbarhet.</div></div>
+        <div class="section-sub-header">Metode 1 – DaVinci Auto Subtitles</div>
+        <div class="steps">
+          <div class="step"><div class="step-num">01</div><div class="step-content">Gå til <strong>Workflow → Integrations → SnapCaption</strong> og sett opp integrasjonen.</div></div>
+          <div class="step"><div class="step-num">02</div><div class="step-content">I Fairlight eller Edit-siden: Høyreklikk på klippet → <strong>Create Subtitles from Audio</strong>. DaVinci transkriberer automatisk.</div></div>
+          <div class="step"><div class="step-num">03</div><div class="step-content"><strong>Rediger raskt:</strong> Sjekk og korriger transkripsjonen. Maks 8–10 tegn per linje for god lesbarhet på mobil.</div></div>
+        </div>
+        <div class="section-sub-header">Metode 2 – Egne presets (Wampus-stil)</div>
+        <div class="rules">
+          <div class="rule info"><div class="icon">1</div><div>Lag et subtitle-design som en <strong>Text+</strong>-fil i Fusion.</div></div>
+          <div class="rule info"><div class="icon">2</div><div>Dra filen ned i <strong>SnapCaption-mappen</strong> som ligger i DaVinci Resolve root-mappe.</div></div>
+          <div class="rule info"><div class="icon">3</div><div>Om du bruker innebygde presets trenger du ikke denne mappen.</div></div>
+        </div>
+        <div class="section-sub-header" style="font-size:12px;color:var(--text3);margin-top:20px">📺 Tutorial-videoer</div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px">
+          <a href="https://www.youtube.com/watch?v=ejopMxGqB-o" target="_blank" class="yt-card">
+            <div class="yt-thumb"><img src="https://img.youtube.com/vi/ejopMxGqB-o/mqdefault.jpg"><span class="yt-badge">▶ VIDEO</span><span class="yt-ext">↗ YouTube</span></div>
+            <div class="yt-info"><div class="yt-title">SnapCaption – Undertekster i DaVinci</div><div class="yt-meta">Tutorial 1</div></div>
+          </a>
+          <a href="https://www.youtube.com/watch?v=lGaz83tIXc0" target="_blank" class="yt-card">
+            <div class="yt-thumb"><img src="https://img.youtube.com/vi/lGaz83tIXc0/mqdefault.jpg"><span class="yt-badge">▶ VIDEO</span><span class="yt-ext">↗ YouTube</span></div>
+            <div class="yt-info"><div class="yt-title">SnapCaption – Avansert oppsett</div><div class="yt-meta">Tutorial 2</div></div>
+          </a>
+          <a href="https://www.youtube.com/watch?v=xSqGqn7stZU" target="_blank" class="yt-card">
+            <div class="yt-thumb"><img src="https://img.youtube.com/vi/xSqGqn7stZU/mqdefault.jpg"><span class="yt-badge">▶ VIDEO</span><span class="yt-ext">↗ YouTube</span></div>
+            <div class="yt-info"><div class="yt-title">Subtitle Workflow DaVinci</div><div class="yt-meta">Tutorial 3</div></div>
+          </a>
+        </div>
+      </div></div>
+
     </div>
   </div>
 </div>
@@ -1128,6 +1409,26 @@
         </button>
         <div class="acc-content">
           <div class="callout blue"><span class="callout-icon">💡</span><div class="callout-text">DCTLs (DaVinci Color Transform Language) er svært kraftige og nøyaktige verktøy. Plasser dem <strong>etter</strong> dine globale primærjusteringer (kontrast, pivot, gamma) slik at de kan raffinere farge og tonalitet uten å kjempe mot tidligere korreksjon.</div></div>
+          <div class="section-sub-header">Mine installerte DCTLs</div>
+          <div class="table-wrap"><table>
+            <thead><tr><th>DCTL</th><th>Bruksområde</th></tr></thead>
+            <tbody>
+              <tr><td><strong>2499_DRT</strong></td><td>Display Rendering Transform – konvertering av log til output fargerom</td></tr>
+              <tr><td><strong>NOIR_DCTL</strong></td><td>Noir / svart-hvitt film look</td></tr>
+              <tr><td><strong>Qazi – Saturation Control</strong></td><td>Presis metningskontroll per fargekanal</td></tr>
+              <tr><td><strong>Qazi – Film Density</strong></td><td>Filmlook tetthet og kontrast</td></tr>
+              <tr><td><strong>Qazi – Halation</strong></td><td>Film halation-effekt – lysblødning fra lyse objekter</td></tr>
+              <tr><td><strong>Qazi – Skin Compressor v1.1</strong></td><td>Komprimerer hudtoner for naturlig utseende</td></tr>
+              <tr><td><strong>Qazi – Charts</strong></td><td>Color chart-analyse og kalibrering</td></tr>
+              <tr><td><strong>Qazi – Color Compressor</strong></td><td>Fargerom-kompresjon og kontroll</td></tr>
+              <tr><td><strong>Qazi – Looks DNA</strong></td><td>Look-matching og stil-overføring</td></tr>
+              <tr><td><strong>Qazi – Skin Juice Mixer</strong></td><td>Hudtone-blanding og finjustering</td></tr>
+              <tr><td><strong>OpenDRT</strong></td><td>Open source DRT – nøytral og vitenskapelig korrekt rendering</td></tr>
+              <tr><td><strong>Tetra</strong></td><td>Avansert fargetransformasjon, kreativ grading</td></tr>
+              <tr><td><strong>Filmverse Pro</strong></td><td>Komplett film emulering med tone og farge</td></tr>
+            </tbody>
+          </table></div>
+          <div class="section-sub-header">Mononodes DCTLs (generiske utility)</div>
           <div class="cards">
             <div class="card"><div class="card-title-inner"><span class="dot" style="background:#4f8ef7"></span>LOOK / LAB / PRINT v1</div><ul><li>CST node inn</li><li>Ingen CST ut – MONO PRINT er CST til Rec.709</li><li><a href="https://www.youtube.com/watch?v=ZmdAYLxxgeA" target="_blank" style="color:var(--accent2)">▶ Video tutorial</a></li></ul></div>
             <div class="card"><div class="card-title-inner"><span class="dot" style="background:#34d399"></span>UTILITY v1</div><ul><li>Generelle utility-funksjoner</li><li>Se Mononodes for detaljer</li></ul></div>
@@ -1192,9 +1493,85 @@
     <div class="chapter-nav"><span class="back-btn" onclick="goHome()">← Hjem</span><span class="nav-divider">/</span><span class="nav-chapter">Kapittel 06 – AI Video Prompting</span></div>
     <div class="chapter-header"><div class="chapter-icon">🤖</div><div class="chapter-header-text"><div class="chapter-header-num">KAPITTEL 06</div><div class="chapter-header-title">AI VIDEO PROMPTING</div></div></div>
     <div class="accordion">
-      <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">6.1</span><span>Prompt-teknikker</span></div><span class="acc-chevron">▼</span></button><div class="acc-content"><div class="placeholder"><div class="placeholder-icon">✍️</div><div class="placeholder-text">// INNHOLD KOMMER</div></div></div></div>
-      <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">6.2</span><span>Verktøy og plattformer</span></div><span class="acc-chevron">▼</span></button><div class="acc-content"><div class="placeholder"><div class="placeholder-icon">🛠️</div><div class="placeholder-text">// INNHOLD KOMMER</div></div></div></div>
-      <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">6.3</span><span>Workflow AI + DaVinci</span></div><span class="acc-chevron">▼</span></button><div class="acc-content"><div class="placeholder"><div class="placeholder-icon">🤖</div><div class="placeholder-text">// INNHOLD KOMMER</div></div></div></div>
+      <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">6.1</span><span>Prompt-teknikker</span></div><span class="acc-chevron">▼</span></button><div class="acc-content">
+        <div class="callout blue"><span class="callout-icon">✍️</span><div class="callout-text">En god prompt er bygget opp som et regissørinstruksjoner. Jo mer spesifikk du er, jo bedre resultat. Bruk strukturen under som mal.</div></div>
+        <div class="section-sub-header">Prompt-struktur – Video</div>
+        <div class="steps">
+          <div class="step"><div class="step-num">1</div><div class="step-content"><strong>Subjekt:</strong> Hvem eller hva er i bildet? Beskriv utseende, klær, stilling.<br><span style="color:var(--text3)">Eks: <em>"a young woman in a weathered leather jacket, braided hair, intense eyes"</em></span></div></div>
+          <div class="step"><div class="step-num">2</div><div class="step-content"><strong>Handling / bevegelse:</strong> Hva skjer? Hva gjør subjektet?<br><span style="color:var(--text3)">Eks: <em>"walking slowly through a foggy forest, looking over her shoulder"</em></span></div></div>
+          <div class="step"><div class="step-num">3</div><div class="step-content"><strong>Miljø:</strong> Bakgrunn, lokasjon, tid på døgnet.<br><span style="color:var(--text3)">Eks: <em>"misty pine forest, golden hour, dappled light through trees"</em></span></div></div>
+          <div class="step"><div class="step-num">4</div><div class="step-content"><strong>Kamera:</strong> Shot type, bevegelse, linse.<br><span style="color:var(--text3)">Eks: <em>"slow dolly push-in, 85mm, shallow depth of field, camera at eye level"</em></span></div></div>
+          <div class="step"><div class="step-num">5</div><div class="step-content"><strong>Stil &amp; Lys:</strong> Filmstil, farger, kontrast, grain.<br><span style="color:var(--text3)">Eks: <em>"cinematic, film-inspired color grade, warm tones, subtle grain, high dynamic range"</em></span></div></div>
+        </div>
+        <div class="section-sub-header">Kameravinkler – hurtigreferanse (Nano Banana / Google Flow)</div>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Vinkel</th><th>Prompt</th></tr></thead>
+          <tbody>
+            <tr><td>Fullfigur</td><td><code>"zoom out a little bit to show [subject] standing"</code></td></tr>
+            <tr><td>Nærbilde (ansikt)</td><td><code>"close-up shot on the face of [subject] showing detailed emotional expression"</code></td></tr>
+            <tr><td>Ekstremt nærbilde (øye)</td><td><code>"an extreme close-up shot on her left eye"</code></td></tr>
+            <tr><td>Froskeperspektiv</td><td><code>"a low angle shot of her seen from below"</code></td></tr>
+            <tr><td>Fugleperspektiv</td><td><code>"high angle shot seen from above"</code></td></tr>
+            <tr><td>Over skulderen</td><td><code>"an over the shoulder shot looking towards [person/object]"</code></td></tr>
+            <tr><td>Bakfra</td><td><code>"take a photo of her seen from behind"</code></td></tr>
+          </tbody>
+        </table></div>
+        <div class="section-sub-header">Video-bevegelse prompts</div>
+        <div class="cards">
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#4f8ef7"></span>Kamerabevegelse</div><ul><li><code>"slow 5% push-in"</code> – sakte zoom inn</li><li><code>"camera orbit around her"</code> – rotere rundt subjekt</li><li><code>"lateral dolly move"</code> – side-bevegelse</li><li><code>"subtle handheld micro-shake"</code> – dokumentar-feel</li></ul></div>
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#34d399"></span>Start &amp; Slutt</div><ul><li>Bruk Start + End Frame-funksjonen i verktøyet</li><li>Start: fullfigur, Slutt: nærbilde</li><li>Prompt: <code>"camera zooms in and rotates around her subtle smirk"</code></li></ul></div>
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#fb923c"></span>Konsistens-tips</div><ul><li>Generer alltid Master-bildet FULLFIGUR først</li><li>Beskriv miljø i prompten for å låse lyset</li><li>Generer karakterbilder i SAMME verktøy du skal animere i</li></ul></div>
+        </div>
+      </div></div>
+
+      <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">6.2</span><span>Verktøy og plattformer</span></div><span class="acc-chevron">▼</span></button><div class="acc-content">
+        <div class="callout blue"><span class="callout-icon">🛠️</span><div class="callout-text">Oversikt over AI-verktøy du bruker aktivt. Test selv og oppdater vurderingene etter hvert.</div></div>
+        <div class="section-sub-header">Mine plattformer</div>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Verktøy</th><th>Type</th><th>Tilgang</th><th>Beste for</th></tr></thead>
+          <tbody>
+            <tr><td>🌊 <strong>Weavy AI</strong></td><td>Hub – alt samlet</td><td>Abonnement</td><td>Tilgang til Runway, Kling, Sora, Higgsfield og mer i én app</td></tr>
+            <tr><td>🎨 <strong>MidJourney</strong></td><td>Bilde-generator</td><td>Abonnement</td><td>Magiske stillbilder – ekstremt vakre og cinematiske resultater</td></tr>
+            <tr><td>🎙️ <strong>ElevenLabs</strong></td><td>Audio / Voice</td><td>Abonnement</td><td>Voiceover, stemme-kloning, aksent-overføring</td></tr>
+            <tr><td>✨ <strong>Gemini Pro</strong></td><td>Multimodal AI</td><td>1500 credits / mnd (fornyes 11.)</td><td>Bilde, video, tekst – Google Veo integrert</td></tr>
+            <tr><td>🍌 <strong>Nano Banana 2</strong></td><td>Bilde &amp; video</td><td>Via Design.ai</td><td>Kameravinkler, karakterkonsistens, animasjon</td></tr>
+            <tr><td>🪄 <strong>Reve</strong></td><td>Video</td><td>–</td><td>Face swapping – svært god</td></tr>
+            <tr><td>⚡ <strong>Kling</strong></td><td>Video-generator</td><td>Via Weavy</td><td>Videokvalitet er utmerket – men dyrt</td></tr>
+          </tbody>
+        </table></div>
+        <div class="section-sub-header">Hva er best på hva?</div>
+        <div class="cards">
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#4f8ef7"></span>🏆 Stillbilder</div><ul><li><strong>MidJourney</strong> – kongen for cinematiske stillbilder</li><li><strong>Nano Banana 2</strong> – konsistent karakter på tvers av vinkler</li></ul></div>
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#34d399"></span>🎬 Video</div><ul><li><strong>Kling 2.5/2.6</strong> – topp videokvalitet, god bevegelse</li><li><strong>Google Veo 2/3.1</strong> – sterk via Gemini/Google Flow</li><li><strong>Runway</strong> – god for video-til-video transformasjon</li></ul></div>
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#fb923c"></span>🎙️ Audio</div><ul><li><strong>ElevenLabs</strong> – best på stemme og voiceover</li><li>Stemme-kloning og aksent-overføring</li></ul></div>
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#c084fc"></span>👤 Ansikter</div><ul><li><strong>Reve</strong> – veldig god på face swapping</li><li><strong>Nano Banana</strong> – konsistent karakter fra bilde til video</li></ul></div>
+        </div>
+        <div class="callout orange"><span class="callout-icon">⚠️</span><div class="callout-text">AI-feltet endrer seg raskt. Oppdater denne seksjonen jevnlig når nye verktøy lanseres eller du tester noe nytt.</div></div>
+      </div></div>
+
+      <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">6.3</span><span>Workflow AI + DaVinci</span></div><span class="acc-chevron">▼</span></button><div class="acc-content">
+        <div class="callout blue"><span class="callout-icon">🤖</span><div class="callout-text">AI-generert materiale integreres i DaVinci som vanlig footage. Nøkkelen er å matche fps og bruke gode overganger for å skjule "AI-seams".</div></div>
+        <div class="section-sub-header">Import og format</div>
+        <div class="rules">
+          <div class="rule ok"><div class="icon">✓</div><div><strong>FPS:</strong> Match alltid fps mellom AI-klipp og prosjektet. Last ned i 24fps eller 25fps etter hva prosjektet bruker.</div></div>
+          <div class="rule ok"><div class="icon">✓</div><div><strong>Format:</strong> MP4 (H.264/H.265) fra de fleste AI-verktøy. Fungerer direkte i DaVinci.</div></div>
+          <div class="rule ok"><div class="icon">✓</div><div><strong>Oppløsning:</strong> Generer i høyest mulig kvalitet (1080p minimum, 4K om tilgjengelig).</div></div>
+          <div class="rule info"><div class="icon">→</div><div><strong>Proxy:</strong> Generer proxy om klippet er tungt å spille av. DNxHR LB i DaVinci.</div></div>
+        </div>
+        <div class="section-sub-header">Integrere AI i editen</div>
+        <div class="steps">
+          <div class="step"><div class="step-num">01</div><div class="step-content">🎬 Generer AI-klipp i ønsket verktøy. Last ned til <code>00_MEDIA_RAW\VIDEO\</code>-mappen i prosjektet.</div></div>
+          <div class="step"><div class="step-num">02</div><div class="step-content">📥 Importer i DaVinci og plasser på tidslinjen som vanlig footage.</div></div>
+          <div class="step"><div class="step-num">03</div><div class="step-content">🎨 Bruk <strong>MotionVFX transitions</strong> (mTransition Film Roll, mDiary, mStyle 8mm osv.) for å binde AI-klipp naturlig inn i editen.</div></div>
+          <div class="step"><div class="step-num">04</div><div class="step-content">🎨 <strong>Grade AI-klippet</strong> til å matche resten av editen – AI-footage er ofte overmettet eller har unaturlig kontrast. Juster med Lift/Gamma/Gain.</div></div>
+        </div>
+        <div class="section-sub-header">AI i pre-produksjon og skriving</div>
+        <div class="cards">
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#4f8ef7"></span>📝 Manus &amp; ideer</div><ul><li>Bruk <strong>Claude</strong> til å skrive manus, brainstorme ideer og strukturere innhold</li><li>Claude Code for å lage egne plugins og scripts til DaVinci</li></ul></div>
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#34d399"></span>🎨 Storyboard</div><ul><li>MidJourney eller Nano Banana for å generere storyboard-frames</li><li>Bruk CINEMATIC AI PROMPTS-strukturen (se Notion) for 3×3 contact sheets</li></ul></div>
+        </div>
+        <div class="callout green"><span class="callout-icon">💡</span><div class="callout-text"><strong>Workflow fra Notion:</strong> For fullstendige AI-prompts, tutorials og inspirasjon – se AI PROMPTS DOKUMENT og CINEMATIC AI PROMPTS i Notion-workspace.</div></div>
+      </div></div>
     </div>
   </div>
 </div>
