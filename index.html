@@ -112,6 +112,70 @@
     width: 100%;
   }
 
+  .dashboard-card {
+    grid-column: 1 / -1;
+    max-width: 520px;
+    margin: 0 auto;
+    width: 100%;
+    background: linear-gradient(135deg, #0f1923 0%, #111a1a 100%);
+    border: 1px solid #22d3ee;
+    border-radius: 12px;
+    padding: 28px 28px;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .dashboard-card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: #22d3ee;
+    opacity: 0.8;
+  }
+
+  .dashboard-card:hover {
+    border-color: #67e8f9;
+    background: linear-gradient(135deg, #111d28 0%, #132020 100%);
+    transform: translateY(-2px);
+  }
+
+  .dashboard-title {
+    font-family: "Courier New", var(--mono);
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: #22d3ee;
+    text-shadow: 0 0 10px rgba(34,211,238,0.4), 0 0 30px rgba(34,211,238,0.15);
+    text-align: center;
+  }
+
+  .dashboard-subs {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .dashboard-sub {
+    font-size: 11px;
+    color: #94a3b8;
+    font-family: var(--mono);
+    padding: 4px 10px;
+    background: rgba(34,211,238,0.06);
+    border: 1px solid rgba(34,211,238,0.2);
+    border-radius: 4px;
+    white-space: nowrap;
+  }
+
   .chapter-card {
     background: var(--bg2);
     border: 1px solid var(--border);
@@ -362,6 +426,77 @@
   .yt-card .yt-title { font-size:12px; font-weight:700; color:var(--text); margin-bottom:4px; }
   .yt-card .yt-meta { font-family:var(--mono); font-size:10px; color:var(--text3); }
 
+  /* ── EXPAND BUTTON on accordion ── */
+  .acc-expand {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--text3);
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 2px 8px;
+    cursor: pointer;
+    margin-left: 8px;
+    transition: all 0.15s;
+    flex-shrink: 0;
+  }
+  .acc-expand:hover { color: var(--accent); border-color: var(--accent); }
+
+  /* ── MULTI-OPEN TOGGLE ── */
+  .multi-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--text3);
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 8px 14px;
+    cursor: pointer;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.15s;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+  }
+  .multi-toggle:hover { border-color: var(--accent); color: var(--text2); }
+  .toggle-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    transition: background 0.15s;
+  }
+  .toggle-dot.on { background: #34d399; }
+  .toggle-dot.off { background: #f87171; }
+
+
+  /* ── NB! GREIT Å VITE card ── */
+  .nb-card {
+    margin-top: 20px;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .nb-header {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text3);
+    padding: 10px 16px;
+    background: var(--bg4);
+    border-bottom: 1px solid var(--border);
+  }
+  .nb-body {
+    padding: 12px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .nb-body .callout { margin-bottom: 0; }
+
   .placeholder {
     display: flex;
     flex-direction: column;
@@ -473,6 +608,22 @@
   .legend-name { color: var(--text2); }
   .legend-val { font-family: var(--mono); font-size: 11px; color: var(--text3); }
   .section-sub-header { font-size: 16px; font-weight: 700; color: var(--text); margin: 28px 0 16px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+
+  /* ── NESTED ACCORDION (inside acc-content) ── */
+  .sub-accordion { display: flex; flex-direction: column; gap: 6px; }
+  .sub-acc-item { background: var(--bg3); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+  .sub-acc-trigger {
+    width: 100%; display: flex; align-items: center; justify-content: space-between;
+    padding: 12px 16px; cursor: pointer; background: none; border: none;
+    color: var(--text); font-family: var(--sans); font-size: 14px; font-weight: 600;
+    text-align: left; transition: background 0.15s; gap: 10px;
+  }
+  .sub-acc-trigger:hover { background: var(--bg4); }
+  .sub-acc-trigger.open { background: var(--bg4); border-left: 2px solid var(--accent); padding-left: 14px; }
+  .sub-acc-trigger .acc-chevron { font-size: 10px; }
+  .sub-acc-trigger.open .acc-chevron { transform: rotate(180deg); }
+  .sub-acc-content { display: none; padding: 16px; border-top: 1px solid var(--border); }
+  .sub-acc-content.open { display: block; }
 </style>
 </head>
 <body>
@@ -495,6 +646,15 @@
 
     <div class="chapters">
 
+      <div class="dashboard-card" onclick="openChapter('dashboard')">
+        <div class="dashboard-title">DASHBOARD</div>
+        <div class="dashboard-subs">
+          <div class="dashboard-sub">🔥 Aktive prosjekter</div>
+          <div class="dashboard-sub">💡 Ideer & skisser</div>
+          <div class="dashboard-sub">📊 Project Tracker</div>
+        </div>
+      </div>
+
       <div class="chapter-card" style="--card-color:#fbbf24" onclick="openChapter('rutiner')">
         <div class="card-icon">🗓️</div>
         <div class="card-num">KAPITTEL 01</div>
@@ -503,6 +663,7 @@
           <div class="card-sub">1.1 Disk &amp; backup-oversikt</div>
           <div class="card-sub">1.2 Backup-rutine og frekvens</div>
           <div class="card-sub">1.3 Månedlig sjekkliste</div>
+          <div class="card-sub">1.4 Utstyr (→ Notion)</div>
         </div>
         
       </div>
@@ -577,6 +738,22 @@
         
       </div>
 
+    </div>
+
+    <div style="display:flex;justify-content:center;margin-top:16px;width:100%">
+      <div class="chapter-card" style="--card-color:#22d3ee;max-width:520px;width:100%;align-items:center" onclick="openChapter('prosjekter')">
+        <div class="card-icon" style="text-align:center">📓</div>
+        <div class="card-num" style="text-align:center">KAPITTEL 07</div>
+        <div class="card-title" style="text-align:center">PROSJEKTER & INSPIRASJON</div>
+        <div class="card-subs">
+          <div class="card-sub">7.1 Aktive prosjekter</div>
+          <div class="card-sub">7.2 Gamle prosjekter (arkiv)</div>
+          <div class="card-sub">7.3 Ideer & skisser</div>
+          <div class="card-sub">7.4 Råmateriale-oversikt</div>
+          <div class="card-sub">7.5 Inspirasjon</div>
+          <div class="card-sub">7.6 Project Tracker</div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -760,6 +937,20 @@
         </div>
       </div>
 
+      <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">1.4</span><span>Utstyr – Kameraer, PC & Lys</span></div><span class="acc-chevron">▼</span></button><div class="acc-content">
+        
+        <div class="cards">
+          <div class="card"><div class="card-title-inner"><img src="images/icon-sony.png" alt="Sony" style="height:16px;vertical-align:middle"> Sony FX30</div><ul><li>Hovedkamera – S-Log3 / 10-bit</li></ul></div>
+          <div class="card"><div class="card-title-inner"><img src="images/icon-dji.png" alt="DJI" style="height:16px;vertical-align:middle"> DJI Pocket 3</div><ul><li>Kompakt – D-Log M / 10-bit</li></ul></div>
+          <div class="card"><div class="card-title-inner"><img src="images/icon-canon.png" alt="Canon" style="height:16px;vertical-align:middle"> Canon C100</div><ul><li>Eldre – C-Log / 8-bit</li></ul></div>
+        </div>
+        <div class="nb-card">
+          <div class="nb-header">📌 NB! Greit å vite</div>
+          <div class="nb-body">
+            <div class="callout blue"><span class="callout-icon">🔗</span><div class="callout-text">Komplett oversikt over alt utstyr (kameraer, PCer, lys, tilbehør) med tutorials og tips ligger i Notion.<br><br><a href="#NOTION_UTSTYR_URL" target="_blank" style="color:var(--accent2);font-family:var(--mono);font-size:12px">📋 Åpne utstyrsoversikt i Notion →</a></div></div>
+          </div>
+        </div></div></div>
+
     </div>
   </div>
 </div>
@@ -783,47 +974,575 @@
       </div>
     </div>
     <div class="accordion">
-      <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">2.1</span><span>Prosjektoppstart (Post Haste)</span></div><span class="acc-chevron">▼</span></button><div class="acc-content"><div class="placeholder"><div class="placeholder-icon">🗂️</div><div class="placeholder-text">// INNHOLD KOMMER</div></div></div></div>
+      <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">2.1</span><span>Prosjektoppstart (Post Haste)</span></div><span class="acc-chevron">▼</span></button><div class="acc-content">
+        
+        <div class="steps">
+          <div class="step"><div class="step-num">01</div><div class="step-content">🛠️ Åpne <strong>Post Haste</strong> og velg malen <strong>"Ivar edit template"</strong>.</div></div>
+          <div class="step"><div class="step-num">02</div><div class="step-content">📝 Gi prosjektet et beskrivende navn.</div></div>
+          <div class="step"><div class="step-num">03</div><div class="step-content">📍 Lagre i riktig hovedmappe på <code>P:\80_DAVINCI_PROSJEKTER</code>.</div></div>
+        </div>
+        <div class="section-sub-header">Plassering – 3 hovedmapper</div>
+        <div class="cards">
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#f472b6"></span>📱 SOME</div><ul><li>Sosiale medier, shorts, reels</li></ul></div>
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#34d399"></span>🏠 Familie & Venner</div><ul><li>Private opptak og familieprosjekter</li></ul></div>
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#4f8ef7"></span>💼 JOBB</div><ul><li>Betalte oppdrag og kontrakter</li></ul></div>
+        </div>
+        <div class="section-sub-header">Kvartal vs. Store prosjekter</div>
+        <div class="rules">
+          <div class="rule ok"><div class="icon">✓</div><div><strong>Små klipp:</strong> Legges i kvartalsprosjektet (f.eks. <em>2025 Q1</em>). Samler alt løst fra perioden.</div></div>
+          <div class="rule ok"><div class="icon">✓</div><div><strong>Større ting:</strong> Får sin helt egen prosjektmappe laget med Post Haste.</div></div>
+        </div>
+        <div class="nb-card">
+          <div class="nb-header">📌 NB! Greit å vite</div>
+          <div class="nb-body">
+            <div class="callout blue"><span class="callout-icon">🗂️</span><div class="callout-text">Bruk alltid <strong>Post Haste</strong> for å opprette nye prosjekter. Malen sørger for konsistent mappestruktur og sparer deg for manuelt oppsett hver gang.</div></div>
+          </div>
+        </div></div></div>
       <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">2.2</span><span>Workflow – Hjemme (stasjonær)</span></div><span class="acc-chevron">▼</span></button><div class="acc-content">
-        <div class="steps">
-          <div class="step"><div class="step-num">01</div><div class="step-content">☁️ <strong>Database:</strong> Bruk alltid <strong>Blackmagic Cloud</strong> for aktive prosjekter.</div></div>
-          <div class="step"><div class="step-num">02</div><div class="step-content">🗂️ <strong>Prosjektoppstart:</strong> Bruk <strong>Post Haste</strong> med malen din. Lagre i <code>P:\80_DAVINCI_PROSJEKTER</code>.</div></div>
-          <div class="step"><div class="step-num">03</div><div class="step-content">📥 <strong>Import:</strong> Dra mapper fra Utforsker inn i DaVinci som <strong>"Folders as Bins"</strong>.</div></div>
-          <div class="step"><div class="step-num">04</div><div class="step-content">📤 <strong>Eksport:</strong> MXF til <code>O:\12_EKSPORT\_MXF_TEMP\</code> → Handbrake → H265 → slett MXF.</div></div>
+        <div class="sub-accordion">
+
+          <div class="sub-acc-item">
+            <button class="sub-acc-trigger" onclick="toggleSubAcc(this)">
+              <span>✅ Sjekkliste – Før du starter</span>
+              <span class="acc-chevron">▼</span>
+            </button>
+            <div class="sub-acc-content">
+        
+        <div class="rules">
+          <div class="rule info"><div class="icon">☁️</div><div><strong>Database:</strong> Sjekk at du er koblet til <strong>Blackmagic Cloud</strong>.</div></div>
+          <div class="rule info"><div class="icon">⚙️</div><div><strong>Mapped Mount:</strong> Gå til <code>DaVinci Resolve → Preferences → Media Storage</code>. Sjekk at diskene er registrert med <strong>LOKALE</strong> baner (f.eks. <code>P:\Prosjekter</code>), <em>ikke</em> nettverksbaner (<code>\\NAS\Prosjekter</code>). Må matche på begge maskinene.</div></div>
         </div>
-      </div></div>
+</div>
+          </div>
+
+          <div class="sub-acc-item">
+            <button class="sub-acc-trigger" onclick="toggleSubAcc(this)">
+              <span>🚀 Oppstart av prosjekt</span>
+              <span class="acc-chevron">▼</span>
+            </button>
+            <div class="sub-acc-content">
+        <div class="steps">
+          <div class="step"><div class="step-num">01</div><div class="step-content">📂 <strong>Åpne malen:</strong> Start med <code>DaVinci Resolve default project</code>. ⚠️ Velg <strong>"OPEN READ ONLY"</strong> så du ikke ødelegger originalmalen.</div></div>
+          <div class="step"><div class="step-num">02</div><div class="step-content">💾 <strong>Lagre nytt:</strong> Lagre prosjektet med nytt navn med en gang (<code>File → Save As</code>).</div></div>
+          <div class="step"><div class="step-num">03</div><div class="step-content">🧹 <strong>Rydd:</strong> Fjern all tekst i "Project Notes".</div></div>
+          <div class="step"><div class="step-num">04</div><div class="step-content">⚙️ <strong>Settings-sjekk:</strong> Er Timeline Resolution, Frame Rate og Proxy Settings korrekt? Er Color Management satt opp riktig for dette kameraet?</div></div>
+        </div>
+
+            </div>
+          </div>
+
+          <div class="sub-acc-item">
+            <button class="sub-acc-trigger" onclick="toggleSubAcc(this)">
+              <span>📥 Import & Mappestruktur</span>
+              <span class="acc-chevron">▼</span>
+            </button>
+            <div class="sub-acc-content">
+
+</div>
+          </div>
+
+          <div class="sub-acc-item">
+            <button class="sub-acc-trigger" onclick="toggleSubAcc(this)">
+              <span>📦 Power Bins (Gjenbruk av assets)</span>
+              <span class="acc-chevron">▼</span>
+            </button>
+            <div class="sub-acc-content">
+        <div class="rules">
+          <div class="rule ok"><div class="icon">✓</div><div>Dra elementet fra Power Bins og slipp det i en <strong>spesifikk mappe</strong> i prosjektet (f.eks. <code>Graphics</code> eller <code>Assets</code>).</div></div>
+          <div class="rule warn"><div class="icon">✕</div><div><strong>IKKE</strong> slipp det rett i Master / Root – da blir det rotete og vanskelig å finne igjen.</div></div>
+        </div>
+
+            </div>
+          </div>
+
+          <div class="sub-acc-item">
+            <button class="sub-acc-trigger" onclick="toggleSubAcc(this)">
+              <span>🔊 Soundly – Lydeffekter</span>
+              <span class="acc-chevron">▼</span>
+            </button>
+            <div class="sub-acc-content">
+        
+        <div class="steps">
+          <div class="step"><div class="step-num">01</div><div class="step-content">🔍 Finn lydeffekten i Soundly.</div></div>
+          <div class="step"><div class="step-num">02</div><div class="step-content">📂 <strong>Kopier filen</strong> fysisk til prosjektmappen din på NAS-en (i mappen <code>Audio</code> eller <code>SFX</code>).</div></div>
+          <div class="step"><div class="step-num">03</div><div class="step-content">🎬 Dra filen fra NAS-mappen og inn i DaVinci Resolve.</div></div>
+        </div>
+</div>
+          </div>
+
+          <div class="sub-acc-item">
+            <button class="sub-acc-trigger" onclick="toggleSubAcc(this)">
+              <span>✂️ Klipping – Steg for steg</span>
+              <span class="acc-chevron">▼</span>
+            </button>
+            <div class="sub-acc-content">
+        <div class="steps">
+          <div class="step"><div class="step-num">01</div><div class="step-content">👁️ <strong>Grovsortering:</strong> Gå gjennom alt footage.</div></div>
+          <div class="step"><div class="step-num">02</div><div class="step-content">✂️ <strong>Rough Cut:</strong> Lag en tidslinje som heter <code>ROUGH CUT_v1</code>. Legg ned alt materiale du liker – ikke tenk på rekkefølge, bare samle gullkornene.</div></div>
+          <div class="step"><div class="step-num">03</div><div class="step-content">🎵 <strong>Musikk & lyd FØR fin-klipp:</strong> Finn musikk og lydeffekter NÅ. Begynn å forme konseptet basert på musikken. Det er mye lettere å klippe når lyden er på plass!</div></div>
+          <div class="step"><div class="step-num">04</div><div class="step-content">🎬 <strong>Proxies:</strong> Ha <code>Prefer Proxies</code> på, spesielt mot NAS eller treg USB.</div></div>
+        </div>
+
+            </div>
+          </div>
+
+          <div class="sub-acc-item">
+            <button class="sub-acc-trigger" onclick="toggleSubAcc(this)">
+              <span>📤 Eksport</span>
+              <span class="acc-chevron">▼</span>
+            </button>
+            <div class="sub-acc-content">
+        <div class="steps">
+          <div class="step"><div class="step-num">01</div><div class="step-content">📤 MXF til <code>O:\12_EKSPORT\_MXF_TEMP\</code>.</div></div>
+          <div class="step"><div class="step-num">02</div><div class="step-content">⚙️ Handbrake → H265 → lagre i prosjektmappe.</div></div>
+          <div class="step"><div class="step-num">03</div><div class="step-content">🗑️ Slett MXF etter verifisering.</div></div>
+        </div>
+
+            </div>
+          </div>
+
+          <div class="sub-acc-item">
+            <button class="sub-acc-trigger" onclick="toggleSubAcc(this)">
+              <span>🎨 Grade & Farge</span>
+              <span class="acc-chevron">▼</span>
+            </button>
+            <div class="sub-acc-content">
+        <div class="rules">
+          <div class="rule info"><div class="icon">🖥️</div><div><strong>LUT-plassering:</strong> LUTs må ligge på nøyaktig samme filbane på alle maskiner. Hvis ikke → "Missing LUT" ved maskinbytte.</div></div>
+          <div class="rule info"><div class="icon">🖌️</div><div><strong>Grade på PC:</strong> Gjør grading-jobben hjemme. iPad kun for enkle justeringer eller standard LUT for visning.</div></div>
+          <div class="rule info"><div class="icon">🏷️</div><div><strong>Navngiving:</strong> Gi alltid navn til Adjustment Layers (f.eks. "Look", "Vignette", "Sharpness"). Ikke la dem hete "Adjustment Clip".</div></div>
+        </div>
+
+            </div>
+          </div>
+
+          <div class="sub-acc-item">
+            <button class="sub-acc-trigger" onclick="toggleSubAcc(this)">
+              <span>⚡ Cache & Rendring</span>
+              <span class="acc-chevron">▼</span>
+            </button>
+            <div class="sub-acc-content">
+              <div class="sub-accordion">
+
+                <div class="sub-acc-item">
+                  <button class="sub-acc-trigger" onclick="toggleSubAcc(this)">
+                    <span>Cache-typer</span>
+                    <span class="acc-chevron">▼</span>
+                  </button>
+                  <div class="sub-acc-content">
+        <div class="table-wrap"><table>
+          <thead><tr><th>Cache-type</th><th>Hva den cacher</th><th>Bruk når…</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Render Cache Fusion Output</strong></td><td>Kun Fusion-noder (inkl. MotionVFX plugins)</td><td>Du klipper og vil ha smooth avspilling av tunge effekter</td></tr>
+            <tr><td><strong>Render Cache Color Output</strong></td><td>Alt: Edit-effekter + Fusion + Color grading</td><td>Du er ferdig med grading og vil ha smooth avspilling av hele kjeden</td></tr>
+          </tbody>
+        </table></div>
+
+                  </div>
+                </div>
+
+                <div class="sub-acc-item">
+                  <button class="sub-acc-trigger" onclick="toggleSubAcc(this)">
+                    <span>Smart vs User – under klipping</span>
+                    <span class="acc-chevron">▼</span>
+                  </button>
+                  <div class="sub-acc-content">
+        <div class="cards">
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#34d399"></span>User (anbefalt)</div><ul><li><strong>Du bestemmer</strong> hvilke klipp som caches</li><li>Resolve bruker ingen GPU-kraft i bakgrunnen</li><li>Full GPU-ytelse tilgjengelig for sanntids avspilling</li><li>Marker kun klippene som hakker → høyreklikk → cache On</li></ul></div>
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#f87171"></span>Smart (unngå under klipping)</div><ul><li>Resolve cacher i bakgrunnen og stjeler GPU-kraft</li><li>Du kontrollerer ikke rekkefølgen</li><li>Kan gjøre at tidslinjen hakker <em>mer</em> fordi GPU-en jobber med cache</li><li>Eventuelt nyttig helt til slutt for å cache en hel ferdig tidslinje automatisk</li></ul></div>
+        </div>
+
+                  </div>
+                </div>
+
+                <div class="sub-acc-item">
+                  <button class="sub-acc-trigger" onclick="toggleSubAcc(this)">
+                    <span>Workflow under klipping</span>
+                    <span class="acc-chevron">▼</span>
+                  </button>
+                  <div class="sub-acc-content">
+        
+        <div class="steps">
+          <div class="step"><div class="step-num">01</div><div class="step-content">Høyreklikk klippet (eller Ctrl+klikk flere klipp).</div></div>
+          <div class="step"><div class="step-num">02</div><div class="step-content">Velg <strong>Render Cache Fusion Output → On</strong>.</div></div>
+          <div class="step"><div class="step-num">03</div><div class="step-content">Jobb videre på en annen del av tidslinjen mens det cacher.</div></div>
+          <div class="step"><div class="step-num">04</div><div class="step-content">Rød linje blir blå = ferdig cachet, smooth avspilling.</div></div>
+        </div>
+
+                  </div>
+                </div>
+
+                <div class="sub-acc-item">
+                  <button class="sub-acc-trigger" onclick="toggleSubAcc(this)">
+                    <span>On/Off-logikken</span>
+                    <span class="acc-chevron">▼</span>
+                  </button>
+                  <div class="sub-acc-content">
+        <div class="rules">
+          <div class="rule ok"><div class="icon">✓</div><div><strong>On</strong> gjelder per klipp og forblir On til du manuelt setter det til Off eller sletter klippet.</div></div>
+          <div class="rule ok"><div class="icon">✓</div><div>Du kan markere flere klipp samtidig (Ctrl+klikk eller dra boks) og sette On i én operasjon.</div></div>
+          <div class="rule info"><div class="icon">ℹ️</div><div>Endrer du et klipp som er satt til On (trimmer, legger til effekt) → cachen invalideres og Resolve re-cacher automatisk.</div></div>
+        </div>
+
+                  </div>
+                </div>
+
+                <div class="sub-acc-item">
+                  <button class="sub-acc-trigger" onclick="toggleSubAcc(this)">
+                    <span>Hvor du skal cache: klipp, adjustment layer eller overlay</span>
+                    <span class="acc-chevron">▼</span>
+                  </button>
+                  <div class="sub-acc-content">
+        <div class="table-wrap"><table>
+          <thead><tr><th>MotionVFX-effekten ligger på…</th><th>Høyreklikk og cache…</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Direkte på klippet</strong></td><td>Klippet selv</td></tr>
+            <tr><td><strong>Adjustment layer</strong></td><td>Adjustment layeret (ikke klippene under)</td></tr>
+            <tr><td><strong>MotionVFX overlay/bakgrunn</strong> på eget spor</td><td>Overlay-elementet</td></tr>
+          </tbody>
+        </table></div>
+        <div class="rules">
+          <div class="rule info"><div class="icon">ℹ️</div><div>Adjustment layer over 20 klipp → cache kun adjustment layeret som én ting, ikke alle 20 klippene under.</div></div>
+          <div class="rule info"><div class="icon">ℹ️</div><div>Men: endrer du klipp <em>under</em> et cachet adjustment layer (trimmer, bytter ut), må Resolve re-cache fordi det endelige bildet endres.</div></div>
+          <div class="rule info"><div class="icon">ℹ️</div><div>Tunge effekter på <em>både</em> klipp og adjustment layer over? Cache begge — Resolve cacher dem uavhengig av hverandre.</div></div>
+        </div>
+
+                  </div>
+                </div>
+
+                <div class="sub-acc-item">
+                  <button class="sub-acc-trigger" onclick="toggleSubAcc(this)">
+                    <span>🛠️ Troubleshooting – Når cachingen ikke starter</span>
+                    <span class="acc-chevron">▼</span>
+                  </button>
+                  <div class="sub-acc-content">
+        <div class="rules">
+          <div class="rule ok"><div class="icon">✓</div><div><strong>Trygg restart:</strong> <code>Playback → Render Cache → None</code>, vent 2–3 sekunder, bytt tilbake til <strong>User</strong>. Dine On/Off-markeringer forblir intakte, men cachen må regenereres.</div></div>
+          <div class="rule warn"><div class="icon">✕</div><div><strong>Unngå: bytte User → Smart → User.</strong> Smart kan fjerne cache fra klipp den vurderer som "ikke tunge nok". User fjerner all Smart-generert cache. Du kan miste cache du har ventet lenge på.</div></div>
+          <div class="rule info"><div class="icon">💡</div><div><strong>Alternativt triks:</strong> Gjør en liten edit på et ucachet klipp (flytt én frame og tilbake). Kan sparke i gang cache-prosessen uten å røre noe annet.</div></div>
+        </div>
+        
+                  </div>
+                </div>
+
+                <div class="sub-acc-item">
+                  <button class="sub-acc-trigger" onclick="toggleSubAcc(this)">
+                    <span>Andre ting å sjekke</span>
+                    <span class="acc-chevron">▼</span>
+                  </button>
+                  <div class="sub-acc-content">
+        <div class="rules">
+          <div class="rule warn"><div class="icon">⚠️</div><div><strong>Cache-disk full?</strong> Resolve slutter å cache stille uten varsel.</div></div>
+          <div class="rule warn"><div class="icon">⚠️</div><div><strong>GPU på 0% i Task Manager mens linjen er rød?</strong> Cache-prosessen har hengt seg — restart Resolve.</div></div>
+          <div class="rule warn"><div class="icon">⚠️</div><div><strong>Nukleært alternativ:</strong> <code>Playback → Delete Render Cache → All</code> — tømmer alt og starter fra scratch.</div></div>
+        </div>
+
+                  </div>
+                </div>
+
+                <div class="sub-acc-item">
+                  <button class="sub-acc-trigger" onclick="toggleSubAcc(this)">
+                    <span>⚙️ Dine innstillinger (behold disse)</span>
+                    <span class="acc-chevron">▼</span>
+                  </button>
+                  <div class="sub-acc-content">
+        <div class="table-wrap"><table>
+          <thead><tr><th>Innstilling</th><th>Verdi</th><th>Kommentar</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Cache format</strong></td><td>DNxHR LB</td><td>Lett format, lav belastning — riktig valg</td></tr>
+            <tr><td><strong>Render Cache modus</strong></td><td>User</td><td>Full kontroll, ingen bakgrunnscaching som stjeler GPU</td></tr>
+            <tr><td><strong>User delay</strong></td><td>1 sekund</td><td>Kort nok til å starte raskt</td></tr>
+            <tr><td><strong>Timeline Proxy Resolution</strong></td><td>Half</td><td>Halverer pikselbelastningen under redigering</td></tr>
+            <tr><td><strong>Cache-disk</strong></td><td>Kingston NV2 2TB (NVMe)</td><td>Rask dedikert cache-disk — perfekt oppsett</td></tr>
+          </tbody>
+        </table></div>
+
+                  </div>
+                </div>
+
+                <div class="sub-acc-item">
+                  <button class="sub-acc-trigger" onclick="toggleSubAcc(this)">
+                    <span>🚀 Hva det nye GPU-et (RTX 5060 Ti 16GB) endrer</span>
+                    <span class="acc-chevron">▼</span>
+                  </button>
+                  <div class="sub-acc-content">
+        <div class="rules">
+          <div class="rule ok"><div class="icon">✓</div><div>Klipp som i dag hakker kan spille smooth <em>uten</em> cache — flere CUDA-kjerner håndterer mer i sanntid.</div></div>
+          <div class="rule ok"><div class="icon">✓</div><div>Når du trenger cache, går rød → blå mye raskere.</div></div>
+          <div class="rule ok"><div class="icon">✓</div><div>16 GB VRAM betyr at Resolve ikke faller tilbake på treg CPU-prosessering ved tunge tidslinjer.</div></div>
+          <div class="rule ok"><div class="icon">✓</div><div>MotionVFX-plugins som i dag krever cache kan potensielt spille i sanntid med nytt GPU.</div></div>
+          <div class="rule ok"><div class="icon">✓</div><div><strong>Biggest impact:</strong> færre klipp trenger cache overhodet, og de som trenger det caches raskere.</div></div>
+        </div>
+
+                  </div>
+                </div>
+
+              </div>
+
+</div>
+          </div>
+
+        </div>
+        <div class="nb-card">
+          <div class="nb-header">📌 NB! Greit å vite</div>
+          <div class="nb-body">
+            <div class="callout blue"><span class="callout-icon">💡</span><div class="callout-text">Gjør dette én gang per maskin, eller hvis noe føles "off".</div></div>
+            <div class="callout orange"><span class="callout-icon">⚠️</span><div class="callout-text"><strong>Anti-kaos regel:</strong> Ikke importer løse filer. Dra <strong>hele mappen</strong> fra Utforsker inn i Master Bin som <strong>"Folders as Bins"</strong>. Da opprettes Bins automatisk og filbanene blir robuste.</div></div>
+            <div class="callout red"><span class="callout-icon">🚨</span><div class="callout-text"><strong>DEN GYLNE REGEL:</strong> Når du finner footage du skal bruke – legg det ALLTID på <strong>EDIT disk</strong>. Dette gjør det mye lettere å relinke filer senere.</div></div>
+            <div class="callout red"><span class="callout-icon">🚨</span><div class="callout-text"><strong>Ikke bruk "In & Out" i Soundly</strong> og dra rett inn på tidslinjen! Da legger filen seg i en midlertidig mappe lokalt, og den andre maskinen finner den ikke.</div></div>
+            <div class="callout orange"><span class="callout-icon">⚠️</span><div class="callout-text"><strong>Tommelregel:</strong> Under klipping — høyreklikk tunge klipp og sett <code>Fusion Output → On</code>. Når alt er ferdig klippet og gradet — marker alle klipp, høyreklikk og sett <code>Color Output → On</code>. Color Output erstatter Fusion-cachen automatisk (du mister ingenting, den "oppgraderer" fra Fusion til alt).</div></div>
+            <div class="callout blue"><span class="callout-icon">💡</span><div class="callout-text"><strong>Grunnprinsippet:</strong> Du trenger ikke cache mens du klipper. Vanlige klipp uten effekter bør spille fint med Proxy Resolution på Half. Cache kun det som hakker.</div></div>
+          </div>
+        </div></div></div>
       <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">2.3</span><span>Workflow – Reise (laptop)</span></div><span class="acc-chevron">▼</span></button><div class="acc-content">
-        <div class="callout red"><span class="callout-icon">🚨</span><div class="callout-text"><strong>Før du drar:</strong> Kopier <code>P:\80_DAVINCI_PROSJEKTER</code> og aktuelt råmateriale til ekstern SSD.</div></div>
+
+        <div class="sub-accordion">
+
+          <div class="sub-acc-item">
+            <button class="sub-acc-trigger" onclick="toggleSubAcc(this)">
+              <span>✅ FØR AVREISE – Sjekkliste (3 min)</span>
+              <span class="acc-chevron">▼</span>
+            </button>
+            <div class="sub-acc-content">
         <div class="steps">
-          <div class="step"><div class="step-num">01</div><div class="step-content">💾 Koble til SSD og kjør <code>REISE_MODUS.bat</code> – monterer SSD som <strong>P:\</strong> og <strong>V:\</strong>.</div></div>
-          <div class="step"><div class="step-num">02</div><div class="step-content">✅ <strong>Ingen relinking</strong> – identiske stier som hjemme.</div></div>
-          <div class="step"><div class="step-num">03</div><div class="step-content">🚨 <strong>Nødplan:</strong> Bruk <code>.drp</code>-eksport lagret på SSD hvis du ikke har nett.</div></div>
-          <div class="step"><div class="step-num">04</div><div class="step-content">🌐 <strong>Tailscale:</strong> Glemt noe? Koble til NAS via Tailscale → hent filen → legg lokalt på SSD.</div></div>
+          <div class="step"><div class="step-num">01</div><div class="step-content">📂 <strong>Kopier prosjektfiler:</strong> Sørg for at <code>S:\80_DAVINCI_PROSJEKTER</code> på SSD-en har de aktuelle prosjektmappene (f.eks. <code>81_SOME</code>, <code>83_JOBB</code>) fra NAS-en.</div></div>
+          <div class="step"><div class="step-num">02</div><div class="step-content">🎥 <strong>Sjekk video/proxy:</strong> Sørg for at videofilene (eller proxies) ligger på roten av <code>S:\</code> slik at strukturen matcher <code>V:\</code> hjemme.</div></div>
+          <div class="step"><div class="step-num">03</div><div class="step-content">🚨 <strong>"Doomsday"-backup (.drp):</strong> I DaVinci Project Manager → Høyreklikk → <em>Export Project Archive</em> → Lagre på SSD-en (f.eks. <code>_PROJECT_BACKUPS</code>). Da har du prosjektet i lomma hvis internett dør.</div></div>
         </div>
-      </div></div>
-      <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">2.4</span><span>Workflow – iPad</span></div><span class="acc-chevron">▼</span></button><div class="acc-content"><div class="placeholder"><div class="placeholder-icon">📱</div><div class="placeholder-text">// INNHOLD KOMMER</div></div></div></div>
+
+            </div>
+          </div>
+
+          <div class="sub-acc-item">
+            <button class="sub-acc-trigger" onclick="toggleSubAcc(this)">
+              <span>🏨 Scenario A: Med internett (Online)</span>
+              <span class="acc-chevron">▼</span>
+            </button>
+            <div class="sub-acc-content">
+        <div class="steps">
+          <div class="step"><div class="step-num">01</div><div class="step-content">💾 Koble til SSD (S:) og plugg i laptopen.</div></div>
+          <div class="step"><div class="step-num">02</div><div class="step-content">🚀 <strong>Aktiver reisemodus:</strong> Dobbeltklikk <code>REISE_MODUS.bat</code> på SSD-en. Sjekk i "Denne PC" at V: og P: dukker opp.</div></div>
+          <div class="step"><div class="step-num">03</div><div class="step-content">☁️ Åpne DaVinci, logg inn i Blackmagic Cloud og åpne prosjektet som vanlig.</div></div>
+          <div class="step"><div class="step-num">04</div><div class="step-content">✂️ Klipp i vei! Alt er online fordi PC-en tror den er hjemme. Power Bins (E:) fungerer også.</div></div>
+        </div>
+
+            </div>
+          </div>
+
+          <div class="sub-acc-item">
+            <button class="sub-acc-trigger" onclick="toggleSubAcc(this)">
+              <span>🏔️ Scenario B: Uten dekning (Offline)</span>
+              <span class="acc-chevron">▼</span>
+            </button>
+            <div class="sub-acc-content">
+        <div class="steps">
+          <div class="step"><div class="step-num">01</div><div class="step-content">💾 Koble til SSD og kjør <code>REISE_MODUS.bat</code>.</div></div>
+          <div class="step"><div class="step-num">02</div><div class="step-content">📂 Start DaVinci → gå til fanen <strong>Local</strong> (ikke Cloud).</div></div>
+          <div class="step"><div class="step-num">03</div><div class="step-content">📥 Høyreklikk i prosjektlisten → <em>Import Project</em> → velg <code>.drp</code>-filen fra SSD-en.</div></div>
+          <div class="step"><div class="step-num">04</div><div class="step-content">✂️ Jobb offline – filene leses fra "jukse-diskene" V: og P:.</div></div>
+          <div class="step"><div class="step-num">05</div><div class="step-content">🏠 <strong>Når du kommer hjem:</strong> Eksporter prosjektet som <code>.drp</code> fra laptopen → Importer tilbake til Cloud-databasen på stasjonær.</div></div>
+        </div>
+
+            </div>
+          </div>
+
+          <div class="sub-acc-item">
+            <button class="sub-acc-trigger" onclick="toggleSubAcc(this)">
+              <span>🏠 Retur – Når du kommer hjem</span>
+              <span class="acc-chevron">▼</span>
+            </button>
+            <div class="sub-acc-content">
+        <div class="rules">
+          <div class="rule ok"><div class="icon">✓</div><div><strong>Deaktiver reisemodus:</strong> Kjør <code>STOPP_MODUS.bat</code> eller bare restart PC-en. Jukse-koblingene forsvinner.</div></div>
+          <div class="rule ok"><div class="icon">✓</div><div><strong>Koble til NAS:</strong> Hvis laptopen har "glemt" NAS-en → <em>Denne PC → Map Network Drive</em> → koble opp V: og P: mot NAS-adressen igjen.</div></div>
+        </div>
+
+            </div>
+          </div>
+
+          <div class="sub-acc-item">
+            <button class="sub-acc-trigger" onclick="toggleSubAcc(this)">
+              <span>🛠️ Teknisk: BAT-filen</span>
+              <span class="acc-chevron">▼</span>
+            </button>
+            <div class="sub-acc-content">
+        
+        <div style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:16px 20px;margin-bottom:20px;font-family:var(--mono);font-size:12px;color:var(--text2);line-height:1.8;white-space:pre">@echo off
+net use V: /delete /y
+net use P: /delete /y
+subst V: S:\
+subst P: "S:\80_DAVINCI_PROSJEKTER"
+pause</div>
+
+</div>
+          </div>
+
+        </div>
+        <div class="nb-card">
+          <div class="nb-header">📌 NB! Greit å vite</div>
+          <div class="nb-body">
+            <div class="callout blue"><span class="callout-icon">🧠</span><div class="callout-text"><strong>Slik fungerer systemet:</strong> I stedet for å fortelle DaVinci at "P er flyttet til S", så lurer vi Windows til å tro at SSD-en <em>ER</em> både P: og V:. DaVinci merker ingen forskjell – alle filbaner er 100% like. Ingen rød "Media Offline".</div></div>
+            <div class="callout blue"><span class="callout-icon">💡</span><div class="callout-text">Vi bruker ikke Path Mapping i DaVinci. Vi bruker et Windows-script (<code>REISE_MODUS.bat</code>) som ligger på SSD-en og tvinger Windows til å vise SSD-innholdet som V: og P:.</div></div>
+            <div class="callout green"><span class="callout-icon">🌐</span><div class="callout-text"><strong>Tailscale:</strong> Glemt noe? Koble til NAS via Tailscale → hent filen → legg lokalt på SSD.</div></div>
+          </div>
+        </div></div></div>
+      <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">2.4</span><span>Workflow – iPad</span></div><span class="acc-chevron">▼</span></button><div class="acc-content">
+
+        <div class="sub-accordion">
+
+          <div class="sub-acc-item">
+            <button class="sub-acc-trigger" onclick="toggleSubAcc(this)">
+              <span>🏠 Scenario A: Hjemme (Cloud / "Monitor-modus")</span>
+              <span class="acc-chevron">▼</span>
+            </button>
+            <div class="sub-acc-content">
+        
+        <div class="steps">
+          <div class="step"><div class="step-num">01</div><div class="step-content">☁️ Logg inn i Cloud og åpne hovedprosjektet.</div></div>
+          <div class="step"><div class="step-num">02</div><div class="step-content">✅ Alt er online – ingen filer å flytte.</div></div>
+          <div class="step"><div class="step-num">03</div><div class="step-content">👁️ Perfekt for review, vise frem til andre, eller små justeringer. Alt synkes til PC-en automatisk.</div></div>
+        </div>
+</div>
+          </div>
+
+          <div class="sub-acc-item">
+            <button class="sub-acc-trigger" onclick="toggleSubAcc(this)">
+              <span>✈️ Scenario B: På reise (Local / "Øy-metoden")</span>
+              <span class="acc-chevron">▼</span>
+            </button>
+            <div class="sub-acc-content">
+        
+        <div class="cards">
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#f87171"></span>🔴 SSD EDIT</div><ul><li>Prosjektfilen (.drp) og proxy-video</li><li>Dette er disken du jobber fra</li></ul></div>
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#4f8ef7"></span>🔵 SSD ASSETS</div><ul><li>Power Bins (lydeffekter, grafikk, musikk)</li><li>Ditt "bibliotek"</li></ul></div>
+        </div>
+</div>
+          </div>
+
+          <div class="sub-acc-item">
+            <button class="sub-acc-trigger" onclick="toggleSubAcc(this)">
+              <span>🏁 Før du drar (på PC)</span>
+              <span class="acc-chevron">▼</span>
+            </button>
+            <div class="sub-acc-content">
+        <div class="steps">
+          <div class="step"><div class="step-num">01</div><div class="step-content">🔄 <strong>Sync video:</strong> Sørg for at proxies er oppdatert på SSD EDIT.</div></div>
+          <div class="step"><div class="step-num">02</div><div class="step-content">📦 <strong>Lag "nistepakke":</strong> I DaVinci → Høyreklikk prosjektet → <em>Export Project Archive (.drp)</em> → Lagre på SSD EDIT (f.eks. <code>_IPAD_EXPORTS</code>).</div></div>
+        </div>
+
+            </div>
+          </div>
+
+          <div class="sub-acc-item">
+            <button class="sub-acc-trigger" onclick="toggleSubAcc(this)">
+              <span>🚆 På turen (på iPad)</span>
+              <span class="acc-chevron">▼</span>
+            </button>
+            <div class="sub-acc-content">
+        <div class="steps">
+          <div class="step"><div class="step-num">01</div><div class="step-content">🔌 Koble til SSD EDIT.</div></div>
+          <div class="step"><div class="step-num">02</div><div class="step-content">📂 Start DaVinci → fanen <strong>Local</strong> → lag gjerne en mappe "Reise".</div></div>
+          <div class="step"><div class="step-num">03</div><div class="step-content">📥 Importer <code>.drp</code>-filen fra SSD-en.</div></div>
+          <div class="step"><div class="step-num">04</div><div class="step-content">🔗 <strong>Relink (kun første gang):</strong> Marker alt rødt → <em>Relink</em> → pek på SSD-en. Hvis Path Mapping er satt opp i malen skjer dette ofte automatisk.</div></div>
+        </div>
+
+            </div>
+          </div>
+
+          <div class="sub-acc-item">
+            <button class="sub-acc-trigger" onclick="toggleSubAcc(this)">
+              <span>🎨 Power Bins på iPad</span>
+              <span class="acc-chevron">▼</span>
+            </button>
+            <div class="sub-acc-content">
+</div>
+          </div>
+
+          <div class="sub-acc-item">
+            <button class="sub-acc-trigger" onclick="toggleSubAcc(this)">
+              <span>🏠 Hjemreise – Tilbake til PC</span>
+              <span class="acc-chevron">▼</span>
+            </button>
+            <div class="sub-acc-content">
+        <div class="steps">
+          <div class="step"><div class="step-num">01</div><div class="step-content">📤 <strong>På iPad:</strong> Eksporter tidslinjen (<code>.drt</code>) eller hele prosjektet (<code>.drp</code>) tilbake til SSD EDIT.</div></div>
+          <div class="step"><div class="step-num">02</div><div class="step-content">📥 <strong>På PC:</strong> Åpne hovedprosjektet (Cloud) → <em>File → Import → Timeline/Project</em> → velg filen fra SSD EDIT.</div></div>
+          <div class="step"><div class="step-num">03</div><div class="step-content">🔗 <strong>Relink til NAS:</strong> Pek til P: og V: – de grove iPad-klippene byttes ut med 4K-originalene automatisk.</div></div>
+        </div>
+
+            </div>
+          </div>
+
+          <div class="sub-acc-item">
+            <button class="sub-acc-trigger" onclick="toggleSubAcc(this)">
+              <span>📦 Import/Eksport sikkerhetsnett</span>
+              <span class="acc-chevron">▼</span>
+            </button>
+            <div class="sub-acc-content">
+        
+        <div class="cards">
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#4f8ef7"></span>💻 Laptop</div><ul><li>Overføringsmappe: <code>C:\Davinci_Transfer</code></li></ul></div>
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#34d399"></span>🍎 iPad</div><ul><li>Overføringsmappe: <code>Filer → På min iPad → DaVinci Resolve → Transfer</code></li></ul></div>
+        </div>
+</div>
+          </div>
+
+        </div>
+        <div class="nb-card">
+          <div class="nb-header">📌 NB! Greit å vite</div>
+          <div class="nb-body">
+            <div class="callout orange"><span class="callout-icon">⚠️</span><div class="callout-text"><strong>OBS:</strong> iPad-versjonen kan være ustabil mot Cloud-database og NAS-linker. Test alltid på eksternt WiFi!</div></div>
+            <div class="callout blue"><span class="callout-icon">💡</span><div class="callout-text">Takket være Path Mapping i malen fungerer iPaden sømløst mot Cloud-databasen når du har WiFi.</div></div>
+            <div class="callout blue"><span class="callout-icon">🧠</span><div class="callout-text"><strong>Konseptet:</strong> iPad er en isolert skisseblokk. Det du gjør der, blir der – helt til du bevisst henter det hjem. Vi bruker <strong>Local Database</strong> for å slippe internett-trøbbel.</div></div>
+            <div class="callout orange"><span class="callout-icon">⚠️</span><div class="callout-text">Power Bins-mappen (E:) fungerer <strong>ikke</strong> automatisk på iPad slik som på PC. Bruk USB-hub for å ha SSD ASSETS tilkoblet samtidig, eller kopier filene over til SSD EDIT på forhånd.</div></div>
+            <div class="callout blue"><span class="callout-icon">💡</span><div class="callout-text">Hvis Cloud-sync feiler på iPad, bruk den manuelle metoden: Eksporter <code>.drp</code> på PC → overfør til iPad → importer der.</div></div>
+          </div>
+        </div></div></div>
       <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">2.5</span><span>Eksport-workflow</span></div><span class="acc-chevron">▼</span></button><div class="acc-content">
-        <div class="callout green"><span class="callout-icon">📁</span><div class="callout-text"><strong>O:\12_EKSPORT struktur:</strong><br><br><code>_MXF_TEMP\</code> ← midlertidig, slettes etter Handbrake<br><code>STILLS\</code> ← DaVinci stills<br><code>2026_Prosjektnavn\H265\</code> ← leveringsfil</div></div>
+        
         <div class="rules">
           <div class="rule ok"><div class="icon">✓</div><div>Eksporter MXF til <code>_MXF_TEMP\</code></div></div>
           <div class="rule ok"><div class="icon">✓</div><div>⚙️ Handbrake → H265 → lagre i prosjektmappe</div></div>
           <div class="rule warn"><div class="icon">✕</div><div>🗑️ <strong>Slett MXF</strong> etter verifisering</div></div>
           <div class="rule ok"><div class="icon">✓</div><div>📦 Arkiver til <code>A:\30.03_VIDEOER\PRODUKSJON\</code>, <code>SOME_CONTENT\</code> eller <code>CLIP_FARMING\</code></div></div>
         </div>
-        <div class="callout blue"><span class="callout-icon">📂</span><div class="callout-text"><strong>A:\30.03_VIDEOER struktur:</strong><br><br>
+        <div class="nb-card">
+          <div class="nb-header">📌 NB! Greit å vite</div>
+          <div class="nb-body">
+            <div class="callout green"><span class="callout-icon">📁</span><div class="callout-text"><strong>O:\12_EKSPORT struktur:</strong><br><br><code>_MXF_TEMP\</code> ← midlertidig, slettes etter Handbrake<br><code>STILLS\</code> ← DaVinci stills<br><code>2026_Prosjektnavn\H265\</code> ← leveringsfil</div></div>
+            <div class="callout blue"><span class="callout-icon">📂</span><div class="callout-text"><strong>A:\30.03_VIDEOER struktur:</strong><br><br>
           <code>ARKIV\</code> – alt gammelt (Diverse/OLD, Familie, Gammel Jobb, Snapchat etc.)<br>
           <code>PRODUKSJON\</code> – store jobbprosjekter<br>
           <code>SOME_CONTENT\2025\ 2026\</code> – gjennomarbeidet SoMe<br>
           <code>CLIP_FARMING\2025\ 2026\</code> – raske hverdagsklipp
         </div></div>
-      </div></div>
+          </div>
+        </div></div></div>
       <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">2.6</span><span>Proxy-guide</span></div><span class="acc-chevron">▼</span></button><div class="acc-content">
+        <div class="section-sub-header">🎥 Kamera-spesifikk proxy-workflow</div>
         <div class="cards">
-          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#4f8ef7"></span>📷 Sony FX30</div><ul><li>Bruk <strong>interne proxies</strong> fra kameraet</li><li>Allerede generert ved innspilling</li></ul></div>
-          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#34d399"></span>🎥 DJI Pocket 3</div><ul><li>Rename <code>.LRF</code> → <code>.MP4</code></li><li>Gratis proxies – fungerer umiddelbart</li></ul></div>
-          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#fb923c"></span>⚙️ Generer nye</div><ul><li>Bruk <strong>DNxHR SQ</strong> eller <strong>DNxHR LB</strong></li><li>Lagres i <code>DAVINCI RESOLVE PROXY DEST</code> på V:\</li></ul></div>
+          <div class="card"><div class="card-title-inner"><img src="images/icon-sony.png" alt="Sony" style="height:16px;vertical-align:middle"> Sony FX30</div><ul><li>Kameraet genererer <strong>egne proxy-filer</strong> internt</li><li>Bruk disse rett inn – ingen ekstra steg</li></ul></div>
+          <div class="card"><div class="card-title-inner"><img src="images/icon-dji.png" alt="DJI" style="height:16px;vertical-align:middle"> DJI Pocket 3</div><ul><li><code>.LRF</code>-filene på minnekortet er egentlig proxies</li><li><strong>På stasjonær:</strong> Kjør scriptet som endrer <code>.LRF</code> → <code>.MP4</code></li><li>Da kan disse brukes direkte som proxy</li></ul></div>
+          <div class="card"><div class="card-title-inner"><img src="images/icon-canon.png" alt="Canon" style="height:16px;vertical-align:middle"> Canon C100</div><ul><li>Trenger <strong>ikke</strong> proxy – filene er lette nok som de er</li></ul></div>
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#c084fc"></span>⚙️ Generer nye</div><ul><li>Bruk <strong>DNxHR SQ</strong> eller <strong>DNxHR LB</strong></li><li>Lagres i <code>DAVINCI RESOLVE PROXY DEST</code> på V:\</li></ul></div>
         </div>
-      </div></div>
+        <div class="section-sub-header">📊 DNxHR kvalitetsnivåer</div>
+        
+        <div class="table-wrap"><table>
+          <thead><tr><th>Nivå</th><th>Bruk til</th><th>Filstørrelse</th><th>Bitdybde</th></tr></thead>
+          <tbody>
+            <tr><td><strong>🔽 DNxHR LB</strong></td><td>Grovklipp, lite plass</td><td>Minst</td><td>8-bit</td></tr>
+            <tr><td><strong>⏺️ DNxHR SQ</strong></td><td>Standard klipping – god balanse</td><td>Middels</td><td>8-bit</td></tr>
+            <tr><td><strong>🔼 DNxHR HQ</strong></td><td>Unødvendig for vanlig klipping</td><td>Stor</td><td>8-bit</td></tr>
+            <tr><td><strong>🔼 DNxHR HQX</strong></td><td>Kun hvis du grader på proxies</td><td>Størst</td><td>10-bit</td></tr>
+          </tbody>
+        </table></div>
+        <div class="nb-card">
+          <div class="nb-header">📌 NB! Greit å vite</div>
+          <div class="nb-body">
+            <div class="callout blue"><span class="callout-icon">💡</span><div class="callout-text">Til vanlig klipping holder det med <strong>LB</strong> eller <strong>SQ</strong>. HQ/HQX er kun nødvendig hvis du skal fargekorrigere mens du ser på proxy-filene.</div></div>
+          </div>
+        </div></div></div>
       <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">2.7</span><span>Blaze file management</span></div><span class="acc-chevron">▼</span></button><div class="acc-content"><div class="placeholder"><div class="placeholder-icon">🔥</div><div class="placeholder-text">// INNHOLD KOMMER</div></div></div></div>
       <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">2.8</span><span>Tailscale</span></div><span class="acc-chevron">▼</span></button><div class="acc-content"><div class="placeholder"><div class="placeholder-icon">🌐</div><div class="placeholder-text">// INNHOLD KOMMER</div></div></div></div>
     </div>
@@ -852,14 +1571,26 @@
         </div>
       </div></div>
       <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">3.2</span><span>Lyd-kokebok – Podcast Voice</span></div><span class="acc-chevron">▼</span></button><div class="acc-content">
-        <div class="callout blue"><span class="callout-icon">🎙️</span><div class="callout-text">Bruk denne rekkefølgen for opptak med tale. Lagre som preset <strong>"Ivar Podcast Voice"</strong> i DaVinci.</div></div>
+        
         <div class="audio-grid">
           <div class="audio-card"><h4>🧹 Steg 1 – Voice Isolation</h4><div class="param-row"><span class="param-name">Aktiver</span><span class="param-val">Voice Isolation</span></div><div class="param-row"><span class="param-name">Styrke</span><span class="param-val">20 – 40</span></div><div class="param-row"><span class="param-name">⚠️ Ikke 100%</span><span class="param-val" style="color:#f87171;border-color:rgba(248,113,113,0.3);background:rgba(248,113,113,0.08)">Robot-stemme</span></div></div>
           <div class="audio-card"><h4>🎛️ Steg 2 – EQ</h4><div class="param-row"><span class="param-name">Low Cut</span><span class="param-val">80 – 100 Hz</span></div><div class="param-row"><span class="param-name">Mid (kutt)</span><span class="param-val">300 – 400 Hz</span></div><div class="param-row"><span class="param-name">High (løft)</span><span class="param-val">3 – 5 kHz +3dB</span></div></div>
           <div class="audio-card"><h4>🔊 Steg 3 – Dynamics</h4><div class="param-row"><span class="param-name">Compressor</span><span class="param-val">På</span></div><div class="param-row"><span class="param-name">De-Esser</span><span class="param-val">Ved skarpe S-lyder</span></div></div>
-          <div class="audio-card"><h4>📊 Steg 4 – Nivåer</h4><div class="param-row"><span class="param-name">🎤 Tale</span><span class="param-val">-10 til -15 dB</span></div><div class="param-row"><span class="param-name">🎵 Musikk</span><span class="param-val">-20 til -30 dB</span></div><div class="param-row"><span class="param-name">🔒 Master Limiter</span><span class="param-val">-1.0 dB</span></div></div>
+          <div class="audio-card"><h4>🗣️ Steg 4 – Reverb</h4><div class="param-row"><span class="param-name">Plassering</span><span class="param-val">På sporet, ikke klippet</span></div><div class="param-row"><span class="param-name">Mengde</span><span class="param-val">Lite! Skal såvidt merkes</span></div><div class="param-row"><span class="param-name">Presets</span><span class="param-val">"Lite Rom" / "Stor Hall"</span></div></div>
+          <div class="audio-card"><h4>📊 Steg 5 – Nivåer</h4><div class="param-row"><span class="param-name">🎤 Tale</span><span class="param-val">-10 til -15 dB</span></div><div class="param-row"><span class="param-name">🎵 Musikk</span><span class="param-val">-20 til -30 dB</span></div><div class="param-row"><span class="param-name">🔒 Master Limiter</span><span class="param-val">-1.0 dB</span></div></div>
         </div>
-      </div></div>
+        <div class="section-sub-header">💡 Pro-Tips</div>
+        <div class="rules">
+          <div class="rule ok"><div class="icon">✓</div><div><strong>Kopier innstillinger:</strong> Fikset lyden perfekt på ett klipp? <code>Ctrl + C</code> → marker andre klipp → <code>Alt + V</code> (Paste Attributes) → huk av for <strong>Audio Attributes</strong>.</div></div>
+          <div class="rule ok"><div class="icon">✓</div><div><strong>Fairlight:</strong> Gjør finpussen inne på Fairlight-siden – mye mer oversiktlig enn Edit-siden.</div></div>
+          <div class="rule ok"><div class="icon">✓</div><div><strong>Lagre preset:</strong> Når du har funnet en innstilling du liker, trykk "Presets" og lagre som <strong>"Ivar Podcast Voice"</strong>. Da slipper du å skru hver gang!</div></div>
+        </div>
+        <div class="nb-card">
+          <div class="nb-header">📌 NB! Greit å vite</div>
+          <div class="nb-body">
+            <div class="callout blue"><span class="callout-icon">🎙️</span><div class="callout-text">Bruk denne rekkefølgen for opptak med tale. Lagre som preset <strong>"Ivar Podcast Voice"</strong> i DaVinci.</div></div>
+          </div>
+        </div></div></div>
       <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">3.3</span><span>Stream Deck-oppsett</span></div><span class="acc-chevron">▼</span></button><div class="acc-content"><div class="placeholder"><div class="placeholder-icon">🎛️</div><div class="placeholder-text">// INNHOLD KOMMER – Prosjekt 3</div></div></div></div>
       <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">3.4</span><span>DaVinci snarveier</span></div><span class="acc-chevron">▼</span></button><div class="acc-content"><div class="placeholder"><div class="placeholder-icon">⌨️</div><div class="placeholder-text">// INNHOLD KOMMER – Prosjekt 3</div></div></div></div>
     </div>
@@ -902,7 +1633,7 @@
           <span class="acc-chevron">▼</span>
         </button>
         <div class="acc-content">
-          <div class="callout blue"><span class="callout-icon">💡</span><div class="callout-text">Når du filmer med log-profiler som <strong>S-Log3</strong> (FX30) eller <strong>D-Log M</strong> (Pocket 3), fanger kameraet et flatt bilde med lav kontrast og metning. Din jobb som color grader er å ta dette flate bildet og gjøre det til et vakkert, ferdig resultat.</div></div>
+          
           <div class="section-sub-header">Teknisk korrigering</div>
           <div class="rules abc">
             <div class="rule info"><div class="icon">A)</div><div><strong>Konvertere Log til Rec.709</strong> – de flate log-filene må konverteres til standard videoformat som skjermer forstår. Dette er det første og viktigste steget.</div></div>
@@ -911,7 +1642,12 @@
           </div>
           <div class="section-sub-header">Kreativ look</div>
           <p style="font-size:13px;color:var(--text2);line-height:1.7">Etter at bildet er teknisk korrekt kan du begynne å gi det en spesifikk "look" eller stil. Varm, kald, filmatisk eller dokumentarisk – dette er den morsomme delen der du setter ditt eget preg.</p>
-        </div>
+        <div class="nb-card">
+          <div class="nb-header">📌 NB! Greit å vite</div>
+          <div class="nb-body">
+            <div class="callout blue"><span class="callout-icon">💡</span><div class="callout-text">Når du filmer med log-profiler som <strong>S-Log3</strong> (FX30) eller <strong>D-Log M</strong> (Pocket 3), fanger kameraet et flatt bilde med lav kontrast og metning. Din jobb som color grader er å ta dette flate bildet og gjøre det til et vakkert, ferdig resultat.</div></div>
+          </div>
+        </div></div>
       </div>
 
       <!-- 5.2 NODE TREE -->
@@ -921,17 +1657,23 @@
           <span class="acc-chevron">▼</span>
         </button>
         <div class="acc-content">
-          <div class="callout blue"><span class="callout-icon">🌳</span><div class="callout-text">Tenk på <strong>noder</strong> i DaVinci Resolve som individuelle "lag" eller "trinn" i bildebehandlingen. Hver node utfører én eller flere spesifikke justeringer.</div></div>
+          
           <div class="cards">
             <div class="card"><div class="card-title-inner"><span class="dot" style="background:#34d399"></span>Organisering</div><ul><li>Holder arbeidet ryddig – fordeler oppgaver på ulike noder</li><li>Gjør én feil på én node uten å påvirke resten</li></ul></div>
             <div class="card"><div class="card-title-inner"><span class="dot" style="background:#4f8ef7"></span>Rekkefølge</div><ul><li>Noen justeringer fungerer best i spesifikk rekkefølge</li><li>Støyreduksjon gjøres tidlig – kreative LUTs kommer sist</li></ul></div>
             <div class="card"><div class="card-title-inner"><span class="dot" style="background:#fb923c"></span>Generisk node-oppsett</div><ul><li><strong>Node 1:</strong> Balansering / pre-conversion</li><li><strong>Node 2:</strong> Konvertering (CST eller LUT)</li><li><strong>Node 3:</strong> Primære fargejusteringer</li><li><strong>Node 4:</strong> Sekundære justeringer</li><li><strong>Siste:</strong> Kreativ look / grain</li></ul></div>
           </div>
-          <div class="callout orange"><span class="callout-icon">⚠️</span><div class="callout-text"><strong>Pass deg for Adjustment Layers.</strong> Grupper heller klippene. Lag en PowerGrade og gå igjennom hvert klipp individuelt.</div></div>
+          
           <div style="margin-top:16px;border-radius:8px;overflow:hidden;border:1px solid var(--border)">
             <img src="images/node-three-v1.png" alt="Node Three konsepter" style="width:100%;display:block">
           </div>
-        </div>
+        <div class="nb-card">
+          <div class="nb-header">📌 NB! Greit å vite</div>
+          <div class="nb-body">
+            <div class="callout blue"><span class="callout-icon">🌳</span><div class="callout-text">Tenk på <strong>noder</strong> i DaVinci Resolve som individuelle "lag" eller "trinn" i bildebehandlingen. Hver node utfører én eller flere spesifikke justeringer.</div></div>
+            <div class="callout orange"><span class="callout-icon">⚠️</span><div class="callout-text"><strong>Pass deg for Adjustment Layers.</strong> Grupper heller klippene. Lag en PowerGrade og gå igjennom hvert klipp individuelt.</div></div>
+          </div>
+        </div></div>
       </div>
 
       <!-- 5.3 SCOPES -->
@@ -945,8 +1687,12 @@
             <div class="card"><div class="card-title-inner"><span class="dot" style="background:#4f8ef7"></span>📊 Waveform</div><ul><li>Viser <strong>lysstyrke</strong> i bildet</li><li>Skyggene skal ligge litt over 0 IRE – ikke klippe</li><li>Høylys skal ikke treffe toppen (1023/109 IRE)</li><li>Hoveddelen av bildet bør ligge pent i midten</li></ul></div>
             <div class="card"><div class="card-title-inner"><span class="dot" style="background:#c084fc"></span>🎯 Vectorscope</div><ul><li>Viser <strong>farger og hvitbalanse</strong></li><li>Nøytral hvitbalanse = fargesignalet ligger midt i sirkelen</li><li>Bruk ved hvitbalansejustering for å verifisere nøytralitet</li></ul></div>
           </div>
-          <div class="callout green"><span class="callout-icon">💡</span><div class="callout-text">Åpne scopes via <strong>Workspace → Scopes</strong>. Velg Waveform og Vectorscope. Trykk de tre prikkene ved scope-vinduet for å bytte mellom Parade, Waveform, Vectorscope osv.</div></div>
-        </div>
+        <div class="nb-card">
+          <div class="nb-header">📌 NB! Greit å vite</div>
+          <div class="nb-body">
+            <div class="callout green"><span class="callout-icon">💡</span><div class="callout-text">Åpne scopes via <strong>Workspace → Scopes</strong>. Velg Waveform og Vectorscope. Trykk de tre prikkene ved scope-vinduet for å bytte mellom Parade, Waveform, Vectorscope osv.</div></div>
+          </div>
+        </div></div>
       </div>
 
       <!-- 5.4 BALANSERING -->
@@ -956,7 +1702,7 @@
           <span class="acc-chevron">▼</span>
         </button>
         <div class="acc-content">
-          <div class="callout blue"><span class="callout-icon">💡</span><div class="callout-text">Målet med pre-conversion-justeringer er å få det flate log-bildet til å se <strong>så nøytralt og balansert ut som mulig</strong> før konvertering. Gi LUT-en eller CST-en det best mulige utgangspunktet.</div></div>
+          
           <div class="table-wrap"><table>
             <thead><tr><th>Hjul</th><th>Kontrollerer</th><th>Tips for log-footage</th></tr></thead>
             <tbody>
@@ -968,8 +1714,13 @@
               <tr><td><strong>Temp / Tint</strong></td><td>Hvitbalanse</td><td>Temp høyre = varmere, venstre = kaldere</td></tr>
             </tbody>
           </table></div>
-          <div class="callout orange"><span class="callout-icon">⚠️</span><div class="callout-text">Målet er <strong>ikke</strong> å få den ferdige looken her – bare at log-dataen ser balansert og ren ut slik at konverteringen i neste node har et perfekt utgangspunkt.</div></div>
-        </div>
+        <div class="nb-card">
+          <div class="nb-header">📌 NB! Greit å vite</div>
+          <div class="nb-body">
+            <div class="callout blue"><span class="callout-icon">💡</span><div class="callout-text">Målet med pre-conversion-justeringer er å få det flate log-bildet til å se <strong>så nøytralt og balansert ut som mulig</strong> før konvertering. Gi LUT-en eller CST-en det best mulige utgangspunktet.</div></div>
+            <div class="callout orange"><span class="callout-icon">⚠️</span><div class="callout-text">Målet er <strong>ikke</strong> å få den ferdige looken her – bare at log-dataen ser balansert og ren ut slik at konverteringen i neste node har et perfekt utgangspunkt.</div></div>
+          </div>
+        </div></div>
       </div>
 
       <!-- 5.5 WORKFLOW A -->
@@ -979,14 +1730,19 @@
           <span class="acc-chevron">▼</span>
         </button>
         <div class="acc-content">
-          <div class="callout green"><span class="callout-icon">🎬</span><div class="callout-text">Phantom LUTs er designet for å brukes <strong>direkte på log-footage</strong> (S-Log3, D-Log M). De forventer original log-data som input – ikke noe som har vært gjennom DWG og tilbake. Bruk <strong>ARRI Neutral</strong> for et rent og nøytralt utgangspunkt.</div></div>
+          
           <div class="steps">
             <div class="step"><div class="step-num">Node 1</div><div class="step-content"><strong>Eksponering & Hvitbalanse (i Log)</strong><br><span style="color:var(--text3)">Lift/Gamma/Gain for balanse. Temp/Tint for hvitbalanse. Se på Waveform og Vectorscope. Senk høylys, løft skygger litt.</span></div></div>
             <div class="step"><div class="step-num">Node 2</div><div class="step-content"><strong>Phantom LUT (Log → Rec.709)</strong><br><span style="color:var(--text3)">Legg til Phantom LUT her. Konverterer balansert log-footage til Rec.709. Bruk ARRI Neutral som standard utgangspunkt.</span></div></div>
             <div class="step"><div class="step-num">Node 3+</div><div class="step-content"><strong>Kreative justeringer (i Rec.709)</strong><br><span style="color:var(--text3)">Primære farger, metning, sekundære justeringer, qualifiers, power windows, vignettering, kreativ LUT eller filmkorn.</span></div></div>
           </div>
-          <div class="callout orange"><span class="callout-icon">⚠️</span><div class="callout-text"><strong>Ikke bruk CST når du bruker Phantom LUTs.</strong> Phantom LUT gjør allerede konverteringsjobben. Bruk enten CST <em>eller</em> LUT – aldri begge for samme konvertering.</div></div>
-        </div>
+        <div class="nb-card">
+          <div class="nb-header">📌 NB! Greit å vite</div>
+          <div class="nb-body">
+            <div class="callout green"><span class="callout-icon">🎬</span><div class="callout-text">Phantom LUTs er designet for å brukes <strong>direkte på log-footage</strong> (S-Log3, D-Log M). De forventer original log-data som input – ikke noe som har vært gjennom DWG og tilbake. Bruk <strong>ARRI Neutral</strong> for et rent og nøytralt utgangspunkt.</div></div>
+            <div class="callout orange"><span class="callout-icon">⚠️</span><div class="callout-text"><strong>Ikke bruk CST når du bruker Phantom LUTs.</strong> Phantom LUT gjør allerede konverteringsjobben. Bruk enten CST <em>eller</em> LUT – aldri begge for samme konvertering.</div></div>
+          </div>
+        </div></div>
       </div>
 
       <!-- 5.6 WORKFLOW B -->
@@ -996,15 +1752,20 @@
           <span class="acc-chevron">▼</span>
         </button>
         <div class="acc-content">
-          <div class="callout blue"><span class="callout-icon">💡</span><div class="callout-text">DWG er et ekstremt stort og nøytralt fargerom som bevarer maksimal informasjon fra log-filene. Ideelt for dypere grading og for PowerGrades som er designet for dette arbeidsrommet.</div></div>
+          
           <div class="steps">
             <div class="step"><div class="step-num">Node 1</div><div class="step-content"><strong>CST inn (Log → DaVinci Wide Gamut)</strong><br><span style="color:var(--text3)">Konverter kameraets log-profil til DWG. Input: S-Log3/D-Log M. Output: DaVinci Wide Gamut / Intermediate.</span></div></div>
             <div class="step"><div class="step-num">Node 2+</div><div class="step-content"><strong>Primære & sekundære justeringer (i DWG)</strong><br><span style="color:var(--text3)">Eksponering, kontrast, hvitbalanse, qualifiers, power windows. Enorm fleksibilitet – minimalt tap av data.</span></div></div>
             <div class="step"><div class="step-num">Node X</div><div class="step-content"><strong>Filmemulering / PowerGrade</strong><br><span style="color:var(--text3)">Lim inn filmemulerings-PowerGrade her. Tar DWG-signalet og transformerer til ønsket filmlook med fargevitenskap, kontrast, korn og halation.</span></div></div>
             <div class="step"><div class="step-num">Sist</div><div class="step-content"><strong>CST ut (DWG → Rec.709)</strong><br><span style="color:var(--text3)">Siste node. Konverterer ferdig bilde til Rec.709 Gamma 2.4 for levering og visning.</span></div></div>
           </div>
-          <div class="callout green"><span class="callout-icon">🎬</span><div class="callout-text"><strong>PRIMARY NODES alltid FØR conversion.</strong> Legg på primary-justeringer før CST eller conversion LUT – dette gjelder alle kameraene.</div></div>
-        </div>
+        <div class="nb-card">
+          <div class="nb-header">📌 NB! Greit å vite</div>
+          <div class="nb-body">
+            <div class="callout blue"><span class="callout-icon">💡</span><div class="callout-text">DWG er et ekstremt stort og nøytralt fargerom som bevarer maksimal informasjon fra log-filene. Ideelt for dypere grading og for PowerGrades som er designet for dette arbeidsrommet.</div></div>
+            <div class="callout green"><span class="callout-icon">🎬</span><div class="callout-text"><strong>PRIMARY NODES alltid FØR conversion.</strong> Legg på primary-justeringer før CST eller conversion LUT – dette gjelder alle kameraene.</div></div>
+          </div>
+        </div></div>
       </div>
 
       <!-- 5.7 KAMERA-SPESIFIKK -->
@@ -1013,11 +1774,17 @@
           <div class="acc-left"><span class="acc-num">5.7</span><span>Kamera-spesifikk grading</span></div>
           <span class="acc-chevron">▼</span>
         </button>
-        <div class="acc-content">
+        <div class="acc-content"><!-- FX30 -->
 
-          <!-- FX30 -->
-          <div class="section-sub-header"><img src="images/icon-sony.png" alt="Sony" style="height:18px;vertical-align:middle;margin-right:8px">5.7.1 Sony FX30 (S-Log3 / 10-bit)</div>
-          <div class="callout blue"><span class="callout-icon">💡</span><div class="callout-text">FX30 med S-Log3 gir 10-bit footage med eksepsjonell fleksibilitet i grading. Du har mye rom til å justere uten banding eller støy. <strong>CST er ofte å foretrekke fremfor LUT</strong> for S-Log3 – gir mest nøyaktig og tapsfri konvertering.</div></div>
+        <div class="sub-accordion">
+
+          <div class="sub-acc-item">
+            <button class="sub-acc-trigger" onclick="toggleSubAcc(this)">
+              <span><img src="images/icon-sony.png" alt="Sony" style="height:18px;vertical-align:middle;margin-right:8px">5.7.1 Sony FX30 (S-Log3 / 10-bit)</span>
+              <span class="acc-chevron">▼</span>
+            </button>
+            <div class="sub-acc-content">
+          
           <div class="table-wrap"><table>
             <thead><tr><th>Node</th><th>Hva</th><th>Detaljer</th></tr></thead>
             <tbody>
@@ -1034,11 +1801,11 @@
           <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin-bottom:24px">
             <a href="https://www.youtube.com/watch?v=SqZUcD9vhJI&t=167s" target="_blank" class="yt-card">
               <div class="yt-thumb"><img src="https://img.youtube.com/vi/SqZUcD9vhJI/mqdefault.jpg"><span class="yt-badge">▶ VIDEO</span><span class="yt-ext">↗ YouTube</span></div>
-              <div class="yt-info"><div class="yt-title">FX30 S-Log3 Grading – Jake Hayden</div><div class="yt-meta">@jakehayden998</div></div>
+              <div class="yt-info"><div class="yt-title"><img src="images/icon-sony.png" alt="Sony" style="height:12px;vertical-align:middle;margin-right:4px">FX30 S-Log3 Grading – Jake Hayden</div><div class="yt-meta">@jakehayden998</div></div>
             </a>
             <a href="https://www.youtube.com/watch?v=isRuiJ82yBM&t=401s" target="_blank" class="yt-card">
               <div class="yt-thumb"><img src="https://img.youtube.com/vi/isRuiJ82yBM/mqdefault.jpg"><span class="yt-badge">▶ VIDEO</span><span class="yt-ext">↗ YouTube</span></div>
-              <div class="yt-info"><div class="yt-title">FX30 Color Grade – Jake Hayden</div><div class="yt-meta">@jakehayden998</div></div>
+              <div class="yt-info"><div class="yt-title"><img src="images/icon-sony.png" alt="Sony" style="height:12px;vertical-align:middle;margin-right:4px">FX30 Color Grade – Jake Hayden</div><div class="yt-meta">@jakehayden998</div></div>
             </a>
             <a href="https://www.youtube.com/watch?v=CtSBVKmHkjU" target="_blank" class="yt-card">
               <div class="yt-thumb"><img src="https://img.youtube.com/vi/CtSBVKmHkjU/mqdefault.jpg"><span class="yt-badge">▶ VIDEO</span><span class="yt-ext">↗ YouTube</span></div>
@@ -1051,8 +1818,16 @@
           </div>
 
           <!-- POCKET 3 -->
-          <div class="section-sub-header"><img src="images/icon-dji.png" alt="DJI" style="height:18px;vertical-align:middle;margin-right:8px">5.7.2 DJI Pocket 3 (D-Log M / 10-bit)</div>
-          <div class="callout blue"><span class="callout-icon">💡</span><div class="callout-text">D-Log M er 10-bit og gir god dynamisk rekkevidde. <strong>Phantom LUTs</strong> er skreddersydd for D-Log M og anbefales som konverterings-LUT. Bruk <strong>ARRI Neutral</strong> for et rent utgangspunkt.</div></div>
+</div>
+          </div>
+
+          <div class="sub-acc-item">
+            <button class="sub-acc-trigger" onclick="toggleSubAcc(this)">
+              <span><img src="images/icon-dji.png" alt="DJI" style="height:18px;vertical-align:middle;margin-right:8px">5.7.2 DJI Pocket 3 (D-Log M / 10-bit)</span>
+              <span class="acc-chevron">▼</span>
+            </button>
+            <div class="sub-acc-content">
+          
           <div class="table-wrap"><table>
             <thead><tr><th>Node</th><th>Hva</th><th>Detaljer</th></tr></thead>
             <tbody>
@@ -1062,16 +1837,25 @@
               <tr><td><strong>Node 4</strong></td><td>Sekundære & kreative</td><td>Hudtoner, qualifiers, vignettering, kreative effekter.</td></tr>
             </tbody>
           </table></div>
-          <div class="callout orange"><span class="callout-icon">⚠️</span><div class="callout-text"><strong>Ikke bruk CST når du bruker Phantom LUTs.</strong> Phantom LUT gjør konverteringsjobben. Velg én av dem.</div></div>
+          
           <div style="margin-bottom:24px">
             <a href="https://www.zebgardner.com/photo-and-video-editing/dji-d-log-m-colorgrading" target="_blank" style="font-family:var(--mono);font-size:11px;color:var(--accent2);text-decoration:none;background:rgba(79,142,247,0.08);border:1px solid rgba(79,142,247,0.2);padding:8px 14px;border-radius:6px;display:inline-block">🔗 Zeb Gardner – D-Log M Color Grading Guide</a>
           </div>
 
           <!-- ELDRE KAMERAER -->
-          <div class="section-sub-header"><img src="images/icon-canon.png" alt="Canon" style="height:18px;vertical-align:middle;margin-right:8px">5.7.3 Eldre kameraer – Canon C100 & DJI Pocket 2 (8-bit)</div>
-          <div class="callout orange"><span class="callout-icon">⚠️</span><div class="callout-text"><strong>8-bit begrensninger:</strong> Begrenset dynamisk rekkevidde og fargedybde. Ikke push graderingen for hardt – store justeringer gir banding og støy i skyggene. Konverter alltid til Rec.709 FØRST.</div></div>
+
+</div>
+          </div>
+
+          <div class="sub-acc-item">
+            <button class="sub-acc-trigger" onclick="toggleSubAcc(this)">
+              <span><img src="images/icon-canon.png" alt="Canon" style="height:18px;vertical-align:middle;margin-right:8px">5.7.3 Eldre kameraer – Canon C100 & DJI Pocket 2 (8-bit)</span>
+              <span class="acc-chevron">▼</span>
+            </button>
+            <div class="sub-acc-content">
+          
           <div class="table-wrap"><table>
-            <thead><tr><th>Node</th><th>Canon C100 (C-Log)</th><th>DJI Pocket 2 (D-Cinelike)</th></tr></thead>
+            <thead><tr><th>Node</th><th><img src="images/icon-canon.png" alt="Canon" style="height:12px;vertical-align:middle;margin-right:4px">Canon C100 (C-Log)</th><th><img src="images/icon-dji.png" alt="DJI" style="height:12px;vertical-align:middle;margin-right:4px">DJI Pocket 2 (D-Cinelike)</th></tr></thead>
             <tbody>
               <tr><td><strong>Node 1</strong></td><td>CST: Cinema Gamut / C-Log → Rec.709 / 2.4</td><td>Conversion LUT: D-Cinelike → Rec.709 (først)</td></tr>
               <tr><td><strong>Node 2</strong></td><td>Eksponering & hvitbalanse</td><td>Eksponering & hvitbalanse</td></tr>
@@ -1081,16 +1865,29 @@
               <tr><td><strong>Sist</strong></td><td>Film stock LUT (etter Rec.709)</td><td>Conversion LUT sist (alternativ metode)</td></tr>
             </tbody>
           </table></div>
-          <div class="callout blue"><span class="callout-icon">💡</span><div class="callout-text"><strong>Film stock LUTs på C100:</strong> Footage MÅ være i Rec.709 FØR du legger på film stock LUT. LUT-en forventer Rec.709 som input – ikke C-Log.</div></div>
 
           <!-- YouTube C100 -->
           <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin-top:16px">
             <a href="https://www.youtube.com/watch?v=BApaNGBOv3U&t=245s" target="_blank" class="yt-card">
               <div class="yt-thumb"><img src="https://img.youtube.com/vi/BApaNGBOv3U/mqdefault.jpg"><span class="yt-badge">▶ VIDEO</span><span class="yt-ext">↗ YouTube</span></div>
-              <div class="yt-info"><div class="yt-title">Canon C100 Grade Tips – Jake Hayden</div><div class="yt-meta">@jakehayden998 · Start 4:05</div></div>
+              <div class="yt-info"><div class="yt-title"><img src="images/icon-canon.png" alt="Canon" style="height:12px;vertical-align:middle;margin-right:4px">Canon C100 Grade Tips – Jake Hayden</div><div class="yt-meta">@jakehayden998 · Start 4:05</div></div>
             </a>
           </div>
+
+</div>
+          </div>
+
         </div>
+        <div class="nb-card">
+          <div class="nb-header">📌 NB! Greit å vite</div>
+          <div class="nb-body">
+            <div class="callout blue"><span class="callout-icon">💡</span><div class="callout-text">FX30 med S-Log3 gir 10-bit footage med eksepsjonell fleksibilitet i grading. Du har mye rom til å justere uten banding eller støy. <strong>CST er ofte å foretrekke fremfor LUT</strong> for S-Log3 – gir mest nøyaktig og tapsfri konvertering.</div></div>
+            <div class="callout blue"><span class="callout-icon">💡</span><div class="callout-text">D-Log M er 10-bit og gir god dynamisk rekkevidde. <strong>Phantom LUTs</strong> er skreddersydd for D-Log M og anbefales som konverterings-LUT. Bruk <strong>ARRI Neutral</strong> for et rent utgangspunkt.</div></div>
+            <div class="callout orange"><span class="callout-icon">⚠️</span><div class="callout-text"><strong>Ikke bruk CST når du bruker Phantom LUTs.</strong> Phantom LUT gjør konverteringsjobben. Velg én av dem.</div></div>
+            <div class="callout orange"><span class="callout-icon">⚠️</span><div class="callout-text"><strong>8-bit begrensninger:</strong> Begrenset dynamisk rekkevidde og fargedybde. Ikke push graderingen for hardt – store justeringer gir banding og støy i skyggene. Konverter alltid til Rec.709 FØRST.</div></div>
+            <div class="callout blue"><span class="callout-icon">💡</span><div class="callout-text"><strong>Film stock LUTs på C100:</strong> Footage MÅ være i Rec.709 FØR du legger på film stock LUT. LUT-en forventer Rec.709 som input – ikke C-Log.</div></div>
+          </div>
+        </div></div>
       </div>
 
       <!-- 5.8 LUTS -->
@@ -1104,10 +1901,10 @@
           <div class="table-wrap"><table>
             <thead><tr><th>Kamera</th><th>LUT</th></tr></thead>
             <tbody>
-              <tr><td>Canon C100</td><td>Boz C100 Log to Arri (R709) · AbNorm Canon Log · Canon C-log to Rec709 · OWL Color Profile · JR45 Canon conversion</td></tr>
-              <tr><td>DJI Pocket 2</td><td>Cinelike D to Rec709 · DJI D-Cinelike to Rec709 v2 · Mauro Film conversion LUTs · TG D-Cinelike</td></tr>
-              <tr><td>DJI Pocket 3</td><td>DJI D-Log M to Rec709 · TG Conversion LUTs · Phantom LUTs (ARRI og FILM)</td></tr>
-              <tr><td>Sony FX30</td><td>Sony SLOG3 to Rec709_TypaA · AC-Arri-Look-v2c · SLOG3-Rec709_JVKE · Phantom LUTs (ARRI og FILM)</td></tr>
+              <tr><td><img src="images/icon-canon.png" alt="Canon" style="height:14px;vertical-align:middle;margin-right:6px">Canon C100</td><td>Boz C100 Log to Arri (R709) · AbNorm Canon Log · Canon C-log to Rec709 · OWL Color Profile · JR45 Canon conversion</td></tr>
+              <tr><td><img src="images/icon-dji.png" alt="DJI" style="height:14px;vertical-align:middle;margin-right:6px">DJI Pocket 2</td><td>Cinelike D to Rec709 · DJI D-Cinelike to Rec709 v2 · Mauro Film conversion LUTs · TG D-Cinelike</td></tr>
+              <tr><td><img src="images/icon-dji.png" alt="DJI" style="height:14px;vertical-align:middle;margin-right:6px">DJI Pocket 3</td><td>DJI D-Log M to Rec709 · TG Conversion LUTs · Phantom LUTs (ARRI og FILM)</td></tr>
+              <tr><td><img src="images/icon-sony.png" alt="Sony" style="height:14px;vertical-align:middle;margin-right:6px">Sony FX30</td><td>Sony SLOG3 to Rec709_TypaA · AC-Arri-Look-v2c · SLOG3-Rec709_JVKE · Phantom LUTs (ARRI og FILM)</td></tr>
             </tbody>
           </table></div>
           <div class="section-sub-header">Creative LUTs</div>
@@ -1116,8 +1913,12 @@
             <div class="card"><div class="card-title-inner"><span class="dot" style="background:#4f8ef7"></span>Creative Packs</div><ul><li>35 ART LUTs</li><li>FILM CRUX LUTs</li><li>Four Editors LUTs</li><li>MotionVFX LUTs</li><li>Tropic Colour LUTs</li><li>CINECOLOR – Wes Anderson LUT</li></ul></div>
             <div class="card"><div class="card-title-inner"><span class="dot" style="background:#34d399"></span>Cinema</div><ul><li>M31 – Cinema LUTs</li><li>Film Emulation pack</li><li>Editor Keys – DJI Action LUTs</li></ul></div>
           </div>
-          <div class="callout orange"><span class="callout-icon">⚠️</span><div class="callout-text"><strong>Alle Phantom LUTs er Conversion LUTs</strong> – ikke kreative LUTs. Footage MÅ være i Rec.709 FØR du legger på creative/film stock LUTs.</div></div>
-        </div>
+        <div class="nb-card">
+          <div class="nb-header">📌 NB! Greit å vite</div>
+          <div class="nb-body">
+            <div class="callout orange"><span class="callout-icon">⚠️</span><div class="callout-text"><strong>Alle Phantom LUTs er Conversion LUTs</strong> – ikke kreative LUTs. Footage MÅ være i Rec.709 FØR du legger på creative/film stock LUTs.</div></div>
+          </div>
+        </div></div>
       </div>
 
       <!-- 5.9 DCTLs -->
@@ -1127,7 +1928,7 @@
           <span class="acc-chevron">▼</span>
         </button>
         <div class="acc-content">
-          <div class="callout blue"><span class="callout-icon">💡</span><div class="callout-text">DCTLs (DaVinci Color Transform Language) er svært kraftige og nøyaktige verktøy. Plasser dem <strong>etter</strong> dine globale primærjusteringer (kontrast, pivot, gamma) slik at de kan raffinere farge og tonalitet uten å kjempe mot tidligere korreksjon.</div></div>
+          
           <div class="cards">
             <div class="card"><div class="card-title-inner"><span class="dot" style="background:#4f8ef7"></span>LOOK / LAB / PRINT v1</div><ul><li>CST node inn</li><li>Ingen CST ut – MONO PRINT er CST til Rec.709</li><li><a href="https://www.youtube.com/watch?v=ZmdAYLxxgeA" target="_blank" style="color:var(--accent2)">▶ Video tutorial</a></li></ul></div>
             <div class="card"><div class="card-title-inner"><span class="dot" style="background:#34d399"></span>UTILITY v1</div><ul><li>Generelle utility-funksjoner</li><li>Se Mononodes for detaljer</li></ul></div>
@@ -1136,7 +1937,7 @@
             <div class="card"><div class="card-title-inner"><span class="dot" style="background:#fbbf24"></span>CLAMP v1</div><ul><li><a href="https://mononodes.com/clamp-dctl/" target="_blank" style="color:var(--accent2)">🔗 mononodes.com/clamp-dctl</a></li></ul></div>
             <div class="card"><div class="card-title-inner"><span class="dot" style="background:#22d3ee"></span>MIDDLE GREY v1</div><ul><li><a href="https://mononodes.com/middle-gray-dctl/" target="_blank" style="color:var(--accent2)">🔗 mononodes.com/middle-gray-dctl</a></li></ul></div>
           </div>
-          <div class="callout green"><span class="callout-icon">🔗</span><div class="callout-text"><strong>Ressurser:</strong> <a href="https://github.com/thatcherfreeman/utility-dctls" target="_blank" style="color:var(--accent2)">Thatcher Freeman Utility DCTLs (GitHub)</a> · <a href="https://mononodes.com/color-management-in-davinci-resolve/" target="_blank" style="color:var(--accent2)">Mononodes Color Management Guide</a></div></div>
+          
           <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin-top:16px">
             <a href="https://www.youtube.com/watch?v=ZmdAYLxxgeA" target="_blank" class="yt-card">
               <div class="yt-thumb"><img src="https://img.youtube.com/vi/ZmdAYLxxgeA/mqdefault.jpg"><span class="yt-badge">▶ VIDEO</span><span class="yt-ext">↗ YouTube</span></div>
@@ -1147,7 +1948,13 @@
               <div class="yt-info"><div class="yt-title">Mononodes Film Emulation</div><div class="yt-meta">Mononodes</div></div>
             </a>
           </div>
-        </div>
+        <div class="nb-card">
+          <div class="nb-header">📌 NB! Greit å vite</div>
+          <div class="nb-body">
+            <div class="callout blue"><span class="callout-icon">💡</span><div class="callout-text">DCTLs (DaVinci Color Transform Language) er svært kraftige og nøyaktige verktøy. Plasser dem <strong>etter</strong> dine globale primærjusteringer (kontrast, pivot, gamma) slik at de kan raffinere farge og tonalitet uten å kjempe mot tidligere korreksjon.</div></div>
+            <div class="callout green"><span class="callout-icon">🔗</span><div class="callout-text"><strong>Ressurser:</strong> <a href="https://github.com/thatcherfreeman/utility-dctls" target="_blank" style="color:var(--accent2)">Thatcher Freeman Utility DCTLs (GitHub)</a> · <a href="https://mononodes.com/color-management-in-davinci-resolve/" target="_blank" style="color:var(--accent2)">Mononodes Color Management Guide</a></div></div>
+          </div>
+        </div></div>
       </div>
 
       <!-- 5.10 POWERGRADES -->
@@ -1157,7 +1964,7 @@
           <span class="acc-chevron">▼</span>
         </button>
         <div class="acc-content">
-          <div class="callout orange"><span class="callout-icon">⚠️</span><div class="callout-text"><strong>HUSK:</strong> Om du mangler LUTs i en PowerGrade, finn dem under MINE LUTs og POWERGRADE-mappen. Legg alltid på riktig sted.</div></div>
+          
           <div class="section-sub-header">Mine PowerGrades</div>
           <div class="cards">
             <div class="card"><div class="card-title-inner"><span class="dot" style="background:#4f8ef7"></span>Eksisterende</div><ul><li>Basic Canon C100 PowerGrade</li><li>Alex Bjorstop 2024 Workflow PowerGrade</li><li>Darren Mostyn PowerGrade</li><li>CINECOLOR – CineMist</li><li>NodeThree PowerGrade</li></ul></div>
@@ -1169,14 +1976,20 @@
             <div class="card"><div class="card-title-inner"><span class="dot" style="background:#c084fc"></span>Film Stock (Filmnegativ)</div><ul><li>Rå, ueksponert film i kameraet</li><li>Emulerer hvordan filmen reagerer på lys</li><li>Eks: Kodak Vision3 500T, Fuji Eterna, Portra 400</li></ul></div>
             <div class="card"><div class="card-title-inner"><span class="dot" style="background:#fbbf24"></span>Film Print (Positiv)</div><ul><li>Positiv film projisert i kino</li><li>Emulerer det endelige utseendet publikum ser</li><li>Eks: Kodak 2383, Fuji Eterna Vivid</li><li>Inkluderer printprosessens fargeskift og kontrast</li></ul></div>
           </div>
-          <div class="callout blue"><span class="callout-icon">💡</span><div class="callout-text"><strong>Film Look Creator</strong> (innebygd i DaVinci) er fantastisk for raske, generiske film looks – halation, bloom, grain, vignettering. Men for autentisk emulering av spesifikke filmstocks trenger du en dedikert PowerGrade eller plugin.</div></div>
+          
           <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin-top:16px">
             <a href="https://www.youtube.com/watch?v=3guQMtrcsMc" target="_blank" class="yt-card">
               <div class="yt-thumb"><img src="https://img.youtube.com/vi/3guQMtrcsMc/mqdefault.jpg"><span class="yt-badge">▶ VIDEO</span><span class="yt-ext">↗ YouTube</span></div>
               <div class="yt-info"><div class="yt-title">Mononodes – Film Emulation Workflow</div><div class="yt-meta">Mononodes</div></div>
             </a>
           </div>
-        </div>
+        <div class="nb-card">
+          <div class="nb-header">📌 NB! Greit å vite</div>
+          <div class="nb-body">
+            <div class="callout orange"><span class="callout-icon">⚠️</span><div class="callout-text"><strong>HUSK:</strong> Om du mangler LUTs i en PowerGrade, finn dem under MINE LUTs og POWERGRADE-mappen. Legg alltid på riktig sted.</div></div>
+            <div class="callout blue"><span class="callout-icon">💡</span><div class="callout-text"><strong>Film Look Creator</strong> (innebygd i DaVinci) er fantastisk for raske, generiske film looks – halation, bloom, grain, vignettering. Men for autentisk emulering av spesifikke filmstocks trenger du en dedikert PowerGrade eller plugin.</div></div>
+          </div>
+        </div></div>
       </div>
 
     </div>
@@ -1200,26 +2013,162 @@
 </div>
 
 
+<!-- ══════════════════════════════════════════
+     KAPITTEL 07 – PROSJEKTER
+══════════════════════════════════════════ -->
+<div id="prosjekter" class="page">
+  <div class="chapter-page">
+    <div class="chapter-nav"><span class="back-btn" onclick="goHome()">← Hjem</span><span class="nav-divider">/</span><span class="nav-chapter">Kapittel 07 – Prosjekter & Inspirasjon</span></div>
+    <div class="chapter-header"><div class="chapter-icon">📓</div><div class="chapter-header-text"><div class="chapter-header-num">KAPITTEL 07</div><div class="chapter-header-title">PROSJEKTER & INSPIRASJON</div></div></div>
+    <div class="accordion">
+      <div class="acc-item" id="dash-aktive"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">7.1</span><span>Aktive prosjekter</span></div><span class="acc-chevron">▼</span></button><div class="acc-content"><div class="placeholder"><div class="placeholder-icon">🔥</div><div class="placeholder-text">// INNHOLD KOMMER</div></div></div></div>
+      <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">7.2</span><span>Gamle prosjekter (arkiv)</span></div><span class="acc-chevron">▼</span></button><div class="acc-content"><div class="placeholder"><div class="placeholder-icon">📦</div><div class="placeholder-text">// INNHOLD KOMMER</div></div></div></div>
+      <div class="acc-item" id="dash-ideer"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">7.3</span><span>Ideer & skisser</span></div><span class="acc-chevron">▼</span></button><div class="acc-content"><div class="placeholder"><div class="placeholder-icon">💡</div><div class="placeholder-text">// INNHOLD KOMMER</div></div></div></div>
+      <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">7.4</span><span>Råmateriale-oversikt</span></div><span class="acc-chevron">▼</span></button><div class="acc-content"><div class="placeholder"><div class="placeholder-icon">🎥</div><div class="placeholder-text">// INNHOLD KOMMER</div></div></div></div>
+      <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">7.5</span><span>Inspirasjon</span></div><span class="acc-chevron">▼</span></button><div class="acc-content"><div class="placeholder"><div class="placeholder-icon">✨</div><div class="placeholder-text">// INNHOLD KOMMER</div></div></div></div>
+      <div class="acc-item" id="dash-tracker"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">7.6</span><span>Project Tracker</span></div><span class="acc-chevron">▼</span></button><div class="acc-content"><div class="placeholder"><div class="placeholder-icon">📊</div><div class="placeholder-text">// INNHOLD KOMMER – Database for aktive prosjekter</div></div></div></div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     DASHBOARD
+══════════════════════════════════════════ -->
+<div id="dashboard" class="page">
+  <div class="chapter-page">
+    <div class="chapter-nav"><span class="back-btn" onclick="goHome()">← Hjem</span><span class="nav-divider">/</span><span class="nav-chapter">Dashboard</span></div>
+    <div class="chapter-header"><div class="chapter-icon" style="font-size:30px">🔥</div><div class="chapter-header-text"><div class="chapter-header-title" style="font-family:'Courier New',var(--mono);color:#22d3ee;text-shadow:0 0 10px rgba(34,211,238,0.4)">DASHBOARD</div></div></div>
+
+    <div class="accordion">
+      <div class="acc-item" style="border-color:#22d3ee">
+        <button class="acc-trigger" onclick="toggleAcc(this)">
+          <div class="acc-left"><span class="acc-num" style="background:rgba(34,211,238,0.1);color:#22d3ee;border-color:rgba(34,211,238,0.3)">7.1</span><span>🔥 Aktive prosjekter</span></div>
+          <span class="acc-chevron">▼</span>
+        </button>
+        <div class="acc-content"><div class="placeholder"><div class="placeholder-icon">🔥</div><div class="placeholder-text">// INNHOLD KOMMER</div></div></div>
+      </div>
+      <div class="acc-item" style="border-color:#fbbf24">
+        <button class="acc-trigger" onclick="toggleAcc(this)">
+          <div class="acc-left"><span class="acc-num" style="background:rgba(251,191,36,0.1);color:#fbbf24;border-color:rgba(251,191,36,0.3)">7.3</span><span>💡 Ideer & skisser</span></div>
+          <span class="acc-chevron">▼</span>
+        </button>
+        <div class="acc-content"><div class="placeholder"><div class="placeholder-icon">💡</div><div class="placeholder-text">// INNHOLD KOMMER</div></div></div>
+      </div>
+      <div class="acc-item" style="border-color:#c084fc">
+        <button class="acc-trigger" onclick="toggleAcc(this)">
+          <div class="acc-left"><span class="acc-num" style="background:rgba(192,132,252,0.1);color:#c084fc;border-color:rgba(192,132,252,0.3)">7.6</span><span>📊 Project Tracker</span></div>
+          <span class="acc-chevron">▼</span>
+        </button>
+        <div class="acc-content"><div class="placeholder"><div class="placeholder-icon">📊</div><div class="placeholder-text">// INNHOLD KOMMER – Database for aktive prosjekter</div></div></div>
+      </div>
+    </div>
+
+    <div style="margin-top:40px;display:flex;flex-direction:column;align-items:center;gap:16px">
+      <span onclick="openChapter('prosjekter')" style="font-family:var(--mono);font-size:12px;color:var(--text3);cursor:pointer;padding:10px 20px;border:1px solid var(--border);border-radius:6px;display:inline-block;transition:all 0.15s" onmouseover="this.style.color='#22d3ee';this.style.borderColor='#22d3ee'" onmouseout="this.style.color='';this.style.borderColor=''">📓 Gå til Kapittel 7 – Prosjekter & Inspirasjon →</span>
+      <div class="callout blue" style="margin-top:8px"><span class="callout-icon">💡</span><div class="callout-text">Hurtigtilgang til det du jobber med akkurat nå. Alt innhold bor i Kapittel 7.</div></div>
+    </div>
+  </div>
+</div>
+
+
 <script>
-  function openChapter(id) {
+  // ── Navigation with browser history ──
+  function showPage(id) {
     document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
-    document.getElementById(id).classList.add("active");
+    const page = document.getElementById(id);
+    if (page) page.classList.add("active");
     window.scrollTo(0, 0);
+  }
+
+  function openChapter(id) {
+    showPage(id);
+    try { history.pushState({ page: id }, "", "#" + id); } catch(e) {}
   }
 
   function goHome() {
-    document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
-    document.getElementById("home").classList.add("active");
-    window.scrollTo(0, 0);
+    showPage("home");
+    try { history.pushState({ page: "home" }, "", "#home"); } catch(e) {}
   }
 
+  // Handle browser back/forward
+  window.addEventListener("popstate", function(e) {
+    if (e.state && e.state.page) {
+      showPage(e.state.page);
+    } else {
+      var hash = location.hash.replace("#", "");
+      showPage(hash || "home");
+    }
+  });
+
+  // On page load, check if there's a hash in URL
+  (function() {
+    var hash = location.hash.replace("#", "");
+    if (hash && document.getElementById(hash)) {
+      showPage(hash);
+      try { history.replaceState({ page: hash }, "", "#" + hash); } catch(e) {}
+    } else {
+      try { history.replaceState({ page: "home" }, "", location.pathname); } catch(e) {}
+    }
+  })();
+
+  // ── Accordion ──
   function toggleAcc(btn) {
+    const content = btn.nextElementSibling;
+    const isOpen = btn.classList.contains("open");
+    
+    if (!window.multiOpen && !isOpen) {
+      const accordion = btn.closest(".accordion");
+      if (accordion) {
+        accordion.querySelectorAll(":scope > .acc-item > .acc-trigger.open").forEach(other => {
+          if (other !== btn) {
+            other.classList.remove("open");
+            other.nextElementSibling.classList.remove("open");
+          }
+        });
+      }
+    }
+    
+    btn.classList.toggle("open", !isOpen);
+    content.classList.toggle("open", !isOpen);
+  }
+
+  function toggleSubAcc(btn) {
     const content = btn.nextElementSibling;
     const isOpen = btn.classList.contains("open");
     btn.classList.toggle("open", !isOpen);
     content.classList.toggle("open", !isOpen);
   }
+
+  // Multi-open toggle
+  window.multiOpen = false;
+  
+  function toggleMultiOpen() {
+    window.multiOpen = !window.multiOpen;
+    const dot = document.getElementById("toggleDot");
+    const label = document.getElementById("toggleLabel");
+    dot.className = "toggle-dot " + (window.multiOpen ? "on" : "off");
+    label.textContent = window.multiOpen ? "Fler åpne: PÅ" : "Fler åpne: AV";
+  }
+
+  function openAndExpand(pageId, accId) {
+    showPage(pageId);
+    try { history.pushState({ page: pageId }, "", "#" + pageId); } catch(e) {}
+    const item = document.getElementById(accId);
+    if (item) {
+      const btn = item.querySelector(".acc-trigger");
+      const content = btn.nextElementSibling;
+      btn.classList.add("open");
+      content.classList.add("open");
+      setTimeout(() => item.scrollIntoView({ behavior: "smooth", block: "start" }), 100);
+    }
+  }
 </script>
+
+<div class="multi-toggle" onclick="toggleMultiOpen()">
+  <div id="toggleDot" class="toggle-dot off"></div>
+  <span id="toggleLabel">Fler åpne: AV</span>
+</div>
 
 </body>
 </html>
