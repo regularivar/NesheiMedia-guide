@@ -915,11 +915,136 @@
         </div>
       </div></div>
       <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">2.5</span><span>Eksport-workflow</span></div><span class="acc-chevron">▼</span></button><div class="acc-content">
-        <div class="callout green"><span class="callout-icon">📁</span><div class="callout-text"><strong>O:\12_EKSPORT struktur:</strong><br><br><code>_MXF_TEMP\</code> ← midlertidig, slettes etter Handbrake<br><code>STILLS\</code> ← DaVinci stills<br><code>2026_Prosjektnavn\H265\</code> ← leveringsfil</div></div>
+
+        <div class="section-sub-header">Tre alternativer</div>
+        <div class="cards">
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#34d399"></span>Alt 1 — MXF/DNxHR → HandBrake</div><ul><li>Eksporter mellomformat (MXF/DNxHR) fra DaVinci</li><li>Konverter til H.265 med HandBrake</li><li><strong>⭐ Foretrukket</strong> – best kvalitet, standard workflow</li></ul></div>
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#fb923c"></span>Alt 2 — DaVinci direkte H.265</div><ul><li>Eksporter H.265 direkte fra DaVinci via NVIDIA</li><li>Raskere – ingen mellomsteg</li><li>OK når tid er viktigere enn siste kvalitetsforskjell</li></ul></div>
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#a855f7"></span>Alt 3 — ProRes 422 HQ → HandBrake</div><ul><li>Eksporter ProRes 422 HQ fra DaVinci</li><li>Konverter til H.265 med HandBrake</li><li><strong>⭐ Foretrukket</strong> – renest mulig mellomformat</li></ul></div>
+        </div>
+        <div class="callout green"><span class="callout-icon">🧪</span><div class="callout-text"><strong>Testresultat – 22-min film (1920×1080, 25fps), LG OLED 65" + Sonos:</strong><br>Alle tre ser veldig bra ut. <strong>Alt 1 og Alt 3 foretrukket marginalt</strong> over Alt 2. Lyd markant bedre enn tidligere – begge stereokanaler nå inkludert. Filstørrelse ca. 1,5 GB per fil.</div></div>
+
+        <div class="section-sub-header">Alt 1 — MXF/DNxHR → HandBrake H.265</div>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Steg</th><th>Setting</th><th>Verdi</th><th>Merknad</th></tr></thead>
+          <tbody>
+            <tr><td rowspan="4"><strong>Step 1<br>DaVinci</strong></td><td>Format</td><td><code>MXF</code></td><td>Mellomformat for HandBrake</td></tr>
+            <tr><td>Codec</td><td><code>DNxHR 422 HQ</code></td><td>Høy kvalitet, nesten lossless</td></tr>
+            <tr><td>Resolution</td><td><code>Timeline Resolution</code></td><td>Match source</td></tr>
+            <tr><td>Frame Rate</td><td><code>Timeline Frame Rate</code></td><td>Match source</td></tr>
+            <tr><td><strong>Step 2</strong></td><td colspan="3">HandBrake med innstillingene i <em>Hurtigreferanse</em>-tabellen nedenfor</td></tr>
+          </tbody>
+        </table></div>
+
+        <div class="section-sub-header">Alt 2 — DaVinci direkte H.265</div>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Setting</th><th>Verdi</th></tr></thead>
+          <tbody>
+            <tr><td>Format</td><td><code>MP4</code></td></tr>
+            <tr><td>Codec</td><td><code>H.265</code></td></tr>
+            <tr><td>Encoder</td><td><code>NVIDIA</code></td></tr>
+            <tr><td>Rate Control</td><td><code>Constant QP</code></td></tr>
+            <tr><td>Constant QP I / P / B</td><td><code>14 / 14 / 14</code></td></tr>
+            <tr><td>Encoding Profile</td><td><code>Main (8-bit) / Main10 (10-bit)</code></td></tr>
+            <tr><td>Frame Reordering</td><td><code>On</code></td></tr>
+            <tr><td>Preset</td><td><code>Slow / Very Slow</code></td></tr>
+            <tr><td>Tuning</td><td><code>High Quality</code></td></tr>
+            <tr><td>Two Pass</td><td><code>Full Resolution</code></td></tr>
+            <tr><td>Gamma Tag (Advanced)</td><td><code>Rec.709</code></td></tr>
+            <tr><td>Color Space Tag (Advanced)</td><td><code>Rec.709</code></td></tr>
+          </tbody>
+        </table></div>
+
+        <div class="section-sub-header">Alt 3 — ProRes 422 HQ → HandBrake H.265</div>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Steg</th><th>Setting</th><th>Verdi</th><th>Merknad</th></tr></thead>
+          <tbody>
+            <tr><td rowspan="4"><strong>Step 1<br>DaVinci</strong></td><td>Format</td><td><code>QuickTime</code></td><td></td></tr>
+            <tr><td>Codec</td><td><code>Apple ProRes 422 HQ</code></td><td>Renere mellomformat enn DNxHR</td></tr>
+            <tr><td>Resolution</td><td><code>Timeline Resolution</code></td><td>Match source</td></tr>
+            <tr><td>Frame Rate</td><td><code>Timeline Frame Rate</code></td><td>Match source</td></tr>
+            <tr><td><strong>Step 2</strong></td><td colspan="3">Identiske HandBrake-innstillinger som Alt 1 – se tabellen nedenfor</td></tr>
+          </tbody>
+        </table></div>
+
+        <div class="section-sub-header">HandBrake — Hurtigreferanse (Alt 1 &amp; Alt 3)</div>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Setting</th><th>Verdi</th></tr></thead>
+          <tbody>
+            <tr><td>Video Encoder</td><td><code>H.265 10-bit (x265)</code> — standard. <code>H.265 (x265)</code> for ren 8-bit</td></tr>
+            <tr><td>Framerate</td><td><code>Same as source, Constant Framerate</code></td></tr>
+            <tr><td>Quality</td><td><code>Constant Quality RF 18</code></td></tr>
+            <tr><td>Encoder Preset</td><td><code>Slow</code></td></tr>
+            <tr><td>Encoder Tune</td><td><code>None</code> (eller Film)</td></tr>
+            <tr><td>Encoder Profile</td><td><code>Main</code> (settes automatisk)</td></tr>
+            <tr><td>Audio</td><td><code>AAC 256 kbps, Stereo</code> (eller 2× Mono ved split spor)</td></tr>
+            <tr><td>Filters</td><td><code>All off</code></td></tr>
+            <tr><td>Dimensions</td><td><code>No cropping, no scaling</code></td></tr>
+          </tbody>
+        </table></div>
+
+        <div class="section-sub-header">Undertekster i HandBrake (SRT)</div>
+        <div class="steps">
+          <div class="step"><div class="step-num">01</div><div class="step-content">Gå til <strong>Subtitles-fanen</strong> i HandBrake</div></div>
+          <div class="step"><div class="step-num">02</div><div class="step-content"><strong>Tracks → Import</strong> og velg SRT-filen</div></div>
+          <div class="step"><div class="step-num">03</div><div class="step-content"><strong>Sett Language</strong> til riktig språk (Norwegian Nynorsk)</div></div>
+          <div class="step"><div class="step-num">04</div><div class="step-content"><strong>Char Code: UTF-8</strong> – standard for norske tegn (æøå)</div></div>
+          <div class="step"><div class="step-num">05</div><div class="step-content">Huk av <strong>«Burn In»</strong> – bakes teksten inn i bildet. Fungerer garantert på alle TV-er</div></div>
+        </div>
+        <div class="table-wrap"><table>
+          <thead><tr><th></th><th>Burn In</th><th>Soft Subs (ikke Burn In)</th></tr></thead>
+          <tbody>
+            <tr><td>Hva skjer</td><td>Tekst bakt inn i bildet</td><td>Tekst lagret som eget spor i filen</td></tr>
+            <tr><td>TV-kompatibilitet</td><td>Fungerer alltid</td><td>Kan feile på noen TV-er</td></tr>
+            <tr><td>Kan slås av?</td><td>Nei — alltid synlig</td><td>Ja — slås av/på i spilleren</td></tr>
+            <tr><td>Anbefalt for</td><td>Minnepinne, TV, gave</td><td>VLC på PC der du vil velge selv</td></tr>
+          </tbody>
+        </table></div>
+        <div class="callout blue"><span class="callout-icon">📌</span><div class="callout-text"><strong>Leveranse til minnepinne / familie:</strong> Lag to versjoner — <code>Mamma Og Pappa.mp4</code> (uten tekst) og <code>Mamma Og Pappa (Tekst).mp4</code> (med Burn In). MP4 med H.265 spiller fint på de fleste moderne TV-er (inkl. LG OLED) direkte fra USB.</div></div>
+
+        <div class="section-sub-header">Gamma og Rec.709-A</div>
+        <div class="callout orange"><span class="callout-icon">⚠️</span><div class="callout-text"><strong>Ikke relevant for lokal VLC-avspilling</strong> – men viktig ved opplasting til YouTube, TikTok og andre plattformer. DaVinci jobber med Rec.709 gamma 2.4 som standard.</div></div>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Scenario</th><th>Output Color Space</th><th>Gamma Tag (Advanced)</th></tr></thead>
+          <tbody>
+            <tr><td>Lokal avspilling (VLC)</td><td>Rec.709 (default)</td><td>Rec.709</td></tr>
+            <tr><td>YouTube / Vimeo</td><td><strong>Rec.709-A (Mac) eller Rec.709</strong></td><td>Rec.709-A eller Same as Project</td></tr>
+            <tr><td>Ukalibrert PC-monitor</td><td>sRGB</td><td>Same as Project</td></tr>
+            <tr><td>Broadcast / TV</td><td>Rec.709 Gamma 2.4</td><td>Rec.709</td></tr>
+          </tbody>
+        </table></div>
         <div class="rules">
-          <div class="rule ok"><div class="icon">✓</div><div>Eksporter MXF til <code>_MXF_TEMP\</code></div></div>
-          <div class="rule ok"><div class="icon">✓</div><div>⚙️ Handbrake → H265 → lagre i prosjektmappe</div></div>
-          <div class="rule warn"><div class="icon">✕</div><div>🗑️ <strong>Slett MXF</strong> etter verifisering</div></div>
+          <div class="rule info"><div class="icon">ℹ</div><div><strong>Rec.709-A</strong> er laget av Blackmagic for å kompensere for Apples gamma-håndtering. Det sikrer at video ser riktig ut i QuickTime, på iPhone og Mac.</div></div>
+          <div class="rule info"><div class="icon">ℹ</div><div><strong>Windows, Android og VLC</strong> kan tolke Rec.709-A feil. VLC ignorerer gamma-tagger helt og viser video as-is.</div></div>
+          <div class="rule ok"><div class="icon">✓</div><div><strong>Praktisk råd:</strong> Grade til det ser riktig ut på skjermen i Resolve. Eksporter et testkort og sjekk på telefon, TV og VLC. Kilde: @onlyrjaymolina på Threads.</div></div>
+        </div>
+
+        <div class="section-sub-header">YouTube-opplasting — Andre regler enn lokal avspilling</div>
+        <div class="callout blue"><span class="callout-icon">📺</span><div class="callout-text"><strong>YouTube re-enkoder alltid videoen din</strong> – uansett hvor god den er. Reglene er annerledes enn for lokal VLC-avspilling. <strong>Alt 1/2/3 gjelder fortsatt for lokal H.265</strong> – tabellen nedenfor er kun for YouTube-opplasting.</div></div>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Setting</th><th>Verdi</th><th>Merknad</th></tr></thead>
+          <tbody>
+            <tr><td>Codec</td><td><code>H.264</code></td><td>Ser bedre ut på YouTube enn H.265 etter re-enkoding</td></tr>
+            <tr><td>Format</td><td><code>MP4</code></td><td>Marginalt bedre enn MOV</td></tr>
+            <tr><td>Rate Control</td><td><code>VBR (Variable Bitrate)</code></td><td>IKKE Constant QP — gir dårligere kvalitet på YouTube</td></tr>
+            <tr><td>Quality</td><td><code>High</code></td><td></td></tr>
+            <tr><td>Bitrate (4K 24fps)</td><td><code>~45 Mbps</code></td><td>Optimalt krysningspunkt</td></tr>
+            <tr><td>Resolution</td><td><code>3840×2160 (4K)</code></td><td>Tvinger YouTube til VP9/AV1-codec — selv om kilden er 1080p</td></tr>
+          </tbody>
+        </table></div>
+        <div class="rules">
+          <div class="rule warn"><div class="icon">✕</div><div><strong>Unngå mørke gradienter</strong> – YouTube sliter med banding. Lysere scener er bedre. Bryt opp bakgrunnen med rekvisitter og tekstur.</div></div>
+          <div class="rule ok"><div class="icon">✓</div><div><strong>Skarphet:</strong> YouTube gjør video litt mørkere. Legg til litt oversharpen i Resolve før eksport — YouTube myker det ned igjen.</div></div>
+          <div class="rule ok"><div class="icon">✓</div><div><strong>Film grain som redning:</strong> For mørke scener med banding — legg til kunstig filmkorn i Resolve. Fungerer som dithering og hjelper YouTube å blande fargene jevnere.</div></div>
+          <div class="rule info"><div class="icon">ℹ</div><div><strong>Bakgrunn:</strong> Ikke for detaljert — YouTube stjeler detaljer fra ansiktet for å komprimere bakgrunnen i stedet.</div></div>
+        </div>
+
+        <div class="section-sub-header">Mappstruktur &amp; arkivering</div>
+        <div class="callout green"><span class="callout-icon">📁</span><div class="callout-text"><strong>O:\12_EKSPORT struktur:</strong><br><br><code>_MXF_TEMP\</code> ← midlertidig, slettes etter HandBrake<br><code>STILLS\</code> ← DaVinci stills<br><code>2026_Prosjektnavn\H265\</code> ← leveringsfil</div></div>
+        <div class="rules">
+          <div class="rule ok"><div class="icon">✓</div><div>Eksporter mellomformat til <code>O:\12_EKSPORT\_MXF_TEMP\</code></div></div>
+          <div class="rule ok"><div class="icon">✓</div><div>HandBrake → H265 → lagre i <code>2026_Prosjektnavn\H265\</code></div></div>
+          <div class="rule warn"><div class="icon">✕</div><div>🗑️ <strong>Slett mellomformat</strong> etter verifisering</div></div>
           <div class="rule ok"><div class="icon">✓</div><div>📦 Arkiver til <code>A:\30.03_VIDEOER\PRODUKSJON\</code>, <code>SOME_CONTENT\</code> eller <code>CLIP_FARMING\</code></div></div>
         </div>
         <div class="callout blue"><span class="callout-icon">📂</span><div class="callout-text"><strong>A:\30.03_VIDEOER struktur:</strong><br><br>
@@ -946,23 +1071,76 @@
         <div class="callout orange"><span class="callout-icon">⚠️</span><div class="callout-text"><strong>BETA-status:</strong> Tips og triks legges inn etter hvert som du bruker verktøyet mer. Oppdater denne seksjonen jevnlig.</div></div>
       </div></div>
       <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">2.8</span><span>Tailscale</span></div><span class="acc-chevron">▼</span></button><div class="acc-content">
-        <div class="callout blue"><span class="callout-icon">🌐</span><div class="callout-text"><strong>Tailscale</strong> oppretter et kryptert privat nettverk (VPN mesh) mellom alle enhetene dine. Du kan nå NAS og stasjonær PC fra hvor som helst i verden – som om du er på samme hjemmenett. Expire dates er skrudd av, så Tailscale kjører 24/7.</div></div>
-        <div class="section-sub-header">Enheter i Tailscale-nettverket</div>
+        <div class="callout blue"><span class="callout-icon">🌐</span><div class="callout-text"><strong>Tailscale</strong> lager et privat nettverk (VPN) mellom maskinene dine. Hver maskin får en fast adresse (100.x.x.x) som alltid fungerer — uansett om du er hjemme eller på reise.<br><br><strong>Hjemme:</strong> Tailscale sender trafikken direkte over lokalnettverket. Full hastighet, ingen omvei.<br><strong>Borte:</strong> Tailscale lager en kryptert tunnel over internett. Du trenger aldri å skru av Tailscale. Den velger alltid den raskeste ruten automatisk.</div></div>
+
+        <div class="section-sub-header">Maskiner i nettverket</div>
         <div class="table-wrap"><table>
-          <thead><tr><th>Enhet</th><th>Tailscale-navn</th><th>Type</th><th>Primær bruk</th></tr></thead>
+          <thead><tr><th>Maskin</th><th>Tailscale-IP</th><th>Type</th><th>Rolle</th></tr></thead>
           <tbody>
-            <tr><td>🗄️ <strong>Ugreen DXP4800</strong></td><td><span class="path">ivar-nas</span></td><td><span class="role-badge role-active">NAS</span></td><td>All lagring – tilgjengelig fra alle enheter</td></tr>
-            <tr><td>🖥️ <strong>Stasjonær PC</strong></td><td><span class="path">IVAR-DESKTOP-KO</span></td><td><span class="role-badge role-cache">Desktop</span></td><td>Fjernaksess, kjøre oppgaver hjemmefra</td></tr>
-            <tr><td>💻 <strong>Laptop</strong></td><td><span class="path">IVAR-LAPTOP</span></td><td><span class="role-badge role-archive">Laptop</span></td><td>Klipping på reise via Tailscale til NAS</td></tr>
-            <tr><td>📱 <strong>iPad Air 6</strong></td><td><span class="path">ipad-air</span></td><td><span class="role-badge role-media">iPad</span></td><td>Se og hente filer fra NAS, review</td></tr>
-            <tr><td>📱 <strong>iPhone 14 Pro</strong></td><td><span class="path">iphone-14-pro</span></td><td><span class="role-badge role-media">iPhone</span></td><td>Musikk over alt, laste opp bilder til NAS</td></tr>
+            <tr><td>🖥️ <strong>ivar-desktop-ko</strong></td><td><span class="path">100.113.62.95</span></td><td><span class="role-badge role-cache">Windows 11</span></td><td>Kontor-PC (redigering)</td></tr>
+            <tr><td>🗄️ <strong>ivar-nas</strong></td><td><span class="path">100.96.227.6</span></td><td><span class="role-badge role-active">Linux (Docker)</span></td><td>Ugreen NASync (lagring)</td></tr>
+            <tr><td>💻 <strong>ivar-laptop</strong></td><td><span class="path">100.100.145.64</span></td><td><span class="role-badge role-archive">Windows 11</span></td><td>Laptop (mobil)</td></tr>
+            <tr><td>📱 <strong>ipad148</strong></td><td><span class="path">100.106.117.35</span></td><td><span class="role-badge role-media">iOS</span></td><td>iPad</td></tr>
           </tbody>
         </table></div>
-        <div class="cards">
-          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#4f8ef7"></span>🎒 På reise</div><ul><li>Hent glemte filer fra NAS uten å være hjemme</li><li>Laptop kobler til NAS via Tailscale – samme stier som hjemme</li><li>Last ned til SSD og jobb offline</li></ul></div>
-          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#34d399"></span>🎵 iPhone</div><ul><li>Spill musikk fra NAS via Tailscale uansett hvor du er</li><li>Last opp bilder direkte til NAS fra kamerarulle</li></ul></div>
-          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#fb923c"></span>⚙️ Oppsett</div><ul><li>Expire dates er deaktivert – ingen manuell re-autentisering</li><li>Sett opp via Claude – se egen PDF for detaljer</li></ul></div>
+        <div class="callout orange"><span class="callout-icon">💡</span><div class="callout-text">Tailscale-IP er fast per maskin og endrer seg aldri. Maskinnavnet (f.eks. <code>ivar-nas</code>) fungerer som snarvei via MagicDNS. Expire dates er skrudd av — ingen manuell re-autentisering.</div></div>
+
+        <div class="section-sub-header">NAS — Automatisk tilgang via nettverksstasjoner</div>
+        <div class="callout blue"><span class="callout-icon">📡</span><div class="callout-text">Alle nettverksstasjoner på laptopen peker på maskinnavnet <code>\\Ivar-nas\</code>. Tailscale MagicDNS sørger for at dette fungerer overalt — hjemme og borte. Stasjonene kobler seg opp automatisk.</div></div>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Stasjon</th><th>Sti</th><th>Innhold</th></tr></thead>
+          <tbody>
+            <tr><td><span class="drive-badge">V:\</span></td><td><span class="path">\\Ivar-nas\10_video_raw</span></td><td>Råmateriale</td></tr>
+            <tr><td><span class="drive-badge">W:\</span></td><td><span class="path">\\Ivar-nas\40_arkiv_raw</span></td><td>Arkiv-footage</td></tr>
+            <tr><td><span class="drive-badge">O:\</span></td><td><span class="path">\\Ivar-nas\12_eksport</span></td><td>Eksporterte filer</td></tr>
+            <tr><td><span class="drive-badge">P:\</span></td><td><span class="path">\\Ivar-nas\80_davinci_prosjekter</span></td><td>DaVinci Resolve-prosjekt</td></tr>
+            <tr><td><span class="drive-badge">A:\</span></td><td><span class="path">\\Ivar-nas\30_media_assets</span></td><td>Media assets</td></tr>
+            <tr><td><span class="drive-badge">K:\</span></td><td><span class="path">\\Ivar-nas\20_stocks</span></td><td>Stock-footage</td></tr>
+            <tr><td><span class="drive-badge">B:\</span></td><td><span class="path">\\Ivar-nas\50_tools_backups</span></td><td>Verktøy og backup</td></tr>
+            <tr><td><span class="drive-badge">M:\</span></td><td><span class="path">\\Ivar-nas\infuse media server</span></td><td>Infuse media</td></tr>
+            <tr><td><span class="drive-badge">X:\</span></td><td><span class="path">\\Ivar-nas\dave - plex media server</span></td><td>Plex media</td></tr>
+            <tr><td><span class="drive-badge">Y:\</span></td><td><span class="path">\\Ivar-nas\99_transfer_inbox</span></td><td>Overføring/inbox</td></tr>
+          </tbody>
+        </table></div>
+        <div class="rules">
+          <div class="rule warn"><div class="icon">⚠</div><div><strong>Stasjoner som KUN fungerer hjemme:</strong> <code>I: \\192.168.50.84\e</code> og <code>N: \\192.168.50.137\h</code> — disse bruker lokal IP og fungerer ikke over Tailscale.</div></div>
         </div>
+
+        <div class="section-sub-header">Kontor-PC — Snarvei via Utforsker</div>
+        <div class="callout blue"><span class="callout-icon">🖥️</span><div class="callout-text">Kontor-PC er tilgjengelig via <code>\\ivar-desktop-ko</code> i Utforsker. Ingen faste stasjonsbokstaver — naviger manuelt når du trenger filer.<br><br><strong>Bruksområde:</strong> Hente prosjektfiler, plugins eller annet fra kontor-PC når du er borte. Ikke ment for tung redigering over nett.</div></div>
+        <div class="steps">
+          <div class="step"><div class="step-num">01</div><div class="step-content">Lag mappen <code>Tailscale-snarveier</code> og fest den til Hurtigtilgang i Utforsker</div></div>
+          <div class="step"><div class="step-num">02</div><div class="step-content">Inni mappen: lag snarvei til <code>\\ivar-desktop-ko</code> — kalt <strong>Kontor-PC</strong></div></div>
+          <div class="step"><div class="step-num">03</div><div class="step-content">Ett klikk → du ser alle delte disker på stasjonæren</div></div>
+        </div>
+
+        <div class="section-sub-header">Feilsøking</div>
+        <div class="rules">
+          <div class="rule info"><div class="icon">ℹ</div><div><strong>Nettverksstasjoner frakoblet på reise?</strong> Sjekk at Tailscale kjører på laptopen og at NAS/stasjonær er på. Test med PowerShell: <code>tailscale ping ivar-nas</code></div></div>
+          <div class="rule info"><div class="icon">ℹ</div><div><strong>NAS-stasjoner dukker ikke opp?</strong> Sjekk at maskinnavnet i Tailscale admin-panelet er <code>ivar-nas</code> (ikke ivar-nas-1 eller lignende). Hvis Docker-containeren er reinstallert kan navnet ha fått et suffix.</div></div>
+          <div class="rule info"><div class="icon">ℹ</div><div><strong>NAS ber om passord?</strong> Normalt ved første tilkobling over Tailscale. Bruk admin-kontoen og huk av "Husk legitimasjon".</div></div>
+        </div>
+
+        <div class="section-sub-header">Nyttige kommandoer (PowerShell på laptop)</div>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Kommando</th><th>Hva den gjør</th></tr></thead>
+          <tbody>
+            <tr><td><code>tailscale ping ivar-nas</code></td><td>Test forbindelse til NAS</td></tr>
+            <tr><td><code>tailscale ping ivar-desktop-ko</code></td><td>Test forbindelse til kontor-PC</td></tr>
+            <tr><td><code>tailscale status</code></td><td>Vis alle tilkoblede maskiner</td></tr>
+            <tr><td><code>net use</code></td><td>Vis alle nettverksstasjoner</td></tr>
+            <tr><td><code>net share</code></td><td>Vis alle delte mapper (kjør på stasjonær)</td></tr>
+          </tbody>
+        </table></div>
+
+        <div class="section-sub-header">Opprydding — Fjerne gamle delte mapper på stasjonæren</div>
+        <div class="steps">
+          <div class="step"><div class="step-num">01</div><div class="step-content"><strong>Se alle delte mapper:</strong> Høyreklikk <em>Denne PC-en → Administrer → Delte mapper → Delinger</em> — eller kjør <code>net share</code> i PowerShell</div></div>
+          <div class="step"><div class="step-num">02</div><div class="step-content"><strong>Fjern uønskede delinger:</strong> Høyreklikk → Stopp deling — eller kjør <code>net share kontor /delete</code> og <code>net share TailScale-kontor /delete</code></div></div>
+          <div class="step"><div class="step-num">03</div><div class="step-content"><strong>Slett symlink-mappen:</strong> <code>C:\TailscaleShare</code> — det er bare en mappe med snarveier, ingen data går tapt</div></div>
+          <div class="step"><div class="step-num">04</div><div class="step-content"><strong>Sjekk for gamle delinger:</strong> Gå gjennom <code>net share</code>-listen. Standarddelinger som <code>C$</code>, <code>D$</code>, <code>ADMIN$</code>, <code>IPC$</code> er innebygde Windows-delinger — ikke slett disse</div></div>
+        </div>
+        <div class="callout green"><span class="callout-icon">📋</span><div class="callout-text"><strong>Endringslogg — 31. mars 2026:</strong> Tailscale satt opp og testet. Expired ivar-nas-node slettet, ivar-nas-1 omdøpt til ivar-nas. Alle NAS-stasjoner bekreftet fungerende over Tailscale. Kontor-PC tilgjengelig via snarvei. Symlink-tilnærming forsøkt men fungerte ikke over SMB-deling — løst med direkte snarvei i stedet. Oppryddingsinstruks for delte mapper dokumentert.</div></div>
       </div></div>
     </div>
   </div>
