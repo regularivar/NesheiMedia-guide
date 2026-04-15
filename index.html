@@ -1014,16 +1014,88 @@
         </div>
       </div></div>
 
-      <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">3.7</span><span>Cache &amp; Render tips</span></div><span class="acc-chevron">▼</span></button><div class="acc-content">
-        <div class="callout blue"><span class="callout-icon">⚡</span><div class="callout-text">Cache og render-innstillinger er dokumentert i egen PDF. Se filen for full gjennomgang. Nedenfor er de viktigste huskeliste-punktene.</div></div>
-        <div class="rules">
-          <div class="rule ok"><div class="icon">✓</div><div><strong>Cache-disk:</strong> Sett alltid DaVinci cache til <code>F:\</code> (NVMe 1 TB) for raskest mulig ytelse.</div></div>
-          <div class="rule ok"><div class="icon">✓</div><div><strong>Optimized Media:</strong> Generer optimized media for tunge klipp – lagres på <code>V:\</code> i PROXY DEST-mappen.</div></div>
-          <div class="rule ok"><div class="icon">✓</div><div><strong>Render cache:</strong> Sett til "Smart" – DaVinci cacher automatisk det som er tungt å spille av.</div></div>
-          <div class="rule warn"><div class="icon">!</div><div><strong>Tøm cache jevnlig:</strong> Playback → Delete Render Cache → All. Gjøres månedlig eller når F:\ er full.</div></div>
-          <div class="rule warn"><div class="icon">!</div><div><strong>PDF:</strong> Fullt cache/render-dokument legges til her når det er klart.</div></div>
+      <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">3.7</span><span>Cache &amp; Render – Komplett guide</span></div><span class="acc-chevron">▼</span></button><div class="acc-content">
+
+        <!-- DINE INNSTILLINGER -->
+        <div class="section-sub-header">⚙️ Dine innstillinger (behold disse)</div>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Innstilling</th><th>Verdi</th><th>Kommentar</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Cache format</strong></td><td><span class="param-val">DNxHR LB</span></td><td>Lett format, lav belastning — riktig valg</td></tr>
+            <tr><td><strong>Render Cache modus</strong></td><td><span class="param-val">User</span></td><td>Full kontroll, ingen bakgrunnscaching som stjeler GPU</td></tr>
+            <tr><td><strong>User delay</strong></td><td><span class="param-val">1 sekund</span></td><td>Kort nok til å starte raskt</td></tr>
+            <tr><td><strong>Timeline Proxy Resolution</strong></td><td><span class="param-val">Half</span></td><td>Halverer pikselbelastningen under redigering</td></tr>
+            <tr><td><strong>Cache-disk</strong></td><td><span class="param-val">Kingston NV2 2TB (NVMe)</span></td><td>Rask dedikert cache-disk — perfekt oppsett</td></tr>
+          </tbody>
+        </table></div>
+
+        <!-- CACHE-TYPER -->
+        <div class="section-sub-header">📦 Hva cache-typene faktisk betyr</div>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Cache-type</th><th>Hva den cacher</th><th>Bruk når...</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Render Cache Fusion Output</strong></td><td>Kun Fusion-noder (inkl. MotionVFX plugins)</td><td>Du klipper og vil ha smooth avspilling av tunge effekter</td></tr>
+            <tr><td><strong>Render Cache Color Output</strong></td><td>Alt: Edit-effekter + Fusion + Color grading</td><td>Du er ferdig med grading og vil ha smooth avspilling av hele kjeden</td></tr>
+          </tbody>
+        </table></div>
+        <div class="callout green"><span class="callout-icon">💡</span><div class="callout-text"><strong>Tommelregel:</strong> Under klipping — høyreklikk tunge klipp og sett <strong>Fusion Output → On</strong>. Når alt er ferdig klippet og gradet — marker alle klipp, høyreklikk og sett <strong>Color Output → On</strong>. Color Output erstatter Fusion-cachen automatisk (du mister ingenting).</div></div>
+
+        <!-- USER VS SMART -->
+        <div class="section-sub-header">🆚 User vs Smart – under klipping</div>
+        <div class="cards">
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#34d399"></span>✅ User (anbefalt under klipping)</div><ul><li><strong>Du bestemmer</strong> hvilke klipp som caches</li><li>Resolve bruker ingen GPU i bakgrunnen på ting du ikke har bedt om</li><li>Full GPU-ytelse tilgjengelig for sanntids avspilling</li><li>Marker kun klipp som hakker → høyreklikk → cache On</li></ul></div>
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#f87171"></span>⛔ Smart (unngå under klipping)</div><ul><li>Resolve cacher i bakgrunnen og <strong>stjeler GPU-kraft</strong> fra avspillingen</li><li>Du kontrollerer ikke rekkefølgen</li><li>Kan gjøre tidslinjen hakke <em>mer</em> fordi GPU jobber med cache</li><li>Eventuelt nyttig helt til slutt for å cache en hel ferdig tidslinje</li></ul></div>
         </div>
-        <div class="placeholder"><div class="placeholder-icon">📄</div><div class="placeholder-text">// PDF-innhold legges til her</div></div>
+
+        <!-- WORKFLOW KLIPPING -->
+        <div class="section-sub-header">▶️ Workflow under klipping</div>
+        <div class="callout blue"><span class="callout-icon">💡</span><div class="callout-text">Du trenger ikke cache mens du klipper. Vanlige klipp uten effekter bør spille fint med Proxy Resolution på <strong>Half</strong>. Cache kun det som hakker.</div></div>
+        <div class="steps">
+          <div class="step"><div class="step-num">01</div><div class="step-content">Høyreklikk klippet (eller <code>Ctrl+klikk</code> flere klipp)</div></div>
+          <div class="step"><div class="step-num">02</div><div class="step-content">Velg <strong>Render Cache Fusion Output → On</strong></div></div>
+          <div class="step"><div class="step-num">03</div><div class="step-content">Jobb videre på en annen del av tidslinjen mens det cacher</div></div>
+          <div class="step"><div class="step-num">04</div><div class="step-content">🔴 Rød linje → 🔵 Blå linje = ferdig cachet, smooth avspilling</div></div>
+        </div>
+        <div class="callout orange"><span class="callout-icon">⚠️</span><div class="callout-text"><strong>On/Off-logikk:</strong> On gjelder per klipp og forblir On til du sletter klippet eller setter det manuelt til Off. Marker flere klipp med <code>Ctrl+klikk</code> og sett On i én operasjon. Hvis du endrer et cachet klipp (trimmer, legger til effekt) re-cacher Resolve automatisk.</div></div>
+
+        <!-- HVOR SKAL DU CACHE -->
+        <div class="section-sub-header">📍 Hvor du skal cache: klipp, adjustment layer eller overlay</div>
+        <div class="callout blue"><span class="callout-icon">💡</span><div class="callout-text">Resolve cacher <strong>per element</strong> — du må cache der Fusion-effekten faktisk ligger.</div></div>
+        <div class="table-wrap"><table>
+          <thead><tr><th>MotionVFX-effekten ligger på...</th><th>Høyreklikk og cache...</th></tr></thead>
+          <tbody>
+            <tr><td>Direkte på klippet</td><td>Klippet selv</td></tr>
+            <tr><td>Adjustment layer</td><td>Adjustment layeret (ikke klippene under)</td></tr>
+            <tr><td>MotionVFX overlay/bakgrunn på eget spor</td><td>Overlay-elementet</td></tr>
+          </tbody>
+        </table></div>
+        <div class="rules">
+          <div class="rule info"><div class="icon">→</div><div>Adjustment layer over 20 klipp → cache kun <strong>adjustment layeret som én ting</strong>, ikke alle 20 klippene under.</div></div>
+          <div class="rule warn"><div class="icon">!</div><div>Hvis du endrer klipp <em>under</em> et cachet adjustment layer, må Resolve re-cache layeret fordi det endelige bildet endres.</div></div>
+          <div class="rule info"><div class="icon">→</div><div>Tunge effekter på <em>både</em> klipp og adjustment layer over? Cache begge — Resolve cacher dem uavhengig av hverandre.</div></div>
+        </div>
+
+        <!-- TROUBLESHOOTING -->
+        <div class="section-sub-header">🔧 Når cachingen ikke starter (troubleshooting)</div>
+        <div class="rules">
+          <div class="rule ok"><div class="icon">✓</div><div><strong>Trygg restart:</strong> Playback → Render Cache → <strong>None</strong>, vent 2–3 sek, bytt tilbake til <strong>User</strong>. Dine On/Off-markeringer forblir intakte.</div></div>
+          <div class="rule warn"><div class="icon">!</div><div><strong>Unngå:</strong> Bytte User → Smart → User. Smart kan fjerne cache fra klipp den vurderer som "ikke tunge nok" — risikabelt.</div></div>
+          <div class="rule info"><div class="icon">→</div><div><strong>Alternativt triks:</strong> Gjør en liten edit på et ucachet klipp (flytt én frame og tilbake). Kan sparke i gang cache-prosessen.</div></div>
+          <div class="rule warn"><div class="icon">!</div><div><strong>Cache-disk full?</strong> Resolve slutter å cache stille uten varsel. Sjekk ledig plass på Kingston NV2.</div></div>
+          <div class="rule warn"><div class="icon">!</div><div><strong>GPU på 0% i Task Manager mens linjen er rød?</strong> Cache-prosessen har hengt — restart Resolve.</div></div>
+          <div class="rule warn"><div class="icon">!</div><div><strong>Nukleært alternativ:</strong> Playback → Delete Render Cache → All. Tømmer alt og starter fra scratch.</div></div>
+        </div>
+
+        <!-- RTX 5060 TI -->
+        <div class="section-sub-header">🚀 Hva RTX 5060 Ti 16GB endrer</div>
+        <div class="rules">
+          <div class="rule ok"><div class="icon">✓</div><div>Klipp som hakker i dag kan spille smooth <em>uten</em> cache — flere CUDA-kjerner håndterer mer i sanntid.</div></div>
+          <div class="rule ok"><div class="icon">✓</div><div>Når du trenger cache, går rød → blå <strong>mye raskere</strong>.</div></div>
+          <div class="rule ok"><div class="icon">✓</div><div>16 GB VRAM betyr at Resolve ikke faller tilbake på treg CPU-prosessering ved tunge tidslinjer.</div></div>
+          <div class="rule ok"><div class="icon">✓</div><div>MotionVFX-plugins som krever cache i dag kan potensielt spille i sanntid med nytt GPU.</div></div>
+          <div class="rule ok"><div class="icon">✓</div><div><strong>Biggest impact:</strong> Færre klipp trenger cache overhodet, og de som trenger det caches raskere.</div></div>
+        </div>
+
       </div></div>
 
     </div>
