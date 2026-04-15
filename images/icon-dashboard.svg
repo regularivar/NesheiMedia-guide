@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Outer case - rounded retro Mac shape -->
+  <rect x="4" y="2" width="56" height="56" rx="6" ry="6" fill="#d4cfc4" stroke="#b8b1a4" stroke-width="1.5"/>
+  <!-- Inner bezel -->
+  <rect x="8" y="6" width="48" height="40" rx="3" ry="3" fill="#1a1c20"/>
+  <!-- Screen -->
+  <rect x="10" y="8" width="44" height="36" rx="2" ry="2" fill="#0d1117"/>
+  <!-- Screen glow -->
+  <rect x="10" y="8" width="44" height="36" rx="2" ry="2" fill="#22d3ee" opacity="0.06"/>
+  
+  <!-- Dashboard elements on screen -->
+  <!-- Top bar -->
+  <rect x="13" y="11" width="38" height="3" rx="1" fill="#22d3ee" opacity="0.3"/>
+  
+  <!-- Three indicator blocks -->
+  <rect x="13" y="17" width="11" height="8" rx="1.5" fill="#22d3ee" opacity="0.2" stroke="#22d3ee" stroke-width="0.5" stroke-opacity="0.4"/>
+  <rect x="26.5" y="17" width="11" height="8" rx="1.5" fill="#34d399" opacity="0.2" stroke="#34d399" stroke-width="0.5" stroke-opacity="0.4"/>
+  <rect x="40" y="17" width="11" height="8" rx="1.5" fill="#fbbf24" opacity="0.2" stroke="#fbbf24" stroke-width="0.5" stroke-opacity="0.4"/>
+  
+  <!-- Small dots in indicators -->
+  <circle cx="18.5" cy="21" r="1.5" fill="#22d3ee" opacity="0.8"/>
+  <circle cx="32" cy="21" r="1.5" fill="#34d399" opacity="0.8"/>
+  <circle cx="45.5" cy="21" r="1.5" fill="#fbbf24" opacity="0.8"/>
+  
+  <!-- List rows -->
+  <rect x="13" y="28" width="28" height="2" rx="1" fill="#e2e8f0" opacity="0.25"/>
+  <rect x="13" y="32" width="22" height="2" rx="1" fill="#e2e8f0" opacity="0.15"/>
+  <rect x="13" y="36" width="26" height="2" rx="1" fill="#e2e8f0" opacity="0.15"/>
+  <rect x="13" y="40" width="18" height="2" rx="1" fill="#e2e8f0" opacity="0.1"/>
+  
+  <!-- Status dots on right side of list -->
+  <circle cx="46" cy="29" r="1.2" fill="#34d399"/>
+  <circle cx="46" cy="33" r="1.2" fill="#fbbf24"/>
+  <circle cx="46" cy="37" r="1.2" fill="#22d3ee"/>
+  
+  <!-- Bottom chin of Mac -->
+  <rect x="20" y="50" width="24" height="3" rx="1.5" fill="#c4bfb4"/>
+  
+  <!-- Apple-ish logo hint (just a tiny square) -->
+  <rect x="29" y="50.5" width="6" height="2" rx="1" fill="#a09a8e"/>
+</svg>
