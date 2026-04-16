@@ -746,12 +746,12 @@
         <div class="card-num" style="text-align:center">KAPITTEL 07</div>
         <div class="card-title" style="text-align:center">PROSJEKTER & INSPIRASJON</div>
         <div class="card-subs">
-          <div class="card-sub">7.1 Aktive prosjekter</div>
-          <div class="card-sub">7.2 Gamle prosjekter (arkiv)</div>
-          <div class="card-sub">7.3 Ideer & skisser</div>
-          <div class="card-sub">7.4 Råmateriale-oversikt</div>
-          <div class="card-sub">7.5 Inspirasjon</div>
-          <div class="card-sub">7.6 Project Tracker</div>
+          <div class="card-sub">7.1 Inspirasjon</div>
+          <div class="card-sub">7.2 Råmateriale-oversikt</div>
+          <div class="card-sub">7.3 Project Tracker</div>
+          <div class="card-sub">7.4 Aktive prosjekter</div>
+          <div class="card-sub">7.5 Gamle prosjekter (arkiv)</div>
+          <div class="card-sub">7.6 Ideer &amp; skisser</div>
         </div>
       </div>
     </div>
@@ -795,7 +795,76 @@
         </button>
         <div class="acc-content">
 
-          <div class="charts-grid">
+          <div style="margin-bottom:16px">
+            <button onclick="openDiskModal()" style="font-family:var(--mono);font-size:12px;background:rgba(79,142,247,0.1);border:1px solid rgba(79,142,247,0.3);color:var(--accent2);padding:8px 16px;border-radius:6px;cursor:pointer;transition:all 0.15s" onmouseover="this.style.background='rgba(79,142,247,0.2)'" onmouseout="this.style.background='rgba(79,142,247,0.1)'">✏️ Oppdater diskbruk</button>
+          </div>
+
+          <!-- DISK UPDATE MODAL -->
+          <div id="diskModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:1000;align-items:center;justify-content:center" onclick="if(event.target===this)closeDiskModal()">
+            <div style="background:#11141a;border:1px solid #252d3d;border-radius:14px;padding:28px;width:460px;max-width:95vw;max-height:85vh;overflow-y:auto">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px">
+                <span style="font-family:var(--sans);font-weight:700;font-size:16px;color:var(--text)">✏️ Oppdater diskbruk</span>
+                <button onclick="closeDiskModal()" style="background:none;border:none;color:var(--text3);font-size:18px;cursor:pointer">✕</button>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:12px" id="diskInputs">
+                <div class="disk-input-row" data-disk="0" data-color="#4f8ef7">
+                  <label style="font-family:var(--mono);font-size:11px;color:var(--text3);display:block;margin-bottom:4px">🗄️ HDD #1 – 14 TB (V: + Y:)</label>
+                  <div style="display:flex;gap:8px;align-items:center">
+                    <input type="number" min="0" max="100" value="50" style="width:70px;background:var(--bg3);border:1px solid var(--border);color:var(--text);font-family:var(--mono);font-size:13px;padding:6px 10px;border-radius:6px" oninput="previewDisk(0,this.value,'#4f8ef7')">
+                    <span style="font-family:var(--mono);font-size:12px;color:var(--text2)">% brukt</span>
+                    <input type="text" placeholder="~2,6 TB" style="flex:1;background:var(--bg3);border:1px solid var(--border);color:var(--text);font-family:var(--mono);font-size:12px;padding:6px 10px;border-radius:6px" id="label0">
+                  </div>
+                </div>
+                <div class="disk-input-row" data-disk="1" data-color="#c084fc">
+                  <label style="font-family:var(--mono);font-size:11px;color:var(--text3);display:block;margin-bottom:4px">🗄️ HDD #2 – 6 TB (A: + B:)</label>
+                  <div style="display:flex;gap:8px;align-items:center">
+                    <input type="number" min="0" max="100" value="70" style="width:70px;background:var(--bg3);border:1px solid var(--border);color:var(--text);font-family:var(--mono);font-size:13px;padding:6px 10px;border-radius:6px" oninput="previewDisk(1,this.value,'#c084fc')">
+                    <span style="font-family:var(--mono);font-size:12px;color:var(--text2)">% brukt</span>
+                    <input type="text" placeholder="~4,2 TB" style="flex:1;background:var(--bg3);border:1px solid var(--border);color:var(--text);font-family:var(--mono);font-size:12px;padding:6px 10px;border-radius:6px" id="label1">
+                  </div>
+                </div>
+                <div class="disk-input-row" data-disk="2" data-color="#fbbf24">
+                  <label style="font-family:var(--mono);font-size:11px;color:var(--text3);display:block;margin-bottom:4px">🗄️ HDD #3 – 8 TB (K:)</label>
+                  <div style="display:flex;gap:8px;align-items:center">
+                    <input type="number" min="0" max="100" value="13" style="width:70px;background:var(--bg3);border:1px solid var(--border);color:var(--text);font-family:var(--mono);font-size:13px;padding:6px 10px;border-radius:6px" oninput="previewDisk(2,this.value,'#fbbf24')">
+                    <span style="font-family:var(--mono);font-size:12px;color:var(--text2)">% brukt</span>
+                    <input type="text" placeholder="~1,1 TB" style="flex:1;background:var(--bg3);border:1px solid var(--border);color:var(--text);font-family:var(--mono);font-size:12px;padding:6px 10px;border-radius:6px" id="label2">
+                  </div>
+                </div>
+                <div class="disk-input-row" data-disk="3" data-color="#fb923c">
+                  <label style="font-family:var(--mono);font-size:11px;color:var(--text3);display:block;margin-bottom:4px">🗄️ HDD #4 – 8 TB (W: + O:)</label>
+                  <div style="display:flex;gap:8px;align-items:center">
+                    <input type="number" min="0" max="100" value="36" style="width:70px;background:var(--bg3);border:1px solid var(--border);color:var(--text);font-family:var(--mono);font-size:13px;padding:6px 10px;border-radius:6px" oninput="previewDisk(3,this.value,'#fb923c')">
+                    <span style="font-family:var(--mono);font-size:12px;color:var(--text2)">% brukt</span>
+                    <input type="text" placeholder="~2,87 TB" style="flex:1;background:var(--bg3);border:1px solid var(--border);color:var(--text);font-family:var(--mono);font-size:12px;padding:6px 10px;border-radius:6px" id="label3">
+                  </div>
+                </div>
+                <div class="disk-input-row" data-disk="4" data-color="#22d3ee">
+                  <label style="font-family:var(--mono);font-size:11px;color:var(--text3);display:block;margin-bottom:4px">⚡ NVMe SSD – 2 TB (P:)</label>
+                  <div style="display:flex;gap:8px;align-items:center">
+                    <input type="number" min="0" max="100" value="19" style="width:70px;background:var(--bg3);border:1px solid var(--border);color:var(--text);font-family:var(--mono);font-size:13px;padding:6px 10px;border-radius:6px" oninput="previewDisk(4,this.value,'#22d3ee')">
+                    <span style="font-family:var(--mono);font-size:12px;color:var(--text2)">% brukt</span>
+                    <input type="text" placeholder="~378 GB" style="flex:1;background:var(--bg3);border:1px solid var(--border);color:var(--text);font-family:var(--mono);font-size:12px;padding:6px 10px;border-radius:6px" id="label4">
+                  </div>
+                </div>
+                <div class="disk-input-row" data-disk="5" data-color="#f472b6">
+                  <label style="font-family:var(--mono);font-size:11px;color:var(--text3);display:block;margin-bottom:4px">⚡ NVMe Cache – 1 TB (F:)</label>
+                  <div style="display:flex;gap:8px;align-items:center">
+                    <input type="number" min="0" max="100" value="5" style="width:70px;background:var(--bg3);border:1px solid var(--border);color:var(--text);font-family:var(--mono);font-size:13px;padding:6px 10px;border-radius:6px" oninput="previewDisk(5,this.value,'#f472b6')">
+                    <span style="font-family:var(--mono);font-size:12px;color:var(--text2)">% brukt</span>
+                    <input type="text" placeholder="~48 GB" style="flex:1;background:var(--bg3);border:1px solid var(--border);color:var(--text);font-family:var(--mono);font-size:12px;padding:6px 10px;border-radius:6px" id="label5">
+                  </div>
+                </div>
+              </div>
+              <div style="margin-top:20px;display:flex;gap:10px;justify-content:flex-end">
+                <button onclick="closeDiskModal()" style="font-family:var(--mono);font-size:12px;background:none;border:1px solid var(--border);color:var(--text3);padding:8px 16px;border-radius:6px;cursor:pointer">Avbryt</button>
+                <button onclick="saveDiskUsage()" style="font-family:var(--mono);font-size:12px;background:rgba(79,142,247,0.2);border:1px solid rgba(79,142,247,0.4);color:var(--accent2);padding:8px 16px;border-radius:6px;cursor:pointer">💾 Lagre</button>
+              </div>
+              <p style="font-family:var(--mono);font-size:10px;color:var(--text3);margin-top:12px;text-align:center">Verdier lagres kun i denne nettleserøkten (ikke permanent)</p>
+            </div>
+          </div>
+
+          <div class="charts-grid" id="chartsGrid">
             <div class="chart-card">
               <h4>🗄️ HDD #1 – 14 TB (V: + Y:)</h4>
               <div class="pie-wrap">
@@ -978,9 +1047,9 @@
             <table>
               <thead><tr><th>Backup-disk</th><th>Hva backes opp</th><th>Kilde</th><th>Metode</th><th>Frekvens</th><th>Siste backup</th></tr></thead>
               <tbody>
-                <tr><td>📀 <strong>12 TB USB HDD</strong></td><td>30_MEDIA_ASSETS, 40_ARKIV_RAW, 50_TOOLS, DR_PROSJEKTER</td><td><span class="path">A:\ W:\ B:\ P:\</span></td><td>UGREEN Sync &amp; Backup</td><td>🗓️ Månedlig</td><td><span style="font-family:var(--mono);font-size:11px;color:var(--orange)">16.01.2026</span></td></tr>
-                <tr><td>📀 <strong>5 TB USB1</strong></td><td>🎥 Råmateriale FX30 + Pocket 3</td><td><span class="path">V:\11_KAMERA_RAW</span></td><td>UGREEN Sync &amp; Backup</td><td>📸 Etter innspilling</td><td><span style="font-family:var(--mono);font-size:11px;color:var(--green)">15.04.2026</span></td></tr>
-                <tr><td>📀 <strong>5 TB USB2</strong></td><td>EDIT ASSETS, 50_TOOLS, DaVinci, 12_EKSPORT</td><td><span class="path">A:\ B:\ O:\ P:\</span></td><td>UGREEN Incremental</td><td>📅 Ukentlig</td><td><span style="font-family:var(--mono);font-size:11px;color:var(--yellow)">16.03.2026</span></td></tr>
+                <tr><td>📀 <strong>12 TB USB HDD</strong></td><td>30_MEDIA_ASSETS, 40_ARKIV_RAW, 50_TOOLS, DR_PROSJEKTER</td><td><span class="path">A:\ W:\ B:\ P:\</span></td><td>UGREEN Sync &amp; Backup – Incremental</td><td>🗓️ Månedlig</td><td><span id="backup-date-0" style="font-family:var(--mono);font-size:11px;color:var(--orange)">16.01.2026</span> <button onclick="setBackupDate(0)" style="font-family:var(--mono);font-size:10px;background:rgba(251,146,60,0.1);border:1px solid rgba(251,146,60,0.3);color:var(--orange);padding:2px 7px;border-radius:4px;cursor:pointer;margin-left:4px" title="Sett til dagens dato">📅 I dag</button></td></tr>
+                <tr><td>📀 <strong>5 TB USB1</strong></td><td>🎥 Råmateriale FX30 + Pocket 3</td><td><span class="path">V:\11_KAMERA_RAW</span></td><td>UGREEN Sync &amp; Backup – Incremental</td><td>📸 Etter innspilling</td><td><span id="backup-date-1" style="font-family:var(--mono);font-size:11px;color:var(--green)">15.04.2026</span> <button onclick="setBackupDate(1)" style="font-family:var(--mono);font-size:10px;background:rgba(52,211,153,0.1);border:1px solid rgba(52,211,153,0.3);color:var(--green);padding:2px 7px;border-radius:4px;cursor:pointer;margin-left:4px" title="Sett til dagens dato">📅 I dag</button></td></tr>
+                <tr><td>📀 <strong>5 TB USB2</strong></td><td>EDIT ASSETS, 50_TOOLS, DaVinci, 12_EKSPORT</td><td><span class="path">A:\ B:\ O:\ P:\</span></td><td>UGREEN Sync &amp; Backup – Incremental</td><td>📅 Ukentlig</td><td><span id="backup-date-2" style="font-family:var(--mono);font-size:11px;color:var(--yellow)">16.03.2026</span> <button onclick="setBackupDate(2)" style="font-family:var(--mono);font-size:10px;background:rgba(251,191,36,0.1);border:1px solid rgba(251,191,36,0.3);color:var(--yellow);padding:2px 7px;border-radius:4px;cursor:pointer;margin-left:4px" title="Sett til dagens dato">📅 I dag</button></td></tr>
               </tbody>
             </table>
           </div>
@@ -1499,7 +1568,7 @@ pause</div>
             <div class="sub-acc-content">
         
         <div class="cards">
-          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#f87171"></span>🔴 SSD EDIT</div><ul><li>Prosjektfilen (.drp) og proxy-video</li><li>Dette er disken du jobber fra</li></ul></div>
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#34d399"></span>🟢 SSD EDIT</div><ul><li>Prosjektfilen (.drp) og proxy-video</li><li>Dette er disken du jobber fra</li></ul></div>
           <div class="card"><div class="card-title-inner"><span class="dot" style="background:#4f8ef7"></span>🔵 SSD ASSETS</div><ul><li>Power Bins (lydeffekter, grafikk, musikk)</li><li>Ditt "bibliotek"</li></ul></div>
         </div>
 </div>
@@ -1585,25 +1654,139 @@ pause</div>
           </div>
         </div></div></div>
       <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">2.5</span><span>Eksport-workflow</span></div><span class="acc-chevron">▼</span></button><div class="acc-content">
-        
+
+        <div class="section-sub-header">Tre alternativer</div>
+        <div class="cards">
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#34d399"></span>Alt 1 — MXF/DNxHR → HandBrake</div><ul><li>Eksporter mellomformat (MXF/DNxHR) fra DaVinci</li><li>Konverter til H.265 med HandBrake</li><li><strong>⭐ Foretrukket</strong> – best kvalitet, standard workflow</li></ul></div>
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#fb923c"></span>Alt 2 — DaVinci direkte H.265</div><ul><li>Eksporter H.265 direkte fra DaVinci via NVIDIA</li><li>Raskere – ingen mellomsteg</li><li>OK når tid er viktigere enn siste kvalitetsforskjell</li></ul></div>
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#a855f7"></span>Alt 3 — ProRes 422 HQ → HandBrake</div><ul><li>Eksporter ProRes 422 HQ fra DaVinci</li><li>Konverter til H.265 med HandBrake</li><li><strong>⭐ Foretrukket</strong> – renest mulig mellomformat</li></ul></div>
+        </div>
+        <div class="callout green"><span class="callout-icon">🧪</span><div class="callout-text"><strong>Testresultat – 22-min film (1920×1080, 25fps), LG OLED 65" + Sonos:</strong><br>Alle tre ser veldig bra ut. <strong>Alt 1 og Alt 3 foretrukket marginalt</strong> over Alt 2. Lyd markant bedre enn tidligere – begge stereokanaler nå inkludert. Filstørrelse ca. 1,5 GB per fil.</div></div>
+
+        <div class="section-sub-header">Alt 1 — MXF/DNxHR → HandBrake H.265</div>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Steg</th><th>Setting</th><th>Verdi</th><th>Merknad</th></tr></thead>
+          <tbody>
+            <tr><td rowspan="4"><strong>Step 1<br>DaVinci</strong></td><td>Format</td><td><code>MXF</code></td><td>Mellomformat for HandBrake</td></tr>
+            <tr><td>Codec</td><td><code>DNxHR 422 HQ</code></td><td>Høy kvalitet, nesten lossless</td></tr>
+            <tr><td>Resolution</td><td><code>Timeline Resolution</code></td><td>Match source</td></tr>
+            <tr><td>Frame Rate</td><td><code>Timeline Frame Rate</code></td><td>Match source</td></tr>
+            <tr><td><strong>Step 2</strong></td><td colspan="3">HandBrake med innstillingene i <em>Hurtigreferanse</em>-tabellen nedenfor</td></tr>
+          </tbody>
+        </table></div>
+
+        <div class="section-sub-header">Alt 2 — DaVinci direkte H.265</div>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Setting</th><th>Verdi</th></tr></thead>
+          <tbody>
+            <tr><td>Format</td><td><code>MP4</code></td></tr>
+            <tr><td>Codec</td><td><code>H.265</code></td></tr>
+            <tr><td>Encoder</td><td><code>NVIDIA</code></td></tr>
+            <tr><td>Rate Control</td><td><code>Constant QP</code></td></tr>
+            <tr><td>Constant QP I / P / B</td><td><code>14 / 14 / 14</code></td></tr>
+            <tr><td>Encoding Profile</td><td><code>Main (8-bit) / Main10 (10-bit)</code></td></tr>
+            <tr><td>Preset</td><td><code>Slow / Very Slow</code></td></tr>
+            <tr><td>Tuning</td><td><code>High Quality</code></td></tr>
+            <tr><td>Two Pass</td><td><code>Full Resolution</code></td></tr>
+            <tr><td>Gamma Tag (Advanced)</td><td><code>Rec.709</code></td></tr>
+            <tr><td>Color Space Tag (Advanced)</td><td><code>Rec.709</code></td></tr>
+          </tbody>
+        </table></div>
+
+        <div class="section-sub-header">Alt 3 — ProRes 422 HQ → HandBrake H.265</div>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Steg</th><th>Setting</th><th>Verdi</th><th>Merknad</th></tr></thead>
+          <tbody>
+            <tr><td rowspan="4"><strong>Step 1<br>DaVinci</strong></td><td>Format</td><td><code>QuickTime</code></td><td></td></tr>
+            <tr><td>Codec</td><td><code>Apple ProRes 422 HQ</code></td><td>Renere mellomformat enn DNxHR</td></tr>
+            <tr><td>Resolution</td><td><code>Timeline Resolution</code></td><td>Match source</td></tr>
+            <tr><td>Frame Rate</td><td><code>Timeline Frame Rate</code></td><td>Match source</td></tr>
+            <tr><td><strong>Step 2</strong></td><td colspan="3">Identiske HandBrake-innstillinger som Alt 1 – se tabellen nedenfor</td></tr>
+          </tbody>
+        </table></div>
+
+        <div class="section-sub-header">HandBrake — Hurtigreferanse (Alt 1 &amp; Alt 3)</div>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Setting</th><th>Verdi</th></tr></thead>
+          <tbody>
+            <tr><td>Video Encoder</td><td><code>H.265 10-bit (x265)</code> — standard. <code>H.265 (x265)</code> for ren 8-bit</td></tr>
+            <tr><td>Framerate</td><td><code>Same as source, Constant Framerate</code></td></tr>
+            <tr><td>Quality</td><td><code>Constant Quality RF 18</code></td></tr>
+            <tr><td>Encoder Preset</td><td><code>Slow</code></td></tr>
+            <tr><td>Encoder Tune</td><td><code>None</code> (eller Film)</td></tr>
+            <tr><td>Encoder Profile</td><td><code>Main</code> (settes automatisk)</td></tr>
+            <tr><td>Audio</td><td><code>AAC 256 kbps, Stereo</code> (eller 2× Mono ved split spor)</td></tr>
+            <tr><td>Filters</td><td><code>All off</code></td></tr>
+            <tr><td>Dimensions</td><td><code>No cropping, no scaling</code></td></tr>
+          </tbody>
+        </table></div>
+
+        <div class="section-sub-header">Undertekster i HandBrake (SRT)</div>
+        <div class="steps">
+          <div class="step"><div class="step-num">01</div><div class="step-content">Gå til <strong>Subtitles-fanen</strong> i HandBrake</div></div>
+          <div class="step"><div class="step-num">02</div><div class="step-content"><strong>Tracks → Import</strong> og velg SRT-filen</div></div>
+          <div class="step"><div class="step-num">03</div><div class="step-content"><strong>Sett Language</strong> til riktig språk (Norwegian Nynorsk)</div></div>
+          <div class="step"><div class="step-num">04</div><div class="step-content"><strong>Char Code: UTF-8</strong> – standard for norske tegn (æøå)</div></div>
+          <div class="step"><div class="step-num">05</div><div class="step-content">Huk av <strong>«Burn In»</strong> – bakes teksten inn i bildet. Fungerer garantert på alle TV-er</div></div>
+        </div>
+        <div class="table-wrap"><table>
+          <thead><tr><th></th><th>Burn In</th><th>Soft Subs (ikke Burn In)</th></tr></thead>
+          <tbody>
+            <tr><td>Hva skjer</td><td>Tekst bakt inn i bildet</td><td>Tekst lagret som eget spor i filen</td></tr>
+            <tr><td>TV-kompatibilitet</td><td>Fungerer alltid</td><td>Kan feile på noen TV-er</td></tr>
+            <tr><td>Kan slås av?</td><td>Nei — alltid synlig</td><td>Ja — slås av/på i spilleren</td></tr>
+            <tr><td>Anbefalt for</td><td>Minnepinne, TV, gave</td><td>VLC på PC der du vil velge selv</td></tr>
+          </tbody>
+        </table></div>
+        <div class="callout blue"><span class="callout-icon">📌</span><div class="callout-text"><strong>Leveranse til minnepinne / familie:</strong> Lag to versjoner — <code>Mamma Og Pappa.mp4</code> (uten tekst) og <code>Mamma Og Pappa (Tekst).mp4</code> (med Burn In). MP4 med H.265 spiller fint på de fleste moderne TV-er (inkl. LG OLED) direkte fra USB.</div></div>
+
+        <div class="section-sub-header">Gamma og Rec.709-A</div>
+        <div class="callout orange"><span class="callout-icon">⚠️</span><div class="callout-text"><strong>Ikke relevant for lokal VLC-avspilling</strong> – men viktig ved opplasting til YouTube, TikTok og andre plattformer.</div></div>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Scenario</th><th>Output Color Space</th><th>Gamma Tag (Advanced)</th></tr></thead>
+          <tbody>
+            <tr><td>Lokal avspilling (VLC)</td><td>Rec.709 (default)</td><td>Rec.709</td></tr>
+            <tr><td>YouTube / Vimeo</td><td><strong>Rec.709-A (Mac) eller Rec.709</strong></td><td>Rec.709-A eller Same as Project</td></tr>
+            <tr><td>Ukalibrert PC-monitor</td><td>sRGB</td><td>Same as Project</td></tr>
+            <tr><td>Broadcast / TV</td><td>Rec.709 Gamma 2.4</td><td>Rec.709</td></tr>
+          </tbody>
+        </table></div>
         <div class="rules">
-          <div class="rule ok"><div class="icon">✓</div><div>Eksporter MXF til <code>_MXF_TEMP\</code></div></div>
-          <div class="rule ok"><div class="icon">✓</div><div>⚙️ Handbrake → H265 → lagre i prosjektmappe</div></div>
-          <div class="rule warn"><div class="icon">✕</div><div>🗑️ <strong>Slett MXF</strong> etter verifisering</div></div>
+          <div class="rule info"><div class="icon">ℹ</div><div><strong>Rec.709-A</strong> er laget av Blackmagic for å kompensere for Apples gamma-håndtering. Det sikrer at video ser riktig ut i QuickTime, på iPhone og Mac.</div></div>
+          <div class="rule ok"><div class="icon">✓</div><div><strong>Praktisk råd:</strong> Grade til det ser riktig ut på skjermen i Resolve. Eksporter et testkort og sjekk på telefon, TV og VLC.</div></div>
+        </div>
+
+        <div class="section-sub-header">YouTube-opplasting</div>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Setting</th><th>Verdi</th><th>Merknad</th></tr></thead>
+          <tbody>
+            <tr><td>Codec</td><td><code>H.264</code></td><td>Ser bedre ut på YouTube enn H.265 etter re-enkoding</td></tr>
+            <tr><td>Format</td><td><code>MP4</code></td><td>Marginalt bedre enn MOV</td></tr>
+            <tr><td>Rate Control</td><td><code>VBR (Variable Bitrate)</code></td><td>IKKE Constant QP – gir dårligere kvalitet på YouTube</td></tr>
+            <tr><td>Bitrate (4K 24fps)</td><td><code>~45 Mbps</code></td><td>Optimalt krysningspunkt</td></tr>
+            <tr><td>Resolution</td><td><code>3840×2160 (4K)</code></td><td>Tvinger YouTube til VP9/AV1-codec – selv om kilden er 1080p</td></tr>
+          </tbody>
+        </table></div>
+        <div class="rules">
+          <div class="rule warn"><div class="icon">✕</div><div><strong>Unngå mørke gradienter</strong> – YouTube sliter med banding. Legg til kunstig filmkorn i Resolve for mørke scener.</div></div>
+          <div class="rule ok"><div class="icon">✓</div><div><strong>Skarphet:</strong> Legg til litt oversharpen i Resolve – YouTube myker det ned igjen.</div></div>
+        </div>
+
+        <div class="section-sub-header">Mappstruktur &amp; arkivering</div>
+        <div class="callout green"><span class="callout-icon">📁</span><div class="callout-text"><strong>O:\12_EKSPORT struktur:</strong><br><br><code>_MXF_TEMP\</code> ← midlertidig, slettes etter HandBrake<br><code>STILLS\</code> ← DaVinci stills<br><code>2026_Prosjektnavn\H265\</code> ← leveringsfil</div></div>
+        <div class="rules">
+          <div class="rule ok"><div class="icon">✓</div><div>Eksporter mellomformat til <code>O:\12_EKSPORT\_MXF_TEMP\</code></div></div>
+          <div class="rule ok"><div class="icon">✓</div><div>HandBrake → H265 → lagre i <code>2026_Prosjektnavn\H265\</code></div></div>
+          <div class="rule warn"><div class="icon">✕</div><div>🗑️ <strong>Slett mellomformat</strong> etter verifisering</div></div>
           <div class="rule ok"><div class="icon">✓</div><div>📦 Arkiver til <code>A:\30.03_VIDEOER\PRODUKSJON\</code>, <code>SOME_CONTENT\</code> eller <code>CLIP_FARMING\</code></div></div>
         </div>
-        <div class="nb-card">
-          <div class="nb-header">📌 NB! Greit å vite</div>
-          <div class="nb-body">
-            <div class="callout green"><span class="callout-icon">📁</span><div class="callout-text"><strong>O:\12_EKSPORT struktur:</strong><br><br><code>_MXF_TEMP\</code> ← midlertidig, slettes etter Handbrake<br><code>STILLS\</code> ← DaVinci stills<br><code>2026_Prosjektnavn\H265\</code> ← leveringsfil</div></div>
-            <div class="callout blue"><span class="callout-icon">📂</span><div class="callout-text"><strong>A:\30.03_VIDEOER struktur:</strong><br><br>
-          <code>ARKIV\</code> – alt gammelt (Diverse/OLD, Familie, Gammel Jobb, Snapchat etc.)<br>
+        <div class="callout blue"><span class="callout-icon">📂</span><div class="callout-text"><strong>A:\30.03_VIDEOER struktur:</strong><br><br>
+          <code>ARKIV\</code> – alt gammelt<br>
           <code>PRODUKSJON\</code> – store jobbprosjekter<br>
           <code>SOME_CONTENT\2025\ 2026\</code> – gjennomarbeidet SoMe<br>
           <code>CLIP_FARMING\2025\ 2026\</code> – raske hverdagsklipp
         </div></div>
-          </div>
-        </div></div></div>
+      </div></div>
       <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">2.6</span><span>Proxy-guide</span></div><span class="acc-chevron">▼</span></button><div class="acc-content">
         <div class="section-sub-header">🎥 Kamera-spesifikk proxy-workflow</div>
         <div class="cards">
@@ -2475,12 +2658,29 @@ pause</div>
     <div class="chapter-nav"><span class="back-btn" onclick="goHome()">← Hjem</span><span class="nav-divider">/</span><span class="nav-chapter">Kapittel 07 – Prosjekter & Inspirasjon</span></div>
     <div class="chapter-header"><div class="chapter-icon">📓</div><div class="chapter-header-text"><div class="chapter-header-num">KAPITTEL 07</div><div class="chapter-header-title">PROSJEKTER & INSPIRASJON</div></div></div>
     <div class="accordion">
-      <div class="acc-item" id="dash-aktive"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">7.1</span><span>Aktive prosjekter</span></div><span class="acc-chevron">▼</span></button><div class="acc-content"><div class="placeholder"><div class="placeholder-icon">🔥</div><div class="placeholder-text">// INNHOLD KOMMER</div></div></div></div>
-      <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">7.2</span><span>Gamle prosjekter (arkiv)</span></div><span class="acc-chevron">▼</span></button><div class="acc-content"><div class="placeholder"><div class="placeholder-icon">📦</div><div class="placeholder-text">// INNHOLD KOMMER</div></div></div></div>
-      <div class="acc-item" id="dash-ideer"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">7.3</span><span>Ideer & skisser</span></div><span class="acc-chevron">▼</span></button><div class="acc-content"><div class="placeholder"><div class="placeholder-icon">💡</div><div class="placeholder-text">// INNHOLD KOMMER</div></div></div></div>
-      <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">7.4</span><span>Råmateriale-oversikt</span></div><span class="acc-chevron">▼</span></button><div class="acc-content"><div class="placeholder"><div class="placeholder-icon">🎥</div><div class="placeholder-text">// INNHOLD KOMMER</div></div></div></div>
-      <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">7.5</span><span>Inspirasjon</span></div><span class="acc-chevron">▼</span></button><div class="acc-content"><div class="placeholder"><div class="placeholder-icon">✨</div><div class="placeholder-text">// INNHOLD KOMMER</div></div></div></div>
-      <div class="acc-item" id="dash-tracker"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">7.6</span><span>Project Tracker</span></div><span class="acc-chevron">▼</span></button><div class="acc-content"><div class="placeholder"><div class="placeholder-icon">📊</div><div class="placeholder-text">// INNHOLD KOMMER – Database for aktive prosjekter</div></div></div></div>
+      <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">7.1</span><span>Inspirasjon</span></div><span class="acc-chevron">▼</span></button><div class="acc-content">
+        <div class="callout blue"><span class="callout-icon">✨</span><div class="callout-text">Samle referanser, moodboards og inspirasjonsklipp her. Oppdater etter hvert.</div></div>
+        <div class="placeholder"><div class="placeholder-icon">✨</div><div class="placeholder-text">// Legg til inspirasjonslenker, referanser og moodboards her</div></div>
+      </div></div>
+
+      <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">7.2</span><span>Råmateriale-oversikt</span></div><span class="acc-chevron">▼</span></button><div class="acc-content">
+        <div class="callout blue"><span class="callout-icon">🎥</span><div class="callout-text">Oversikt over råmateriale ligger i Notion. Klikk lenken under for å åpne tabellen direkte.</div></div>
+        <div style="margin:16px 0">
+          <a href="#NOTION_RAWMATERIAL_URL" target="_blank" style="display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:12px;color:var(--accent2);background:rgba(79,142,247,0.08);border:1px solid rgba(79,142,247,0.2);padding:10px 18px;border-radius:8px;text-decoration:none">📋 Åpne råmateriale-oversikt i Notion →</a>
+        </div>
+        <div class="callout orange"><span class="callout-icon">🤖</span><div class="callout-text"><strong>AI-agent for råmateriale:</strong> Det er fullt mulig å trene en AI-agent (f.eks. via Claude API eller Make.com) til å se over nye klipp etter innlasting og automatisk fylle inn Notion-tabellen med metadata (dato, kamera, sted, beskrivelse). Dette krever et oppsett med mappe-overvåkning + API-kall til Notion. Ta det opp som et eget prosjekt når du er klar.</div></div>
+      </div></div>
+
+      <div class="acc-item" id="dash-tracker"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">7.3</span><span>Project Tracker</span></div><span class="acc-chevron">▼</span></button><div class="acc-content">
+        <div class="callout blue"><span class="callout-icon">📊</span><div class="callout-text">Prosjekt-tracker ligger i Notion. Klikk lenken under for å åpne direkte.</div></div>
+        <div style="margin:16px 0">
+          <a href="#NOTION_TRACKER_URL" target="_blank" style="display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:12px;color:var(--accent2);background:rgba(79,142,247,0.08);border:1px solid rgba(79,142,247,0.2);padding:10px 18px;border-radius:8px;text-decoration:none">📋 Åpne Project Tracker i Notion →</a>
+        </div>
+      </div></div>
+
+      <div class="acc-item" id="dash-aktive"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">7.4</span><span>Aktive prosjekter</span></div><span class="acc-chevron">▼</span></button><div class="acc-content"><div class="placeholder"><div class="placeholder-icon">🔥</div><div class="placeholder-text">// INNHOLD KOMMER</div></div></div></div>
+      <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">7.5</span><span>Gamle prosjekter (arkiv)</span></div><span class="acc-chevron">▼</span></button><div class="acc-content"><div class="placeholder"><div class="placeholder-icon">📦</div><div class="placeholder-text">// INNHOLD KOMMER</div></div></div></div>
+      <div class="acc-item" id="dash-ideer"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">7.6</span><span>Ideer &amp; skisser</span></div><span class="acc-chevron">▼</span></button><div class="acc-content"><div class="placeholder"><div class="placeholder-icon">💡</div><div class="placeholder-text">// INNHOLD KOMMER</div></div></div></div>
     </div>
   </div>
 </div>
@@ -2616,6 +2816,60 @@ pause</div>
       content.classList.add("open");
       setTimeout(() => item.scrollIntoView({ behavior: "smooth", block: "start" }), 100);
     }
+  }
+
+  // ── DISK USAGE MODAL ──
+  function openDiskModal() {
+    const modal = document.getElementById('diskModal');
+    modal.style.display = 'flex';
+    // Pre-fill current values from pie charts
+    const circles = document.querySelectorAll('#chartsGrid .pie-wrap svg circle:nth-child(2)');
+    circles.forEach((c, i) => {
+      const da = c.getAttribute('stroke-dasharray');
+      if (da) {
+        const pct = Math.round(parseFloat(da.split(' ')[0]));
+        const inp = document.querySelectorAll('#diskInputs input[type="number"]')[i];
+        if (inp) inp.value = pct;
+      }
+    });
+  }
+  function closeDiskModal() {
+    document.getElementById('diskModal').style.display = 'none';
+  }
+  function previewDisk(index, value, color) {
+    const pct = Math.min(100, Math.max(0, parseFloat(value) || 0));
+    const circles = document.querySelectorAll('#chartsGrid .pie-wrap svg circle:nth-child(2)');
+    if (circles[index]) {
+      circles[index].setAttribute('stroke-dasharray', pct.toFixed(1) + ' ' + (100 - pct).toFixed(1));
+    }
+    const totals = document.querySelectorAll('#chartsGrid .pie-total');
+    if (totals[index]) totals[index].textContent = Math.round(pct) + '%';
+  }
+  function saveDiskUsage() {
+    const inputs = document.querySelectorAll('#diskInputs input[type="number"]');
+    const labelInputs = document.querySelectorAll('#diskInputs input[type="text"]');
+    const circles = document.querySelectorAll('#chartsGrid .pie-wrap svg circle:nth-child(2)');
+    const totals = document.querySelectorAll('#chartsGrid .pie-total');
+    const legendVals = document.querySelectorAll('#chartsGrid .chart-card .legend-row:first-child .legend-val');
+    inputs.forEach((inp, i) => {
+      const pct = Math.min(100, Math.max(0, parseFloat(inp.value) || 0));
+      if (circles[i]) circles[i].setAttribute('stroke-dasharray', pct.toFixed(1) + ' ' + (100 - pct).toFixed(1));
+      if (totals[i]) totals[i].textContent = Math.round(pct) + '%';
+      if (labelInputs[i] && labelInputs[i].value && legendVals[i]) {
+        legendVals[i].textContent = labelInputs[i].value;
+      }
+    });
+    closeDiskModal();
+  }
+
+  // ── BACKUP DATE BUTTONS ──
+  function setBackupDate(index) {
+    const now = new Date();
+    const d = String(now.getDate()).padStart(2,'0');
+    const m = String(now.getMonth()+1).padStart(2,'0');
+    const y = now.getFullYear();
+    const el = document.getElementById('backup-date-' + index);
+    if (el) el.textContent = d + '.' + m + '.' + y;
   }
 </script>
 
