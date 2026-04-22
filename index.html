@@ -37,6 +37,7 @@
     font-size: 15px;
     line-height: 1.7;
     min-height: 100vh;
+    scroll-behavior: smooth;
   }
 
   /* ── PAGES ── */
@@ -69,8 +70,11 @@
     font-family: var(--mono);
     font-size: 22px;
     font-weight: 700;
-    letter-spacing: 0.25em;
-    color: var(--accent);
+    letter-spacing: 0.3em;
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     text-transform: uppercase;
     text-align: center;
     margin-bottom: 14px;
@@ -81,9 +85,10 @@
     font-weight: 400;
     color: var(--text2);
     text-align: center;
-    line-height: 1.7;
-    letter-spacing: 0.02em;
+    line-height: 1.8;
+    letter-spacing: 0.04em;
     margin-bottom: 10px;
+    text-transform: uppercase;
   }
 
   .home-tagline strong { color: var(--accent); }
@@ -94,7 +99,8 @@
     color: var(--text3);
     text-align: center;
     margin-bottom: 56px;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
   }
 
   .home-divider {
@@ -117,12 +123,12 @@
     max-width: 520px;
     margin: 0 auto;
     width: 100%;
-    background: linear-gradient(135deg, #0f1923 0%, #111a1a 100%);
-    border: 1px solid #22d3ee;
-    border-radius: 12px;
-    padding: 28px 28px;
+    background: linear-gradient(135deg, #0d1a24 0%, #0f1c1c 100%);
+    border: 1px solid rgba(34,211,238,0.5);
+    border-radius: 14px;
+    padding: 32px 28px;
     cursor: pointer;
-    transition: all 0.2s;
+    transition: all 0.25s cubic-bezier(0.2, 0, 0.2, 1);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -131,31 +137,34 @@
     text-decoration: none;
     position: relative;
     overflow: hidden;
+    box-shadow: 0 0 30px rgba(34,211,238,0.06), 0 4px 20px rgba(0,0,0,0.3);
   }
 
   .dashboard-card::before {
     content: "";
     position: absolute;
     top: 0; left: 0; right: 0;
-    height: 2px;
-    background: #22d3ee;
-    opacity: 0.8;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #22d3ee, transparent);
+    opacity: 0.9;
   }
 
   .dashboard-card:hover {
     border-color: #67e8f9;
-    background: linear-gradient(135deg, #111d28 0%, #132020 100%);
-    transform: translateY(-2px);
+    background: linear-gradient(135deg, #112030 0%, #122424 100%);
+    transform: translateY(-3px);
+    box-shadow: 0 0 50px rgba(34,211,238,0.1), 0 8px 28px rgba(0,0,0,0.4);
   }
 
   .dashboard-title {
-    font-family: "Courier New", var(--mono);
-    font-size: 30px;
+    font-family: var(--mono);
+    font-size: 28px;
     font-weight: 700;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.18em;
     color: #22d3ee;
-    text-shadow: 0 0 10px rgba(34,211,238,0.4), 0 0 30px rgba(34,211,238,0.15);
+    text-shadow: 0 0 12px rgba(34,211,238,0.5), 0 0 40px rgba(34,211,238,0.2);
     text-align: center;
+    text-transform: uppercase;
   }
 
   .dashboard-subs {
@@ -182,29 +191,31 @@
     border-radius: 12px;
     padding: 28px 24px;
     cursor: pointer;
-    transition: all 0.2s;
+    transition: all 0.25s cubic-bezier(0.2, 0, 0.2, 1);
     display: flex;
     flex-direction: column;
     gap: 14px;
     text-decoration: none;
     position: relative;
     overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.25);
   }
 
   .chapter-card::before {
     content: "";
     position: absolute;
     top: 0; left: 0; right: 0;
-    height: 2px;
-    background: var(--card-color);
-    opacity: 0.6;
-    transition: opacity 0.2s;
+    height: 3px;
+    background: linear-gradient(90deg, var(--card-color), color-mix(in srgb, var(--card-color) 60%, transparent));
+    opacity: 0.7;
+    transition: opacity 0.25s;
   }
 
   .chapter-card:hover {
     border-color: var(--card-color);
     background: var(--bg3);
-    transform: translateY(-2px);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 28px rgba(0,0,0,0.35), 0 0 0 1px var(--card-color);
   }
 
   .chapter-card:hover::before { opacity: 1; }
@@ -212,20 +223,25 @@
   .card-icon {
     font-size: 32px;
     line-height: 1;
+    transition: transform 0.2s;
   }
+
+  .chapter-card:hover .card-icon { transform: scale(1.1); }
 
   .card-num {
     font-family: var(--mono);
     font-size: 10px;
-    letter-spacing: 0.15em;
+    letter-spacing: 0.18em;
     color: var(--text3);
+    text-transform: uppercase;
   }
 
   .card-title {
     font-size: 18px;
-    font-weight: 700;
-    letter-spacing: -0.02em;
+    font-weight: 800;
+    letter-spacing: 0.02em;
     color: var(--text);
+    text-transform: uppercase;
   }
 
   .card-subs {
@@ -235,11 +251,18 @@
   }
 
   .card-sub {
-    font-size: 12px;
+    font-size: 11px;
     color: var(--text3);
     font-family: var(--mono);
     padding-left: 10px;
-    border-left: 1px solid var(--border);
+    border-left: 2px solid var(--border);
+    letter-spacing: 0.03em;
+    transition: color 0.15s, border-color 0.15s;
+  }
+
+  .chapter-card:hover .card-sub {
+    color: var(--text2);
+    border-left-color: var(--card-color);
   }
 
   .card-arrow {
@@ -277,15 +300,21 @@
     display: flex;
     align-items: center;
     gap: 6px;
-    padding: 8px 14px;
+    padding: 8px 16px;
     background: var(--bg2);
     border: 1px solid var(--border);
     border-radius: 6px;
-    transition: all 0.15s;
+    transition: all 0.2s;
     text-decoration: none;
+    letter-spacing: 0.06em;
   }
 
-  .back-btn:hover { color: var(--accent); border-color: var(--accent); }
+  .back-btn:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+    background: rgba(79,142,247,0.06);
+    transform: translateX(-2px);
+  }
 
   .nav-divider { color: var(--text3); font-family: var(--mono); font-size: 11px; }
   .nav-chapter { font-family: var(--mono); font-size: 11px; color: var(--text2); }
@@ -305,16 +334,18 @@
   .chapter-header-num {
     font-family: var(--mono);
     font-size: 11px;
-    letter-spacing: 0.15em;
+    letter-spacing: 0.2em;
     color: var(--text3);
-    margin-bottom: 6px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
   }
 
   .chapter-header-title {
-    font-size: 32px;
+    font-size: 34px;
     font-weight: 800;
-    letter-spacing: -0.03em;
+    letter-spacing: 0.04em;
     color: var(--text);
+    text-transform: uppercase;
   }
 
   /* ── ACCORDION ── */
@@ -322,9 +353,15 @@
 
   .acc-item {
     background: var(--bg2);
-    border: 1px solid #60694b;
+    border: 1px solid var(--border);
     border-radius: 10px;
     overflow: hidden;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.2);
+    transition: box-shadow 0.2s;
+  }
+
+  .acc-item:has(.acc-trigger.open) {
+    box-shadow: 0 2px 14px rgba(0,0,0,0.3);
   }
 
   .acc-trigger {
@@ -346,7 +383,7 @@
   }
 
   .acc-trigger:hover { background: var(--bg3); }
-  .acc-trigger.open { background: #1a1d16; border-left: 3px solid #c8b078; padding-left: 19px; }
+  .acc-trigger.open { background: var(--bg3); border-left: 3px solid var(--accent); padding-left: 19px; }
 
   .acc-left { display: flex; align-items: center; gap: 14px; }
   .acc-left > span:not(.acc-num) { word-spacing: 5px; }
@@ -365,9 +402,11 @@
   .acc-chevron {
     font-size: 12px;
     color: var(--text3);
-    transition: transform 0.2s;
+    transition: transform 0.25s cubic-bezier(0.2, 0, 0.2, 1), color 0.15s;
     flex-shrink: 0;
   }
+
+  .acc-trigger.open .acc-chevron { color: var(--accent); }
 
   .acc-trigger.open .acc-chevron { transform: rotate(180deg); }
 
@@ -379,19 +418,19 @@
 
   .acc-content.open {
     display: block;
-    background: #13150f;
-    border-top: 1px solid rgba(200,176,120,0.2);
+    background: var(--bg);
+    border-top: 1px solid var(--border);
   }
 
   /* Alternating accordion items */
   .acc-item:nth-child(even) {
-    background: #1b1e28;
-    border-color: #8a8679;
+    background: var(--bg3);
+    border-color: var(--border);
   }
-  .acc-item:nth-child(even) .acc-trigger:hover { background: #222738; }
-  .acc-item:nth-child(even) .acc-trigger.open { background: #1c1e17; }
+  .acc-item:nth-child(even) .acc-trigger:hover { background: var(--bg4); }
+  .acc-item:nth-child(even) .acc-trigger.open { background: var(--bg4); border-left-color: var(--accent2); }
   .acc-item:nth-child(even) .acc-content.open {
-    background: #17190f;
+    background: var(--bg2);
   }
 
   /* Styled A) B) C) ordered lists */
@@ -451,19 +490,21 @@
     font-family: var(--mono);
     font-size: 10px;
     color: var(--text3);
-    background: var(--bg2);
+    background: rgba(17,20,26,0.92);
     border: 1px solid var(--border);
     border-radius: 8px;
-    padding: 8px 14px;
+    padding: 9px 16px;
     cursor: pointer;
     z-index: 100;
     display: flex;
     align-items: center;
     gap: 8px;
-    transition: all 0.15s;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    transition: all 0.2s;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+    backdrop-filter: blur(8px);
+    letter-spacing: 0.06em;
   }
-  .multi-toggle:hover { border-color: var(--accent); color: var(--text2); }
+  .multi-toggle:hover { border-color: var(--accent); color: var(--text2); background: rgba(17,20,26,0.98); }
   .toggle-dot {
     width: 8px; height: 8px; border-radius: 50%;
     transition: background 0.15s;
@@ -519,21 +560,27 @@
   /* ── FOOTER ── */
   .site-footer {
     border-top: 1px solid var(--border);
-    padding: 24px;
+    padding: 20px 24px;
     margin-top: 80px;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 8px;
+    background: linear-gradient(0deg, rgba(10,12,15,0.8) 0%, transparent 100%);
   }
 
-  .site-footer span { font-family: var(--mono); font-size: 11px; color: var(--text3); }
+  .site-footer span {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text3);
+    letter-spacing: 0.06em;
+  }
 
   /* ── TABLES / CONTENT (reuse from v2) ── */
   .table-wrap { overflow-x: auto; border-radius: 10px; border: 1px solid var(--border); margin-bottom: 20px; }
   table { width: 100%; border-collapse: collapse; font-size: 13px; }
   thead tr { background: var(--bg3); border-bottom: 1px solid var(--border); }
-  thead th { font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent2); padding: 13px 16px; text-align: left; white-space: nowrap; }
+  thead th { font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent2); padding: 14px 16px; text-align: left; white-space: nowrap; font-weight: 700; }
   tbody tr { border-bottom: 1px solid var(--border); transition: background 0.1s; }
   tbody tr:last-child { border-bottom: none; }
   tbody tr:hover { background: rgba(79,142,247,0.04); }
@@ -552,11 +599,11 @@
   .usage-bar { flex: 1; height: 6px; background: var(--bg4); border-radius: 3px; overflow: hidden; min-width: 80px; }
   .usage-fill { height: 100%; border-radius: 3px; }
   .usage-pct { font-family: var(--mono); font-size: 11px; color: var(--text2); white-space: nowrap; }
-  .callout { display: flex; gap: 14px; padding: 16px 18px; border-radius: 8px; margin-bottom: 20px; font-size: 13px; line-height: 1.6; }
-  .callout.blue   { background: rgba(79,142,247,0.08);  border: 1px solid rgba(79,142,247,0.2); }
-  .callout.red    { background: rgba(248,113,113,0.08); border: 1px solid rgba(248,113,113,0.2); }
-  .callout.green  { background: rgba(52,211,153,0.08);  border: 1px solid rgba(52,211,153,0.2); }
-  .callout.orange { background: rgba(251,146,60,0.08);  border: 1px solid rgba(251,146,60,0.2); }
+  .callout { display: flex; gap: 14px; padding: 16px 18px; border-radius: 10px; margin-bottom: 20px; font-size: 13px; line-height: 1.6; border-left-width: 3px; }
+  .callout.blue   { background: rgba(79,142,247,0.07);  border: 1px solid rgba(79,142,247,0.18); border-left: 3px solid rgba(79,142,247,0.6); }
+  .callout.red    { background: rgba(248,113,113,0.07); border: 1px solid rgba(248,113,113,0.18); border-left: 3px solid rgba(248,113,113,0.6); }
+  .callout.green  { background: rgba(52,211,153,0.07);  border: 1px solid rgba(52,211,153,0.18); border-left: 3px solid rgba(52,211,153,0.6); }
+  .callout.orange { background: rgba(251,146,60,0.07);  border: 1px solid rgba(251,146,60,0.18); border-left: 3px solid rgba(251,146,60,0.6); }
   .callout-icon { font-size: 18px; flex-shrink: 0; }
   .callout-text { color: var(--text2); }
   .callout-text strong { color: var(--text); }
@@ -2570,7 +2617,8 @@ pause</div>
     <div class="chapter-header"><div class="chapter-icon">🤖</div><div class="chapter-header-text"><div class="chapter-header-num">KAPITTEL 06</div><div class="chapter-header-title">AI VIDEO PROMPTING</div></div></div>
     <div class="accordion">
       <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">6.1</span><span>🤖 Prompt-teknikker</span></div><span class="acc-chevron">▼</span></button><div class="acc-content">
-        <div class="callout blue"><span class="callout-icon">✍️</span><div class="callout-text">En god prompt er bygget opp som et regissørinstruksjoner. Jo mer spesifikk du er, jo bedre resultat. Bruk strukturen under som mal.</div></div>
+        <div class="callout blue"><span class="callout-icon">✍️</span><div class="callout-text">En god prompt er bygget opp som regissørinstruksjoner. Jo mer spesifikk du er, jo bedre resultat.</div></div>
+
         <div class="section-sub-header">Prompt-struktur – Video</div>
         <div class="steps">
           <div class="step"><div class="step-num">1</div><div class="step-content"><strong>Subjekt:</strong> Hvem eller hva er i bildet? Beskriv utseende, klær, stilling.<br><span style="color:var(--text3)">Eks: <em>"a young woman in a weathered leather jacket, braided hair, intense eyes"</em></span></div></div>
@@ -2579,6 +2627,12 @@ pause</div>
           <div class="step"><div class="step-num">4</div><div class="step-content"><strong>Kamera:</strong> Shot type, bevegelse, linse.<br><span style="color:var(--text3)">Eks: <em>"slow dolly push-in, 85mm, shallow depth of field, camera at eye level"</em></span></div></div>
           <div class="step"><div class="step-num">5</div><div class="step-content"><strong>Stil &amp; Lys:</strong> Filmstil, farger, kontrast, grain.<br><span style="color:var(--text3)">Eks: <em>"cinematic, film-inspired color grade, warm tones, subtle grain, high dynamic range"</em></span></div></div>
         </div>
+
+        <div class="section-sub-header">Klassisk Prompt-mal</div>
+        <div class="cards">
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#4f8ef7"></span>Struktur</div><ul><li><strong>ROLE</strong> – Hvem er AI-en i denne prompten?</li><li><strong>STIL</strong> – Visuell stil, tone, genre</li><li><strong>SPESIFISER</strong> – Detaljer om subjekt, miljø, handling</li><li><strong>KONDISJONER</strong> – Hva skal unngås? Negative prompts</li><li><strong>KONTEKST / DATA</strong> – Eventuell referanseinformasjon</li></ul></div>
+        </div>
+
         <div class="section-sub-header">Kameravinkler – hurtigreferanse (Nano Banana / Google Flow)</div>
         <div class="table-wrap"><table>
           <thead><tr><th>Vinkel</th><th>Prompt</th></tr></thead>
@@ -2592,12 +2646,266 @@ pause</div>
             <tr><td>Bakfra</td><td><code>"take a photo of her seen from behind"</code></td></tr>
           </tbody>
         </table></div>
+
         <div class="section-sub-header">Video-bevegelse prompts</div>
         <div class="cards">
           <div class="card"><div class="card-title-inner"><span class="dot" style="background:#4f8ef7"></span>Kamerabevegelse</div><ul><li><code>"slow 5% push-in"</code> – sakte zoom inn</li><li><code>"camera orbit around her"</code> – rotere rundt subjekt</li><li><code>"lateral dolly move"</code> – side-bevegelse</li><li><code>"subtle handheld micro-shake"</code> – dokumentar-feel</li></ul></div>
           <div class="card"><div class="card-title-inner"><span class="dot" style="background:#34d399"></span>Start &amp; Slutt</div><ul><li>Bruk Start + End Frame-funksjonen i verktøyet</li><li>Start: fullfigur, Slutt: nærbilde</li><li>Prompt: <code>"camera zooms in and rotates around her subtle smirk"</code></li></ul></div>
           <div class="card"><div class="card-title-inner"><span class="dot" style="background:#fb923c"></span>Konsistens-tips</div><ul><li>Generer alltid Master-bildet FULLFIGUR først</li><li>Beskriv miljø i prompten for å låse lyset</li><li>Generer karakterbilder i SAMME verktøy du skal animere i</li></ul></div>
         </div>
+
+        <div class="section-sub-header">VEO Prompts</div>
+        <div class="rules">
+          <div class="rule info"><div class="icon">→</div><div><code>Shot with a wide-aperture anamorphic cinema lens for a shallow Depth of Field and subtle lens flares, soft Focus, bokeh in the distance, cinematic composition, ultra photorealistic, 8K</code></div></div>
+          <div class="rule info"><div class="icon">→</div><div><code>Shot with a wide-aperture anamorphic cinema lens, shallow DoF, subtle lens flares, soft Focus, bokeh in the distance, the camera slowly Dolly zooms in, ultra photorealistic, 8K, ultra detailed skin texture, visible pores, harsh shadows</code></div></div>
+          <div class="rule info"><div class="icon">→</div><div><code>Vast dreamlike landscape where hills are colossal sleeping faces, mouths as caverns, lakes as eyes, uncanny scale. Dreamlike logic, cinematic surrealism, eerie lighting, film grain, analogue photography, harsh shadows</code></div></div>
+          <div class="rule info"><div class="icon">→</div><div><code>I'd like model optimized prompts for Runway / Kling: An old man sits alone in an empty diner at night. The waitress comes by and fills his coffee cup. They exchange a friendly smile. Deeply cinematic ambiance, let the visuals communicate the emotion.</code></div></div>
+        </div>
+
+        <div class="section-sub-header">Fashion / Editorial Prompt (MidJourney)</div>
+        <div style="background:rgba(0,0,0,0.3);border:1px solid var(--border);border-radius:8px;padding:16px;font-family:var(--mono);font-size:11px;color:var(--text2);white-space:pre-wrap;line-height:1.7;margin-bottom:8px">Editorial style portrait of a woman of color, medium shot, focus on her face. Elegant composition, soft golden natural light, glowing realistic skin with visible pores and fine texture, subtle facial lines and highlights. Warm tones, natural expression. Photographed in the style of Petra Collins raw, intimate aesthetic, gentle shadow play, minimalism, soft pastel tones, low contrast, fine film grain, natural color grading. Light, airy background, calm and refined atmosphere, hyper-realistic, high resolution. --ar 9:16 --style raw --v 7 --stylize 500 --p 5mwblry 5aj4dnk</div>
+
+        <div class="section-sub-header">Ferdig Prompt-eksempel – IKEA AD</div>
+        <div style="background:rgba(0,0,0,0.3);border:1px solid var(--border);border-radius:8px;padding:16px;font-family:var(--mono);font-size:11px;color:var(--text2);white-space:pre-wrap;line-height:1.7;max-height:240px;overflow-y:auto;margin-bottom:8px">prompt_name: "IKEA Empty Room Assembly"
+base_style: "cinematic, photorealistic, 4K"  |  aspect_ratio: "16:9"
+room_description: "Empty, large, sunlit Scandinavian room, white walls, light wood floors."
+camera_setup: "Single fixed wide-angle shot. Camera does not move for entire 8 seconds."
+negative_prompts: no people · no text overlays · no distracting music
+
+TIMELINE:
+00:00–00:01  Sealed IKEA box trembles gently in the center of the empty room.
+             Audio: low subtle rumbling, echo of a large empty room.
+00:01–00:02  Box seams burst open with a puff of cardboard dust.
+             Audio: sharp POP, tearing cardboard.
+00:02–00:06  Hyper-lapse: furniture flies out and assembles — bed, wardrobe, shelves,
+             mirror, rug, curtains, plants, lamps, art.
+             Audio: cascade of ASMR sounds — whirring, clicking, wood snapping into place.
+00:06–00:08  Yellow throw blanket gracefully lands on the newly formed bed. All motion ceases.
+             Audio: soft "fwoomp". The sound of a furnished, quiet room.</div>
+
+        <div class="section-sub-header">Prompt-mal (Blank)</div>
+        <div style="background:rgba(0,0,0,0.3);border:1px solid var(--border);border-radius:8px;padding:16px;font-family:var(--mono);font-size:11px;color:var(--text2);white-space:pre-wrap;line-height:1.7;max-height:200px;overflow-y:auto;margin-bottom:8px">prompt_name: "Navn på videoen"
+base_style: "f.eks. 'cinematic, vintage, high-key lighting'"  |  aspect_ratio: "16:9 / 9:16"
+room_description: "Beskriv miljøet eller settingen"
+camera_setup: "Beskriv kameraets posisjon og bevegelse"
+key_elements: Hovedmotiv 1 · Hovedmotiv 2
+negative_prompts: Ting du vil unngå
+
+TIMELINE:
+00:00–00:03  Hva skjer i de første sekundene
+             Audio: beskriv lyden
+00:03–00:06  Hva skjer i midten
+             Audio: beskriv lyden
+00:06–00:08  Hva skjer mot slutten
+             Audio: beskriv lyden</div>
+
+        <div class="section-sub-header">🎥 CINEMATIC AI PROMPTS</div>
+        <div class="callout blue"><span class="callout-icon">🎬</span><div class="callout-text">Input ett BASE-bilde og bruk disse promptene i sekvens. Generer alltid Master-bildet (FULLFIGUR) først for konsistens på tvers av alle shots.</div></div>
+
+        <div style="font-family:var(--mono);font-size:12px;font-weight:700;color:var(--accent2);margin:20px 0 8px;text-transform:uppercase;letter-spacing:1px">Foundational Image Prompt</div>
+        <div style="background:rgba(0,0,0,0.3);border:1px solid var(--border);border-radius:8px;padding:16px;font-family:var(--mono);font-size:11px;color:var(--text2);white-space:pre-wrap;line-height:1.7;margin-bottom:8px">Ultra-realistic waist-up cinematic portrait of [CHARACTER] in [ENVIRONMENT].
+Wearing [OUTFIT DETAILS] with [ACCESSORIES].
+[AGE / ETHNICITY / FEATURES], natural skin texture and subtle imperfections.
+Facing the camera with an intentional expression.
+Cinematic lighting with clear key light and rim separation.
+Shot on [LENS TYPE], shallow depth, softly blurred background.
+Film-inspired color grade, high dynamic range, subtle grain.
+Grounded realism, accurate proportions, no distortion.</div>
+        <div class="callout green" style="margin-bottom:16px"><span class="callout-icon">💡</span><div class="callout-text"><strong>Eksempel – Tribal Huntress:</strong> "Ultra-realistic waist-up cinematic portrait of a fierce tribal huntress on a sunlit cliff at golden hour. Wearing weathered leather crop top, braided arm wraps, strap harness, layered necklaces. Mid-20s, Mediterranean, athletic build, war paint, intense eyes, natural skin with dirt and sweat. Warm golden key light from side, subtle rim light. Shot on 50mm cinema lens, shallow DoF, blurred coastal landscape. Film-inspired grade, warm tones, subtle grain."</div></div>
+
+        <div style="font-family:var(--mono);font-size:12px;font-weight:700;color:var(--accent2);margin:20px 0 8px;text-transform:uppercase;letter-spacing:1px">Version 1 – 3×3 Cinematic Contact Sheet</div>
+        <div style="background:rgba(0,0,0,0.3);border:1px solid var(--border);border-radius:8px;padding:16px;font-family:var(--mono);font-size:11px;color:var(--text2);white-space:pre-wrap;line-height:1.7;max-height:260px;overflow-y:auto;margin-bottom:8px">Analyze the entire composition of the input image. Identify ALL key subjects and generate a cohesive 3×3 grid "Cinematic Contact Sheet" with 9 distinct camera shots.
+
+ROW 1 – Establishing Context:
+1. Extreme Long Shot (ELS)   – Subject small within the vast environment
+2. Long Shot (LS)            – Complete subject visible head to toe
+3. Medium Long Shot (MLS)    – Framed from knees up / 3-4 view
+
+ROW 2 – Core Coverage:
+4. Medium Shot (MS)          – Waist up, focus on interaction/action
+5. Medium Close-Up (MCU)     – Chest up, intimate framing
+6. Close-Up (CU)             – Tight on the face / front of object
+
+ROW 3 – Details & Angles:
+7. Extreme Close-Up (ECU)    – Macro detail: eyes, hands, texture, key element
+8. Low Angle (Worm's Eye)    – Looking up, imposing/heroic
+9. High Angle (Bird's Eye)   – Looking down from above
+
+Requirements:
+- Same subjects, clothes, lighting across all 9 panels
+- DoF shifts realistically: bokeh in close-ups, deeper in wides
+- Photorealistic textures, consistent cinematic color grading
+
+Output: A professional 3×3 storyboard grid. All frames: correct framing for subjects/objects analyzed.
+
+→ Extract the still x.y</div>
+
+        <div style="font-family:var(--mono);font-size:12px;font-weight:700;color:var(--accent2);margin:20px 0 8px;text-transform:uppercase;letter-spacing:1px">Version 2 – Full Director's Cut (Keyframe Sequence)</div>
+        <div style="background:rgba(0,0,0,0.3);border:1px solid var(--border);border-radius:8px;padding:16px;font-family:var(--mono);font-size:11px;color:var(--text2);white-space:pre-wrap;line-height:1.7;max-height:280px;overflow-y:auto;margin-bottom:8px">ROLE: Award-winning trailer director + cinematographer + storyboard artist.
+Turn ONE reference image into a cohesive cinematic short sequence with AI-video-ready keyframes.
+
+NON-NEGOTIABLE RULES:
+1. Analyze full composition: ALL subjects, spatial relationships, interactions
+2. Do NOT guess real identities or locations — stick to visible facts
+3. Strict continuity: same subjects, wardrobe, environment, lighting across all shots
+4. DoF realistic: deeper in wides, shallower in close-ups with natural bokeh
+5. Do NOT introduce new characters/objects not in the reference image
+
+GOAL: 10–20 second cinematic clip. Clear arc: setup → build → turn → payoff.
+
+OUTPUT IN ORDER:
+A) Scene Breakdown      – Subjects / Environment & Lighting / Visual Anchors (3–6 constants)
+B) Theme & Story        – Theme sentence / Logline / 4-beat Emotional Arc
+C) Cinematic Approach   – Shot progression / Camera movement plan / Lens & exposure / Light & color
+D) Keyframes (9–12)     – [KF# | duration sec | shot type]
+                          · Composition: placement, foreground/mid/background
+                          · Action/beat: what visibly happens
+                          · Camera: height, angle, movement (e.g. slow 5% push-in)
+                          · Lens/DoF: focal length mm, DoF, focus target
+                          · Lighting: highlight/shadow emphasis
+                          · Sound (optional): one line
+E) ONE Master Contact Sheet – All KFs in one grid (3×3 or 4×3)
+
+Must include: 1 wide · 1 intimate CU · 1 ECU · 1 power angle (low or high)
+
+→ Extract frame KF1</div>
+
+        <div style="font-family:var(--mono);font-size:12px;font-weight:700;color:var(--accent2);margin:20px 0 8px;text-transform:uppercase;letter-spacing:1px">Version 3 – Story-to-Storyboard</div>
+        <div style="background:rgba(0,0,0,0.3);border:1px solid var(--border);border-radius:8px;padding:16px;font-family:var(--mono);font-size:11px;color:var(--text2);white-space:pre-wrap;line-height:1.7;max-height:260px;overflow-y:auto;margin-bottom:8px">STORY-TO-STORYBOARD META-PROMPT
+
+Input your story: "A woman walks to a dark temple and meets a crazy shaman who blesses her"
+
+IMPORTANT: Do not create the image — create the detailed prompt for the image.
+The prompt must reference both the story and the reference image provided.
+
+When user provides a short synopsis, identify:
+- Main subjects, appearance, defining traits
+- Environment, tone, emotional beat
+- Lighting/mood implied by the story
+
+Then create a 3×3 cinematic storyboard grid (9 shots, same subjects/wardrobe/lighting).
+
+OUTPUT FORMAT – Cinematic 3×3 Storyboard:
+Story Synopsis (interpreted): one-sentence interpretation
+
+Row 1 – Establishing Context:
+1. ELS: Subjects small in vast environment — match story setting, lighting, mood
+2. LS:  Complete subject(s) visible head to toe, natural within environment
+3. MLS: Knees up (or 3/4 for objects), showing stance, posture, core emotion
+
+Row 2 – Core Coverage:
+4. MS:  Waist up — key action, attitude, or emotional beat implied by story
+5. MCU: Chest up — emotion, micro-interaction, narrative tension
+6. CU:  Tight on face — cinematic DoF, emotional clarity
+
+Row 3 – Details & Angles:
+7. ECU: Macro detail — eyes, hands, symbolic object, key story element
+8. Low Angle: Camera looking up (dramatic/heroic/imposing)
+9. High Angle: Camera looking down (vulnerability/spatial overview)
+
+Global Requirements:
+- Same subjects in all 9 frames · same clothing/hairstyle/props
+- Same lighting conditions and color grading
+- Consistent environment and weather
+- Photorealistic textures, cinematic DoF accuracy
+
+→ Extract the still x.y</div>
+
+        <div class="section-sub-header">🌙 Free Nano Banana Prompts</div>
+        <div class="cards">
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#4f8ef7"></span>A. Basic Editing &amp; Lighting</div><ul><li>Change time of day to night with neon lighting and vibrant reflections.</li><li>Add soft studio lighting and warm cinematic shadows.</li><li>Make this look like golden hour with rich, warm tones.</li></ul></div>
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#34d399"></span>B. Style &amp; Personal Branding</div><ul><li>Apply a formal business outfit, modern office background, professional LinkedIn vibe.</li><li>Give me a confident Tinder photo with natural lighting and casual clothes.</li><li>Make this a stylish Facebook banner image, colorful and friendly.</li></ul></div>
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#fb923c"></span>C. Hairstyles &amp; Transformations</div><ul><li>Give me a short buzzcut, clean and sharp.</li><li>Make my hair long, blonde, and luscious with natural waves.</li><li>Preview 3 hairstyle variations in separate versions.</li></ul></div>
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#c084fc"></span>D. Multiverse Experiments</div><ul><li>Make me look like I'm in the 1970s — retro clothes, film grain, warm tones.</li><li>Transform into 90s vibe: Polaroid aesthetic, vintage colors, grunge outfit.</li><li>Turn into year 2050: futuristic outfit, neon accents, cyberpunk background.</li><li>Recreate me as an East Asian version, same pose, same lighting.</li><li>Gender-swap me into a realistic female version, styled naturally.</li></ul></div>
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#22d3ee"></span>E. Travel &amp; Background Swaps</div><ul><li>Place me on the summit of the Himalayas at sunrise, cinematic lighting.</li><li>Put me on a tropical Bali beach with turquoise water.</li><li>Teleport me to Times Square at night, glowing neon lights.</li></ul></div>
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#f472b6"></span>F. Cleanups &amp; Removals</div><ul><li>Remove everyone from the photo except me.</li><li>Remove all background objects, keep subject clean and sharp.</li><li>Remove specific people by position (e.g., "remove person in red jacket").</li></ul></div>
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#fbbf24"></span>G. Restoration &amp; Colorization</div><ul><li>Restore this 120-year-old photo: sharpen details, recolor naturally, clean damage.</li><li>Recolor this black-and-white portrait with soft skin tones and realistic contrast.</li></ul></div>
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#4f8ef7"></span>H. AI Influencers &amp; Monetization</div><ul><li>Generate a hyper-realistic influencer: trendy buzzcut, streetwear outfit, soft light.</li><li>Make 5 versions of the same influencer doing lifestyle poses in different locations.</li><li>Create luxury travel influencer shots for Instagram, perfectly aesthetic.</li></ul></div>
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#34d399"></span>I. Products &amp; Branding</div><ul><li>Apply this T-shirt design to the model, seamless fit, soft shadows.</li><li>Place this bag in a luxury setting, cinematic lighting and reflections.</li><li>Realistic product photo with soft studio lights, blurred background.</li><li>Replace the logo on this bottle with my brand name.</li></ul></div>
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#fb923c"></span>J. Thumbnails &amp; Graphic Design</div><ul><li>Make me look more confident and energetic for a YouTube thumbnail.</li><li>Add a smartphone in my hand, bring it closer to camera for depth.</li><li>Make the expression shocked and excited, bold lighting, colorful accents.</li></ul></div>
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#c084fc"></span>K. Website &amp; Marketing Materials</div><ul><li>Design a sleek landing page for [product name] with high-converting layout.</li><li>Create a modern e-commerce homepage with product mockups and pricing cards.</li><li>Generate a poster in Soviet-style propaganda aesthetic with clean typography.</li></ul></div>
+        </div>
+
+        <div class="section-sub-header">Prompt Keywords – Referansetabell</div>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Kategori</th><th>Nøkkelord</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Kamera + Linse</strong></td><td><code>shot on 50mm lens</code> · <code>DSLR photo</code> · <code>full-frame sensor look</code> · <code>prime lens clarity</code> · <code>bokeh background</code> · <code>camera grain</code> · <code>motion blur</code> · <code>handheld photo effect</code> · <code>low aperture (f/1.8)</code> · <code>slight lens distortion</code> · <code>chromatic aberration</code></td></tr>
+            <tr><td><strong>Generelle begreper</strong></td><td><code>photorealistic</code> · <code>hyper-realistic</code> · <code>ultra-detailed</code> · <code>cinematic realism</code> · <code>high-resolution texture</code> · <code>lifelike lighting</code> · <code>shallow depth of field</code> · <code>natural imperfections</code> · <code>documentary-style</code> · <code>candid feel</code> · <code>realistic reflections and shadows</code> · <code>unedited photo look</code></td></tr>
+            <tr><td><strong>Tekstur &amp; Imperfections</strong></td><td><code>visible skin pores</code> · <code>realistic skin sheen</code> · <code>frizz and flyaways</code> · <code>peach fuzz</code> · <code>fabric texture and creases</code> · <code>water droplets on surface</code> · <code>condensation on cold objects</code> · <code>slight smudges or fingerprints</code> · <code>dust particles in light</code> · <code>lint, scratches, natural wear</code></td></tr>
+            <tr><td><strong>Lys (Lighting)</strong></td><td><code>soft natural light</code> · <code>harsh midday sun</code> · <code>backlit glow</code> · <code>overexposed highlights</code> · <code>real-time shadow falloff</code> · <code>mixed lighting sources</code> · <code>window light with bounce</code> · <code>golden hour tones</code> · <code>warm morning light</code> · <code>dim ambient light</code> · <code>specular highlights</code></td></tr>
+          </tbody>
+        </table></div>
+
+        <div class="section-sub-header">Cameras, Shot Types &amp; Directors</div>
+        <div class="cards">
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#4f8ef7"></span>📷 Foto-kameraer</div><ul><li>Canon EOS 5D Mark IV</li><li>Sony Alpha a7 III</li><li>Hasselblad X1D</li><li>Nikon D850</li><li>Panasonic Lumix GH5S</li><li>Kodak Portra 800 film</li></ul></div>
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#34d399"></span>🎬 Cinematic Cameras</div><ul><li>Arri Alexa</li><li>Sony CineAlta</li><li>Canon Cinema EOS</li><li>Blackmagic Design Camera</li><li>Phantom High-Speed Camera</li><li>Super-16 (vintage)</li><li>DJI Phantom 4 Pro – Aerial</li></ul></div>
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#fb923c"></span>🎥 Shot Types</div><ul><li>Extreme Long Shot / Long Shot</li><li>Medium Shot / Close-Up / Extreme Close-Up</li><li>Full Shot (full body visible)</li><li>Over the Shoulder / Point of View</li><li>Low Angle / High Angle / Eye Level</li><li>Dutch Angle / Bird's Eye / Drone Shot</li><li>Rule of Thirds / Silhouette / Candid Shot</li></ul></div>
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#c084fc"></span>🎞️ Directors</div><ul><li>Martin Scorsese</li><li>Michael Mann</li><li>Quentin Tarantino</li><li>Denis Villeneuve</li><li>Christopher Nolan</li></ul></div>
+        </div>
+
+        <div class="section-sub-header">Style Modifiers – Prompt-ord</div>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Prompt-ord</th><th>Hva det gjør</th></tr></thead>
+          <tbody>
+            <tr><td><code>Cinestill</code></td><td>Filmatisk look – kornete analog-film følelse</td></tr>
+            <tr><td><code>Kodachrome</code></td><td>Rike, varme nostalgiske farger</td></tr>
+            <tr><td><code>Polaroid</code></td><td>Direktebilde-estetikk, litt mykt og kornete</td></tr>
+            <tr><td><code>Fisheye lens</code></td><td>Ekstrem vidvinkel som buer bildet kraftig</td></tr>
+            <tr><td><code>Macro lens</code></td><td>Ekstremt nærbilde – insekter, øyne, tekstur</td></tr>
+            <tr><td><code>Double exposure</code></td><td>To bilder smeltet sammen – kunstnerisk og drømmeaktig</td></tr>
+            <tr><td><code>Long exposure</code></td><td>Vann mykt, billys til striper – drømmeaktig</td></tr>
+            <tr><td><code>Tilt-shift</code></td><td>Landskap ser ut som miniatyrbyer / leketøy</td></tr>
+            <tr><td><code>Infrared</code></td><td>Grønne trær blir rosa/hvite – surrealistisk</td></tr>
+            <tr><td><code>Golden Hour</code></td><td>Varmt mykt lys rett før solnedgang</td></tr>
+            <tr><td><code>Blue Hour</code></td><td>Kjølig blått lys rett etter solnedgang</td></tr>
+            <tr><td><code>Silhouette</code></td><td>Motivet sort mot lys bakgrunn</td></tr>
+            <tr><td><code>Cyberpunk</code></td><td>Futuristisk, mørkt med neon-lys (rosa/lilla/blått)</td></tr>
+            <tr><td><code>Synthwave</code></td><td>80-talls retro med sterke neonfarger og solnedganger</td></tr>
+            <tr><td><code>Lomography</code></td><td>Sterke farger, mørke hjørner (vignettering) – kunstnerisk</td></tr>
+            <tr><td><code>Disposable camera</code></td><td>Engangskamera-feel – kornete og uperfekt, sjarmerende</td></tr>
+            <tr><td><code>CCTV / Surveillance footage</code></td><td>Kornete overvåkningskamera – skummel eller mystisk stemning</td></tr>
+            <tr><td><code>Daguerreotype</code></td><td>1800-tallsfoto på metallplate – svart/hvitt med tekstur og riper</td></tr>
+          </tbody>
+        </table></div>
+
+        <div class="section-sub-header">Video Prompt Oppskrifter</div>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Type Video</th><th>Formel</th><th>Eksempel</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Filmatisk Scene</strong></td><td><code>{Sjanger}, {Person}, {Handling}, {Miljø}, {Kameravinkel}, {Lyssetting}</code></td><td>Cyberpunk-by, natt, person ser utover regnet, wide-angle, neonlys</td></tr>
+            <tr><td><strong>Naturscene</strong></td><td><code>{Sted og tid}, {Motiv}, {Handling}, {Miljødetaljer}, {Kameravinkel}, {Lys}</code></td><td>Skilpadde krabber mot havet i soloppgang, drone-shot</td></tr>
+            <tr><td><strong>Produktvideo</strong></td><td><code>{Produkt}, {Setting}, {Presentasjon}, {Visuell stil}, {Kamera}, {Lys}</code></td><td>Espressomaskin på kjøkkenbenk, damp stiger opp, studio lighting</td></tr>
+          </tbody>
+        </table></div>
+        <div class="callout orange"><span class="callout-icon">💡</span><div class="callout-text">Hold det enkelt! AI sliter med for mange handlinger i én video. Beskriv <strong>én tydelig bevegelse</strong> per prompt.</div></div>
+
+        <div class="section-sub-header">Kreative Videoprompts</div>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Prompt</th><th>Hva den gjør</th></tr></thead>
+          <tbody>
+            <tr><td colspan="2" style="color:var(--accent2);font-family:var(--mono);font-size:11px;font-weight:700;padding:10px 12px 4px">STORYTELLING</td></tr>
+            <tr><td><code>Tell a day-in-the-life story of a hypothetical character from the future.</code></td><td>Hverdagen til en person i fremtiden</td></tr>
+            <tr><td><code>Create a mini-documentary about a local artisan showcasing their craft.</code></td><td>Stemningsfull minidokumentar om en håndverker</td></tr>
+            <tr><td><code>Imagine the last human on Earth sending a message to future civilizations.</code></td><td>Emosjonell scene – det siste mennesket sender en beskjed</td></tr>
+            <tr><td><code>Depict a love story told through AI-generated letters across different timelines.</code></td><td>Kjærlighetshistorie gjennom brev fra ulike tidsaldre</td></tr>
+            <tr><td colspan="2" style="color:var(--accent2);font-family:var(--mono);font-size:11px;font-weight:700;padding:10px 12px 4px">MARKEDSFØRING</td></tr>
+            <tr><td><code>Showcase a new product launch with futuristic features and its benefits.</code></td><td>Produktlansering med futuristiske funksjoner</td></tr>
+            <tr><td><code>Develop a campaign video that addresses common myths about solar energy.</code></td><td>Kampanjevideo som knuser myter om solenergi</td></tr>
+            <tr><td><code>Produce a company mission statement video narrated by an AI-generated avatar.</code></td><td>Bedriftsvideo fortalt av AI-avatar av CEO</td></tr>
+            <tr><td><code>Create a year-end review video highlighting a company's achievements.</code></td><td>Oppsummerer årets høydepunkter for en bedrift</td></tr>
+            <tr><td colspan="2" style="color:var(--accent2);font-family:var(--mono);font-size:11px;font-weight:700;padding:10px 12px 4px">SCI-FI &amp; EKSPERIMENTELT</td></tr>
+            <tr><td><code>Depict a day in the life of an AI companion navigating human society in 2080.</code></td><td>En dag i livet til en AI-robot i år 2080</td></tr>
+            <tr><td><code>Create a speculative video exploring how dreams might look if recorded and replayed.</code></td><td>Drømmer på film – surrealistisk</td></tr>
+            <tr><td><code>Visualize an AI's interpretation of the word "freedom" using surreal symbolic imagery.</code></td><td>Surrealistisk tolkning av frihet</td></tr>
+            <tr><td colspan="2" style="color:var(--accent2);font-family:var(--mono);font-size:11px;font-weight:700;padding:10px 12px 4px">KULTUR &amp; INSPIRASJON</td></tr>
+            <tr><td><code>Celebrate the unsung heroes of local communities through short AI-driven documentaries.</code></td><td>Hyller lokale hverdagshelter</td></tr>
+            <tr><td><code>Illustrate the history of jazz through abstract AI visuals synced with real music samples.</code></td><td>Jazzens historie med abstrakt kunst og musikk</td></tr>
+            <tr><td><code>Reimagine world landmarks as if designed by futuristic architects.</code></td><td>Kjente landemerker i futuristisk design</td></tr>
+          </tbody>
+        </table></div>
+
       </div></div>
 
       <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">6.2</span><span>🧰 Verktøy og plattformer</span></div><span class="acc-chevron">▼</span></button><div class="acc-content">
@@ -2648,6 +2956,55 @@ pause</div>
         </div>
         <div class="callout green"><span class="callout-icon">💡</span><div class="callout-text"><strong>Workflow fra Notion:</strong> For fullstendige AI-prompts, tutorials og inspirasjon – se AI PROMPTS DOKUMENT og CINEMATIC AI PROMPTS i Notion-workspace.</div></div>
       </div></div>
+
+      <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">6.4</span><span>📹 Tutorial-videoer</span></div><span class="acc-chevron">▼</span></button><div class="acc-content">
+        <div class="callout blue"><span class="callout-icon">🎬</span><div class="callout-text">Samling av tutorials for hvert AI-verktøy. Klikk på kortet for å åpne Notion-siden med alle videoer.</div></div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:8px">
+
+          <div style="background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:12px;overflow:hidden">
+            <a href="https://dune-bench-fb0.notion.site/TUTORIALS-NANO-BANANA-etc-2c7052ad22b38068b027c270d799c242" target="_blank" rel="noopener noreferrer" style="text-decoration:none;display:block">
+              <div style="background:linear-gradient(135deg,rgba(251,191,36,0.18),rgba(251,191,36,0.04));border-bottom:1px solid var(--border);padding:36px 24px;text-align:center;cursor:pointer;transition:background 0.2s" onmouseover="this.style.background='linear-gradient(135deg,rgba(251,191,36,0.3),rgba(251,191,36,0.1))'" onmouseout="this.style.background='linear-gradient(135deg,rgba(251,191,36,0.18),rgba(251,191,36,0.04))'">
+                <div style="font-size:42px;margin-bottom:10px">🍌</div>
+                <div style="font-family:var(--mono);font-size:13px;font-weight:700;color:#fbbf24;margin-bottom:4px">NANO BANANA</div>
+                <div style="font-family:var(--mono);font-size:10px;color:var(--text3)">▶ Åpne tutorials</div>
+              </div>
+            </a>
+            <div style="padding:14px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap">
+              <a href="https://dune-bench-fb0.notion.site/TUTORIALS-NANO-BANANA-etc-2c7052ad22b38068b027c270d799c242" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:11px;color:var(--text2);background:rgba(255,255,255,0.05);border:1px solid var(--border);padding:8px 14px;border-radius:7px;text-decoration:none" onmouseover="this.style.borderColor='var(--accent2)'" onmouseout="this.style.borderColor='var(--border)'">👁 Åpne offentlig</a>
+              <a href="https://www.notion.so/TUTORIALS-NANO-BANANA-etc-2c7052ad22b38068b027c270d799c242" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:11px;font-weight:700;color:#fff;background:var(--accent2);padding:8px 14px;border-radius:7px;text-decoration:none" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">✏️ Rediger →</a>
+            </div>
+          </div>
+
+          <div style="background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:12px;overflow:hidden">
+            <a href="https://dune-bench-fb0.notion.site/TUTORIALS-MIDJOURNEY-2c7052ad22b380ce83e5fe7a7cdd0999" target="_blank" rel="noopener noreferrer" style="text-decoration:none;display:block">
+              <div style="background:linear-gradient(135deg,rgba(79,142,247,0.18),rgba(79,142,247,0.04));border-bottom:1px solid var(--border);padding:36px 24px;text-align:center;cursor:pointer;transition:background 0.2s" onmouseover="this.style.background='linear-gradient(135deg,rgba(79,142,247,0.3),rgba(79,142,247,0.1))'" onmouseout="this.style.background='linear-gradient(135deg,rgba(79,142,247,0.18),rgba(79,142,247,0.04))'">
+                <div style="font-size:42px;margin-bottom:10px">🎨</div>
+                <div style="font-family:var(--mono);font-size:13px;font-weight:700;color:#4f8ef7;margin-bottom:4px">MIDJOURNEY</div>
+                <div style="font-family:var(--mono);font-size:10px;color:var(--text3)">▶ Åpne tutorials</div>
+              </div>
+            </a>
+            <div style="padding:14px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap">
+              <a href="https://dune-bench-fb0.notion.site/TUTORIALS-MIDJOURNEY-2c7052ad22b380ce83e5fe7a7cdd0999" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:11px;color:var(--text2);background:rgba(255,255,255,0.05);border:1px solid var(--border);padding:8px 14px;border-radius:7px;text-decoration:none" onmouseover="this.style.borderColor='var(--accent2)'" onmouseout="this.style.borderColor='var(--border)'">👁 Åpne offentlig</a>
+              <a href="https://www.notion.so/TUTORIALS-MIDJOURNEY-2c7052ad22b380ce83e5fe7a7cdd0999" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:11px;font-weight:700;color:#fff;background:var(--accent2);padding:8px 14px;border-radius:7px;text-decoration:none" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">✏️ Rediger →</a>
+            </div>
+          </div>
+
+          <div style="background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:12px;overflow:hidden">
+            <a href="https://dune-bench-fb0.notion.site/TUTORIALS-WEAVY-2c7052ad22b3801c90b8cc5df8b74122" target="_blank" rel="noopener noreferrer" style="text-decoration:none;display:block">
+              <div style="background:linear-gradient(135deg,rgba(34,211,238,0.18),rgba(34,211,238,0.04));border-bottom:1px solid var(--border);padding:36px 24px;text-align:center;cursor:pointer;transition:background 0.2s" onmouseover="this.style.background='linear-gradient(135deg,rgba(34,211,238,0.3),rgba(34,211,238,0.1))'" onmouseout="this.style.background='linear-gradient(135deg,rgba(34,211,238,0.18),rgba(34,211,238,0.04))'">
+                <div style="font-size:42px;margin-bottom:10px">🌊</div>
+                <div style="font-family:var(--mono);font-size:13px;font-weight:700;color:#22d3ee;margin-bottom:4px">WEAVY AI</div>
+                <div style="font-family:var(--mono);font-size:10px;color:var(--text3)">▶ Åpne tutorials</div>
+              </div>
+            </a>
+            <div style="padding:14px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap">
+              <a href="https://dune-bench-fb0.notion.site/TUTORIALS-WEAVY-2c7052ad22b3801c90b8cc5df8b74122" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:11px;color:var(--text2);background:rgba(255,255,255,0.05);border:1px solid var(--border);padding:8px 14px;border-radius:7px;text-decoration:none" onmouseover="this.style.borderColor='var(--accent2)'" onmouseout="this.style.borderColor='var(--border)'">👁 Åpne offentlig</a>
+              <a href="https://www.notion.so/TUTORIALS-WEAVY-2c7052ad22b3801c90b8cc5df8b74122" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:11px;font-weight:700;color:#fff;background:var(--accent2);padding:8px 14px;border-radius:7px;text-decoration:none" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">✏️ Rediger →</a>
+            </div>
+          </div>
+
+        </div>
+      </div></div>
     </div>
   </div>
 </div>
@@ -2670,6 +3027,29 @@ pause</div>
             <a href="https://dune-bench-fb0.notion.site/INSPIRASJON-26c052ad22b3803d9ddaf77f4cbf13c1" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:12px;color:var(--text2);background:rgba(255,255,255,0.05);border:1px solid var(--border);padding:10px 20px;border-radius:8px;text-decoration:none" onmouseover="this.style.borderColor='var(--accent2)'" onmouseout="this.style.borderColor='var(--border)'">👁 Åpne offentlig</a>
             <a href="https://www.notion.so/INSPIRASJON-26c052ad22b3803d9ddaf77f4cbf13c1" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:12px;font-weight:700;color:#fff;background:var(--accent2);padding:10px 20px;border-radius:8px;text-decoration:none" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">✏️ Rediger i Notion →</a>
           </div>
+        </div>
+        <div class="section-sub-header" style="margin-top:24px">Referanser &amp; Inspirasjon på nett</div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px">
+          <a href="https://film-grab.com/category/genre/drama/" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:flex-start;gap:12px;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:10px;padding:16px;text-decoration:none;transition:border-color 0.15s" onmouseover="this.style.borderColor='var(--accent2)'" onmouseout="this.style.borderColor='var(--border)'">
+            <div style="font-size:22px;flex-shrink:0">🎞️</div>
+            <div><div style="font-family:var(--mono);font-size:12px;font-weight:700;color:var(--text);margin-bottom:3px">Film Grab</div><div style="font-family:var(--mono);font-size:10px;color:var(--text3);line-height:1.5">Cinematic frame grabs sortert etter sjanger – drama, thriller, sci-fi</div></div>
+          </a>
+          <a href="https://frameset.app/search" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:flex-start;gap:12px;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:10px;padding:16px;text-decoration:none;transition:border-color 0.15s" onmouseover="this.style.borderColor='var(--accent2)'" onmouseout="this.style.borderColor='var(--border)'">
+            <div style="font-size:22px;flex-shrink:0">🔍</div>
+            <div><div style="font-family:var(--mono);font-size:12px;font-weight:700;color:var(--text);margin-bottom:3px">Frameset</div><div style="font-family:var(--mono);font-size:10px;color:var(--text3);line-height:1.5">Søk etter filmscener og frames på tvers av hundrevis av filmer</div></div>
+          </a>
+          <a href="https://frame-extractor.com/en" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:flex-start;gap:12px;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:10px;padding:16px;text-decoration:none;transition:border-color 0.15s" onmouseover="this.style.borderColor='var(--accent2)'" onmouseout="this.style.borderColor='var(--border)'">
+            <div style="font-size:22px;flex-shrink:0">✂️</div>
+            <div><div style="font-family:var(--mono);font-size:12px;font-weight:700;color:var(--text);margin-bottom:3px">Frame Extractor</div><div style="font-family:var(--mono);font-size:10px;color:var(--text3);line-height:1.5">Trekk ut enkeltframes fra video – nyttig for referanser og AI-input</div></div>
+          </a>
+          <a href="https://eyecannndy.com/" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:flex-start;gap:12px;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:10px;padding:16px;text-decoration:none;transition:border-color 0.15s" onmouseover="this.style.borderColor='var(--accent2)'" onmouseout="this.style.borderColor='var(--border)'">
+            <div style="font-size:22px;flex-shrink:0">👁</div>
+            <div><div style="font-family:var(--mono);font-size:12px;font-weight:700;color:var(--text);margin-bottom:3px">Eye Candy</div><div style="font-family:var(--mono);font-size:10px;color:var(--text3);line-height:1.5">Visuell inspirasjon – fargepaletter, estetikk og cinematiske referanser</div></div>
+          </a>
+          <a href="https://deckofbrilliance.com/" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:flex-start;gap:12px;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:10px;padding:16px;text-decoration:none;transition:border-color 0.15s" onmouseover="this.style.borderColor='var(--accent2)'" onmouseout="this.style.borderColor='var(--border)'">
+            <div style="font-size:22px;flex-shrink:0">🃏</div>
+            <div><div style="font-family:var(--mono);font-size:12px;font-weight:700;color:var(--text);margin-bottom:3px">Deck of Brilliance</div><div style="font-family:var(--mono);font-size:10px;color:var(--text3);line-height:1.5">Kreative kort og idé-verktøy for storytelling og konseptutvikling</div></div>
+          </a>
         </div>
       </div></div>
 
