@@ -3428,6 +3428,68 @@ Global Requirements:
           <div class="card"><div class="card-title-inner"><span class="dot" style="background:#34d399"></span>1b – Full rigg (SeeMo)</div><ul><li>Falcam Cage + side handle + top handle</li><li>Sennheiser MKE400</li><li>PowerBank eller SmallRig NP-F970</li><li>SeeMo 4K monitor</li></ul></div>
           <div class="card"><div class="card-title-inner"><span class="dot" style="background:#fb923c"></span>2a/2b – Minimal rigg</div><ul><li>Falcam Half Cage</li><li>Atomos eller SeeMo</li><li>Uten side handle – lettere oppsett</li></ul></div>
         </div>
+
+        <div class="section-sub-header">🎛️ Custom Keys</div>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Knapp</th><th>Funksjon</th><th>Notat</th></tr></thead>
+          <tbody>
+            <tr><td>C1</td><td>WB (White Balance)</td><td>Beholde</td></tr>
+            <tr><td>C2</td><td>ISO</td><td>Eller bruk scroll</td></tr>
+            <tr><td>C3</td><td>FOCUS MAG</td><td>Beholde – zoomer inn for fokuskontroll</td></tr>
+            <tr><td>C4</td><td>Hold Focus / LUT av-på</td><td>Hold inne = låser fokus på objekt</td></tr>
+            <tr><td>Fn-meny</td><td>PEAKING, ZEBRA, DISP</td><td>Bruk Fn-knapper for disse</td></tr>
+            <tr><td>Scroll/hjul</td><td>SHUTTER (+ lydnivå på mikrofon)</td><td>IRIS: vurder om du trenger direkte knapp</td></tr>
+          </tbody>
+        </table></div>
+
+        <div class="section-sub-header">📊 Eksponering</div>
+        <div class="rules">
+          <div class="rule ok"><div class="icon">✓</div><div><strong>Zebra 1: 56 ± 3</strong> – hudtoner / ansikt. Treff dette på personen du filmer.</div></div>
+          <div class="rule ok"><div class="icon">✓</div><div><strong>Zebra 2: 94</strong> – highlight-advarsel. Skal ikke blinkre på hudtoner.</div></div>
+          <div class="rule ok"><div class="icon">✓</div><div><strong>Grey card på S-LOG3: 41%</strong> – mål med waveform. Bruk +1/-1 EV som margin.</div></div>
+          <div class="rule info"><div class="icon">ℹ</div><div>ISO maks 6400. Base ISO: 800 (for S-Log3). Hold deg på base ISO om mulig.</div></div>
+          <div class="rule warn"><div class="icon">!</div><div>LUT på monitor påvirker IKKE eksponering – zebra og waveform måler alltid det rå S-LOG3-signalet.</div></div>
+        </div>
+
+        <div class="section-sub-header">🎯 Fokus</div>
+        <div class="rules">
+          <div class="rule ok"><div class="icon">✓</div><div><strong>WIDE mode</strong> – best med folk. Gir eye tracking på én person.</div></div>
+          <div class="rule ok"><div class="icon">✓</div><div><strong>Touch Tracking</strong> – aktiver i Setup → Touch Operation. Trykk på skjermen = kamera tracker objektet.</div></div>
+          <div class="rule ok"><div class="icon">✓</div><div><strong>AF/MF toggle</strong> – ett trykk på AF/MF-knappen = manuell fokus. Tilbake = autofokus.</div></div>
+          <div class="rule info"><div class="icon">ℹ</div><div>Avbryt touch tracking: trykk tracking-release-ikonet, eller trykk midten av kontrollhjulet.</div></div>
+        </div>
+
+        <div class="section-sub-header">🌡️ White Balance</div>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Situasjon</th><th>Kelvin</th></tr></thead>
+          <tbody>
+            <tr><td>Dagslys ute</td><td>5600 K</td></tr>
+            <tr><td>Dagslys inne</td><td>5000 K</td></tr>
+            <tr><td>Natt / kunstig lys</td><td>4300 K</td></tr>
+          </tbody>
+        </table></div>
+
+        <div class="section-sub-header">📺 Monitor (Atomos Shinobi 2)</div>
+        <div class="rules">
+          <div class="rule warn"><div class="icon">!</div><div><strong>LEGALIZE: OFF</strong> på Atomos – ellers klipper den highlights og knuser svart.</div></div>
+          <div class="rule ok"><div class="icon">✓</div><div>Bruk 33x Monitor LUT (Phantom) under opptak for riktig forhåndsvisning. Eksponér med LUT på.</div></div>
+          <div class="rule ok"><div class="icon">✓</div><div>I DaVinci: marker Atomos-klipp → Clip Attributes → sett til Full Range om Ninja V ble brukt.</div></div>
+        </div>
+
+        <div class="section-sub-header">🎨 Phantom LUTs – eksponeringsstrategi</div>
+        <div class="rules">
+          <div class="rule ok"><div class="icon">✓</div><div>Steg 1: Apply LUT (33x monitor LUT) – Steg 2: Sjekk eksponering – Steg 3: Sett White Balance</div></div>
+          <div class="rule ok"><div class="icon">✓</div><div>Ikke nødvendig å overexpose med Phantom LUTs. FX30 er ren nok til normal eksponering.</div></div>
+          <div class="rule info"><div class="icon">ℹ</div><div><strong>Legacy LUT</strong> er 0,5 stop under – brukt med Legacy gir LOG-filmen naturlig overeksponering = bedre highlights.</div></div>
+          <div class="rule ok"><div class="icon">✓</div><div>I DaVinci: bruk 65x-versjonene av Phantom LUTs for grading.</div></div>
+        </div>
+
+        <div class="section-sub-header">✂️ Edit</div>
+        <div class="rules">
+          <div class="rule ok"><div class="icon">✓</div><div>Bruk <strong>OWL Color</strong> ved grading (S-Log3 til Rec.709)</div></div>
+          <div class="rule ok"><div class="icon">✓</div><div>Bruk <strong>proxy-filer</strong> på offline klipp – <code>DNxHR HQX</code> eller <code>ProRes 422 HQ</code></div></div>
+          <div class="rule ok"><div class="icon">✓</div><div>Grønne/rosa farger i eksport: sett <strong>Data Levels → Auto eller Video</strong> i DaVinci Render Settings</div></div>
+        </div>
       </div></div>
 
       <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">8.2</span><span><img src="images/icon-dji.png" alt="DJI" style="height:14px;vertical-align:middle;margin-right:4px"> DJI Pocket 3</span></div><span class="acc-chevron">▼</span></button><div class="acc-content">
@@ -3713,7 +3775,24 @@ Global Requirements:
 
       <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">8.7</span><span>💡 Lys</span></div><span class="acc-chevron">▼</span></button><div class="acc-content"><div class="placeholder"><div class="placeholder-icon">💡</div><div class="placeholder-text">// INNHOLD KOMMER</div></div></div></div>
 
-      <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">8.8</span><span>💻 Edit &amp; Datautstyr</span></div><span class="acc-chevron">▼</span></button><div class="acc-content"><div class="placeholder"><div class="placeholder-icon">💻</div><div class="placeholder-text">// INNHOLD KOMMER</div></div></div></div>
+      <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">8.8</span><span>💻 Edit &amp; Datautstyr</span></div><span class="acc-chevron">▼</span></button><div class="acc-content">
+        <div class="callout blue"><span class="callout-icon">💻</span><div class="callout-text">Edit-maskin og datautstyr i NesheiMedia-riggen.</div></div>
+
+        <div class="section-sub-header">🖥️ IVAR_LAPTOP</div>
+        <div class="cards">
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#4f8ef7"></span>💻 MSI GS66 Stealth 11UH</div><ul><li>CPU: Intel Core i9-11900H @ 2.50 GHz (11. gen)</li><li>RAM: 64 GB (63,8 GB brukbar)</li><li>GPU: NVIDIA RTX 3080 (Laptop)</li><li>OS: Windows 11, 64-bit</li></ul></div>
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#34d399"></span>💾 Lokale disker</div><ul><li><code>C:\</code> WIN OS – 442 GB SSD</li><li><code>E:\</code> MEDIA &amp; DIVERSE – 1,42 TB</li><li><code>F:\</code> DaVinci – 931 GB (dedikert til DaVinci cache/prosjekter)</li><li><code>G:\</code> Google Drive – 442 GB</li></ul></div>
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#c084fc"></span>🌐 Nettverksdisker (via NAS)</div><ul><li><code>V:\</code> 10_VIDEO_RAW – 12,7 TB</li><li><code>P:\</code> 80_DR_PROSJEKTER – 1,80 TB</li><li><code>A:\</code> 30_MEDIA_ASSETS – 5,44 TB</li><li><code>Y:\</code> 99_TRANSFER – 12,7 TB</li></ul></div>
+        </div>
+
+        <div class="section-sub-header">⚙️ DaVinci Resolve – oppsett</div>
+        <div class="rules">
+          <div class="rule ok"><div class="icon">✓</div><div>Cache og prosjektdatabase: <strong>F:\</strong> (DaVinci-disk) – holder C: fri</div></div>
+          <div class="rule ok"><div class="icon">✓</div><div>GPU-akselerasjon: NVIDIA RTX 3080. Sjekk Preferences → Memory and GPU at RTX er valgt</div></div>
+          <div class="rule ok"><div class="icon">✓</div><div>Proxy-filer: generer DNxHR HQX eller ProRes 422 HQ fra råmaterial på V:\</div></div>
+          <div class="rule info"><div class="icon">ℹ</div><div>Nettverksdisker via Tailscale fungerer på reise – se 1.5 NAS for oppsett</div></div>
+        </div>
+      </div></div>
 
       <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">8.9</span><span>🔌 Tilbehør</span></div><span class="acc-chevron">▼</span></button><div class="acc-content"><div class="placeholder"><div class="placeholder-icon">🔌</div><div class="placeholder-text">// INNHOLD KOMMER</div></div></div></div>
 
