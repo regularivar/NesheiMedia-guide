@@ -3381,52 +3381,322 @@ Global Requirements:
     <div class="accordion">
 
       <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">8.1</span><span><img src="images/icon-sony.png" alt="Sony" style="height:14px;vertical-align:middle;margin-right:4px"> Sony FX30</span></div><span class="acc-chevron">▼</span></button><div class="acc-content">
-        <div class="callout blue"><span class="callout-icon">🎬</span><div class="callout-text">Sony FX30 – Hovedkamera. APS-C sensor, S-Log3 / 10-bit. Brukes til alle primære opptak.</div></div>
+        <div class="callout blue"><span class="callout-icon">🎬</span><div class="callout-text"><strong>Sony FX30</strong> – Hovedkamera. APS-C sensor, S-Log3 / 10-bit. Brukes til alle primære opptak der bildekvalitet og graderingsrom er prioritet.</div></div>
         <div class="cards">
           <div class="card"><div class="card-title-inner"><span class="dot" style="background:#4f8ef7"></span>📋 Spesifikasjoner</div><ul><li>Sensor: APS-C (26 MP)</li><li>Video: 4K/120fps, 10-bit, S-Log3</li><li>Montering: Sony E-mount</li><li>Stabilisering: 5-akset IBIS</li></ul></div>
-          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#34d399"></span>✅ Styrker</div><ul><li>Fremragende 10-bit S-Log3 for grading</li><li>Kompakt og lett for APS-C</li><li>Utmerket autofokus</li><li>Sterk i lavlys</li></ul></div>
-          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#fb923c"></span>⚠️ Svakheter</div><ul><li>Ingen innebygd ND-filter</li><li>Batteri tømmes raskt ved 4K/120</li><li>Overhetingsproblematikk ved lange opptak</li></ul></div>
-          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#c084fc"></span>🎯 Bruksområde</div><ul><li>Primærkamera for alle produksjoner</li><li>Intervjuer og b-roll</li><li>Slow-motion 4K/120</li></ul></div>
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#34d399"></span>✅ Styrker</div><ul><li>S-Log3 / 10-bit – stort graderingsrom</li><li>Utmerket autofokus</li><li>Kompakt for APS-C Cinema-kamera</li><li>Sterk i lavlys</li></ul></div>
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#fb923c"></span>⚠️ Svakheter</div><ul><li>Ingen innebygd ND-filter</li><li>Batteri tømmes raskt ved 4K/120</li><li>Overoppheting ved lange opptak</li></ul></div>
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#c084fc"></span>🎯 Best til</div><ul><li>Seriøse produksjoner og kontrollerte opptak</li><li>Intervjuer og dokumentar</li><li>Slow-motion 4K/120</li><li>Alt der S-Log3-grading er planlagt</li></ul></div>
         </div>
-        <div class="section-sub-header">Innstillinger og tips</div>
-        <div class="placeholder"><div class="placeholder-icon">⚙️</div><div class="placeholder-text">// INNHOLD KOMMER – innstillinger, LUT-valg, tips</div></div>
+
+        <div class="section-sub-header">⚙️ Huskeliste</div>
+        <div class="rules">
+          <div class="rule ok"><div class="icon">✓</div><div>Bruk alltid <strong>mygg</strong> (Falcam F22) når du bruker Sigma-linsene</div></div>
+          <div class="rule ok"><div class="icon">✓</div><div><strong>56% Zebra</strong> er bra å treffe på ansiktet – det er der vi vil være</div></div>
+          <div class="rule ok"><div class="icon">✓</div><div>Bruk <strong>H265 / 10-bit</strong> ved opptak – gir best filkvalitet til S-Log3</div></div>
+          <div class="rule ok"><div class="icon">✓</div><div><strong>LUT på monitor påvirker ikke eksponering</strong> – jobb alltid fra waveform</div></div>
+          <div class="rule ok"><div class="icon">✓</div><div>Grå kort på S-Log3 skal treffe <strong>41% ±1</strong></div></div>
+          <div class="rule warn"><div class="icon">⚠</div><div><strong>Active SteadyShot + lens OSS</strong> kjemper mot hverandre – skru av Active SS på kroppen, la linsen gjøre jobben</div></div>
+          <div class="rule info"><div class="icon">ℹ</div><div>Grønne/rosa farger i DaVinci? Sett <strong>Data Levels → Auto</strong> eller <strong>Video</strong> i Render Settings</div></div>
+        </div>
+
+        <div class="section-sub-header">🎬 Eksport og codec</div>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Bruk</th><th>Codec</th><th>Notat</th></tr></thead>
+          <tbody>
+            <tr><td>Opptak</td><td><code>H265 / 10-bit</code></td><td>Best for S-Log3, minst filstørrelse</td></tr>
+            <tr><td>DaVinci import</td><td><code>DNxHR HQX</code> eller <code>ProRes 422 HQ</code></td><td>Bruk ved proxy-workflow</td></tr>
+            <tr><td>Eksport ferdig</td><td><code>H265 / H264</code></td><td>Data Levels: Auto eller Video</td></tr>
+          </tbody>
+        </table></div>
+
+        <div class="section-sub-header">🔧 Custom buttons – forslag</div>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Knapp</th><th>Funksjon</th></tr></thead>
+          <tbody>
+            <tr><td>C1</td><td>WB (White Balance)</td></tr>
+            <tr><td>C2</td><td>FOCUS MAG</td></tr>
+            <tr><td>C3</td><td>PEAKING</td></tr>
+            <tr><td>C4</td><td>LUT av/på</td></tr>
+            <tr><td>Scroll</td><td>ISO eller SHUTTER (eksperiment)</td></tr>
+          </tbody>
+        </table></div>
+
+        <div class="section-sub-header">🎛️ Rigg-oppsett</div>
+        <div class="cards">
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#4f8ef7"></span>1a – Full rigg (Atomos)</div><ul><li>Falcam Cage + side handle + top handle</li><li>Sennheiser MKE400</li><li>PowerBank eller SmallRig NP-F970</li><li>Atomos Shinobi 2 monitor</li></ul></div>
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#34d399"></span>1b – Full rigg (SeeMo)</div><ul><li>Falcam Cage + side handle + top handle</li><li>Sennheiser MKE400</li><li>PowerBank eller SmallRig NP-F970</li><li>SeeMo 4K monitor</li></ul></div>
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#fb923c"></span>2a/2b – Minimal rigg</div><ul><li>Falcam Half Cage</li><li>Atomos eller SeeMo</li><li>Uten side handle – lettere oppsett</li></ul></div>
+        </div>
       </div></div>
 
       <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">8.2</span><span><img src="images/icon-dji.png" alt="DJI" style="height:14px;vertical-align:middle;margin-right:4px"> DJI Pocket 3</span></div><span class="acc-chevron">▼</span></button><div class="acc-content">
-        <div class="callout blue"><span class="callout-icon">🎬</span><div class="callout-text">DJI Pocket 3 – Kompaktkamera med gimbal. D-Log M / 10-bit. Brukes til reise, vlogg og hurtig b-roll.</div></div>
+        <div class="callout blue"><span class="callout-icon">🎬</span><div class="callout-text"><strong>DJI Pocket 3</strong> – Kompaktkamera med innebygd gimbal. 1-toms sensor, D-Log M / 10-bit. Rask å bruke, alltid med.</div></div>
         <div class="cards">
           <div class="card"><div class="card-title-inner"><span class="dot" style="background:#4f8ef7"></span>📋 Spesifikasjoner</div><ul><li>Sensor: 1-toms CMOS</li><li>Video: 4K/120fps, 10-bit, D-Log M</li><li>Innebygd 3-akset gimbal</li><li>Roterende kamera 90°/180°</li></ul></div>
-          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#34d399"></span>✅ Styrker</div><ul><li>Ekstremt kompakt – passer i lomma</li><li>Stabil video uten ekstra utstyr</li><li>Rask å sette i gang</li><li>God i dagslys</li></ul></div>
-          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#fb923c"></span>⚠️ Svakheter</div><ul><li>Begrenset lavlys-ytelse</li><li>Fast linse – ingen zoom</li><li>Liten sensor vs FX30</li></ul></div>
-          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#c084fc"></span>🎯 Bruksområde</div><ul><li>Reise og vlogg</li><li>Hurtig b-roll</li><li>Sosiale medier / vertikalt format</li></ul></div>
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#34d399"></span>✅ Styrker</div><ul><li>Kompakt – passer i lomma</li><li>Stabilisert video uten ekstra rigg</li><li>Rask oppstart</li><li>Vertikalt format innebygd</li></ul></div>
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#fb923c"></span>⚠️ Svakheter</div><ul><li>Begrenset lavlys vs FX30</li><li>Fast linse – ingen zoom</li><li>Liten sensor</li></ul></div>
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#c084fc"></span>🎯 Best til</div><ul><li>Reise og vlogg</li><li>Rask b-roll</li><li>Familie og behind-the-scenes</li><li>Sosiale medier / vertikalt</li></ul></div>
         </div>
-        <div class="section-sub-header">Innstillinger og tips</div>
-        <div class="placeholder"><div class="placeholder-icon">⚙️</div><div class="placeholder-text">// INNHOLD KOMMER – innstillinger, D-Log M grading, tips</div></div>
+
+        <div class="section-sub-header">⚙️ Bildeinnstillinger (alle modi)</div>
+        <div class="rules">
+          <div class="rule ok"><div class="icon">✓</div><div><strong>Sharpness: -2</strong> – alltid. Du kan øke i post, aldri redusere.</div></div>
+          <div class="rule ok"><div class="icon">✓</div><div><strong>Noise reduction: -1</strong> – bedre detaljer i lavlys</div></div>
+          <div class="rule ok"><div class="icon">✓</div><div><strong>Eksponering: -0.3 til -1.0 EV</strong> – litt undereksponert er sikrere enn overeksponert</div></div>
+        </div>
+
+        <div class="section-sub-header">📹 Video-modi og innstillinger</div>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Modus</th><th>FPS</th><th>Shutter</th><th>ISO</th><th>Notat</th></tr></thead>
+          <tbody>
+            <tr><td>💡💡💡 Standard</td><td>25</td><td>1/50</td><td>50–400</td><td>Standard dagslys</td></tr>
+            <tr><td>💡💡 Mørkt</td><td>25</td><td>1/50</td><td>50–1600</td><td>Inne / skumring</td></tr>
+            <tr><td>💡 Veldig mørkt</td><td>25</td><td>1/50</td><td>50–3200</td><td>Low light mode</td></tr>
+            <tr><td>🐢 Slow 2x</td><td>50</td><td>1/100</td><td>50–400</td><td>180-regel</td></tr>
+            <tr><td>🐢🐢 Slow 4x</td><td>100</td><td>1/200</td><td>50–400</td><td>Forsiktig med ISO</td></tr>
+          </tbody>
+        </table></div>
+
+        <div class="section-sub-header">⏱️ TimeLapse / HyperLapse</div>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Type</th><th>Shutter</th><th>ISO</th><th>Tips</th></tr></thead>
+          <tbody>
+            <tr><td>☀️ TimeLapse dag</td><td>MAX 1/2</td><td>50–400</td><td>Bruk ND filter. WB: 5600K. Sett fokus én gang.</td></tr>
+            <tr><td>🌙 TimeLapse natt</td><td>1/2 – 1 sek</td><td>MAX</td><td>Himmel: 2–4 sek. Biler: 3–5 sek.</td></tr>
+            <tr><td>⚡ HyperLapse</td><td>1/100</td><td>50–400</td><td>Bruk Active Tracker. Speed opp 1000% i post.</td></tr>
+          </tbody>
+        </table></div>
+        <div class="rules">
+          <div class="rule info"><div class="icon">ℹ</div><div>MENNESKER/TRAFIKK/VANN: 0.5–2 sek | SKYER/HIMMEL: 1–3 sek | SOLNEDGANG: 4–5 sek</div></div>
+          <div class="rule ok"><div class="icon">✓</div><div>Husk slow kamerabevegelse ved himmel-timelapse</div></div>
+        </div>
+
+        <div class="section-sub-header">🎙️ Lyd – Pocket 3</div>
+        <div class="rules">
+          <div class="rule ok"><div class="icon">✓</div><div><strong>Sennheiser MKE 400</strong> – anbefalt shotgun-mikrofon via USB-C adapter</div></div>
+          <div class="rule ok"><div class="icon">✓</div><div><strong>ZOOM H4N</strong> – for best lydkvalitet utendørs</div></div>
+          <div class="rule ok"><div class="icon">✓</div><div>USB-C til 3.5mm TRRS-kabel gir <strong>stereo</strong> ved ekstern mik rett i Pocket 3</div></div>
+          <div class="rule ok"><div class="icon">✓</div><div>Bruk <strong>+20 gain</strong> fra mikrofonen – mye bedre lyd</div></div>
+          <div class="rule ok"><div class="icon">✓</div><div>Bruk alltid <strong>vindtette</strong> (vindkatt) på mikrofon utendørs</div></div>
+          <div class="rule warn"><div class="icon">⚠</div><div>Handling noise fra mikrofon? Sjekk at sjokkmount er stram og kabel er sikret</div></div>
+        </div>
+
+        <div class="section-sub-header">🎙️ DJI MIC 2 – LED-guide</div>
+        <div class="table-wrap"><table>
+          <thead><tr><th>LED</th><th>Betyr</th></tr></thead>
+          <tbody>
+            <tr><td>🟢 Sakte blink</td><td>På, ikke koblet til</td></tr>
+            <tr><td>🟢 Kontinuerlig</td><td>Koblet til mottaker</td></tr>
+            <tr><td>🟢 Raskt blink</td><td>Wi-Fi paringsmodus</td></tr>
+            <tr><td>🔵 Kontinuerlig</td><td>Koblet til Bluetooth</td></tr>
+            <tr><td>🟡 Kontinuerlig</td><td>Støyreduksjon på + koblet</td></tr>
+            <tr><td>🔴 Kontinuerlig</td><td>Tar opp uavhengig</td></tr>
+            <tr><td>🔴 Under lading</td><td>Batteri under 10%</td></tr>
+          </tbody>
+        </table></div>
       </div></div>
 
       <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">8.3</span><span><img src="images/icon-dji.png" alt="DJI" style="height:14px;vertical-align:middle;margin-right:4px"> DJI Pocket 2</span></div><span class="acc-chevron">▼</span></button><div class="acc-content">
-        <div class="callout blue"><span class="callout-icon">🎬</span><div class="callout-text">DJI Pocket 2 – Forrige generasjon kompaktkamera. Brukes som reserve eller til arkivopptak.</div></div>
+        <div class="callout blue"><span class="callout-icon">🎬</span><div class="callout-text"><strong>DJI Pocket 2</strong> – Forrige generasjon. 1/1,7-toms sensor, d-cinelike. Brukes som reserve, sykling, eksperimenter og arkiv.</div></div>
         <div class="cards">
-          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#4f8ef7"></span>📋 Spesifikasjoner</div><ul><li>Sensor: 1/1,7-toms CMOS</li><li>Video: 4K/60fps, 8-bit, D-Log</li><li>Innebygd 3-akset gimbal</li></ul></div>
-          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#c084fc"></span>🎯 Bruksområde</div><ul><li>Backup-kamera</li><li>Arkiv og eksperimenter</li></ul></div>
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#4f8ef7"></span>📋 Spesifikasjoner</div><ul><li>Sensor: 1/1,7-toms CMOS</li><li>Video: 4K/60fps, 8-bit</li><li>Color: d-cinelike (Pro mode)</li><li>Innebygd 3-akset gimbal</li><li>Max shutter natt: 8 sekunder</li></ul></div>
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#34d399"></span>✅ Styrker</div><ul><li>Liten og lett – alltid tilgjengelig</li><li>8 sek shutter for nattopptak</li><li>God til sykling med mygg</li></ul></div>
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#fb923c"></span>⚠️ Svakheter</div><ul><li>Mindre sensor enn Pocket 3</li><li>8-bit begrenser graderingsrom</li><li>Dårligere lavlys enn Pocket 3</li></ul></div>
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#c084fc"></span>🎯 Best til</div><ul><li>Reserve- og backup-kamera</li><li>Sykling (mygg mot støy)</li><li>Arkivopptak og eksperimenter</li></ul></div>
         </div>
-        <div class="placeholder"><div class="placeholder-icon">⚙️</div><div class="placeholder-text">// INNHOLD KOMMER</div></div>
+
+        <div class="section-sub-header">⚙️ Innstillinger</div>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Innstilling</th><th>Verdi</th><th>Notat</th></tr></thead>
+          <tbody>
+            <tr><td>Antiflicker</td><td>Auto</td><td>Sett FØR Pro mode aktiveres</td></tr>
+            <tr><td>Pro mode</td><td>På</td><td>Gir tilgang til manuell eksponering</td></tr>
+            <tr><td>Color profil</td><td><code>d-cinelike</code></td><td>Best for grading</td></tr>
+            <tr><td>Frame rate</td><td>25 eller 50 fps</td><td>50 fps for slow motion (50% i post)</td></tr>
+            <tr><td>Shutter</td><td>1/(2×fps)</td><td>180-regelen – 25fps = 1/50</td></tr>
+            <tr><td>ISO dagslys</td><td>Auto max 400</td><td>Bruk ND-filter ved overeksponering</td></tr>
+            <tr><td>ISO natt</td><td>Auto max 1600</td><td>High quality mode på (kun &lt;48fps)</td></tr>
+            <tr><td>White balance</td><td>Custom</td><td>Se WB-tabell under</td></tr>
+          </tbody>
+        </table></div>
+
+        <div class="section-sub-header">🌡️ White Balance – referansetabell</div>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Lyskilde</th><th>Kelvin</th></tr></thead>
+          <tbody>
+            <tr><td>Stearinlys</td><td>1000–2000 K</td></tr>
+            <tr><td>Tungsten / nattby</td><td>2500–3500 K</td></tr>
+            <tr><td>Solnedgang/oppgang</td><td>3000–4000 K (nøytral) / 5500–9000 K (varm)</td></tr>
+            <tr><td>Dagslys</td><td>5500–6500 K</td></tr>
+            <tr><td>Overskyet</td><td>6500–8000 K</td></tr>
+            <tr><td>Skygge</td><td>9000–10000 K</td></tr>
+          </tbody>
+        </table></div>
+
+        <div class="section-sub-header">⭐ Stjerner / nattopptak</div>
+        <div class="rules">
+          <div class="rule ok"><div class="icon">✓</div><div>Lukkertid: <strong>8 sekunder</strong> (Pocket 2 kan dette – Pocket 3 kan ikke)</div></div>
+          <div class="rule ok"><div class="icon">✓</div><div>ISO: <strong>max 200</strong> – høyere gir for lyst fra byer</div></div>
+          <div class="rule ok"><div class="icon">✓</div><div>Sett fokus én gang og la stå</div></div>
+        </div>
+
+        <div class="section-sub-header">🎬 Gimbal-bevegelser</div>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Bevegelse</th><th>Bruk</th></tr></thead>
+          <tbody>
+            <tr><td>Push in</td><td>Gå mot scenen – etablerer lokasjon</td></tr>
+            <tr><td>Pull out</td><td>Gå fra scenen – avslutningsbevegelse</td></tr>
+            <tr><td>Round</td><td>Gå rundt person/objekt med Active Track</td></tr>
+            <tr><td>Rise up</td><td>Løft kamera – viser landskap og motiv</td></tr>
+            <tr><td>Reveal</td><td>Vis motivet fra bak et objekt – god til overganger</td></tr>
+            <tr><td>Tilt up/down</td><td>For interessante ting over scenen (trær, himmel)</td></tr>
+            <tr><td>Low mode</td><td>Film fra bakken – froske-perspektiv</td></tr>
+          </tbody>
+        </table></div>
       </div></div>
 
       <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">8.4</span><span><img src="images/icon-canon.png" alt="Canon" style="height:14px;vertical-align:middle;margin-right:4px"> Canon C100</span></div><span class="acc-chevron">▼</span></button><div class="acc-content">
-        <div class="callout blue"><span class="callout-icon">🎬</span><div class="callout-text">Canon C100 – Cinema-kamera fra eldre generasjon. C-Log / 8-bit. Brukes til spesifikke prosjekter der cinema-look er prioritet.</div></div>
+        <div class="callout blue"><span class="callout-icon">🎬</span><div class="callout-text"><strong>Canon C100</strong> – Cinema-kamera. Super 35, C-Log, 8-bit 1080p. Innebygd ND-filter. Brukes til prosjekter der cinema-ergonomi og EF-linser er prioritet.</div></div>
         <div class="cards">
-          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#4f8ef7"></span>📋 Spesifikasjoner</div><ul><li>Sensor: Super 35 (APS-C)</li><li>Video: 1080p, 8-bit, C-Log</li><li>Montering: Canon EF</li><li>Innebygd ND-filter (2/4/6 stops)</li></ul></div>
-          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#34d399"></span>✅ Styrker</div><ul><li>Innebygd ND – praktisk utendørs</li><li>Cinema-ergonomi og -feel</li><li>God C-Log for grading (til 8-bit)</li></ul></div>
-          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#fb923c"></span>⚠️ Svakheter</div><ul><li>Kun 1080p – ingen 4K</li><li>8-bit begrenser grading-rom</li><li>Tung og stor</li></ul></div>
-          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#c084fc"></span>🎯 Bruksområde</div><ul><li>Spesifikke prosjekter med cinema-krav</li><li>Intervjuer med EF-linser</li></ul></div>
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#4f8ef7"></span>📋 Spesifikasjoner</div><ul><li>Sensor: Super 35 (APS-C)</li><li>Video: 1080p, 24Mbps, 8-bit</li><li>Color: C-Log / Wide DR / OWL</li><li>ND-filter: 2 / 4 / 6 stops innebygd</li><li>50Hz / 25fps standard</li><li>Montering: Canon EF</li></ul></div>
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#34d399"></span>✅ Styrker</div><ul><li>Innebygd ND – ingen ekstern filter nødvendig</li><li>Cinema-ergonomi og -feel</li><li>God C-Log for grading (gitt 8-bit)</li><li>Zebra og peaking direkte i kamera</li></ul></div>
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#fb923c"></span>⚠️ Svakheter</div><ul><li>Kun 1080p – ingen 4K</li><li>8-bit begrenser graderingsrom</li><li>Tung og stor</li></ul></div>
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#c084fc"></span>🎯 Best til</div><ul><li>Prosjekter med cinema-krav og EF-linser</li><li>Intervjuer der stor sensor er viktig</li><li>Opptak der innebygd ND er verdifullt</li></ul></div>
         </div>
-        <div class="placeholder"><div class="placeholder-icon">⚙️</div><div class="placeholder-text">// INNHOLD KOMMER – C-Log grading, tips</div></div>
+
+        <div class="section-sub-header">⚙️ Kamerameny-konfigurasjon</div>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Innstilling</th><th>Verdi</th><th>Notat</th></tr></thead>
+          <tbody>
+            <tr><td>Peaking 1</td><td>Blå, nivå 11–2</td><td>Skarp fokuskontroll på monitor</td></tr>
+            <tr><td>Peaking 2</td><td>Rød, nivå 15–1</td><td>Backup-peaking i sterk lys</td></tr>
+            <tr><td>Zebra 1</td><td>70% ± 5%</td><td>Viser hudtoner – ideell eksponering</td></tr>
+            <tr><td>Zebra 2</td><td>100%</td><td>Viser utbrent highlight</td></tr>
+            <tr><td>TC</td><td>Rec Run</td><td>Timekode kjører kun under opptak</td></tr>
+            <tr><td>Lydsystem</td><td>50 Hz</td><td>Norsk strømfrekvens</td></tr>
+            <tr><td>Bitrate</td><td>24 Mbps</td><td>Standard for C100</td></tr>
+            <tr><td>Frame rate</td><td>25 fps</td><td>Standard PAL</td></tr>
+            <tr><td>Vifte</td><td>Auto</td><td>Dempes automatisk under opptak</td></tr>
+          </tbody>
+        </table></div>
+
+        <div class="section-sub-header">🎛️ Assign-knapper (tilpass for workflow)</div>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Knapp</th><th>Funksjon (forslag)</th></tr></thead>
+          <tbody>
+            <tr><td>Assign 1</td><td>Peaking On/Off</td></tr>
+            <tr><td>Assign 2</td><td>Zebra On/Off</td></tr>
+            <tr><td>Assign 3</td><td>ND-filter</td></tr>
+            <tr><td>Assign 4</td><td>WFM (waveform monitor)</td></tr>
+          </tbody>
+        </table></div>
+
+        <div class="section-sub-header">🎨 Grading – color science</div>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Profil</th><th>Karakteristikk</th><th>Best til</th></tr></thead>
+          <tbody>
+            <tr><td>Wide DR</td><td>Flat, mye dynamikk, lett å grade</td><td>Generell bruk</td></tr>
+            <tr><td>C-Log</td><td>Flateste, maks dynamikk, krever LUT</td><td>Prosjekter med mye grading</td></tr>
+            <tr><td>OWL</td><td>Ligner C-Log men noe varmere</td><td>Alternativ til C-Log</td></tr>
+          </tbody>
+        </table></div>
+
+        <div class="section-sub-header">🎨 LUT-anbefalinger for grading</div>
+        <div class="rules">
+          <div class="rule ok"><div class="icon">✓</div><div><strong>m31 LUT OSIRIS</strong> – Standard cinematic look. Fungerer godt på C-Log og Wide DR.</div></div>
+          <div class="rule ok"><div class="icon">✓</div><div><strong>Porta400</strong> – Film-emulering, varm og behagelig for intervjuer og talking heads.</div></div>
+          <div class="rule info"><div class="icon">ℹ</div><div>Skjermen ser alltid for mørk ut med C-Log. <strong>Overeksponér litt</strong> – stol på zebra og histogram, ikke LCD.</div></div>
+        </div>
+
+        <div class="section-sub-header">🗂️ Filhåndtering</div>
+        <div class="rules">
+          <div class="rule ok"><div class="icon">✓</div><div><strong>BULK RENAME</strong> – Gi filene prosjektnavn og dato umiddelbart etter overføring. C100 genererer generiske filnavn (MVI_xxxx).</div></div>
+          <div class="rule warn"><div class="icon">!</div><div>Ikke bland C-Log og Wide DR fra samme scene – graderings-utfall vil bli inkonsistent.</div></div>
+        </div>
       </div></div>
 
-      <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">8.5</span><span>🎙️ Lyd</span></div><span class="acc-chevron">▼</span></button><div class="acc-content"><div class="placeholder"><div class="placeholder-icon">🎙️</div><div class="placeholder-text">// INNHOLD KOMMER – mikrofoner, rekorder, mixer</div></div></div></div>
+      <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">8.5</span><span>🎙️ Lyd</span></div><span class="acc-chevron">▼</span></button><div class="acc-content">
+        <div class="callout blue"><span class="callout-icon">🎙️</span><div class="callout-text">Oversikt over mikrofoner og opptaksutstyr i NesheiMedia-riggen.</div></div>
 
-      <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">8.6</span><span>🎬 Stativ &amp; Rigg</span></div><span class="acc-chevron">▼</span></button><div class="acc-content"><div class="placeholder"><div class="placeholder-icon">🎬</div><div class="placeholder-text">// INNHOLD KOMMER</div></div></div></div>
+        <div class="section-sub-header">🎤 Mikrofoner</div>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Mikrofon</th><th>Type</th><th>Tilkobling</th><th>Best til</th></tr></thead>
+          <tbody>
+            <tr><td>Sennheiser MKE400</td><td>Shotgun (kameramontert)</td><td>3,5 mm / USB-C</td><td>Løpende opptak, run-and-gun, FX30</td></tr>
+            <tr><td>Boya BY-MM1</td><td>Kondensator (kameramontert)</td><td>3,5 mm</td><td>Backup, enkel rigg</td></tr>
+            <tr><td>RØDE VideoMic Pro</td><td>Shotgun (kameramontert)</td><td>3,5 mm</td><td>Intervjuer, talking heads</td></tr>
+            <tr><td>Boya Pro K-1</td><td>Trådløs lavalier-sett</td><td>3,5 mm mottaker</td><td>Intervjuer, frihet fra kabel</td></tr>
+            <tr><td>Boya Mic 2</td><td>Lavalier</td><td>3,5 mm / USB-C</td><td>Talking head, solo-opptak</td></tr>
+            <tr><td>SHURE PG81</td><td>Kondensatormik (overhead)</td><td>XLR</td><td>Instrument, ambiance</td></tr>
+            <tr><td>SHURE SM48S</td><td>Dynamisk (håndholdt)</td><td>XLR</td><td>Vokal, podcast, feltopptak</td></tr>
+          </tbody>
+        </table></div>
+
+        <div class="section-sub-header">🎛️ Rekorder</div>
+        <div class="cards">
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#4f8ef7"></span>ZOOM H4N</div><ul><li>4 kanaler (2× XLR + 2× innebygd)</li><li>48V phantom power til kondensatormiker</li><li>Brukes som ekstern rekorder eller USB-lydkort</li><li>Ideell med SHURE PG81 / SM48S</li></ul></div>
+        </div>
+
+        <div class="section-sub-header">📋 Koblingsoversikt</div>
+        <div class="rules">
+          <div class="rule ok"><div class="icon">✓</div><div><strong>FX30 + MKE400</strong> – Standard run-and-gun. USB-C tilkobling, +20 dB gain om nødvendig.</div></div>
+          <div class="rule ok"><div class="icon">✓</div><div><strong>FX30 + Boya Pro K-1</strong> – Trådløs lavalier til intervjuer. Sjekk gain-nivå manuelt.</div></div>
+          <div class="rule ok"><div class="icon">✓</div><div><strong>Pocket 3 + MKE400</strong> – 3,5 mm. Bruk vindtette (deadcat) utendørs.</div></div>
+          <div class="rule ok"><div class="icon">✓</div><div><strong>ZOOM H4N + SHURE SM48S/PG81</strong> – XLR-opptak til podcast, vokal og instrument.</div></div>
+          <div class="rule warn"><div class="icon">!</div><div>Sjekk alltid gain og monitorér med hodetelefoner. Distorsjon i felt er ikke reparerbart i post.</div></div>
+        </div>
+      </div></div>
+
+      <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">8.6</span><span>🎬 Stativ &amp; Rigg</span></div><span class="acc-chevron">▼</span></button><div class="acc-content">
+        <div class="callout blue"><span class="callout-icon">🎬</span><div class="callout-text">Oversikt over stativ, rigg-system (Falcam) og monitorer i NesheiMedia-riggen.</div></div>
+
+        <div class="section-sub-header">🦅 Stativ</div>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Modell</th><th>Maks høyde</th><th>Feste</th><th>Bæreevne</th><th>Bruk</th></tr></thead>
+          <tbody>
+            <tr><td>SIRUI AM-25S</td><td>190 cm</td><td>–</td><td>10 kg</td><td>Primærstativ, tunge rigg</td></tr>
+            <tr><td>Weifeng WF717AH</td><td>–</td><td>F38</td><td>5 kg</td><td>Fleksibelt, F38-kompatibelt</td></tr>
+            <tr><td>WEYLLAN Mini</td><td>45 cm</td><td>F38</td><td>10 kg</td><td>Lav-perspektiv, bord/gulv</td></tr>
+            <tr><td>ZOMEI Q111</td><td>145 cm</td><td>–</td><td>5 kg</td><td>Lett reisestativ</td></tr>
+            <tr><td>Manfrotto 561BHDV-1</td><td>200 cm</td><td>–</td><td>4 kg</td><td>Monopod med fluidhode</td></tr>
+            <tr><td>Manbily M-1</td><td>7 cm</td><td>–</td><td>5 kg</td><td>Ultra-mini, GorillaPod-alternativ</td></tr>
+          </tbody>
+        </table></div>
+
+        <div class="section-sub-header">🔧 Falcam Quick Release-system</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px">
+          <div style="background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:18px">
+            <div style="font-family:var(--mono);font-size:10px;color:var(--text3);letter-spacing:.08em;margin-bottom:10px">FALCAM F22 (liten)</div>
+            <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:6px;font-size:13px">
+              <li>Kit: 2 stk</li>
+              <li>Top: 3 stk</li>
+              <li>Bottom: 6 stk</li>
+              <li>Cold shoe kit + top: inkludert</li>
+            </ul>
+          </div>
+          <div style="background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:18px">
+            <div style="font-family:var(--mono);font-size:10px;color:var(--text3);letter-spacing:.08em;margin-bottom:10px">FALCAM F38 (stor)</div>
+            <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:6px;font-size:13px">
+              <li>Kit: 3 stk</li>
+              <li>Bottom: 1 stk</li>
+              <li>Brukes på Weifeng WF717AH og WEYLLAN Mini</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="section-sub-header">📺 Monitorer</div>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Monitor</th><th>Type</th><th>Tilkobling</th><th>Bruk</th></tr></thead>
+          <tbody>
+            <tr><td>Sony Monitor & Control</td><td>App (iOS)</td><td>Wi-Fi / USB</td><td>Fjernkontroll av FX30 via telefon</td></tr>
+            <tr><td>Monitor+ (app)</td><td>App</td><td>–</td><td>Live visning og kontroll</td></tr>
+            <tr><td>SeeMo 4K</td><td>HDMI-til-iOS-adapter</td><td>Lightning / USB-C</td><td>iPad som ekstern monitor (via HDMI)</td></tr>
+            <tr><td>Feelworld T7 Plus</td><td>7" feltmonitor</td><td>HDMI</td><td>Ekstern monitor på stativ/rigg</td></tr>
+            <tr><td>Atomos Shinobi 2</td><td>5,2" feltmonitor</td><td>HDMI</td><td>Kompakt ekstern monitor</td></tr>
+          </tbody>
+        </table></div>
+      </div></div>
 
       <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">8.7</span><span>💡 Lys</span></div><span class="acc-chevron">▼</span></button><div class="acc-content"><div class="placeholder"><div class="placeholder-icon">💡</div><div class="placeholder-text">// INNHOLD KOMMER</div></div></div></div>
 
