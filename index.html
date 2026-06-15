@@ -1093,6 +1093,21 @@
       <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">1.5</span><span>🗄️ NAS – Ugreen DXP4800</span></div><span class="acc-chevron">▼</span></button><div class="acc-content">
         <div class="callout blue"><span class="callout-icon">🗄️</span><div class="callout-text"><strong>Ugreen DXP4800</strong> er NAS-en som samler all lagring. Tilgang hjemme via lokalnett, borte via Tailscale. Maskinen heter <code>ivar-nas</code> i nettverket.</div></div>
 
+        <div class="cards">
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#f59e0b"></span>🎬 Videoarbeid</div><ul><li>Råmateriale, DaVinci-prosjekter, proxyer, eksport og arkiv</li></ul></div>
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#6366f1"></span>🗄️ Digitalt arkiv</div><ul><li>Video, bilder, musikk, dokumentarer, dokumenter og gamle prosjekter</li></ul></div>
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#ec4899"></span>📺 Medieserver</div><ul><li>Plex og Infuse for filmer, dokumentarer og privat mediebibliotek</li></ul></div>
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#10b981"></span>🖼️ Bilder</div><ul><li>UGREEN Images – bildearkiv og Lightroom-erstatning</li></ul></div>
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#3b82f6"></span>🔐 Tilgang overalt</div><ul><li>Tailscale via Docker – sikker tilgang utenfor hjemmenettet</li></ul></div>
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#8b5cf6"></span>🧰 Delte verktøy</div><ul><li>Tools, AI-filer og prosjekter delt på tvers av enheter via <code>B:\</code></li></ul></div>
+        </div>
+
+        <div class="callout red"><span class="callout-icon">🚨</span><div class="callout-text"><strong>Hovedregel: Ikke slett noe utenom <code>Y:\ 99_TRANSFER</code></strong><br><br>Alt på NAS-en regnes som viktig – med ett unntak. <code>Y:\ 99_TRANSFER</code> er midlertidig innboks og kan ryddes fritt. Alt annet behandles som arkiv, arbeidsmateriale eller backup.</div></div>
+        <div class="rules">
+          <div class="rule ok"><div class="icon">✓</div><div><code>Y:\ 99_TRANSFER</code> — midlertidig / kan ryddes</div></div>
+          <div class="rule warn"><div class="icon">⚠</div><div>Alt annet — ikke slett uten tydelig grunn og dobbeltsjekk</div></div>
+        </div>
+
         <div class="section-sub-header">🗄️ Fysisk disk-kart – Ugreen DXP4800 NAS</div>
         <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin-bottom:20px">
 
@@ -1166,6 +1181,69 @@
         </div>
         <div class="callout blue"><span class="callout-icon">💡</span><div class="callout-text"><strong>Terminologi:</strong> <strong>Fysisk disk</strong> = selve harddisken i NASen (HDD #1–4, NVMe, USB). <strong>Disknavn</strong> = hva disken inneholder (KAMERA_RAW, MEDIA_ASSETS osv.). <strong>Nettverksdrev</strong> = Windows drive-bokstav tilordnet til NAS-share (V:\, A:\ osv.).</div></div>
 
+        <div class="section-sub-header">📋 Share-oversikt – rask referanse</div>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Stasjon</th><th>Share-navn</th><th>Rolle</th><th>Bruk</th></tr></thead>
+          <tbody>
+            <tr><td><span class="drive-badge">V:\</span></td><td><code>10_VIDEO_RAW</code></td><td>Råmateriale inn</td><td>Nytt materiale fra kamera</td></tr>
+            <tr><td><span class="drive-badge">Y:\</span></td><td><code>99_TRANSFER</code></td><td>⚠️ Midlertidig</td><td>Temp innboks – kan ryddes</td></tr>
+            <tr><td><span class="drive-badge">W:\</span></td><td><code>40_ARKIV_RAW</code></td><td>Arkiv + proxyer</td><td>Arkivert råmateriale og proxyfiler</td></tr>
+            <tr><td><span class="drive-badge">O:\</span></td><td><code>12_EKSPORT</code></td><td>Eksport ut</td><td>Ferdige eksporter</td></tr>
+            <tr><td><span class="drive-badge">P:\</span></td><td><code>80_DR_PROSJEKTER</code></td><td>DaVinci-prosjekter</td><td>Aktive og arkiverte prosjekter</td></tr>
+            <tr><td><span class="drive-badge">A:\</span></td><td><code>30_MEDIA_ASSETS</code></td><td>Media assets</td><td>Grafikk, musikk, SFX, assets</td></tr>
+            <tr><td><span class="drive-badge">K:\</span></td><td><code>20_STOCKS</code></td><td>Stock-footage</td><td>Gjenbrukbart stock-materiale</td></tr>
+            <tr><td><span class="drive-badge">B:\</span></td><td><code>50_TOOLS_BACKUP</code></td><td>Verktøy / backup</td><td>Delte verktøy, AI-filer, prosjekter</td></tr>
+            <tr><td><span class="drive-badge">X:\</span></td><td><code>dave-plex</code></td><td>Plex-bibliotek</td><td>Plex mediaserver</td></tr>
+            <tr><td><span class="drive-badge">M:\</span></td><td><code>infuse media server</code></td><td>Infuse-bibliotek</td><td>Infuse på Apple TV / Apple-enheter</td></tr>
+          </tbody>
+        </table></div>
+
+        <div class="section-sub-header">🎥 Videoarbeid – flyt på NAS</div>
+        <div class="steps">
+          <div class="step"><div class="step-num">01</div><div class="step-content"><strong>Råmateriale inn</strong> – Nytt materiale fra FX30, Pocket 3, C100 etc. legges på <span class="drive-badge">V:\</span> <code>10_VIDEO_RAW</code></div></div>
+          <div class="step"><div class="step-num">02</div><div class="step-content"><strong>DaVinci-prosjekt</strong> – Lag og jobb fra <span class="drive-badge">P:\</span> <code>80_DR_PROSJEKTER</code> – alle aktive prosjekter her</div></div>
+          <div class="step"><div class="step-num">03</div><div class="step-content"><strong>Proxyer og arkiv</strong> – Proxyfiler og arkivert råmateriale til <span class="drive-badge">W:\</span> <code>40_ARKIV_RAW</code></div></div>
+          <div class="step"><div class="step-num">04</div><div class="step-content"><strong>Eksport ut</strong> – Ferdige filer til <span class="drive-badge">O:\</span> <code>12_EKSPORT</code> – evt. via HandBrake til H.265/H.264</div></div>
+          <div class="step"><div class="step-num">05</div><div class="step-content"><strong>Arkiver</strong> – Flytt til riktig arkivkategori på <span class="drive-badge">W:\</span> eller <span class="drive-badge">B:\</span> når prosjektet er ferdig</div></div>
+        </div>
+
+        <div class="section-sub-header">📥 99_TRANSFER – midlertidig innboks</div>
+        <div class="callout orange"><span class="callout-icon">📥</span><div class="callout-text"><strong><code>Y:\ 99_TRANSFER</code></strong> er NAS-ens midlertidige innboks. Brukes til raske overføringer, filer som skal sorteres, dumps fra andre maskiner og ting som ikke har fått riktig hjem ennå.<br><br>Denne mappen skal tømmes jevnlig. Det er den eneste mappen på NAS-en der sletting og rydding er forventet.</div></div>
+        <div class="rules">
+          <div class="rule ok"><div class="icon">✓</div><div>Bruk <code>Y:\</code> som midlertidig innboks og mellomstasjon</div></div>
+          <div class="rule warn"><div class="icon">⚠</div><div>La aldri viktige filer bli liggende i <code>99_TRANSFER</code> permanent</div></div>
+        </div>
+
+        <div class="section-sub-header">📺 Medieserver</div>
+        <div class="cards">
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#ec4899"></span>📺 Plex</div><ul><li>Drev: <span class="drive-badge">X:\</span> <code>dave-plex</code></li><li>Filmer, dokumentarer, serier og egne eksporterte videoer</li><li>Spilles av på TV og andre enheter</li></ul></div>
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#a855f7"></span>🍿 Infuse</div><ul><li>Drev: <span class="drive-badge">M:\</span> <code>infuse media server</code></li><li>Lokalt mediebibliotek for Apple TV og Apple-enheter</li><li>Direkte avspilling uten transkoding</li></ul></div>
+        </div>
+        <div class="rules">
+          <div class="rule info"><div class="icon">ℹ</div><div>Plex og Infuse er <strong>visningsbibliotek</strong> – ikke arbeidsdisker. Ikke legg råmateriale eller DaVinci-prosjekter her.</div></div>
+        </div>
+
+        <div class="section-sub-header">🖼️ Bilder – UGREEN Images</div>
+        <div class="callout blue"><span class="callout-icon">🖼️</span><div class="callout-text"><strong>UGREEN Images</strong> er bildeappen på NAS-en og erstatter Lightroom for bildeorganisering. Brukes til bildearkiv, visning og sortering, og gir tilgang til bilder på tvers av enheter.</div></div>
+        <div class="steps">
+          <div class="step"><div class="step-num">01</div><div class="step-content">Åpne <strong>UGREEN Images</strong> via NAS-webgrensesnittet eller appen</div></div>
+          <div class="step"><div class="step-num">02</div><div class="step-content">Søk eller sorter etter dato, album eller kategori</div></div>
+          <div class="step"><div class="step-num">03</div><div class="step-content">Last ned / rediger ved behov</div></div>
+          <div class="step"><div class="step-num">04</div><div class="step-content">Eksporter ferdig bilde til riktig prosjektmappe</div></div>
+        </div>
+
+        <div class="section-sub-header">👤 Brukere på NAS</div>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Bruker</th><th>Rolle</th><th>Tilgang</th></tr></thead>
+          <tbody>
+            <tr><td><code>Admin_ivar</code></td><td>Administrator</td><td>Full tilgang – systeminnstillinger, alle shares, Docker</td></tr>
+            <tr><td><code>User_Ivar</code></td><td>Standardbruker</td><td>Begrenset – tilgang til egne shares, ikke admin-panel</td></tr>
+          </tbody>
+        </table></div>
+        <div class="rules">
+          <div class="rule warn"><div class="icon">⚠</div><div>Bruk <code>Admin_ivar</code> kun for systemarbeid og konfig. Daglig bruk via <code>User_Ivar</code>.</div></div>
+        </div>
+
         <div class="section-sub-header">🌐 Tailscale – Privat nettverk</div>
         <div class="callout blue"><span class="callout-icon">🌐</span><div class="callout-text"><strong>Tailscale</strong> lager et privat nettverk (VPN) mellom maskinene dine. Hver maskin får en fast adresse (100.x.x.x) som alltid fungerer — uansett om du er hjemme eller på reise.<br><br><strong>Hjemme:</strong> Tailscale sender trafikken direkte over lokalnettverket. Full hastighet, ingen omvei.<br><strong>Borte:</strong> Tailscale lager en kryptert tunnel over internett. Du trenger aldri å skru av Tailscale. Den velger alltid den raskeste ruten automatisk.</div></div>
 
@@ -1238,8 +1316,47 @@
         </div>
         <div class="callout green"><span class="callout-icon">📋</span><div class="callout-text"><strong>Endringslogg — 31. mars 2026:</strong> Tailscale satt opp og testet. Expired ivar-nas-node slettet, ivar-nas-1 omdøpt til ivar-nas. Alle NAS-stasjoner bekreftet fungerende over Tailscale. Kontor-PC tilgjengelig via snarvei.</div></div>
 
-        <div class="section-sub-header">Docker-tjenester</div>
-        <div class="placeholder"><div class="placeholder-icon">🐳</div><div class="placeholder-text">// INNHOLD KOMMER – Docker-tjenester på NAS</div></div>
+        <div class="section-sub-header">🛡️ Backup</div>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Hva</th><th>Lagringssted</th><th>Frekvens</th></tr></thead>
+          <tbody>
+            <tr><td>Råmateriale FX30 + Pocket 3</td><td>USB1 – BACKUP_USB1</td><td>Etter innspilling</td></tr>
+            <tr><td>Edit assets / exports / DaVinci</td><td>USB2 – BACKUP_USB2</td><td>Ukentlig</td></tr>
+            <tr><td>Media, bilder, footage, downloads</td><td>12 TB ekstern USB HDD</td><td>Månedlig</td></tr>
+          </tbody>
+        </table></div>
+        <div class="rules">
+          <div class="rule warn"><div class="icon">⚠</div><div>Nytt råmateriale bør backupes etter innspilling – ikke vent til månedlig runde</div></div>
+          <div class="rule warn"><div class="icon">⚠</div><div><code>Y:\ 99_TRANSFER</code> skal ikke brukes som permanent lagring – den er ikke en del av backuprutinen</div></div>
+          <div class="rule ok"><div class="icon">✓</div><div>Ferdige prosjekter bør inn i riktig arkivstruktur på <code>W:\</code> før backup kjøres</div></div>
+        </div>
+
+        <div class="section-sub-header">✅ Praktiske regler</div>
+        <div class="rules">
+          <div class="rule ok"><div class="icon">✓</div><div>Legg nytt råmateriale på <code>V:\</code></div></div>
+          <div class="rule ok"><div class="icon">✓</div><div>Legg DaVinci-prosjekter på <code>P:\</code></div></div>
+          <div class="rule ok"><div class="icon">✓</div><div>Legg proxyer og arkivert materiale på <code>W:\</code></div></div>
+          <div class="rule ok"><div class="icon">✓</div><div>Legg ferdige eksporter på <code>O:\</code></div></div>
+          <div class="rule ok"><div class="icon">✓</div><div>Bruk <code>Y:\</code> kun midlertidig – tøm jevnlig</div></div>
+          <div class="rule ok"><div class="icon">✓</div><div>Bruk Tailscale når du er borte</div></div>
+          <div class="rule ok"><div class="icon">✓</div><div>Kjør backup etter viktige opptak</div></div>
+          <div class="rule warn"><div class="icon">⚠</div><div>Ikke slett noe utenom <code>Y:\ 99_TRANSFER</code></div></div>
+          <div class="rule warn"><div class="icon">⚠</div><div>Ikke bruk Plex- eller Infuse-diskene som arbeidsdisk</div></div>
+          <div class="rule warn"><div class="icon">⚠</div><div>Ikke la viktige filer bli liggende i <code>99_TRANSFER</code></div></div>
+          <div class="rule warn"><div class="icon">⚠</div><div>Ikke anta at én kopi på NAS er nok – backup er nødvendig</div></div>
+          <div class="rule warn"><div class="icon">⚠</div><div>Ikke flytt store prosjektmapper midt i aktiv klipp uten plan</div></div>
+        </div>
+
+        <div class="section-sub-header">🐳 Docker-tjenester</div>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Tjeneste</th><th>Kjøres via</th><th>Bruk</th></tr></thead>
+          <tbody>
+            <tr><td>🔐 Tailscale</td><td>Docker</td><td>Trygg ekstern tilgang til NAS</td></tr>
+            <tr><td>📺 Plex</td><td>NAS-app</td><td>Medieserver for film og serier</td></tr>
+            <tr><td>🖼️ UGREEN Images</td><td>NAS-app</td><td>Bildearkiv og visning</td></tr>
+            <tr><td>🍿 Infuse</td><td>Delt bibliotek</td><td>Avspilling på Apple-enheter</td></tr>
+          </tbody>
+        </table></div>
       </div></div>
 
       <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">1.6</span><span>🌐 WEB – Publisering og web-workflow</span></div><span class="acc-chevron">▼</span></button><div class="acc-content">
