@@ -744,6 +744,7 @@
           <div class="card-sub">2.4 iPad</div>
           <div class="card-sub">2.5 Eksport-workflow</div>
           <div class="card-sub">2.6 Proxy-guide</div>
+          <div class="card-sub">2.6b Innlasting SD-kort</div>
           <div class="card-sub">2.7 Blaze</div>
         </div>
         
@@ -1057,6 +1058,10 @@
                 <tr><td>📀 <strong>5 TB USB2</strong></td><td>EDIT ASSETS, 50_TOOLS, DaVinci, 12_EKSPORT</td><td><span class="path">A:\ B:\ O:\ P:\</span></td><td>UGREEN Sync &amp; Backup – Incremental</td><td>📅 Ukentlig</td><td><span id="backup-date-2" style="font-family:var(--mono);font-size:11px;color:var(--yellow)">16.03.2026</span> <button onclick="setBackupDate(2)" style="font-family:var(--mono);font-size:10px;background:rgba(251,191,36,0.1);border:1px solid rgba(251,191,36,0.3);color:var(--yellow);padding:2px 7px;border-radius:4px;cursor:pointer;margin-left:4px" title="Sett til dagens dato">📅 I dag</button></td></tr>
               </tbody>
             </table>
+          </div>
+          <div class="callout blue">
+            <span class="callout-icon">💾</span>
+            <div class="callout-text"><strong>SD-kort etter filming:</strong> last inn via Råmateriale samme dag eller dagen etter (se 2.6b), og <strong>tøm kortet i kameraet</strong> så snart raden viser ✓ RAW og ✓ Backup. Usikker på om et kort er lastet inn? Sett det i NAS-en og trykk Forhåndsvis.</div>
           </div>
           <div class="callout orange">
             <span class="callout-icon">⚠️</span>
@@ -2069,8 +2074,8 @@ pause</div>
       <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">2.6</span><span>🔗 Proxy-guide</span></div><span class="acc-chevron">▼</span></button><div class="acc-content">
         <div class="section-sub-header">🎥 Kamera-spesifikk proxy-workflow</div>
         <div class="cards">
-          <div class="card"><div class="card-title-inner"><img src="images/icon-sony.png" alt="Sony" style="height:16px;vertical-align:middle"> Sony FX30</div><ul><li>Kameraet genererer <strong>egne proxy-filer</strong> internt</li><li>Bruk disse rett inn – ingen ekstra steg</li></ul></div>
-          <div class="card"><div class="card-title-inner"><img src="images/icon-dji.png" alt="DJI" style="height:16px;vertical-align:middle"> DJI Pocket 3</div><ul><li><code>.LRF</code>-filene på minnekortet er egentlig proxies</li><li><strong>På stasjonær:</strong> Kjør scriptet som endrer <code>.LRF</code> → <code>.MP4</code></li><li>Da kan disse brukes direkte som proxy</li></ul></div>
+          <div class="card"><div class="card-title-inner"><img src="images/icon-sony.png" alt="Sony" style="height:16px;vertical-align:middle"> Sony FX30</div><ul><li>Kameraet lager <strong>egne proxy-filer</strong> (S03)</li><li>KLIPP-agenten legger dem i <code>W:\90_PROXYER\…\&lt;mappe&gt;_proxy</code></li></ul></div>
+          <div class="card"><div class="card-title-inner"><img src="images/icon-dji.png" alt="DJI" style="height:16px;vertical-align:middle"> DJI Pocket 3</div><ul><li><code>.LRF</code>-filene på minnekortet er proxyer</li><li>KLIPP-agenten gir dem <code>.MP4</code>-endelse og legger dem på <code>W:\90_PROXYER</code> – scriptet trengs ikke lenger</li><li>Ingen proxy for 100 fps / timelapse / hyperlapse</li></ul></div>
           <div class="card"><div class="card-title-inner"><img src="images/icon-canon.png" alt="Canon" style="height:16px;vertical-align:middle"> Canon C100</div><ul><li>Trenger <strong>ikke</strong> proxy – filene er lette nok som de er</li></ul></div>
           <div class="card"><div class="card-title-inner"><span class="dot" style="background:#c084fc"></span>⚙️ Generer nye</div><ul><li>Bruk <strong>DNxHR SQ</strong> eller <strong>DNxHR LB</strong></li><li>Lagres i <code>DAVINCI RESOLVE PROXY DEST</code> på V:\</li></ul></div>
         </div>
@@ -2091,6 +2096,29 @@ pause</div>
             <div class="callout blue"><span class="callout-icon">💡</span><div class="callout-text">Til vanlig klipping holder det med <strong>LB</strong> eller <strong>SQ</strong>. HQ/HQX er kun nødvendig hvis du skal fargekorrigere mens du ser på proxy-filene.</div></div>
           </div>
         </div></div></div>
+      <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">2.6b</span><span>💾 Innlasting av SD-kort (KLIPP-agent)</span></div><span class="acc-chevron">▼</span></button><div class="acc-content">
+        <p>Alt råmateriale lastes inn via <strong>Assist-appen → BIBEL → RÅMATERIALE</strong>. KLIPP-agenten på NAS-en kopierer, kontrollerer hver fil med sjekksum og fører registeret. Notion og pipeline v7 brukes ikke lenger.</p>
+        <div class="section-sub-header">✅ Steg for steg</div>
+        <ol>
+          <li>Sett SD-kortet i kortleseren på NAS-en.</li>
+          <li>Råmateriale → <strong>Last inn</strong> → velg kortet → fyll inn sted, personer, prosjekt og beskrivelse.</li>
+          <li><strong>Forhåndsvis.</strong> «Allerede lastet inn» betyr at kortet (eller deler av det) finnes fra før – velg «Last inn bare de nye», eller formater kortet hvis alt finnes. Bilder vises som «📷 bilder kopieres til Ugreen Photos».</li>
+          <li><strong>Start innlasting.</strong> Ett kort = ett løpenummer. «Stopp innlasting» stopper trygt.</li>
+          <li>Når raden viser <strong>✓ RAW</strong> kan klippene brukes i DaVinci/Blaze. <strong>✓ Backup</strong> kommer etterpå.</li>
+          <li><strong>Tøm kortet i kameraet med en gang</strong> når raden viser ✓ RAW og ✓ Backup. Ikke samle opp flere perioder på ett kort.</li>
+        </ol>
+        <div class="section-sub-header">📁 Hvor havner hva</div>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Hva</th><th>Hvor</th></tr></thead>
+          <tbody>
+            <tr><td>Råmateriale</td><td><span class="path">V:\11_KAMERA_RAW\&lt;kamera&gt;\&lt;år&gt;\&lt;nr&gt;_…</span></td></tr>
+            <tr><td>Kameraproxyer (FX30 S03, Pocket 3 LRF→MP4)</td><td><span class="path">W:\90_PROXYER\…\&lt;nr&gt;_…_proxy</span></td></tr>
+            <tr><td>Bilder fra kortet</td><td><span class="path">90_PRIVAT\90.01_BILDER\01_KAMERA_BILDER\&lt;år&gt;\Q1–Q4</span> (ingen rad i Råmateriale)</td></tr>
+            <tr><td>Backup</td><td>NAS-BK-01-FOOTAGE-5TB (eldre arkivkort: NAS-BK-04-ARKIV-12TB)</td></tr>
+          </tbody>
+        </table></div>
+        <div class="callout blue"><span class="callout-icon">💡</span><div class="callout-text">«Åpne i Utforsker» krever en liten hjelper per Windows-PC: Innstillinger → Råmateriale → Last ned INSTALLER.zip.</div></div>
+      </div></div>
       <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">2.7</span><span>🔥 Blaze file management</span></div><span class="acc-chevron">▼</span></button><div class="acc-content">
         <div class="callout blue"><span class="callout-icon">🔥</span><div class="callout-text"><strong>Blaze</strong> er et MAM/DAM-verktøy (Media Asset Management) som kjøres ved siden av DaVinci. Pr. april 2026 i BETA – full versjon kommer med fremtidige oppdateringer. Tenk på det som <strong>Iconik</strong> eller <strong>SHADE</strong>, men lettere og mer skreddersydd for innholdsskapere.</div></div>
         <div class="cards">
@@ -3352,13 +3380,13 @@ Global Requirements:
         <div style="background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:12px;padding:40px 32px;text-align:center">
           <div style="font-size:36px;margin-bottom:10px">🎥</div>
           <div style="font-family:var(--mono);font-size:13px;font-weight:700;color:var(--text);margin-bottom:4px">RÅMATERIALE­OVERSIKT</div>
-          <div style="font-family:var(--mono);font-size:11px;color:var(--text3);margin-bottom:24px">Notion – oversikt over alle råklipp med metadata, dato og kamera</div>
+          <div style="font-family:var(--mono);font-size:11px;color:var(--text3);margin-bottom:24px">Arkiv i Notion (001–067). Erstattet av RÅMATERIALE i Assist-appen (BIBEL-forsiden) – med alle kort fra 001, tags, fps, backup og proxy. Tidligere: oversikt over alle råklipp med metadata, dato og kamera</div>
           <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
             <a href="https://dune-bench-fb0.notion.site/R-MATERIALE-6ce30a2e25cb416e80f818982098ec6b" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:12px;color:var(--text2);background:rgba(255,255,255,0.05);border:1px solid var(--border);padding:10px 20px;border-radius:8px;text-decoration:none" onmouseover="this.style.borderColor='var(--accent2)'" onmouseout="this.style.borderColor='var(--border)'">👁 Åpne offentlig</a>
             <a href="https://www.notion.so/R-MATERIALE-6ce30a2e25cb416e80f818982098ec6b" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:12px;font-weight:700;color:#fff;background:var(--accent2);padding:10px 20px;border-radius:8px;text-decoration:none" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">✏️ Rediger i Notion →</a>
           </div>
         </div>
-        <div class="callout orange" style="margin-top:16px"><span class="callout-icon">🤖</span><div class="callout-text"><strong>AI-agent for råmateriale:</strong> Det er fullt mulig å trene en AI-agent (f.eks. via Claude API eller Make.com) til å se over nye klipp etter innlasting og automatisk fylle inn Notion-tabellen med metadata (dato, kamera, sted, beskrivelse). Ta det opp som et eget prosjekt når du er klar.</div></div>
+        <div class="callout blue" style="margin-top:16px"><span class="callout-icon">🎞</span><div class="callout-text"><strong>Metadata leses automatisk:</strong> KLIPP-agenten leser dato, klokkeslett, fps/S&amp;Q, spilletid, bildeprofil og objektiv ved innlasting. Sted, personer, prosjekt og beskrivelse fylles inn i appen. Se 2.6b.</div></div>
       </div></div>
 
       <div class="acc-item" id="dash-tracker"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">7.4</span><span>Project Tracker</span></div><span class="acc-chevron">▼</span></button><div class="acc-content">
