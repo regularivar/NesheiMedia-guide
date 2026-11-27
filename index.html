@@ -1080,11 +1080,11 @@
           <div class="rules">
             <div class="rule ok">
               <div class="icon">📸</div>
-              <div><strong>Etter innspilling</strong><br><span style="color:var(--text3)">Kopier råmateriale til <code>V:\11_KAMERA_RAW\[KAMERA]\[ÅR]\</code>. Start backup til 5 TB USB1.</span></div>
+              <div><strong>Etter innspilling</strong><br><span style="color:var(--text3)">Last inn SD-kortet via Råmateriale (se 2.6b). KLIPP-agenten kopierer til <code>V:\11_KAMERA_RAW\[KAMERA]\[ÅR]\</code> og tar backup til 5 TB USB1. Tøm kortet når raden viser ✓ RAW og ✓ Backup.</span></div>
             </div>
             <div class="rule info">
               <div class="icon">✂️</div>
-              <div><strong>Under klipping</strong><br><span style="color:var(--text3)">MXF til <code>O:\12_EKSPORT\_MXF_TEMP\</code> → Handbrake → H265 → slett MXF. Jobb fra <code>P:\</code> (SSD).</span></div>
+              <div><strong>Under klipping</strong><br><span style="color:var(--text3)">Jobb fra <code>P:\</code> (SSD). Render til prosjektets <code>04_EXPORT</code>: MXF-master i <code>04_EXPORT\MXF\</code> (beholdes alltid) → HandBrake → H.265 i <code>04_EXPORT</code>. Godkjent mp4 kopieres til filmhyllen på <code>O:\</code>. Se 2.5.</span></div>
             </div>
             <div class="rule info">
               <div class="icon">📅</div>
@@ -1096,7 +1096,7 @@
             </div>
             <div class="rule ok">
               <div class="icon">📦</div>
-              <div><strong>Ved arkivering</strong><br><span style="color:var(--text3)">Flytt fra <code>O:\12_EKSPORT</code> til riktig kategori: <code>A:\30.03_VIDEOER\PRODUKSJON\</code>, <code>SOME_CONTENT\</code> eller <code>CLIP_FARMING\</code></span></div>
+              <div><strong>Når et prosjekt er ferdig</strong><br><span style="color:var(--text3)">Ta en <code>.drp</code>-backup til <code>00_PROJECT</code> (Export Project → <code>Navn_ÅÅÅÅ-MM-DD.drp</code>). Dra prosjektet fra <code>00_AKTIV</code> til <code>81_JOBB</code> eller <code>82_PRIVAT</code> i DaVinci. Mappen på <code>P:\</code> blir liggende – ingenting slettes.</span></div>
             </div>
           </div>
         </div>
@@ -1223,10 +1223,10 @@
         <div class="section-sub-header">🎥 Videoarbeid – flyt på NAS</div>
         <div class="steps">
           <div class="step"><div class="step-num">01</div><div class="step-content"><strong>Råmateriale inn</strong> – Nytt materiale fra FX30, Pocket 3, C100 etc. legges på <span class="drive-badge">V:\</span> <code>10_VIDEO_RAW</code></div></div>
-          <div class="step"><div class="step-num">02</div><div class="step-content"><strong>DaVinci-prosjekt</strong> – Lag og jobb fra <span class="drive-badge">P:\</span> <code>80_DR_PROSJEKTER</code> – alle aktive prosjekter her</div></div>
+          <div class="step"><div class="step-num">02</div><div class="step-content"><strong>DaVinci-prosjekt</strong> – Lag med MagicScript og jobb fra <span class="drive-badge">P:\</span> <code>80.1_DR_PROSJEKTER</code> (<code>81_JOBB</code> / <code>82_PRIVAT</code>). Se 2.1.</div></div>
           <div class="step"><div class="step-num">03</div><div class="step-content"><strong>Proxyer og arkiv</strong> – Proxyfiler og arkivert råmateriale til <span class="drive-badge">W:\</span> <code>40_ARKIV_RAW</code></div></div>
-          <div class="step"><div class="step-num">04</div><div class="step-content"><strong>Eksport ut</strong> – Ferdige filer til <span class="drive-badge">O:\</span> <code>12_EKSPORT</code> – evt. via HandBrake til H.265/H.264</div></div>
-          <div class="step"><div class="step-num">05</div><div class="step-content"><strong>Arkiver</strong> – Flytt til riktig arkivkategori på <span class="drive-badge">W:\</span> eller <span class="drive-badge">B:\</span> når prosjektet er ferdig</div></div>
+          <div class="step"><div class="step-num">04</div><div class="step-content"><strong>Eksport ut</strong> – Render til prosjektets <code>04_EXPORT</code> på <span class="drive-badge">P:\</span>. Godkjent mp4 kopieres til filmhyllen på <span class="drive-badge">O:\</span> <code>12_EKSPORT</code>. Se 2.5.</div></div>
+          <div class="step"><div class="step-num">05</div><div class="step-content"><strong>Ferdig</strong> – Mappen på <span class="drive-badge">P:\</span> blir liggende. DaVinci-prosjektet dras fra <code>00_AKTIV</code> til <code>81_JOBB</code> eller <code>82_PRIVAT</code>.</div></div>
         </div>
 
         <div class="section-sub-header">📥 99_TRANSFER – midlertidig innboks</div>
@@ -1502,7 +1502,7 @@
         
         <div class="steps">
           <div class="step"><div class="step-num">01</div><div class="step-content">🔍 Finn lydeffekten i Soundly.</div></div>
-          <div class="step"><div class="step-num">02</div><div class="step-content">📂 <strong>Kopier filen</strong> fysisk til prosjektmappen din på NAS-en (i mappen <code>Audio</code> eller <code>SFX</code>).</div></div>
+          <div class="step"><div class="step-num">02</div><div class="step-content">📂 <strong>Kopier filen</strong> fysisk til prosjektmappen din på P: (i <code>02_AUDIO\SFX</code>).</div></div>
           <div class="step"><div class="step-num">03</div><div class="step-content">🎬 Dra filen fra NAS-mappen og inn i DaVinci Resolve.</div></div>
         </div>
 </div>
@@ -1516,7 +1516,7 @@
             <div class="sub-acc-content">
         <div class="steps">
           <div class="step"><div class="step-num">01</div><div class="step-content">👁️ <strong>Grovsortering:</strong> Gå gjennom alt footage.</div></div>
-          <div class="step"><div class="step-num">02</div><div class="step-content">✂️ <strong>Rough Cut:</strong> Lag en tidslinje som heter <code>ROUGH CUT_v1</code>. Legg ned alt materiale du liker – ikke tenk på rekkefølge, bare samle gullkornene.</div></div>
+          <div class="step"><div class="step-num">02</div><div class="step-content">✂️ <strong>Rough Cut:</strong> MagicScript har allerede laget <code>Navn_ROUGH CUT_v1</code> og <code>Navn_SELECTS</code>. Flere lager du med MagicScript → <em>Timeline</em> → <em>Ny tidslinje fra mal</em>. Legg ned alt materiale du liker – ikke tenk på rekkefølge, bare samle gullkornene.</div></div>
           <div class="step"><div class="step-num">03</div><div class="step-content">🎵 <strong>Musikk & lyd FØR fin-klipp:</strong> Finn musikk og lydeffekter NÅ. Begynn å forme konseptet basert på musikken. Det er mye lettere å klippe når lyden er på plass!</div></div>
           <div class="step"><div class="step-num">04</div><div class="step-content">🎬 <strong>Proxies:</strong> Ha <code>Prefer Proxies</code> på, spesielt mot NAS eller treg USB.</div></div>
         </div>
@@ -1531,9 +1531,13 @@
             </button>
             <div class="sub-acc-content">
         <div class="steps">
-          <div class="step"><div class="step-num">01</div><div class="step-content">📤 MXF til <code>O:\12_EKSPORT\_MXF_TEMP\</code>.</div></div>
-          <div class="step"><div class="step-num">02</div><div class="step-content">⚙️ Handbrake → H265 → lagre i prosjektmappe.</div></div>
-          <div class="step"><div class="step-num">03</div><div class="step-content">🗑️ Slett MXF etter verifisering.</div></div>
+          <div class="step"><div class="step-num">01</div><div class="step-content">📤 Render MXF til prosjektets <code>04_EXPORT\MXF\</code>. Render-mappen er satt av skriptet.</div></div>
+          <div class="step"><div class="step-num">02</div><div class="step-content">⚙️ HandBrake → H.265 → lagre mp4-en i <code>04_EXPORT</code>, som <code>Navn – v01.mp4</code>.</div></div>
+          <div class="step"><div class="step-num">03</div><div class="step-content">🔒 <strong>Behold MXF-en.</strong> Den er masteren og slettes ikke.</div></div>
+          <div class="step"><div class="step-num">04</div><div class="step-content">🎞️ Kopier den godkjente mp4-en til filmhyllen: <code>O:\ÅR\ÅÅÅÅ-MM – Navn\</code>.</div></div>
+        </div>
+        <div class="rules">
+          <div class="rule warn"><div class="icon">✕</div><div>Ikke render rett til O:. Gamle prosjekter har <code>05_EXPORT</code> eller <code>06_EXPORT</code> i stedet for <code>04_EXPORT</code>.</div></div>
         </div>
 
             </div>
@@ -2055,19 +2059,20 @@ pause</div>
           <div class="rule ok"><div class="icon">✓</div><div><strong>Skarphet:</strong> Legg til litt oversharpen i Resolve – YouTube myker det ned igjen.</div></div>
         </div>
 
-        <div class="section-sub-header">Mappstruktur &amp; arkivering</div>
-        <div class="callout green"><span class="callout-icon">📁</span><div class="callout-text"><strong>O:\12_EKSPORT struktur:</strong><br><br><code>_MXF_TEMP\</code> ← midlertidig, slettes etter HandBrake<br><code>STILLS\</code> ← DaVinci stills<br><code>2026_Prosjektnavn\H265\</code> ← leveringsfil</div></div>
+        <div class="section-sub-header">Mappestruktur &amp; arkivering</div>
+        <div class="callout green"><span class="callout-icon">📁</span><div class="callout-text"><strong>Prosjektets eksportmappe på P:</strong> (originalen)<br><br><code>P:\80.1_DR_PROSJEKTER\82_PRIVAT\2026-03_Film til M&amp;P\04_EXPORT\</code><br><code>&nbsp;&nbsp;Film til M&amp;P – v01.mp4</code> ← fra HandBrake eller direkte H.265<br><code>&nbsp;&nbsp;MXF\</code> ← mastere, beholdes alltid</div></div>
+        <div class="callout blue"><span class="callout-icon">🎞️</span><div class="callout-text"><strong>Filmhyllen på O:</strong> (<code>\\Ivar-nas\12_eksport</code>, bare kopier av mp4/mov)<br><br><code>O:\2026\2026-03 – Til mamma og pappa\</code><br><code>&nbsp;&nbsp;Til mamma og pappa – v01.mp4</code><br><code>&nbsp;&nbsp;Andre visningsformater\</code> ← tekstet, mobil, talking head<br><code>&nbsp;&nbsp;Tidligere versjoner\</code> ← v01 når v02 tar over</div></div>
         <div class="rules">
-          <div class="rule ok"><div class="icon">✓</div><div>Eksporter mellomformat til <code>O:\12_EKSPORT\_MXF_TEMP\</code></div></div>
-          <div class="rule ok"><div class="icon">✓</div><div>HandBrake → H265 → lagre i <code>2026_Prosjektnavn\H265\</code></div></div>
-          <div class="rule warn"><div class="icon">✕</div><div>🗑️ <strong>Slett mellomformat</strong> etter verifisering</div></div>
-          <div class="rule ok"><div class="icon">✓</div><div>📦 Arkiver til <code>A:\30.03_VIDEOER\PRODUKSJON\</code>, <code>SOME_CONTENT\</code> eller <code>CLIP_FARMING\</code></div></div>
+          <div class="rule ok"><div class="icon">✓</div><div>Render til prosjektets <code>04_EXPORT</code>. MXF-master til <code>04_EXPORT\MXF\</code>, direkte H.265 rett til <code>04_EXPORT</code>.</div></div>
+          <div class="rule ok"><div class="icon">✓</div><div>Navn: <code>Navn – v01.mp4</code>. Nye versjoner får <code>v02</code>, <code>v03</code>. Ingenting overskrives.</div></div>
+          <div class="rule ok"><div class="icon">✓</div><div>Godkjent film <strong>kopieres</strong> til <code>O:\ÅR\ÅÅÅÅ-MM – Navn\</code>. Året og måneden er når det ble <strong>filmet</strong>.</div></div>
+          <div class="rule warn"><div class="icon">✕</div><div>Ingen MXF, prosjektfiler eller arbeidseksporter på O:. Ikke render rett dit – da finnes ingen original.</div></div>
+          <div class="rule info"><div class="icon">ℹ️</div><div><code>O:\EKSPORT\_MXF_TEMP</code> og <code>STILLS</code> er fra den gamle rutinen og brukes ikke lenger.</div></div>
         </div>
-        <div class="callout blue"><span class="callout-icon">📂</span><div class="callout-text"><strong>A:\30.03_VIDEOER struktur:</strong><br><br>
-          <code>ARKIV\</code> – alt gammelt<br>
-          <code>PRODUKSJON\</code> – store jobbprosjekter<br>
-          <code>SOME_CONTENT\2025\ 2026\</code> – gjennomarbeidet SoMe<br>
-          <code>CLIP_FARMING\2025\ 2026\</code> – raske hverdagsklipp
+        <div class="callout blue"><span class="callout-icon">📂</span><div class="callout-text"><strong>Arkivet på A:</strong> (originalen for eldre, ferdige filmer – ingen nye legges dit)<br><br>
+          <code>A:\90.02_VIDEOER\01_ARKIVERTE FERDIGE VIDEOER\</code><br>
+          <code>&nbsp;&nbsp;01_FAMILIE_OG_EGET\</code> – FAMILIE, VENNER, EGET, KVALITET<br>
+          <code>&nbsp;&nbsp;03_DIVERSE\</code> – SOME-KLIPP, ROUGH OG UTKAST, RÅMATERIALE, TESTER OG FEILOPPTAK, MORO
         </div></div>
       </div></div>
       <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">2.6</span><span>🔗 Proxy-guide</span></div><span class="acc-chevron">▼</span></button><div class="acc-content">
