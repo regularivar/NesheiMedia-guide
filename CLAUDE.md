@@ -52,3 +52,13 @@ Hostet på GitHub Pages: https://regularivar.github.io/NesheiMedia-guide/
 
 \- Følg planen vi er i gang med
 
+
+
+
+## Oppdatering – påvirker også vault og Assist
+
+Teksten i index.html speiler vault-filene i `bibelen/`, og Assist (KUNNSKAP + BIBEL-chat) bygges fra denne index.html. Endrer du innhold her, følg sjekklisten:
+
+`B:\50.06_AI TOOLS\OBSIDIAN_VAULT\wiki\workflow\NesheiMedia-guide\OPPDATERING-SJEKKLISTE.md`
+
+Kort: rett `bibelen/*.md` → index.html → push → i assist-app: `node scripts/build-kunnskap.js`, øk CACHE i sw.js + test, kjør tester, push.
