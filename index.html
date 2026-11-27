@@ -1410,28 +1410,25 @@
       </div>
     </div>
     <div class="accordion">
-      <div class="acc-item" id="acc-2-1"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">2.1</span><span>🚀 Prosjektoppstart (Post Haste)</span></div><span class="acc-chevron">▼</span></button><div class="acc-content">
-        
-        <div class="steps">
-          <div class="step"><div class="step-num">01</div><div class="step-content">🛠️ Åpne <strong>Post Haste</strong> og velg malen <strong>"Ivar edit template"</strong>.</div></div>
-          <div class="step"><div class="step-num">02</div><div class="step-content">📝 Gi prosjektet et beskrivende navn.</div></div>
-          <div class="step"><div class="step-num">03</div><div class="step-content">📍 Lagre i riktig hovedmappe på <code>P:\80_DAVINCI_PROSJEKTER</code>.</div></div>
-        </div>
-        <div class="section-sub-header">Plassering – 3 hovedmapper</div>
-        <div class="cards">
-          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#f472b6"></span>📱 SOME</div><ul><li>Sosiale medier, shorts, reels</li></ul></div>
-          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#34d399"></span>🏠 Familie & Venner</div><ul><li>Private opptak og familieprosjekter</li></ul></div>
-          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#4f8ef7"></span>💼 JOBB</div><ul><li>Betalte oppdrag og kontrakter</li></ul></div>
-        </div>
-        <div class="section-sub-header">Kvartal vs. Store prosjekter</div>
+      <div class="acc-item" id="acc-2-1"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">2.1</span><span>🚀 Prosjektoppstart (MagicScript)</span></div><span class="acc-chevron">▼</span></button><div class="acc-content">
+        <div class="callout blue"><span class="callout-icon">🧭</span><div class="callout-text">Start fra <strong>MagicScript → Project setup</strong> i DaVinci. Systemet ble innført 24.11.2026 og erstatter Post Haste. Hele systemet er beskrevet i vault-guiden <em>«Guide: prosjektsystemet på P:»</em>.</div></div>
+        <div class="section-sub-header">To valg i MagicScript</div>
         <div class="rules">
-          <div class="rule ok"><div class="icon">✓</div><div><strong>Små klipp:</strong> Legges i kvartalsprosjektet (f.eks. <em>2025 Q1</em>). Samler alt løst fra perioden.</div></div>
-          <div class="rule ok"><div class="icon">✓</div><div><strong>Større ting:</strong> Får sin helt egen prosjektmappe laget med Post Haste.</div></div>
+          <div class="rule ok"><div class="icon">✓</div><div><strong>Nytt småklipp:</strong> for små ting som skogstur, bursdag og dyreparken. Klippet havner i T-prosjektet <code>ÅÅÅÅ-Tn_KLIPP</code> for <strong>måneden det ble filmet</strong> (T1 = jan–apr, T2 = mai–aug, T3 = sep–des). Det får egen tidslinje og egen bin.</div></div>
+          <div class="rule ok"><div class="icon">✓</div><div><strong>Nytt prosjekt (P:):</strong> for store ting. Prosjektet heter <code>ÅÅÅÅ-MM_Navn</code> og får egen mappe og eget prosjekt i <code>00_AKTIV</code>.</div></div>
+        </div>
+        <div class="section-sub-header">To hovedmapper i <code>P:\80.1_DR_PROSJEKTER\</code></div>
+        <div class="cards">
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#4f8ef7"></span>💼 81_JOBB</div><ul><li>Betalte oppdrag, søknader og kunder</li></ul></div>
+          <div class="card"><div class="card-title-inner"><span class="dot" style="background:#34d399"></span>🏠 82_PRIVAT</div><ul><li>Alt annet, også SoMe</li></ul></div>
+        </div>
+        <div class="rules">
+          <div class="rule info"><div class="icon">🧪</div><div>Maler og tester ligger i <code>89_SYSTEM</code>.</div></div>
         </div>
         <div class="nb-card">
           <div class="nb-header">📌 NB! Greit å vite</div>
           <div class="nb-body">
-            <div class="callout blue"><span class="callout-icon">🗂️</span><div class="callout-text">Bruk alltid <strong>Post Haste</strong> for å opprette nye prosjekter. Malen sørger for konsistent mappestruktur og sparer deg for manuelt oppsett hver gang.</div></div>
+            <div class="callout blue"><span class="callout-icon">🗂️</span><div class="callout-text"><strong>Post Haste brukes ikke lenger.</strong> Navn som skriptet lager, får ikke æ, ø eller å, fordi DaVincis API ødelegger dem.</div></div>
           </div>
         </div></div></div>
       <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">2.2</span><span>🖥️ Workflow – Hjemme (stasjonær)</span></div><span class="acc-chevron">▼</span></button><div class="acc-content">
@@ -1458,10 +1455,12 @@
             </button>
             <div class="sub-acc-content">
         <div class="steps">
-          <div class="step"><div class="step-num">01</div><div class="step-content">📂 <strong>Åpne malen:</strong> Start med <code>DaVinci Resolve default project</code>. ⚠️ Velg <strong>"OPEN READ ONLY"</strong> så du ikke ødelegger originalmalen.</div></div>
-          <div class="step"><div class="step-num">02</div><div class="step-content">💾 <strong>Lagre nytt:</strong> Lagre prosjektet med nytt navn med en gang (<code>File → Save As</code>).</div></div>
-          <div class="step"><div class="step-num">03</div><div class="step-content">🧹 <strong>Rydd:</strong> Fjern all tekst i "Project Notes".</div></div>
-          <div class="step"><div class="step-num">04</div><div class="step-content">⚙️ <strong>Settings-sjekk:</strong> Er Timeline Resolution, Frame Rate og Proxy Settings korrekt? Er Color Management satt opp riktig for dette kameraet?</div></div>
+          <div class="step"><div class="step-num">01</div><div class="step-content">🧭 <strong>Lag prosjektet med MagicScript</strong> (se 2.1): <em>Nytt småklipp</em> eller <em>Nytt prosjekt (P:)</em>. Eldre prosjekt: <em>Moderniser prosjekt</em>.</div></div>
+          <div class="step"><div class="step-num">02</div><div class="step-content">⚙️ <strong>Settings-sjekk:</strong> Er Timeline Resolution, Frame Rate og Proxy Settings korrekt? Er Color Management satt opp riktig for dette kameraet?</div></div>
+          <div class="step"><div class="step-num">03</div><div class="step-content">💾 <strong>Working Folders:</strong> cache skal til <code>F:\</code> (lokal NVMe). Se 3.7.</div></div>
+        </div>
+        <div class="rules">
+          <div class="rule warn"><div class="icon">✕</div><div>Mal-prosjektet <code>Default_Rec709_Updated</code> (open read only → Save As) brukes ikke lenger.</div></div>
         </div>
 
             </div>
@@ -1475,7 +1474,7 @@
             <div class="sub-acc-content">
               <div class="callout blue">
                 <span class="callout-icon">🗂️</span>
-                <div class="callout-text">Mappestruktur og prosjektoppsett beskrives i <span onclick="openAndExpand('workflows','acc-2-1')" style="cursor:pointer;color:var(--accent2);text-decoration:underline;text-underline-offset:3px">2.1 Prosjektoppstart (Post Haste)</span> øverst på denne siden.</div>
+                <div class="callout-text">Mappestruktur og prosjektoppsett beskrives i <span onclick="openAndExpand('workflows','acc-2-1')" style="cursor:pointer;color:var(--accent2);text-decoration:underline;text-underline-offset:3px">2.1 Prosjektoppstart (MagicScript)</span> øverst på denne siden.</div>
               </div>
             </div>
           </div>
@@ -2152,6 +2151,10 @@ pause</div>
           <div class="color-item"><div class="color-swatch" style="background:#ec4899"></div><div class="color-label"><strong>Rosa</strong> – ⏩ Timelapse / Hyperlapse</div></div>
           <div class="color-item"><div class="color-swatch" style="background:#d4b896"></div><div class="color-label"><strong>Beige</strong> – 🎵 Musikk</div></div>
         </div>
+        <div class="rules">
+          <div class="rule info"><div class="icon">🐌</div><div><strong>Slow motion (50 fps):</strong> settes på klippnivå i media pool: <em>Clip Attributes → Video Frame Rate 25</em>, lyden fjernes, farge <strong>Oransje</strong>, og klippet legges i bin <code>01_MEDIA/SLOWMO</code> (for ferdigbehandlede klipp). Kalle gjør dette på forespørsel.</div></div>
+        </div>
+        <div class="callout blue"><span class="callout-icon">ℹ️</span><div class="callout-text">Klippfargene over er ikke det samme som markørfargene i grovklipp, som har egen tabell i narrator-guiden. De er heller ikke det samme som tidslinjefargene fra «Moderniser prosjekt», der <strong>oransje</strong> er gammel tidslinje og <strong>grønn</strong> er ny.</div></div>
       </div></div>
       <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">3.2</span><span>🎙️ Lyd-kokebok – Podcast Voice</span></div><span class="acc-chevron">▼</span></button><div class="acc-content">
         
@@ -2289,12 +2292,12 @@ pause</div>
       <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">3.5</span><span>📋 Avid-tips &amp; Speed Editor</span></div><span class="acc-chevron">▼</span></button><div class="acc-content"><div class="placeholder"><div class="placeholder-icon">📋</div><div class="placeholder-text">// INNHOLD KOMMER</div></div></div></div>
 
       <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">3.6</span><span>📲 Rask workflow – REELS (TikTok / IG)</span></div><span class="acc-chevron">▼</span></button><div class="acc-content">
-        <div class="callout green"><span class="callout-icon">🎬</span><div class="callout-text">Rask workflow for å klippe raske REELS. Bruk <strong>5:4 format</strong> for TikTok og Instagram. Se kapittel 4.7 for undertekster.</div></div>
+        <div class="callout green"><span class="callout-icon">🎬</span><div class="callout-text">Rask workflow for å klippe raske REELS. Bruk <strong>4:5-format (1080×1350)</strong> for TikTok og Instagram. Se kapittel 4.7 for undertekster.</div></div>
         <div class="steps">
-          <div class="step"><div class="step-num">01</div><div class="step-content">🎬 <strong>Åpne DaVinci</strong> og åpne prosjektet <strong>"Default_Rec709_Updated"</strong> → klikk <em>"Open in read mode"</em> → endre prosjektnavn til dagens reel-navn.</div></div>
-          <div class="step"><div class="step-num">02</div><div class="step-content">📥 <strong>Importer footage</strong> – dra inn kameraklipp fra riktig mappe på <code>V:\11_KAMERA_RAW\</code>.</div></div>
+          <div class="step"><div class="step-num">01</div><div class="step-content">🎬 <strong>Åpne DaVinci</strong> → MagicScript → <em>Project setup</em> → <strong>Nytt småklipp</strong>. Klippet havner i T-prosjektet for filmingsmåneden, med egen bin og egne tidslinjer. Se kapittel 2.1.</div></div>
+          <div class="step"><div class="step-num">02</div><div class="step-content">📥 <strong>Importer footage</strong> fra <code>V:\11_KAMERA_RAW\</code> til riktig kamera-bin (<code>FX30</code>, <code>POCKET3</code>, <code>ANDRE_KAMERA</code>, <code>SLOWMO</code>).</div></div>
           <div class="step"><div class="step-num">03</div><div class="step-content">🎵 <strong>Importer musikk</strong> fra <code>A:\30_MEDIA_ASSETS\AUDIO\</code> eller bruk royalty-free musikk.</div></div>
-          <div class="step"><div class="step-num">04</div><div class="step-content">📐 <strong>Format:</strong> Sett tidslinja til <strong>5:4 (1080×1350)</strong> for TikTok/IG. Gjøres i Timeline Settings.</div></div>
+          <div class="step"><div class="step-num">04</div><div class="step-content">📐 <strong>Format:</strong> Sett tidslinja til <strong>4:5 (1080×1350)</strong> for TikTok/IG. Gjøres i Timeline Settings.</div></div>
           <div class="step"><div class="step-num">05</div><div class="step-content">📝 <strong>Undertekster:</strong> Følg instruksjoner i <strong>kapittel 4.7</strong> (SnapCaption). Velg gode fonter. 8–10 tegn per linje.</div></div>
           <div class="step"><div class="step-num">06</div><div class="step-content">✂️ <strong>Klipp!</strong> Bruk fargekoding fra 3.1. Bruk MotionVFX transitions for overganger.</div></div>
           <div class="step"><div class="step-num">07</div><div class="step-content">📤 <strong>Eksporter</strong> – følg instruksjonene i kapittel 2.5 for riktige eksportinnstillinger.</div></div>
