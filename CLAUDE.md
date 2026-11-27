@@ -61,4 +61,7 @@ Teksten i index.html speiler vault-filene i `bibelen/`, og Assist (KUNNSKAP + BI
 
 `B:\50.06_AI TOOLS\OBSIDIAN_VAULT\wiki\workflow\NesheiMedia-guide\OPPDATERING-SJEKKLISTE.md`
 
-Kort: rett `bibelen/*.md` → index.html → push → i assist-app: `node scripts/build-kunnskap.js`, øk CACHE i sw.js + test, kjør tester, push.
+Kort: rett `bibelen/*.md` → `node tools/build-from-md.js` → push → i assist-app: `node scripts/build-kunnskap.js`, øk CACHE i sw.js + test, kjør tester, push.
+
+**Seksjonene i index.html er generert** fra `bibelen/*.md` (siden 2026-11-27). Ikke rediger dem for hånd. Skall, CSS, JS, forside og dashboard redigeres fortsatt i index.html. Widgets ligger i `partials/`. Markdown-formatet står i vaulten: `wiki/workflow/NesheiMedia-guide/PLAN-md-til-nettside.md`.
+Verktøy: `tools/build-from-md.js` (bygg, `--check`), `tools/verify_roundtrip.py ORIGINAL.html BYGGET.html` (sammenligner seksjoner), `tools/md_migrate.py` (engangsmigrering, brukt 2026-11-27).
