@@ -728,7 +728,6 @@
           <div class="card-sub">1.3 Månedlig sjekkliste</div>
           <div class="card-sub">1.4 Utstyr (→ KAP 08)</div>
           <div class="card-sub">1.5 NAS</div>
-          <div class="card-sub">1.6 WEB</div>
         </div>
         
       </div>
@@ -1214,7 +1213,7 @@
             <tr><td><span class="drive-badge">P:\</span></td><td><code>80_DR_PROSJEKTER</code></td><td>DaVinci-prosjekter</td><td>Aktive og arkiverte prosjekter</td></tr>
             <tr><td><span class="drive-badge">A:\</span></td><td><code>30_MEDIA_ASSETS</code></td><td>Media assets</td><td>Grafikk, musikk, SFX, assets</td></tr>
             <tr><td><span class="drive-badge">K:\</span></td><td><code>20_STOCKS</code></td><td>Stock-footage</td><td>Gjenbrukbart stock-materiale</td></tr>
-            <tr><td><span class="drive-badge">B:\</span></td><td><code>50_TOOLS_BACKUP</code></td><td>Verktøy / backup</td><td>Delte verktøy, AI-filer, prosjekter</td></tr>
+            <tr><td><span class="drive-badge">B:\</span></td><td><code>60_AI_TOOLS</code></td><td>AI-verktøy / vault</td><td>Delte verktøy, AI-filer, prosjekter</td></tr>
             <tr><td><span class="drive-badge">X:\</span></td><td><code>dave-plex</code></td><td>Plex-bibliotek</td><td>Plex mediaserver</td></tr>
             <tr><td><span class="drive-badge">M:\</span></td><td><code>infuse media server</code></td><td>Infuse-bibliotek</td><td>Infuse på Apple TV / Apple-enheter</td></tr>
           </tbody>
@@ -1293,7 +1292,7 @@
             <tr><td><span class="drive-badge">P:\</span></td><td><span class="path">\\Ivar-nas\80_davinci_prosjekter</span></td><td>DaVinci Resolve-prosjekt</td></tr>
             <tr><td><span class="drive-badge">A:\</span></td><td><span class="path">\\Ivar-nas\30_media_assets</span></td><td>Media assets</td></tr>
             <tr><td><span class="drive-badge">K:\</span></td><td><span class="path">\\Ivar-nas\20_stocks</span></td><td>Stock-footage</td></tr>
-            <tr><td><span class="drive-badge">B:\</span></td><td><span class="path">\\Ivar-nas\50_tools_backups</span></td><td>Verktøy og backup</td></tr>
+            <tr><td><span class="drive-badge">B:\</span></td><td><span class="path">\\Ivar-nas\60_ai_tools</span></td><td>AI-verktøy, vault og prosjektfiler</td></tr>
             <tr><td><span class="drive-badge">M:\</span></td><td><span class="path">\\Ivar-nas\infuse media server</span></td><td>Infuse media</td></tr>
             <tr><td><span class="drive-badge">X:\</span></td><td><span class="path">\\Ivar-nas\dave - plex media server</span></td><td>Plex media</td></tr>
             <tr><td><span class="drive-badge">Y:\</span></td><td><span class="path">\\Ivar-nas\99_transfer_inbox</span></td><td>Overføring/inbox</td></tr>
@@ -1380,11 +1379,6 @@
             <tr><td>🍿 Infuse</td><td>Delt bibliotek</td><td>Avspilling på Apple-enheter</td></tr>
           </tbody>
         </table></div>
-      </div></div>
-
-      <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">1.6</span><span>🌐 WEB – Publisering og web-workflow</span></div><span class="acc-chevron">▼</span></button><div class="acc-content">
-        <div class="callout blue"><span class="callout-icon">🌐</span><div class="callout-text">Web-workflow for NesheiMedia: GitHub Pages, Render, domener og publisering av HTML-guiden.</div></div>
-        <div class="placeholder"><div class="placeholder-icon">🌐</div><div class="placeholder-text">// INNHOLD KOMMER</div></div>
       </div></div>
 
     </div>
@@ -2293,7 +2287,7 @@ pause</div>
           <div class="rule warn"><div class="icon">⚠</div><div>Ikke bland jobb- og hjemmeprofiler</div></div>
         </div>
       </div></div>
-      <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">3.4</span><span>⌨️ DaVinci snarveier</span></div><span class="acc-chevron">▼</span></button><div class="acc-content"><div class="placeholder"><div class="placeholder-icon">⌨️</div><div class="placeholder-text">// INNHOLD KOMMER – Prosjekt 3</div></div></div></div>
+      <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">3.4</span><span>⌨️ DaVinci snarveier</span></div><span class="acc-chevron">▼</span></button><div class="acc-content"><div class="placeholder"><div class="placeholder-icon">⌨️</div><div class="placeholder-text">// INNHOLD KOMMER – keyboard shortcut-fila legges inn her</div></div></div></div>
       <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">3.5</span><span>📋 Avid-tips &amp; Speed Editor</span></div><span class="acc-chevron">▼</span></button><div class="acc-content">
         <div class="section-sub-header">🎞️ AVID – tips og hotkeys (NRK)</div>
         <div class="rules">
@@ -2926,6 +2920,11 @@ pause</div>
               <div class="yt-info"><div class="yt-title">Mononodes – Film Emulation Workflow</div><div class="yt-meta">Mononodes</div></div>
             </a>
           </div>
+        <div class="section-sub-header">Plugins – Dehancer &amp; FilmConvert</div>
+        <div class="section-sub-header">Dehancer</div>
+        <ul><li>Film emulering – veldig realistisk</li><li>Støtter S-Log3, D-Log M og C-Log</li><li>Brukes på Node-nivå i Color-siden</li><li>Høy CPU/GPU-last – render med vilje</li></ul>
+        <div class="section-sub-header">FilmConvert</div>
+        <ul><li>Film stock emulering med grain og farger</li><li>Støtter kamera-profiler for FX30 og Pocket 3</li><li>Kan brukes som OFX plugin i DaVinci</li></ul>
         <div class="nb-card">
           <div class="nb-header">📌 NB! Greit å vite</div>
           <div class="nb-body">
@@ -3338,17 +3337,39 @@ Global Requirements:
         </div>
           </div></div>
         </div>
+        <div class="section-sub-header">Tutorial-videoer – sammendrag</div>
+        <p style="font-size:13px;color:var(--text2);line-height:1.6;margin:0 0 12px">Importert fra Notion-eksport 2026-06-11. Hver video har kort sammendrag + nøkkelteknikker. For full prompt-oversikt og steg-for-steg, se de originale Notion-tutorial-sidene eller kjør videoen.</p>
+        <div class="section-sub-header">Midjourney (9 videoer)</div>
+        <ul><li><strong><a href="https://youtu.be/xPc6EyJsxxQ" target="_blank" rel="noopener noreferrer">TRICKS for Consistency in V7</a></strong> – Omni Reference (<code>-orf</code>) for konsistente karakterer/stiler. Omni Weight skiller stil vs. emne.</li><li><strong><a href="https://youtu.be/hZv1KGDHW7c" target="_blank" rel="noopener noreferrer">Master Midjourney (V6→V7)</a></strong> – Tre kontrollmekanismer: parametere, prompt-struktur (Scene/Subject/Setting/Style), referanser. Style Reference Seeds (<code>--sref</code>) + Inpainting.</li><li><strong><a href="https://youtu.be/4vLU6KM9KdQ" target="_blank" rel="noopener noreferrer">Camera Angles Guide</a></strong> – Subjekt-orientering, avstand, vinkel. <code>front shot</code> / <code>low angle shot</code> / <code>fisheye</code>.</li><li><strong><a href="https://youtu.be/xoZG5WQbgMw" target="_blank" rel="noopener noreferrer">Beginner 2025</a></strong> – Nettleserversjonen. Konto → arbeidsflyt → prompting. Start enkelt, iterer.</li><li><strong><a href="https://youtu.be/6Ze2dhwK3tM" target="_blank" rel="noopener noreferrer">Alle Parametere</a></strong> – Komplett parameter-guide: <code>--ar</code>, <code>--stylize</code>, <code>--chaos</code>, <code>--seed</code>, <code>--tile</code>, <code>--stop</code>, <code>--repeat</code>, <code>--weird</code>.</li><li><strong><a href="https://youtu.be/H2wv0Sog0jo" target="_blank" rel="noopener noreferrer">Hyperrealism i AI-video</a></strong> – Pipeline: Nano Banana Pro + Gemini 3 + Kling 2.1 + Seedance. Konsistent karakter i video.</li><li><strong><a href="https://youtu.be/guX3ljNH4I4" target="_blank" rel="noopener noreferrer">SREF komplett</a></strong> – Style Reference: bilder eller SRF-koder, vekt (<code>-sw</code> 0–1000), blande stiler, <code>-raw</code> for realisme.</li><li><strong><a href="https://youtu.be/fjJDQdIbnHE" target="_blank" rel="noopener noreferrer">Nettstedet nybegynner</a></strong> – Remix, Editor, Vary Subtle/Strong, iterer med filmtype-ord (Kodak Portra 400).</li><li><strong><a href="https://youtu.be/-gXq3-k11_Y" target="_blank" rel="noopener noreferrer">25 V7-tips for 2025</a></strong> – Naturlige portretter (<code>looking off into the distance</code>), mood boards, <code>--repeat 5</code> for utforskning, nøkkelord <code>thalassophobia</code>.</li></ul>
+        <div class="section-sub-header">Nano Banana (7 videoer)</div>
+        <ul><li><strong><a href="https://youtu.be/BMg4GNySmvs" target="_blank" rel="noopener noreferrer">19 PRO-triks for AI-film</a></strong> – Nano Banana Pro via Gemini Pro. Style Transfer, karakterkonsistens, 19 hacks for kinematisk kontroll.</li><li><strong><a href="https://youtu.be/XaY7gGN86gc" target="_blank" rel="noopener noreferrer">Fotorealisme med Flux</a></strong> – Flux på Invoke-plattformen. Narrative, detaljerte prompter. Kamera-vinkler, lys, kontroll.</li><li><strong><a href="https://youtu.be/keT_ywKa_lM" target="_blank" rel="noopener noreferrer">Étt bilde → alle kameravinkler (gratis)</a></strong> – Master shot → uendelig kameravinkler via Nano Banana + CreaDream 4.0.</li><li><strong><a href="https://youtu.be/9yBMtvD_CFw" target="_blank" rel="noopener noreferrer">Motion Graphics</a></strong> – Nano Banana + Hyo/Cling for motion graphics. Datavisualiseringer, paralakseffekter, nedre tredjedeler.</li><li><strong><a href="https://youtu.be/q-sIUsmqIK4" target="_blank" rel="noopener noreferrer">Ni kameravinkler per scene (gratis)</a></strong> – Nano Banana Pro via LM Arena (gratis). Ni vinkler per scene med konsistent karakter.</li><li><strong><a href="https://youtu.be/YF_fPQmswEA" target="_blank" rel="noopener noreferrer">Komplett kameravinkel-workflow</a></strong> – Fire-stegs: Master → Camera Angle Controller (Open Art) → konsistens → film.</li><li><strong><a href="https://youtu.be/ptlxA2Pjj08" target="_blank" rel="noopener noreferrer">Alle kameravinkler (kurs)</a></strong> – Medium/3/4-shot som utgangspunkt. Hvordan opprettholde konsistens på tvers.</li></ul>
+        <div class="section-sub-header">Weavy (5 videoer)</div>
+        <ul><li><strong><a href="https://youtu.be/Y6XllVzYAvU" target="_blank" rel="noopener noreferrer">Weavy nybegynner</a></strong> – Nodebasert plattform: kobler Midjourney, Runway, Kling, Sora, LLM-er i én arbeidsflyt.</li><li><strong><a href="https://youtu.be/wrWEqN4lA8g" target="_blank" rel="noopener noreferrer">Auto produktbannere</a></strong> – Fjern bakgrunn → generer bannere/reels i 1:1, 4:5, 9:16 fra ett produktbilde.</li><li><strong><a href="https://youtu.be/e0vOkcl-fm4" target="_blank" rel="noopener noreferrer">Nano Banana + Midjourney i Weavy</a></strong> – Kreativ workflow: definer stil i Midjourney, utvid vinkler i Nano Banana.</li><li><strong><a href="https://youtu.be/c1W48MfoXok" target="_blank" rel="noopener noreferrer">Skalerbare systemer for kreative</a></strong> – Nodebaserte verktøy = fremtiden. Bygg systemer med Midjourney + ChatGPT + Gemini.</li><li><strong><a href="https://youtu.be/2r_4xDvhqlg" target="_blank" rel="noopener noreferrer">0 → 70k følgere workflow</a></strong> – «DJI model builder»-mal for konsistente karakterer i serie-bilder. Automatisert serie-generering.</li></ul>
+        <div class="section-sub-header">Gullkorn på tvers av verktøy</div>
+        <ul><li><strong>Konsistent karakter:</strong> Generer ALLTID Master-bilde FULLFIGUR først (gjelder alle tools)</li><li><strong>Beskriv miljø i prompten</strong> for å låse lyssetting</li><li><strong>Generer i SAMME verktøy</strong> som du animerer i (gjelder Nano Banana → Veo, Whisk etc.)</li><li><strong>Discord-snarveier</strong> i Midjourney: <code>/prefer set command</code> for å lagre <code>-orf</code> + bilde-URL som alias</li><li><strong>Mood board + Omni Reference</strong> kombinert gir best stilkonsistens</li><li><strong><code>-cw 0</code></strong> matcher kun ansikt, <strong><code>-cw 100</code></strong> matcher ansikt + klær</li><li><strong>Subtle Upscaler</strong> &gt; Creative Upscaler for ansiktskonsistens</li></ul>
       </div></div>
 
       <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">6.2</span><span>🔍 Research, idé og manus med AI</span></div><span class="acc-chevron">▼</span></button><div class="acc-content"><div class="placeholder"><div class="placeholder-icon">🔍</div><div class="placeholder-text">// INNHOLD KOMMER</div></div></div></div>
 
       <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">6.3</span><span>⚙️ Ivars AI-oppsett</span></div><span class="acc-chevron">▼</span></button><div class="acc-content"><div class="placeholder"><div class="placeholder-icon">⚙️</div><div class="placeholder-text">// INNHOLD KOMMER</div></div></div></div>
 
-      <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">6.4</span><span>🤖 Hermes Agent</span></div><span class="acc-chevron">▼</span></button><div class="acc-content"><div class="placeholder"><div class="placeholder-icon">🤖</div><div class="placeholder-text">// INNHOLD KOMMER</div></div></div></div>
+      <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">6.4</span><span>🤖 Hermes Agent</span></div><span class="acc-chevron">▼</span></button><div class="acc-content">
+        <div class="callout blue"><span class="callout-icon">🤖</span><div class="callout-text">Jeg bruker <strong>Hermes Agent</strong> til et lite team av AI-agenter som kjører på stue-PC-en (IVAR-ASUS-STUE, WSL2).</div></div>
+        <div class="section-sub-header">Hvem gjør hva</div>
+        <ul><li><strong>Dave</strong> – koordinator. Prioriterer, analyserer og delegerer.</li><li><strong>Iris</strong> – stille admin. Rapporter, cron-jobber og vaulten.</li><li><strong>Scout</strong> – speider video og research.</li><li><strong>Spark</strong> – kreativt arbeid, manus og idéer.</li><li><strong>Hex</strong> – kode og scripts.</li><li><strong>Coach</strong> – ADHD-støtte, fokus og sjekk-inn.</li></ul>
+        <div class="section-sub-header">Slik henger det sammen</div>
+        <ul><li>Jeg snakker med dem via Telegram og Hermes-dashboardet.</li><li>Alle leser og skriver i Obsidian-vaulten, og deler minne gjennom Agora.</li><li>Modeller, drift og detaljer: vaulten, <code>wiki/_systemer/system-hermes-crew/</code>.</li></ul>
+      </div></div>
 
-      <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">6.5</span><span>💻 Claude Code / Klaus</span></div><span class="acc-chevron">▼</span></button><div class="acc-content"><div class="placeholder"><div class="placeholder-icon">💻</div><div class="placeholder-text">// INNHOLD KOMMER</div></div></div></div>
+      <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">6.5</span><span>💻 Claude Code / Klaus</span></div><span class="acc-chevron">▼</span></button><div class="acc-content">
+        <div class="callout blue"><span class="callout-icon">💻</span><div class="callout-text"><strong>Claude Code</strong> er Anthropics kodeagent i terminalen. Min heter <strong>Klaus</strong>.</div></div>
+        <ul><li>Klaus gjør kode-, fil- og vaultarbeid: Assist-appen, denne guiden, scripts og rydding.</li><li>Kjører på alle maskinene mine. Skills og innstillinger deles via <code>B:\</code>.</li><li>Faste regler står i en global <code>CLAUDE.md</code>. Klaus logger arbeidet sitt i vaulten.</li><li>Klaus og Hermes-agentene deler minne gjennom Agora.</li></ul>
+      </div></div>
 
-      <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">6.6</span><span>📱 Telegram-agenter</span></div><span class="acc-chevron">▼</span></button><div class="acc-content"><div class="placeholder"><div class="placeholder-icon">📱</div><div class="placeholder-text">// INNHOLD KOMMER</div></div></div></div>
+      <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">6.6</span><span>📱 Telegram-agenter</span></div><span class="acc-chevron">▼</span></button><div class="acc-content">
+        <div class="callout blue"><span class="callout-icon">📱</span><div class="callout-text">Hver Hermes-agent har sin egen Telegram-bot. Det er aktivt, men jeg bruker det lite.</div></div>
+        <ul><li>Nyttig til raske spørsmål og beskjeder når jeg er borte fra PC-en.</li><li>Det meste av arbeidet skjer i dashboardet, i vaulten eller med Klaus.</li></ul>
+      </div></div>
 
       <div class="acc-item"><button class="acc-trigger" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-num">6.7</span><span>🛠️ AI-verktøy og abonnementer</span></div><span class="acc-chevron">▼</span></button><div class="acc-content"><div class="placeholder"><div class="placeholder-icon">🛠️</div><div class="placeholder-text">// INNHOLD KOMMER</div></div></div></div>
 
